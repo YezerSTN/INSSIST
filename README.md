@@ -59,14 +59,14 @@ Yo soy Christian Yezer y he hecho este repositorio para publicar futuras version
 
   <p align="center">
     <a href="https://www.instagram.com/yezer._/">
-      <img src="https://i.imgur.com/BThmrhA.png" alt="Insta reach" width="40px" />
+      <img src="https://i.imgur.com/BThmrhA.png" alt="Insta reach" width="100px" />
     </a>
     <a href="https://www.youtube.com/c/Yezer/videos">
-      <img src="https://i.imgur.com/utgFsnv.png" alt="Insta reach" width="40px" />
+      <img src="https://i.imgur.com/utgFsnv.png" alt="Insta reach" width="100px" />
     </a>
   </p>
 </p>
 
 ---
 
-> **Disclaimer**<a name="disclaimer" />: Please note that this is a research project. I am by no means responsible for any usage of this tool. Use it on your behalf. I'm also not responsible if your accounts get banned due to the extensive use of this tool.
+> **Disclaimer**<a name="disclaimer" />: Please note that this is a research project. I am in no way responsible for the use of this tool. 
