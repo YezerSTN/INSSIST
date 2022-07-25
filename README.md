@@ -33,7 +33,7 @@
 Yo soy Christian Yezer y he hecho este repositorio para publicar futuras versiones de INSSIST con funciones PRO. Espero te guste mi aporte, saludos. ♡
 
 <p align="center">
-	<img src="https://i.imgur.com/pr6RC1e.png" alt="InstaPy reach" width="680px"/>
+	<img src="https://i.imgur.com/pr6RC1e.png" alt="InstaPy reach" width="600px"/>
 </p>
 
 ### Contributors
@@ -44,15 +44,20 @@ This project exists thanks to all the people who contribute. [[Contribute](https
 
 ## Como Usar
 
-**PASO 1** Es uso de esta extension es facil, solo tienes que ir a [[releases]([https://opencollective.com/instapy#backer](https://github.com/YezerSTN/INSSIST/releases))] y descargar la version más reciente.
+**PASO 1** Es uso de esta extension es facil, solo tienes que ir a [[releases](https://github.com/YezerSTN/INSSIST/releases)] y descargar la version más reciente.
 
 **PASO 2** Una vez descargado el RAR tienes que descomprimirlo.
 
-**PASO 3** Ir a [[Extensiones]([chrome://extensions/))] y habilitar modo desarrollador.
+**PASO 3** Ir a [[Extensiones](chrome://extensions/)] y habilitar modo desarrollador.
 
 <p align="center">
-	<img src="https://topesdegama.com/app/uploads-topesdegama.com/2018/06/Modo-desarrallador-Chrome.jpg" alt="InstaPy reach" width="680px"/>
+	<img src="https://topesdegama.com/app/uploads-topesdegama.com/2018/06/Modo-desarrallador-Chrome.jpg" alt="InstaPy reach" width="650px"/>
 </p>
+**PASO 4** Una vez habilitada el modo desarrollador, ahora solo carga la carpeta descomprimida. Y listo eso es todo, ya puedes usarlo.
+<p align="center">
+	<img src="https://topesdegama.com/app/uploads/2018/06/Opciones-desarrollador-Chorme.jpg" alt="InstaPy reach" width="650px"/>
+</p>
+
 ---
 
 > **Disclaimer**<a name="disclaimer" />: Please note that this is a research project. I am by no means responsible for any usage of this tool. Use it on your behalf. I'm also not responsible if your accounts get banned due to the extensive use of this tool.
