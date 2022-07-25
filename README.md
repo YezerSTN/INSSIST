@@ -29,12 +29,12 @@
 <br />
 
 ## Credits
-### Community
+### Yezer
 An active and supportive community is what every open-source project needs to sustain. Together we reached every continent and most of the countries in the world!   
 Thank you all for being part of the InstaPy community ✌️
 
 <p align="center">
-	<img src="https://i.imgur.com/XkxHcM7r.png" alt="InstaPy reach" width="500px"/>
+	<img src="https://i.pinimg.com/564x/07/5e/6b/075e6b520ac3d64e98e378ba7ac26a49.jpg" alt="InstaPy reach" width="500px"/>
 </p>
 
 ### Contributors
