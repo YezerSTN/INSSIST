@@ -28,19 +28,6 @@
 
 <br />
 
-## Credits
-### Yezer
-Yo soy Christian Yezer y he hecho este repositorio para publicar futuras versiones de INSSIST con funciones PRO. Espero te guste mi aporte, saludos. ♡
-
-<p align="center">
-	<img src="https://i.imgur.com/pr6RC1e.png" alt="InstaPy reach" width="600px"/>
-</p>
-
-### Contributors
-
-This project exists thanks to all the people who contribute. [[Contribute](https://github.com/timgrossmann/InstaPy/wiki/How-to-Contribute)].
-
-<a href="https://github.com/timgrossmann/InstaPy/graphs/contributors"><img src="https://opencollective.com/instapy/contributors.svg?width=890&button=false" /></a>
 
 ## Como Usar
 
@@ -48,7 +35,7 @@ This project exists thanks to all the people who contribute. [[Contribute](https
 
 **PASO 2** Una vez descargado el RAR tienes que descomprimirlo.
 
-**PASO 3** Ir a [[Extensiones](https://chrome://extensions/)] y habilitar modo desarrollador.
+**PASO 3** Ir a [chrome://extensions/] y habilitar modo desarrollador.
 
 <p align="center">
 	<img src="https://topesdegama.com/app/uploads-topesdegama.com/2018/06/Modo-desarrallador-Chrome.jpg" alt="InstaPy reach" width="650px"/>
@@ -58,6 +45,14 @@ This project exists thanks to all the people who contribute. [[Contribute](https
 
 <p align="center">
 	<img src="https://topesdegama.com/app/uploads/2018/06/Opciones-desarrollador-Chorme.jpg" alt="InstaPy reach" width="650px"/>
+</p>
+
+## Credits
+### Yezer
+Yo soy Christian Yezer y he hecho este repositorio para publicar futuras versiones de INSSIST con funciones PRO. Espero te guste mi aporte, saludos. ♡
+
+<p align="center">
+	<img src="https://i.imgur.com/pr6RC1e.png" alt="InstaPy reach" width="600px"/>
 </p>
 
 ---
