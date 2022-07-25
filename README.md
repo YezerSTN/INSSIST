@@ -3,7 +3,7 @@
   <h1 align="center">INSSIST Pro | Instagram Web Assistant</h1>
   <p align="center">Inssist le permite utilizar la mayoría de las características de <b>Instagram</b> en su PC / Mac.<p>
 	
-	  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚
+	  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚
 
 **Versión:** Esta versión de INSSIST tiene todas las opciones que ofrece la versión <b>PRO</b>.<p>
 **Motivo:** Todo esto se hace con fines lucrativos y para que puedas utilizar todo el potencial de esta herramienta.
@@ -33,7 +33,7 @@
 Yo soy Christian Yezer y he hecho este repositorio para publicar futuras versiones de INSSIST con funciones PRO. Espero te guste mi aporte, saludos. ♡
 
 <p align="center">
-	<img src="https://i.pinimg.com/originals/c6/78/42/c67842d89aac0f9b735a3efadee25a2a.jpg" alt="InstaPy reach" width="500px"/>
+	<img src="https://i.imgur.com/pr6RC1e.png" alt="InstaPy reach" width="500px"/>
 </p>
 
 ### Contributors
@@ -42,11 +42,15 @@ This project exists thanks to all the people who contribute. [[Contribute](https
 
 <a href="https://github.com/timgrossmann/InstaPy/graphs/contributors"><img src="https://opencollective.com/instapy/contributors.svg?width=890&button=false" /></a>
 
-### Backers
+## Como Usar
 
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/instapy#backer)]
+**PASO 1** Es uso de esta extension es facil, solo tienes que ir a [[releases]([https://opencollective.com/instapy#backer](https://github.com/YezerSTN/INSSIST/releases))] y descargar la version más reciente.
 
-<a href="https://opencollective.com/instapy#backers" target="_blank"><img src="https://opencollective.com/instapy/backers.svg?width=890"></a>
+**PASO 2** Una vez descargado el RAR tienes que descomprimirlo.
+
+**PASO 3** Ir a [[Extensiones]([chrome://extensions/))] y habilitar modo desarrollador.
+
+<a href="https://opencollective.com/instapy#backers" target="_blank"><img src="https://topesdegama.com/app/uploads/2018/06/Modo-desarrallador-Chrome.jpg"></a>
 
 ---
 
