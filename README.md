@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://ibb.co/g9PYz2p" width="154">
+  <img src="https://i.imgur.com/eTPe4pz.png" width="154">
   <h1 align="center">INSSIST Pro | Instagram Web Assistant</h1>
   <p align="center">Tooling that <b>automates</b> your social media interactions to “farm” Likes, Comments, and Followers on Instagram
 Implemented in Python using the Selenium module.<p>
