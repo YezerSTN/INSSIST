@@ -1,2 +1,2 @@
-# INSSIST Pro | Asistente web para Instagram
+# INSSIST Pro | Instagram Web Assistant
 INSSIST Pro Cracked
