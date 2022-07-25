@@ -4,25 +4,26 @@
   <p align="center">Inssist le permite utilizar la mayoría de las características de <b>Instagram</b> en su PC / Mac.<p>
   
 
-**Newsletter:** Esta version de INSSIST tiene todas las opciones que ofrece la version <b>PRO</b>.<p>
-**Guide to Bot Creation: [Learn to Build your own Bots](https://www.udemy.com/course/the-complete-guide-to-bot-creation/?referralCode=7418EBB47E11E34D86C9)**    
+**Versión:** Esta versión de INSSIST tiene todas las opciones que ofrece la versión <b>PRO</b>.<p>
+**Motivo:** Todo esto se hace con fines lucrativos y para que puedas utilizar todo el potencial de esta herramienta.
 
 <br />
 
-# Find the full documentation in [Docs](/docs)
-**Table of contents**
-- [How to install and run InstaPy](/docs/home.md#installation)
-  * [Installing InstaPy](/docs/home.md#installation)
-  * [Running Instapy](/docs/home.md#installation)
-  * [Updating InstaPy](/docs/home.md#updating-instapy)
-  * [Guides and tutorials](/docs/home.md#guides)
-    * [Video tutorials](/docs/home.md#video-tutorials)
-    * [Written guides](/docs/home.md#written-guides)
-- [Externals and additionals tools](/docs/home.md#external-tools)
-- [Running InstaPy on Docker](/docs/home.md#docker)
-- [Documentation of all Instapy's features](/docs/settings.md)
-- [Support](/docs/home.md#support)
-- [Credits](/docs/home.md#credits)
+# INSSIST Features
+**Cracked Features**
+- Post Reels
+- Video Stories
+- Add Music to Videos
+- Ghost Story View
+- Post and Schedule Carousels
+- Schedule and Bulk Draft Posts
+- Posting Calendar
+- Posting Time Slots
+- CSV-powered Scheduling
+- Custom Video Covers
+- Cross-posting to Facebook Pages
+- Hashtags Metrics & Collections
+
 
 <br />
 
