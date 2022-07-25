@@ -33,7 +33,7 @@
 Yo soy Christian Yezer y he hecho este repositorio para publicar futuras versiones de INSSIST con funciones PRO. Espero te guste mi aporte, saludos. ♡
 
 <p align="center">
-	<img src="https://i.imgur.com/pr6RC1e.png" alt="InstaPy reach" width="500px"/>
+	<img src="https://i.imgur.com/pr6RC1e.png" alt="InstaPy reach" width="800px"/>
 </p>
 
 ### Contributors
@@ -50,7 +50,7 @@ This project exists thanks to all the people who contribute. [[Contribute](https
 
 **PASO 3** Ir a [[Extensiones]([chrome://extensions/))] y habilitar modo desarrollador.
 
-<a href="https://opencollective.com/instapy#backers" target="_blank"><img src="https://topesdegama.com/app/uploads/2018/06/Modo-desarrallador-Chrome.jpg"></a>
+	<img src="[https://i.imgur.com/pr6RC1e.png](https://topesdegama.com/app/uploads/2018/06/Modo-desarrallador-Chrome.jpg)" alt="InstaPy reach" width="800px"/>
 
 ---
 
