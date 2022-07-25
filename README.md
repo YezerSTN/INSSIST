@@ -48,12 +48,14 @@ This project exists thanks to all the people who contribute. [[Contribute](https
 
 **PASO 2** Una vez descargado el RAR tienes que descomprimirlo.
 
-**PASO 3** Ir a [[Extensiones](chrome://extensions/)] y habilitar modo desarrollador.
+**PASO 3** Ir a [[Extensiones](https://chrome://extensions/)] y habilitar modo desarrollador.
 
 <p align="center">
 	<img src="https://topesdegama.com/app/uploads-topesdegama.com/2018/06/Modo-desarrallador-Chrome.jpg" alt="InstaPy reach" width="650px"/>
 </p>
+
 **PASO 4** Una vez habilitada el modo desarrollador, ahora solo carga la carpeta descomprimida. Y listo eso es todo, ya puedes usarlo.
+
 <p align="center">
 	<img src="https://topesdegama.com/app/uploads/2018/06/Opciones-desarrollador-Chorme.jpg" alt="InstaPy reach" width="650px"/>
 </p>
