@@ -55,6 +55,13 @@ Yo soy Christian Yezer y he hecho este repositorio para publicar futuras version
 	<img src="https://i.imgur.com/pr6RC1e.png" alt="InstaPy reach" width="600px"/>
 </p>
 
+### Contacto
+
+<p align="center">
+	<img src="[https://i.imgur.com/pr6RC1e.png](https://i.imgur.com/PtiJJoH.png)" alt="InstaPy reach" width="50px"/> [[Instagram](https://www.instagram.com/yezer._/)]
+</p>
+
+
 ---
 
 > **Disclaimer**<a name="disclaimer" />: Please note that this is a research project. I am by no means responsible for any usage of this tool. Use it on your behalf. I'm also not responsible if your accounts get banned due to the extensive use of this tool.
