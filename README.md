@@ -59,10 +59,10 @@ Yo soy Christian Yezer y he hecho este repositorio para publicar futuras version
 
   <p align="center">
     <a href="https://www.instagram.com/yezer._/">
-      <img src="https://i.imgur.com/BThmrhA.png" alt="Insta reach" width="100px" />
+      <img src="https://i.imgur.com/BThmrhA.png" alt="Insta reach" width="75px" />
     </a>
     <a href="https://www.youtube.com/c/Yezer/videos">
-      <img src="https://i.imgur.com/utgFsnv.png" alt="Insta reach" width="100px" />
+      <img src="https://i.imgur.com/utgFsnv.png" alt="Insta reach" width="75px" />
     </a>
   </p>
 </p>
