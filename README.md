@@ -58,7 +58,7 @@ Yo soy Christian Yezer y he hecho este repositorio para publicar futuras version
 ### Contacto
 
 <p align="center">
-	<img src="[https://i.imgur.com/pr6RC1e.png](https://i.imgur.com/PtiJJoH.png)" alt="InstaPy reach" width="50px"/> [[Instagram](https://www.instagram.com/yezer._/)]
+	<img src="https://i.imgur.com/PtiJJoH.png" alt="Insta reach" width="50px"/> [[Instagram](https://www.instagram.com/yezer._/)]
 </p>
 
 
