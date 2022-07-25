@@ -1,8 +1,7 @@
 <p align="center">
   <img src="https://i.imgur.com/eTPe4pz.png" width="154">
   <h1 align="center">INSSIST Pro | Instagram Web Assistant</h1>
-  <p align="center">Tooling that <b>automates</b> your social media interactions to “farm” Likes, Comments, and Followers on Instagram
-Implemented in Python using the Selenium module.<p>
+  <p align="center">Inssist le permite utilizar la mayoría de las características de <b>Instagram</b> en su PC / Mac.<p>
   <p align="center">
     <a href="https://github.com/timgrossmann/InstaPy/blob/master/LICENSE">
       <img src="https://img.shields.io/badge/license-GPLv3-blue.svg" />
