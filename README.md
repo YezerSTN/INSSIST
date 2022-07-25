@@ -4,7 +4,7 @@
   <p align="center">Inssist le permite utilizar la mayoría de las características de <b>Instagram</b> en su PC / Mac.<p>
   
 
-**Newsletter:** <p>Inssist le permite utilizar la mayoría de las características de <b>Instagram</b> en su PC / Mac.<p>
+**Newsletter:** Esta version de INSSIST tiene todas las opciones que ofrece la version <b>PRO</b>.<p>
 **Guide to Bot Creation: [Learn to Build your own Bots](https://www.udemy.com/course/the-complete-guide-to-bot-creation/?referralCode=7418EBB47E11E34D86C9)**    
 
 <br />
