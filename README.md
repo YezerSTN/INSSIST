@@ -50,8 +50,9 @@ This project exists thanks to all the people who contribute. [[Contribute](https
 
 **PASO 3** Ir a [[Extensiones]([chrome://extensions/))] y habilitar modo desarrollador.
 
-	<img src="https://topesdegama.com/app/uploads/2018/06/Modo-desarrallador-Chrome.jpg" reach" width="500px"/>
-
+<p align="center">
+	<img src="https://topesdegama.com/app/uploads-topesdegama.com/2018/06/Modo-desarrallador-Chrome.jpg" alt="InstaPy reach" width="680px"/>
+</p>
 ---
 
 > **Disclaimer**<a name="disclaimer" />: Please note that this is a research project. I am by no means responsible for any usage of this tool. Use it on your behalf. I'm also not responsible if your accounts get banned due to the extensive use of this tool.
