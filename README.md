@@ -30,11 +30,10 @@
 
 ## Credits
 ### Yezer
-An active and supportive community is what every open-source project needs to sustain. Together we reached every continent and most of the countries in the world!   
-Thank you all for being part of the InstaPy community ✌️
+Yo soy Christian Yezer y he hecho este repositorio para publicar futuras versiones de INSSIST con funciones PRO. Espero te guste mi aporte, saludos. ♡
 
 <p align="center">
-	<img src="https://i.pinimg.com/564x/07/5e/6b/075e6b520ac3d64e98e378ba7ac26a49.jpg" alt="InstaPy reach" width="500px"/>
+	<img src="https://i.pinimg.com/originals/c6/78/42/c67842d89aac0f9b735a3efadee25a2a.jpg" alt="InstaPy reach" width="500px"/>
 </p>
 
 ### Contributors
