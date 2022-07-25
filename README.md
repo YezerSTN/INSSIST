@@ -3,7 +3,7 @@
   <h1 align="center">INSSIST Pro | Instagram Web Assistant</h1>
   <p align="center">Inssist le permite utilizar la mayoría de las características de <b>Instagram</b> en su PC / Mac.<p>
 	
-	  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚
+	  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚
 
 **Versión:** Esta versión de INSSIST tiene todas las opciones que ofrece la versión <b>PRO</b>.<p>
 **Motivo:** Todo esto se hace con fines lucrativos y para que puedas utilizar todo el potencial de esta herramienta.
