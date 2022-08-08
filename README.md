@@ -52,7 +52,7 @@
 Yo soy Christian Yezer y he hecho este repositorio para publicar futuras versiones de INSSIST con funciones PRO. Espero te guste mi aporte, saludos. ♡
 
 <p align="center">
-	<img src="https://i.imgur.com/pr6RC1e.png" alt="InstaPy reach" width="600px"/>
+	<img src="https://i.pinimg.com/564x/8c/f7/2d/8cf72dbbf7f4f5c0a36c0e3608664088.jpg" alt="InstaPy reach" width="600px"/>
 </p>
 
 ### Contacto
