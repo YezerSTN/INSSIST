@@ -3,7 +3,7 @@
   <h1 align="center">INSSIST Pro | Instagram Web Assistant</h1>
   <p align="center">Inssist allows you to use most of <b>Instagram</b> features on your PC.<p>
 	
-	  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚
+<p align="center">ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚<p>
 
 **Version:** This version of INSSIST has all the options offered by the <b>PRO</b> version.
 
@@ -11,7 +11,7 @@
 
 <br />
 
-# :paperclips: INSSIST Features
+# INSSIST Features
 **Cracked Features**
 - Post Reels
 - Video Stories
@@ -31,7 +31,7 @@
 
 ## **_Download_**
 
-[Download](https://github.com/YezerSTN/INSSIST/releases)
+:octocat: [Download](https://github.com/YezerSTN/INSSIST/releases) 
 
 
 ## Como Usar
@@ -52,7 +52,7 @@
 	<img src="https://topesdegama.com/app/uploads/2018/06/Opciones-desarrollador-Chorme.jpg" alt="InstaPy reach" width="650px"/>
 </p>
 
-## :octocat: Credits 	
+## Credits 	
 ### Yezer
 I am Christian Yezer and I have made this repository to publish future versions of INSSIST with PRO functions. I hope you like my contribution, regards. ♡
 
