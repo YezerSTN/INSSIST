@@ -6,7 +6,7 @@
 > <p align="center">ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚<p>
 	
 **Version:** This version of INSSIST has all the options offered by the <b>PRO</b> version. 
-**Rationale:** This is all done for profit and so that you can use the full potential of this tool.
+<p> **Rationale:** This is all done for profit and so that you can use the full potential of this tool. </p>
 
 <br />
 
@@ -30,7 +30,7 @@
 
 ## <p align="center"> **Download** <p>
 
-<p align="center"> :octocat: [Download](https://github.com/YezerSTN/INSSIST/releases) <p
+<p align="center"> :octocat: [Download](https://github.com/YezerSTN/INSSIST/releases) <p>
 
 
 ## Como Usar
