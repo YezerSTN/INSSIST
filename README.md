@@ -4,7 +4,7 @@
   <p align="center">Inssist allows you to use most of <b>Instagram</b> features on your PC.</p>
    <p align="center">
    <img src="https://img.shields.io/github/downloads/YezerSTN/INSSIST/total?color=red&label=DOWNLOADS">
-   <img src="https://img.shields.io/github/v/tag/YezerSTN/INSSIST?color=PINK&label=VERSION">
+   <img src="https://img.shields.io/github/v/tag/YezerSTN/INSSIST?label=VERSION">
    <img src="https://img.shields.io/github/stars/YezerSTN/INSSIST?style=social">	
    </p>
    
