@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://i.imgur.com/eTPe4pz.png" width="154">
   <h1 align="center">INSSIST Pro | Instagram Web Assistant</h1>
-  <p align="center">Inssist allows you to use most of <b>Instagram</b> features on your PC.<p>
+  :earth_americas:<p align="center">Inssist allows you to use most of <b>Instagram</b> features on your PC.<p>
 	
 	  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚
 
@@ -59,7 +59,7 @@ I am Christian Yezer and I have made this repository to publish future versions 
 	<img src="https://i.pinimg.com/564x/8c/f7/2d/8cf72dbbf7f4f5c0a36c0e3608664088.jpg" alt="InstaPy reach" width="600px"/>
 </p>
 
-### Contacto
+### Contact us
 
   <p align="center">
     <a href="https://www.instagram.com/yezer._/">
