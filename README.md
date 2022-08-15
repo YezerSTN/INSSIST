@@ -11,7 +11,7 @@
 
 <br />
 
-# INSSIST Features :paperclips:	
+:paperclips: # INSSIST Features
 **Cracked Features**
 - Post Reels
 - Video Stories
@@ -52,7 +52,7 @@
 	<img src="https://topesdegama.com/app/uploads/2018/06/Opciones-desarrollador-Chorme.jpg" alt="InstaPy reach" width="650px"/>
 </p>
 
-## Credits :octocat:	
+:octocat: ## Credits 	
 ### Yezer
 I am Christian Yezer and I have made this repository to publish future versions of INSSIST with PRO functions. I hope you like my contribution, regards. ♡
 
