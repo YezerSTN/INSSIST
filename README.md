@@ -40,7 +40,7 @@
 
 **STEP 2** Once you have downloaded the RAR you have to unzip it.
 
-**STEP 3** Go to [chrome://extensions/] and enable developer mode.
+**STEP 3** Go to [ chrome://extensions/ ] and enable developer mode.
 
 <p align="center">
 	<img src="https://topesdegama.com/app/uploads-topesdegama.com/2018/06/Modo-desarrallador-Chrome.jpg" alt="InstaPy reach" width="650px"/>
