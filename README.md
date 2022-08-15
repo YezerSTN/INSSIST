@@ -2,6 +2,9 @@
   <img src="https://i.imgur.com/eTPe4pz.png" width="154">
   <h1 align="center">INSSIST Pro | Instagram Web Assistant</h1>
   <p align="center">Inssist allows you to use most of <b>Instagram</b> features on your PC.<p>
+	   <p align="left">
+   <img src="	https://img.shields.io/github/downloads/YezerSTN/INSSIST/total">
+   </p>
 	
 > <p align="center">ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚<p>
 	
@@ -29,13 +32,13 @@
 
 <br />
 
-## <p align="center"> **Download** <p>
-
-<p align="center"> :octocat: ### [[releases](https://github.com/YezerSTN/INSSIST/releases)] <p>
+<p align="center">
+  <h1 align="center">Download</h1>
+  <p align="center"> [Download](https://github.com/YezerSTN/INSSIST/releases) :octocat: <p>
 
 ## How to Use
 
-**STEP 1** Using this extension is easy, just go to [[releases](https://github.com/YezerSTN/INSSIST/releases)] and download the latest version.
+**STEP 1** Using this extension is easy, just go to [releases](https://github.com/YezerSTN/INSSIST/releases) and download the latest version. 
 
 **STEP 2** Once you have downloaded the RAR you have to unzip it.
 
