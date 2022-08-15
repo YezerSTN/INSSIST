@@ -1,12 +1,12 @@
 <p align="center">
   <img src="https://i.imgur.com/eTPe4pz.png" width="154">
   <h1 align="center">INSSIST Pro | Instagram Web Assistant</h1>
-  <p align="center">Inssist le permite utilizar la mayoría de las características de <b>Instagram</b> en su PC / Mac.<p>
+  <p align="center">Inssist allows you to use most of <b>Instagram</b> features on your PC.<p>
 	
 	  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚
 
-**Versión:** Esta versión de INSSIST tiene todas las opciones que ofrece la versión <b>PRO</b>.<p>
-**Motivo:** Todo esto se hace con fines lucrativos y para que puedas utilizar todo el potencial de esta herramienta.
+**Version:** This version of INSSIST has all the options offered by the <b>PRO</b> version.
+**Rationale:** This is all done for profit and so that you can use the full potential of this tool.
 
 <br />
 
@@ -28,24 +28,24 @@
 
 <br />
 
-## Download
+## **_Download_**
 
 [Download](https://github.com/YezerSTN/INSSIST/releases)
 
 
 ## Como Usar
 
-**PASO 1** Es uso de esta extension es facil, solo tienes que ir a [[releases](https://github.com/YezerSTN/INSSIST/releases)] y descargar la version más reciente.
+**STEP 1** Using this extension is easy, just go to [[releases](https://github.com/YezerSTN/INSSIST/releases)] and download the latest version.
 
-**PASO 2** Una vez descargado el RAR tienes que descomprimirlo.
+**STEP 2** Once you have downloaded the RAR you have to unzip it.
 
-**PASO 3** Ir a [chrome://extensions/] y habilitar modo desarrollador.
+**STEP 3** Go to [chrome://extensions/] and enable developer mode.
 
 <p align="center">
 	<img src="https://topesdegama.com/app/uploads-topesdegama.com/2018/06/Modo-desarrallador-Chrome.jpg" alt="InstaPy reach" width="650px"/>
 </p>
 
-**PASO 4** Una vez habilitada el modo desarrollador, ahora solo carga la carpeta descomprimida. Y listo eso es todo, ya puedes usarlo.
+**STEP 4** Once the developer mode is enabled, now just load the unzipped folder. And that's it, you can use it now.
 
 <p align="center">
 	<img src="https://topesdegama.com/app/uploads/2018/06/Opciones-desarrollador-Chorme.jpg" alt="InstaPy reach" width="650px"/>
@@ -53,7 +53,7 @@
 
 ## Credits
 ### Yezer
-Yo soy Christian Yezer y he hecho este repositorio para publicar futuras versiones de INSSIST con funciones PRO. Espero te guste mi aporte, saludos. ♡
+I am Christian Yezer and I have made this repository to publish future versions of INSSIST with PRO functions. I hope you like my contribution, regards. ♡
 
 <p align="center">
 	<img src="https://i.pinimg.com/564x/8c/f7/2d/8cf72dbbf7f4f5c0a36c0e3608664088.jpg" alt="InstaPy reach" width="600px"/>
