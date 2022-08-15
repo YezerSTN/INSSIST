@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://i.imgur.com/eTPe4pz.png" width="154">
-  <h1 align="center">:earth_americas: INSSIST Pro | Instagram Web Assistant</h1>
+  <h1 align="center">INSSIST Pro | Instagram Web Assistant</h1>
   <p align="center">Inssist allows you to use most of <b>Instagram</b> features on your PC.<p>
 	
 	  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚
@@ -11,7 +11,7 @@
 
 <br />
 
-# INSSIST Features
+# INSSIST Features :paperclips:	
 **Cracked Features**
 - Post Reels
 - Video Stories
@@ -52,7 +52,7 @@
 	<img src="https://topesdegama.com/app/uploads/2018/06/Opciones-desarrollador-Chorme.jpg" alt="InstaPy reach" width="650px"/>
 </p>
 
-## Credits
+## Credits :octocat:	
 ### Yezer
 I am Christian Yezer and I have made this repository to publish future versions of INSSIST with PRO functions. I hope you like my contribution, regards. ♡
 
