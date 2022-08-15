@@ -28,6 +28,10 @@
 
 <br />
 
+## Download
+
+[Download](https://github.com/YezerSTN/INSSIST/releases)
+
 
 ## Como Usar
 
