@@ -31,8 +31,7 @@
 
 ## <p align="center"> **Download** <p>
 
-<p align="center"> :octocat:  <p> [Download](https://github.com/YezerSTN/INSSIST/releases)
-
+<p align="center"> :octocat: ### [[releases](https://github.com/YezerSTN/INSSIST/releases)] <p>
 
 ## How to Use
 
