@@ -33,9 +33,6 @@
 
 <br />
 
-<p align="center">
-  <h1 align="center">Download</h1>
-  <p align="center"> [Download](https://github.com/YezerSTN/INSSIST/releases) :octocat: <p>
 
 ## How to Use
 
