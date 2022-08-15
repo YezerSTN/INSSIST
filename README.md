@@ -1,11 +1,12 @@
 <p align="center">
   <img src="https://i.imgur.com/eTPe4pz.png" width="154">
-  <h1 align="center">INSSIST Pro | Instagram Web Assistant</h1>
-  :earth_americas:<p align="center">Inssist allows you to use most of <b>Instagram</b> features on your PC.<p>
+  <h1 align="center">:earth_americas: INSSIST Pro | Instagram Web Assistant</h1>
+  <p align="center">Inssist allows you to use most of <b>Instagram</b> features on your PC.<p>
 	
 	  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚
 
 **Version:** This version of INSSIST has all the options offered by the <b>PRO</b> version.
+
 **Rationale:** This is all done for profit and so that you can use the full potential of this tool.
 
 <br />
