@@ -15470,10 +15470,10 @@
     getAppUrl: "https://get.inssist.com",
     getAppHost: "get.inssist.com",
     supportEmail: "inssist@slashedio.io",
-    termsUrl: "https://github.com/YezerSTN/INSSIST/",
-    policyUrl: "https://github.com/YezerSTN/INSSIST/",
-    faqUrl: "https://github.com/YezerSTN/INSSIST/",
-    faqBillingUrl: "https://github.com/YezerSTN/INSSIST/",
+    termsUrl: "https://github.com/YezerSTN/INSSIST",
+    policyUrl: "https://github.com/YezerSTN/INSSIST",
+    faqUrl: "https://github.com/YezerSTN/INSSIST",
+    faqBillingUrl: "https://github.com/YezerSTN/INSSIST",
   };
   r(Mb, "common", function () {
     return Lb;
@@ -20438,7 +20438,10 @@
           ],
           peersModalHeader: ".HYpXt .eiUFA",
           storiesBar: [".qf6s4", ".PolarisIGVirtualList.PolarisStoryTray"],
-          storiesBarLoadingPanel: ".PolarisFeedLoadingSpinner._ab6o",
+          storiesBarLoadingPanel: [
+            ".PolarisFeedLoadingSpinner._ab6o",
+            ".PolarisFeedPage ._ab6o",
+          ],
           blueLinkButton: ".UP43G",
           actionSheet: [".xkuux", ".PolarisIGCoreModalBackdrop > ._ac7o"],
           useAppGradientBar: [".xZ2Xk", ".PolarisMobileNav + section._aa9n"],
@@ -41160,7 +41163,7 @@
             "div",
             { css: LR.faqButtonRow },
             Glamor.createElement(xT, {
-              label: "CRACKED BY YEZER",
+              label: "CRACKED BY YEZER.",
               onClick: this.props.onFaqClick,
             })
           );

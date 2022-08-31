@@ -2259,7 +2259,7 @@
               "Already have an account?"
             ),
             buttons: [
-              { label: "LOGIN", onClick: this._onLoginClick },
+              { label: "LOGIN TO RECOVER PRO", onClick: this._onLoginClick },
             ],
             color: g().default.color.iconPassive,
           };
@@ -2815,7 +2815,7 @@
     _getFooter() {
       return {
         button: {
-          label: "ACTIVATE PRO",
+          label: "ᵔᵔ﹗ ﹙Activate PRO﹚",
           onClick: this.props.onActivateProClick,
         },
       };
@@ -13625,7 +13625,7 @@
                   Glamor.createElement(g().default.Spacer, { width: "g3" })
                 ),
               Glamor.createElement(g().default.LinkButton, {
-                label: "GITHUB",
+                label: "CRACKED BY YEZER",
                 onClick: this._onGoToFaq,
               })
             )
@@ -14080,9 +14080,9 @@
         description: Glamor.createElement(
           g().default.Fragment,
           null,
-          "Inssist Cracked is your personal Instagram assistant and is the best way to use ",
+          "Inssist is your personal Instagram Assistant and is the best way to use ",
           Glamor.createElement("b", null, "Instagram on Desktop"),
-          ", with no ads and unlocked Pro features:"
+          ", ads free:"
         ),
         listItems: [
           Glamor.createElement(
@@ -14103,7 +14103,6 @@
         ],
         buttonLabel: "OK, LET'S GO",
         onButtonClick: this._onLetsGoClick,
-
         disclaimer: Glamor.createElement(
           g().default.Fragment,
           null,

@@ -1066,13 +1066,14 @@
         u("origin", new URL(e.url).origin);
       }
     }
-    n &&
-      d("instagram.com") &&
-      c("/direct/inbox") &&
-      (null === (f = e.initiator) || void 0 === f
-        ? void 0
-        : f.startsWith(`chrome-extension://${chrome.runtime.id}`)) &&
-      (Ue = e.frameId);
+    n && a && d("instagram.com") && u("sec-fetch-dest", "document"),
+      n &&
+        d("instagram.com") &&
+        c("/direct/inbox") &&
+        (null === (f = e.initiator) || void 0 === f
+          ? void 0
+          : f.startsWith(`chrome-extension://${chrome.runtime.id}`)) &&
+        (Ue = e.frameId);
     const m =
         n &&
         d("instagram.com") &&
@@ -4630,7 +4631,7 @@
   x(), N();
   var Sr = {
     init: function () {
-      chrome.runtime.setUninstallURL("https://github.com/YezerSTN/INSSIST/");
+      chrome.runtime.setUninstallURL("https://github.com/YezerSTN/INSSIST");
     },
   };
   I();
