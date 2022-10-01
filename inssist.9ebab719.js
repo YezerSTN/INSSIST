@@ -60,8 +60,8 @@
     Y = t("4NLO5"),
     Z = t("2cWJK"),
     K = t("6vp85"),
-    J = t("5Y5vM"),
-    Q = t("520kD"),
+    Q = t("5Y5vM"),
+    J = t("520kD"),
     X = t("5LHf1"),
     ee = t("5ZuLE"),
     te = t("7dHHw"),
@@ -2574,7 +2574,7 @@
   var Ke = v().influx((e) => ({ billing: e.billing }))(
     g().default.theme.ThemeAware(Ze)
   );
-  class Je extends g().default.Component {
+  class Qe extends g().default.Component {
     constructor(...e) {
       var t;
       return (
@@ -2592,8 +2592,8 @@
       );
     }
     componentDidMount() {
-      Date.now() - Je.lastUpdateTs < 5e3 ||
-        ((Je.lastUpdateTs = Date.now()),
+      Date.now() - Qe.lastUpdateTs < 5e3 ||
+        ((Qe.lastUpdateTs = Date.now()),
         setTimeout(
           () => chrome.runtime.sendMessage({ name: "update-pro" }),
           250
@@ -2635,7 +2635,7 @@
       return Glamor.createElement(je, null);
     }
   }
-  var Qe = v().influx((e) => ({ billing: e.billing }))(Je);
+  var Je = v().influx((e) => ({ billing: e.billing }))(Qe);
   g(), p(), v();
   class Xe extends g().default.Component {
     constructor(...e) {
@@ -2815,7 +2815,7 @@
     _getFooter() {
       return {
         button: {
-          label: "ᵔᵔ﹗ ﹙Activate PRO﹚",
+          label: "ACTIVATE PRO",
           onClick: this.props.onActivateProClick,
         },
       };
@@ -4495,13 +4495,13 @@
   var Zt = {
     init: function () {
       C().iframeBus.on("quick-replies.show", Kt),
-        C().iframeBus.on("quick-replies.hide", Jt),
-        C().iframeBus.on("quick-replies.toggle", Qt),
+        C().iframeBus.on("quick-replies.hide", Qt),
+        C().iframeBus.on("quick-replies.toggle", Jt),
         C().iframeBus.on("quick-replies.fetch", Xt);
     },
     showQuickReplies: Kt,
-    hideQuickReplies: Jt,
-    toggleQuickReplies: Qt,
+    hideQuickReplies: Qt,
+    toggleQuickReplies: Jt,
     fetchQuickReplies: Xt,
     updateQuickReplies: function (e) {
       const t = this.fetchQuickReplies(e);
@@ -4535,12 +4535,12 @@
       e.quickReplies.shown = !0;
     });
   }
-  function Jt() {
+  function Qt() {
     v().transaction((e) => {
       e.quickReplies.shown = !1;
     });
   }
-  function Qt() {
+  function Jt() {
     v().transaction((e) => {
       e.quickReplies.shown = !e.quickReplies.shown;
     });
@@ -4938,7 +4938,7 @@
                 })
               );
             us("UPLOADING..."), (ls.sleepSeconds = 2);
-            const a = await Qs.getPostFiles(t.id),
+            const a = await Js.getPostFiles(t.id),
               n = e.status || t.status;
             await C().iframeBus.send("schedule.fcs-open-new-post-form", {
               localPostId: t.id,
@@ -5211,7 +5211,7 @@
     posts: $().default.getPosts({ applyGridFilters: !0 }),
     dragging: e.schedule.isDraggingPost,
   }))(fs);
-  g(), p(), k(), v(), g(), p(), J(), R(), k(), v(), w(), H(), Q();
+  g(), p(), k(), v(), g(), p(), Q(), R(), k(), v(), w(), H(), J();
   var Cs = {
     init: async function () {
       w().chromeBus.on("fusion.reload-popup", () => {
@@ -5221,7 +5221,7 @@
       const e = await H().default(chrome.tabs.getCurrent);
       w().chromeBus.send("fusion.popup-tab-id", e.id);
     },
-    getConfig: Q().default,
+    getConfig: J().default,
   };
   g(), p(), w();
   class ys extends g().default.Component {
@@ -5713,7 +5713,7 @@
             const r = $().default.getBulkStartingDay(),
               l = this._getMinOn(),
               c = () => {
-                const e = s[o] - J().default(r);
+                const e = s[o] - Q().default(r);
                 return (
                   (n = r + e * k().DAY + i * k().WEEK + a),
                   (o += 1),
@@ -5935,7 +5935,7 @@
     render() {
       return Glamor.createElement(p().default.BulkScreen, {
         loading: this.props.addingFiles,
-        addCard: Glamor.createElement(Ja, null),
+        addCard: Glamor.createElement(Qa, null),
         controls: Glamor.createElement(Ha, null),
         grid: Glamor.createElement(vs, null),
         actionBar: Glamor.createElement(Ls, null),
@@ -6086,8 +6086,8 @@
     maxVideoRatio: 1.778,
   };
   let Ks;
-  const Js = { selectedFiles: [] };
-  var Qs = {
+  const Qs = { selectedFiles: [] };
+  var Js = {
     init: function () {
       (Ks = Cs.getConfig().fcs),
         (function () {
@@ -6144,7 +6144,7 @@
         t.click();
     },
     selectFiles: function (e) {
-      (Js.selectedFiles = e),
+      (Qs.selectedFiles = e),
         v().transaction((t) => {
           t.schedule.addCard.fileCount = e.length;
         });
@@ -6156,7 +6156,7 @@
     },
     addFiles: Xs,
     addSelectedFiles: function ({ isCarousel: e }) {
-      Xs(Js.selectedFiles, { isCarousel: e });
+      Xs(Qs.selectedFiles, { isCarousel: e });
     },
     getPostFiles: async function (e) {
       const t = await D().default(() =>
@@ -6505,7 +6505,7 @@
         C().iframeBus.on("schedule.fcs-notification-error-appeared", Ta),
         C().iframeBus.on("schedule.fcs-critical-error", _a),
         C().iframeBus.on("schedule.fcs-error", Ea),
-        Qs.init(),
+        Js.init(),
         Hs.init(),
         Ns.init(),
         (function () {
@@ -6744,10 +6744,10 @@
     isSaving: function () {
       return $().default.isSaving();
     },
-    addFiles: Qs.addFiles,
+    addFiles: Js.addFiles,
     chooseFiles: function (e) {
       if ($().default.isSavingOrNeedsSave()) return void ga();
-      Qs.chooseFiles(e);
+      Js.chooseFiles(e);
     },
     toggleTab: function (e) {
       const t = v().model.state;
@@ -6775,7 +6775,7 @@
           ma({
             postMode: t || (e.on ? "schedule" : "draft"),
             localPostId: e.id,
-            localPostFiles: await Qs.getPostFiles(e.id),
+            localPostFiles: await Js.getPostFiles(e.id),
           }),
           void (e.on
             ? (Pa({ on: e.on }), Ns.actualizeDataForIframe())
@@ -7609,8 +7609,8 @@
         (t = super(...e)),
         (this._onClick = () => {
           this.props.checking ||
-            Qs.chooseFiles((e) => {
-              Qs.selectFiles(e);
+            Js.chooseFiles((e) => {
+              Js.selectFiles(e);
             });
         }),
         (this._onLongPress = () => {
@@ -7682,7 +7682,7 @@
       return (
         (t = super(...e)),
         (this._onDrop = (e) => {
-          Qs.selectFiles(e);
+          Js.selectFiles(e);
         }),
         t
       );
@@ -7706,7 +7706,7 @@
         }),
         (this._onConfirmClick = () => {
           const e = "carousel" === this.props.selectedOption;
-          Qs.addSelectedFiles({ isCarousel: e });
+          Js.addSelectedFiles({ isCarousel: e });
         }),
         (this._onCancelClick = () => {
           v().transaction((e) => {
@@ -7764,12 +7764,12 @@
         : "default";
     }
   }
-  var Ja = v().influx((e) => ({
+  var Qa = v().influx((e) => ({
     status: $().default.getAddCardStatus(),
     attention: e.schedule.addCard.attention,
   }))(Ka);
   g(), v(), w();
-  const Qa = {
+  const Ja = {
       root: {
         ...g().default.padding("g2 14 g2 g3"),
         width: "100%",
@@ -7868,7 +7868,7 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: Qa.root },
+        { css: Ja.root },
         this._renderCloseButton(),
         this._renderWelcomeScreen(),
         this._renderStepsScreen()
@@ -7876,7 +7876,7 @@
     }
     _renderCloseButton() {
       return Glamor.createElement(g().default.CloseButton, {
-        style: Qa.closeButton,
+        style: Ja.closeButton,
         onClick: this._onCloseClick,
       });
     }
@@ -7885,22 +7885,22 @@
         ? null
         : Glamor.createElement(
             "div",
-            { css: Qa.welcomeScreen },
+            { css: Ja.welcomeScreen },
             Glamor.createElement(
               "div",
-              { css: Qa.title },
+              { css: Ja.title },
               "Setup Post Assistant"
             ),
             Glamor.createElement(g().default.Spacer, { height: "g2" }),
             Glamor.createElement(
               "div",
-              { css: Qa.welconeScreenText },
+              { css: Ja.welconeScreenText },
               "With our Post Assistant you can:"
             ),
             Glamor.createElement(g().default.Spacer, { height: "g1h" }),
             Glamor.createElement(
               "div",
-              { css: Qa.welconeScreenText },
+              { css: Ja.welconeScreenText },
               "• Schedule your posts ahead in a calendar",
               Glamor.createElement("br", null),
               "• Post carousels (multi-photo posts)",
@@ -7910,7 +7910,7 @@
             Glamor.createElement(g().default.Spacer, { height: "g1h" }),
             Glamor.createElement(
               "div",
-              { css: Qa.welconeScreenText },
+              { css: Ja.welconeScreenText },
               "Please connect Instagram to Post Assistant:"
             ),
             Glamor.createElement(g().default.Spacer, { height: "g3" }),
@@ -7918,14 +7918,14 @@
             Glamor.createElement(g().default.Spacer, { height: "g3" }),
             Glamor.createElement(
               "div",
-              { css: Qa.disclaimer },
+              { css: Ja.disclaimer },
               Glamor.createElement(g().default.SvgIcon, {
-                style: Qa.disclaimerIcon,
+                style: Ja.disclaimerIcon,
                 name: Xa,
               }),
               Glamor.createElement(
                 "div",
-                { css: Qa.disclaimerText },
+                { css: Ja.disclaimerText },
                 "We do not collect, transfer or store your Instagram credentials. This setup is safe and secure."
               )
             )
@@ -7936,10 +7936,10 @@
         ? null
         : Glamor.createElement(
             "div",
-            { css: Qa.stepsScreen },
+            { css: Ja.stepsScreen },
             Glamor.createElement(
               "div",
-              { css: Qa.title },
+              { css: Ja.title },
               "Setup Post Assistant"
             ),
             Glamor.createElement(g().default.Spacer, { height: "g2" }),
@@ -8084,17 +8084,17 @@
           (a = "RETRY"),
         Glamor.createElement(
           "div",
-          { css: Qa.buttonContainer },
+          { css: Ja.buttonContainer },
           Glamor.createElement(g().default.PrimaryButton, {
-            style: Qa.button({ processing: s }),
+            style: Ja.button({ processing: s }),
             iconStyle: { display: "none" },
             disabled: s,
             tabIndex: "-1",
             label: Glamor.createElement(
               "div",
-              { css: Qa.buttonContent },
+              { css: Ja.buttonContent },
               Glamor.createElement(g().default.SvgIcon, {
-                style: Qa.buttonIcon({ processing: s }),
+                style: Ja.buttonIcon({ processing: s }),
                 name: en,
               }),
               a
@@ -8126,13 +8126,13 @@
               })),
         Glamor.createElement(
           "div",
-          { css: Qa.step },
-          Glamor.createElement("div", { css: Qa.stepStatus }, a),
+          { css: Ja.step },
+          Glamor.createElement("div", { css: Ja.stepStatus }, a),
           Glamor.createElement(
             "div",
-            { css: Qa.stepBody },
-            Glamor.createElement("div", { css: Qa.stepTitle }, t),
-            s && Glamor.createElement("div", { css: Qa.stepDescription }, s)
+            { css: Ja.stepBody },
+            Glamor.createElement("div", { css: Ja.stepTitle }, t),
+            s && Glamor.createElement("div", { css: Ja.stepDescription }, s)
           )
         )
       );
@@ -8175,7 +8175,7 @@
       return Glamor.createElement(p().default.ScheduleSidePanel, {
         isRefreshing: this.props.loading,
         controls: Glamor.createElement(Ha, null),
-        addCard: Glamor.createElement(Ja, null),
+        addCard: Glamor.createElement(Qa, null),
         gridTip: this.props.dndTipShown && {
           icon: "bulb",
           content: Glamor.createElement(
@@ -8869,7 +8869,7 @@
                 g().default.Fragment,
                 null,
                 "The file is above ",
-                Qs.config.maxFileSizeStr,
+                Js.config.maxFileSizeStr,
                 " and is too large to upload. Please resize or compress the file and try again."
               )
             : "post-count-limit-reached" === e
@@ -8877,7 +8877,7 @@
                 g().default.Fragment,
                 null,
                 "Post count limit reached. You have reached a limit of ",
-                Qs.config.maxPostCount,
+                Js.config.maxPostCount,
                 " local posts. Please schedule or remove some posts before adding more."
               )
             : "failed-to-read-csv" === e
@@ -9301,7 +9301,7 @@
     V().default.set("theme", e), C().iframeBus.send("theme.switch-theme", e);
   }
   C(), v(), v(), C(), m();
-  var Jn = {
+  var Qn = {
     init: function () {
       v().model.observe(
         (e) => e.dm.ghostModeEnabled,
@@ -9309,11 +9309,11 @@
           C().iframeBus.send("dm.ghost-mode:toggled", e);
         }
       ),
-        C().iframeBus.on("dm.ghost-mode:is-enabled", Qn),
+        C().iframeBus.on("dm.ghost-mode:is-enabled", Jn),
         C().iframeBus.on("dm.ghost-mode:failed", Xn);
     },
   };
-  function Qn() {
+  function Jn() {
     return v().model.state.dm.ghostModeEnabled;
   }
   function Xn(e = {}) {
@@ -9330,7 +9330,7 @@
     init: function () {
       C().iframeBus.on("dm.ig-go", to),
         C().iframeBus.on("dm.update-badge", so),
-        Jn.init();
+        Qn.init();
     },
   };
   function to(e) {
@@ -9509,11 +9509,19 @@
     co({ value: !1, sendGaEvent: !1 }),
       m().gaController.sendEvent("user", "zen:turn-off-click");
   }
-  function ho() {
-    const e = ho;
+  function ho(e) {
+    for (let t = 0; t < e.length; t++) {
+      const s = Math.floor(Math.random() * e.length),
+        a = e[t];
+      (e[t] = e[s]), (e[s] = a);
+    }
+    return e;
+  }
+  function mo() {
+    const e = mo;
     return (
       e.data ||
-        (e.data = (function (e) {
+        ((e.data = (function (e) {
           const t = e.categories.map((e) => ({
               id: e[0],
               emoji: e[1],
@@ -9571,813 +9579,701 @@
           },
           tracks: {
             171: [171, "Autumn in Fall", 137, [18, 12, 20]],
-            176: [176, "Futuristic Adventure", 162, [16, 25, 17]],
             181: [181, "One More Time", 162, [17, 2, 43]],
-            186: [186, "Pure Hype", 78, [16, 22, 25]],
-            187: [187, "Step By Step", 132, [17, 16]],
             188: [188, "When Summer Ends", 132, [8, 18, 12]],
             202: [202, "New Opportunities", 171, [17, 2, 32]],
             204: [204, "Travel", 144, [2, 32, 3]],
             209: [209, "This Beautiful Summer Day", 146, [16, 17, 1]],
             222: [222, "Chasing Shadows", 91, [22, 17, 16]],
             260: [260, "Follow Your Dream", 197, [1, 17, 32]],
-            261: [261, "Need for speed", 146, [25, 16, 1]],
+            263: [263, "The Good News", 129, [17, 16, 2]],
             266: [266, "Tropical Adventure", 147, [16, 17, 8]],
-            278: [278, "Soundscape", 131, [43, 1, 27]],
+            267: [267, "Escape From The Town", 132, [27, 8, 2]],
             282: [282, "Bringing Memories", 135, [20, 12, 18]],
-            285: [285, "Our Land", 169, [1, 2, 43]],
-            287: [287, "New Life", 162, [34, 2, 17]],
-            288: [288, "A Day In Paris", 133, [18, 12, 3]],
             291: [291, "Pulse of Time", 147, [1, 32, 2]],
             292: [292, "A Breath Of Freedom", 163, [8, 4, 34]],
-            303: [303, "October Sky", 148, [1, 16, 17]],
+            293: [293, "Movie Funk", 142, [9, 4, 26]],
+            294: [294, "Sunny Travel Day", 150, [8, 2, 34]],
+            401: [401, "Be Happy", 92, [8, 17, 34]],
             402: [402, "Good Start To The Day", 160, [8, 2, 34]],
             403: [403, "Happy And Carefree Mood", 96, [8, 4, 2]],
             406: [406, "Successful Business", 134, [17, 8, 32]],
             408: [408, "Over The Horizon", 163, [1, 17, 32]],
-            414: [414, "Moment Of Inspiration", 168, [1, 17, 2]],
+            415: [415, "Lift Me Up", 139, [17, 2, 32]],
+            428: [428, "Dreams Come True", 113, [17, 2, 43]],
+            429: [429, "Drive It Now", 102, [25, 17, 16]],
             446: [446, "Morning Light", 158, [19, 11, 17]],
             450: [450, "Beautiful Moment", 131, [18, 12, 34]],
-            457: [457, "Movement of Rain", 133, [43, 1, 2]],
+            451: [451, "Comedy Episode", 135, [43, 9, 26]],
             458: [458, "Empire on Fire", 152, [19, 7, 11]],
             459: [459, "Battle For The Universe", 161, [19, 7, 32]],
-            469: [469, "Mysterious Journey", 146, [18, 12, 20]],
+            462: [462, "Young And Free", 135, [17, 25, 16]],
             471: [471, "Everest", 161, [1, 2, 32]],
             472: [472, "Hollywood Epic", 157, [19, 11, 32]],
-            503: [503, "Fashion Week", 149, [43, 15, 27]],
-            504: [504, "Warm Thoughts", 151, [27, 1, 15]],
-            509: [509, "Tropical Holidays", 118, [16, 17, 8]],
+            482: [482, "Corporate Uplifting", 56, [27, 2, 43]],
             522: [522, "The Stomp", 93, [16, 25, 40]],
             526: [526, "Everything's All Right", 130, [1, 17, 2]],
             529: [529, "Blackout", 161, [19, 7, 11]],
-            576: [576, "Party Blowing", 73, [22, 25]],
+            554: [554, "We Make The Future", 147, [17, 32, 2]],
+            559: [559, "Discovery", 117, [19, 11, 32]],
+            561: [561, "Swing With Me", 105, [9, 16, 8]],
             577: [577, "Successful Campaign", 122, [1, 2, 43]],
             621: [621, "End Of The Abyss", 180, [19, 7, 5]],
-            639: [639, "Dawn in the City", 240, [27, 43]],
+            638: [638, "Cooking Food", 132, [4, 9, 26]],
             649: [649, "Over the ocean", 208, [18, 20, 3]],
-            651: [651, "The Battle of Pirates", 97, [19, 11, 23]],
             657: [657, "Fashion House", 106, [15, 43, 1]],
             661: [661, "Time Shift", 95, [19, 11, 32]],
-            724: [724, "Oldschool Groove", 99, [26, 43, 15]],
             729: [729, "Emotional Cello", 145, [20, 18, 34]],
+            734: [734, "Evening Air", 180, [43, 2, 1]],
             774: [774, "Stomp and Claps", 83, [25, 16, 40]],
-            782: [782, "Deeply", 169, [1, 43, 34]],
-            783: [783, "Warm Travel", 126, [8, 27, 2]],
             786: [786, "Future Dance", 126, [16, 13, 8]],
-            806: [806, "Flight In The Sky", 118, [16, 1, 43]],
-            825: [825, "Journey Of Life", 189, [1, 32, 43]],
-            830: [830, "Good Times", 144, [9, 16, 8]],
-            841: [841, "Renegate", 126, [25, 16, 40]],
+            802: [802, "Here We Go!", 89, [16, 9, 8]],
+            823: [823, "Successful Business Venture", 125, [43, 2]],
+            838: [838, "Sunrise", 134, [2, 17]],
             843: [843, "Deep Blue Sea", 108, [1, 17, 2]],
+            846: [846, "Live Your Dreams", 118, [16, 13, 8]],
             855: [855, "Phoenix", 122, [19, 7, 22]],
+            856: [856, "Horizons", 123, [43, 27]],
+            858: [858, "Party All Night", 228, [16, 13, 8]],
             864: [864, "Day Dreaming", 169, [27, 15, 2]],
-            878: [878, "Breath of the Surf", 139, [34, 32]],
+            905: [905, "American Robbery", 132, [9, 4, 43]],
             912: [912, "Ambient Piano", 135, [1, 32, 3]],
-            921: [921, "Chilling", 110, [26, 8, 34]],
-            968: [968, "Luxury", 152, [43, 27, 2]],
-            978: [978, "City At Night", 197, [43, 2]],
             979: [979, "Future Hustle", 134, [25, 16, 43]],
-            990: [990, "Training Time", 126, [25, 16, 17]],
-            1e3: [1e3, "Vintage Style", 96, [43, 8]],
-            1008: [1008, "Greatness", 126, [19, 11, 32]],
-            1018: [1018, "Green Fields", 133, [20, 12, 34]],
+            980: [980, "Dawnkeeper", 136, [5, 43]],
+            996: [996, "Blacklist", 170, [16, 25, 22]],
+            1028: [1028, "Space Discovery", 132, [43, 1]],
             1044: [1044, "Fashion Jam", 133, [27, 15, 43]],
-            1046: [1046, "Night City", 150, [27, 43]],
-            1077: [1077, "Spring Mood", 188, [16, 25, 17]],
-            1082: [1082, "Piano Story", 171, [18, 12, 34]],
+            1081: [1081, "Modern Attraction", 180, [1, 2, 43]],
             1084: [1084, "Acoustic Folk", 124, [8, 17, 2]],
-            1094: [1094, "Summer Vibe", 217, [43]],
-            1098: [1098, "Hot Stuff", 118, [26, 43, 8]],
-            1104: [1104, "Pop Life", 118, [16, 27]],
+            1088: [1088, "Sad Moments", 144, [20, 18, 3]],
             1106: [1106, "Dreams of You", 145, [20, 12, 34]],
-            1178: [1178, "Lounge Time", 150, [26, 5]],
-            1180: [1180, "Urban Flow", 135, [26, 27]],
-            1187: [1187, "Outer Space", 133, [16, 17]],
-            1209: [1209, "New Beginnings", 169, [17]],
+            1108: [1108, "Nostalgic Memories", 138, [20, 3, 32]],
+            1211: [1211, "Tenderness", 151, [27, 12, 2]],
+            1224: [1224, "Sport Action Drums", 175, [7, 19, 25]],
             1233: [1233, "Abstract Technology", 216, [43, 27, 2]],
+            1234: [1234, "Beautiful Technology", 132, [43, 27, 2]],
             1242: [1242, "Wedding", 146, [18, 12, 34]],
-            1251: [1251, "Back to Back", 119, [5, 25, 16]],
             1275: [1275, "Summer Evening", 206, [8, 32, 2]],
-            1280: [1280, "Evermore", 166, [1, 17, 11]],
             1303: [1303, "Dreams", 84, [27, 2, 43]],
-            1307: [1307, "Perfection", 159, [43, 27, 2]],
-            1314: [1314, "Robotics", 102, [19, 7, 5]],
-            1316: [1316, "Dreams come true", 129, [19, 11, 2]],
-            1336: [1336, "Fashion Vlog", 56, [43, 27]],
-            1337: [1337, "Serenity", 152, [20, 18, 12]],
-            1338: [1338, "Chillout Hip-Hop", 88, [27, 34, 43]],
-            1344: [1344, "Bright Emotions", 150, [17, 8]],
-            1346: [1346, "Happy Folk", 146, [8, 17, 34]],
-            1351: [1351, "Tropical  Boracay", 121, [13, 17, 8]],
-            1352: [1352, "Inspiring Piano and Cello", 101, [12, 3, 32]],
-            1354: [1354, "Inspirational Guitar", 138, [32, 2, 34]],
-            1365: [1365, "Funk Flute", 137, [9, 26, 16]],
-            1371: [1371, "Epic Halloween", 154, [19, 11, 21]],
-            1373: [1373, "Sport Hip Hop", 120, [27, 43, 1]],
+            1313: [1313, "Dawn in the Mountains", 101, [19, 11, 32]],
+            1315: [1315, "Texas Shuffle Blues Rock", 148, [9, 4, 26]],
+            1385: [1385, "Future Chill", 123, [17, 43]],
             1402: [1402, "Breath", 117, [19, 11, 32]],
-            1416: [1416, "Landscape", 124, [1, 2, 43]],
+            1407: [1407, "Memories", 118, [18, 12, 27]],
             1426: [1426, "Trap", 102, [22, 25, 16]],
             1458: [1458, "Power", 199, [25, 5, 11]],
-            1470: [1470, "Overdrive", 115, [25, 31, 40]],
-            1472: [1472, "Cinematic Future Bass", 166, [25, 16, 43]],
-            1494: [1494, "Moment", 157, [1, 43, 34]],
             1498: [1498, "Midnight Party", 165, [16, 8, 2]],
             1506: [1506, "Inspiration", 182, [16, 17, 32]],
             1592: [1592, "Outer Worlds", 110, [34, 3, 32]],
+            1622: [1622, "Mad Rhythm", 108, [16, 25, 22]],
             1624: [1624, "I'm funny", 130, [8, 17, 34]],
-            1625: [1625, "Immortal Hero", 136, [25, 22, 16]],
-            1652: [1652, "Fire Flame", 142, [18, 12, 3]],
             1667: [1667, "Dark Air", 161, [5, 19, 11]],
             1673: [1673, "Western Drive", 155, [25]],
-            1681: [1681, "Indie Folk", 112, [8, 2]],
-            1695: [1695, "Days", 252, [2, 43, 34]],
-            1700: [1700, "Doubts", 257, [43, 20, 2]],
-            1735: [1735, "Ocean Floor", 132, [43, 5]],
+            1744: [1744, "Far Planet", 120, [43]],
             1746: [1746, "Abandoned Factory", 128, [21, 5, 33]],
+            1747: [1747, "Mirror", 105, [20, 3, 1]],
             1779: [1779, "Remember", 97, [20, 12, 34]],
             1796: [1796, "Runaway", 175, [27, 1, 2]],
-            1822: [1822, "Loneliness", 155, [20, 3]],
-            1832: [1832, "Slow Motion", 138, [27, 43, 35]],
-            1836: [1836, "Time Flows", 146, [43, 34, 27]],
-            1846: [1846, "Serene Dream", 141, [43, 27, 1]],
-            1852: [1852, "Deep Inside", 88, [27, 15, 43]],
+            1812: [1812, "Night Lights", 89, [16, 25, 43]],
+            1862: [1862, "Modern Sine", 148, [16, 25, 2]],
             1884: [1884, "Energy Sport", 120, [25, 16, 22]],
             1885: [1885, "Dynamic Power", 120, [25, 16, 40]],
-            1891: [1891, "Electronica", 154, [43, 27]],
-            1897: [1897, "Life Style", 121, [16, 13]],
             1921: [1921, "Clouds", 129, [35, 12, 43]],
-            1929: [1929, "Here And Now", 149, [25, 16, 13]],
+            1946: [1946, "One Day", 115, [25, 17, 13]],
             1947: [1947, "Fun Quirky Style", 120, [8, 4, 26]],
             1948: [1948, "Dream of Memories", 142, [18, 12, 20]],
-            1949: [1949, "Walker", 135, [8, 4]],
             1962: [1962, "Miami Nights", 139, [27, 35, 15]],
             1983: [1983, "Just Be Happy", 122, [8, 17, 4]],
-            2057: [2057, "Vintage Memories", 128, [27, 43]],
-            2075: [2075, "A New Joyful Day", 136, [17, 1, 34]],
-            2081: [2081, "Fashion Idol", 126, [1, 17, 15]],
-            2082: [2082, "Summer Dream", 131, [43, 27, 17]],
-            2112: [2112, "Reboot", 159, [34, 43, 2]],
-            2125: [2125, "Summer Mood", 139, [1, 16, 13]],
+            2041: [2041, "In Joy And In Sorrow", 127, [20, 18, 12]],
+            2138: [2138, "Sport Style", 136, [25, 16, 31]],
+            2161: [2161, "Stay Chilled", 96, [43, 27]],
             2184: [2184, "Intense Hybrid Trailer", 65, [19, 22, 7]],
-            2208: [2208, "Rock You Up", 131, [25, 5, 40]],
-            2211: [2211, "Summer Upbeat Vibe", 171, [16, 39]],
+            2191: [2191, "Hope", 91, [20, 2, 32]],
             2221: [2221, "Gentle Ambient", 158, [1, 32, 2]],
-            2222: [2222, "Ambient Cinematic Soundscape", 156, [43, 1, 27]],
-            2229: [2229, "Soho", 126, [22, 16, 25]],
-            2235: [2235, "Tell Me How", 148, [43]],
+            2270: [2270, "Adventures", 82, [19, 7, 11]],
             2272: [2272, "Presentation", 167, [27, 2]],
             2274: [2274, "Power", 101, [22, 25, 16]],
-            2278: [2278, "Mission Is Possible", 150, [16, 40, 25]],
-            2280: [2280, "Welcome To Milan", 105, [43, 15]],
+            2289: [2289, "Abstract Slow Motion", 122, [43, 2]],
             2290: [2290, "Cold Northern Stars", 120, [19, 11, 5]],
             2293: [2293, "Inspiring Background", 156, [27, 1, 34]],
             2298: [2298, "Old Street", 126, [27, 26, 15]],
             2316: [2316, "Funny Chase", 100, [26, 9]],
-            2348: [2348, "Rock Sport", 104, [25, 16, 40]],
             2351: [2351, "Smile", 151, [8, 16]],
-            2356: [2356, "Lame March", 98, [11, 5]],
-            2359: [2359, "Summer Vibrations", 109, [25, 8, 13]],
             2375: [2375, "Business Gadgets", 125, [27, 43, 2]],
-            2379: [2379, "Cuckoo Ambient", 148, [43, 5, 33]],
-            2383: [2383, "Reggaeton", 114, [25, 26, 40]],
-            3015: [3015, "Serenity", 132, [1, 2, 34]],
-            3020: [3020, "Future Comes Today", 120, [19, 11, 17]],
-            3118: [3118, "Night Lullaby on Halloween", 160, [21, 43, 33]],
+            3088: [3088, "Horror Teaser", 75, [5, 19, 21]],
+            3126: [3126, "Emergency", 75, [19, 22, 5]],
+            3127: [3127, "Dreamy Abstraction", 148, [27, 1, 2]],
             3130: [3130, "Storytelling", 193, [1, 32, 2]],
             3136: [3136, "Breaking Sky", 142, [19, 7, 11]],
-            3145: [3145, "Energy Trap", 126, [22, 25, 16]],
             3154: [3154, "Evening Chill", 117, [27, 1, 34]],
-            3173: [3173, "Galaxy", 134, [43, 1, 34]],
             3174: [3174, "Dunkirk", 110, [19, 20, 32]],
-            3181: [3181, "All Night", 140, [25, 16, 13]],
             3211: [3211, "Funk", 76, [9, 43]],
-            3219: [3219, "Warm Moments", 125, [1, 2, 43]],
-            3221: [3221, "Future Technologies", 166, [43, 1, 2]],
-            3227: [3227, "Comedy", 92, [4, 8]],
-            3236: [3236, "Morning River", 124, [43, 1, 34]],
+            3220: [3220, "Sneaky Walk", 60, [26]],
             3263: [3263, "Absolute Power", 163, [11, 17, 32]],
-            3267: [3267, "Adrenaline", 115, [22, 25, 16]],
+            3264: [3264, "Escaping the Prison", 171, [19, 5, 33]],
             3290: [3290, "Space Travel", 129, [20, 1, 17]],
+            3300: [3300, "Speed", 146, [25, 16, 2]],
             3301: [3301, "Funny Procession", 90, [8, 26, 4]],
             3308: [3308, "Extreme", 99, [22, 5, 11]],
-            3309: [3309, "Leaving Home", 110, [12, 27, 18]],
-            3320: [3320, "Modern Design", 103, [2, 43]],
+            3342: [3342, "Morning Ispiration", 135, [17, 2]],
             3356: [3356, "New Year Night Party", 132, [16, 17, 8]],
-            3369: [3369, "Christmas Lullaby & Fairy Tale", 133, [38, 32, 2]],
-            3400: [3400, "Spring Stroll", 115, [1, 2, 32]],
+            3401: [3401, "Summer Relax Chill", 190, [2, 1, 27]],
             3410: [3410, "Business Success", 133, [16, 8, 2]],
-            3411: [3411, "Distant Lands", 159, [1, 17, 38]],
-            3414: [3414, "Mr. Holiday", 127, [17, 32, 23]],
-            3432: [3432, "Lonely World", 126, [1, 32, 2]],
-            3442: [3442, "We Wish You A Merry Christmas", 58, [8, 27, 34]],
-            3454: [3454, "Christmas is Coming", 72, [8, 23, 34]],
-            3465: [3465, "Levitation", 117, [27, 41, 1]],
-            3467: [3467, "Evening In Town", 138, [27, 26, 32]],
-            3470: [3470, "Lap Of Luxury", 154, [41, 1, 2]],
-            3473: [3473, "Heavenly Pleasure", 133, [27, 26, 8]],
+            3464: [3464, "Road Adventures", 140, [8, 17, 2]],
+            3474: [3474, "Cozy Cafe", 135, [27, 26, 8]],
             3476: [3476, "New Day", 120, [27, 26, 43]],
-            3485: [3485, "Christmas Jazz", 70, [8, 27, 34]],
             3499: [3499, "Warm Feeling", 127, [27, 41, 43]],
             3525: [3525, "Let's Funk", 141, [9, 16, 4]],
             3535: [3535, "Cold Star", 131, [27, 1, 43]],
-            3541: [3541, "Way Home", 192, [1, 17, 32]],
             3549: [3549, "Street Sound", 114, [9, 16, 17]],
             3585: [3585, "Forgotten Memories", 90, [20, 19, 3]],
-            3594: [3594, "Quiet Place", 123, [20, 19, 3]],
             3600: [3600, "Islands", 97, [8, 4, 26]],
-            3608: [3608, "Small Whales", 112, [41, 43, 27]],
-            3613: [3613, "Children Walk", 150, [8, 34, 18]],
-            3619: [3619, "Dancing Funky", 153, [26, 8, 9]],
             3621: [3621, "Rainy Evening", 103, [43, 20, 27]],
-            3623: [3623, "New Year's Miracle", 64, [8, 4]],
-            3633: [3633, "Nature", 130, [1, 2]],
-            3634: [3634, "Levitation", 80, [27, 41, 43]],
-            3638: [3638, "Night Lights", 93, [27, 41, 34]],
-            3642: [3642, "Mirages", 88, [26, 27, 41]],
-            3676: [3676, "Air Area", 88, [43, 27]],
+            3629: [3629, "Calm Place", 120, [1, 43, 34]],
             3681: [3681, "Light Steps", 93, [27, 41, 8]],
             3687: [3687, "Icarus Landing", 82, [19, 32, 2]],
             3729: [3729, "Loca Dance", 111, [16, 17, 8]],
+            3735: [3735, "Escape The Dead", 97, [5, 21, 19]],
             3738: [3738, "Aesthetic Things", 141, [41, 8, 34]],
-            3740: [3740, "Carefree 90s", 126, [41, 8, 34]],
-            3741: [3741, "Pretty Lofi", 124, [27, 26, 41]],
             3743: [3743, "5 AM", 140, [27, 41, 34]],
             3747: [3747, "Love Story", 139, [43, 20, 18]],
             3773: [3773, "Lonely Night", 175, [27, 43, 35]],
-            3775: [3775, "Get Up", 121, [16, 2, 25]],
             3780: [3780, "Cheerful Morning", 123, [8, 2, 26]],
-            3792: [3792, "Sky's Not The Limit", 160, [17, 2, 27]],
-            3804: [3804, "Rising", 174, [1, 32, 2]],
             3805: [3805, "Night Sky", 163, [41, 1, 2]],
-            3816: [3816, "Smooth Movement in the Sky", 141, [43, 32, 34]],
-            3822: [3822, "Another World", 115, [20, 3, 19]],
-            3823: [3823, "Old Picture", 124, [32, 43, 20]],
             3830: [3830, "Spring Piano", 258, [1, 32, 3]],
-            3831: [3831, "Warrior's Revenge", 117, [19, 7, 11]],
             3835: [3835, "Stay Home", 162, [41, 43, 34]],
             3841: [3841, "Isolation", 102, [27, 41, 1]],
             3850: [3850, "Beyond the Mind", 120, [19, 7, 5]],
             3854: [3854, "Old Forest", 85, [20, 43, 32]],
-            3857: [3857, "Make A Comeback", 91, [25, 16, 40]],
+            3856: [3856, "Deep Space Travel", 126, [43, 7, 5]],
             3872: [3872, "The Last Kingdom", 124, [19, 11, 17]],
             3878: [3878, "Through The Sky", 105, [16, 13, 39]],
             3881: [3881, "Blackout", 116, [19, 7, 5]],
             3882: [3882, "Journey of life", 165, [19, 11, 32]],
-            3885: [3885, "Fluttering Moth", 159, [41, 43, 34]],
             3887: [3887, "In The Sky", 127, [20, 3, 32]],
-            3890: [3890, "Dream", 449, [43, 1]],
             3891: [3891, "Windwalker", 127, [19, 11, 32]],
             3894: [3894, "Fantasy", 130, [11, 17, 32]],
-            3895: [3895, "Sleep", 393, [43, 1, 38]],
-            3896: [3896, "Keep on Moving on", 82, [16, 17, 4]],
-            3906: [3906, "Space Trip", 190, [43, 27]],
             3914: [3914, "Brutal Fervour", 159, [19, 5, 11]],
-            3922: [3922, "Deep Meaning", 154, [20, 32, 3]],
             3928: [3928, "Outside the World", 114, [1, 11, 17]],
             3935: [3935, "The Time", 166, [19, 11, 32]],
             3955: [3955, "Vortex", 170, [19, 11, 25]],
             3957: [3957, "Such Things", 115, [8, 26]],
             3960: [3960, "Deliverance", 194, [5, 19, 11]],
-            3961: [3961, "Old Town", 90, [1, 34, 42]],
-            3963: [3963, "The Power of Awakening", 131, [19, 11]],
             3972: [3972, "Sorrow", 114, [20, 3, 19]],
-            3979: [3979, "Shadow Duel", 96, [16, 25, 40]],
-            4014: [4014, "Everest", 135, [27, 1, 2]],
-            4016: [4016, "The Awakening", 184, [22, 5, 11]],
-            4024: [4024, "Old Money", 96, [25, 5, 22]],
-            4030: [4030, "Tribal Hunt", 128, [7, 5, 25]],
-            4039: [4039, "Yayo", 80, [9, 17]],
-            4041: [4041, "Lo-Fi Vibe", 146, [41, 2, 34]],
             4043: [4043, "Summer Lofi", 180, [27, 41, 1]],
-            4049: [4049, "Ghost Rider", 133, [22, 5, 16]],
-            4054: [4054, "Believe", 167, [1, 34, 27]],
             4056: [4056, "Smoke on the road", 89, [16, 31, 25]],
             4071: [4071, "Lucky One", 96, [25, 16, 17]],
-            4072: [4072, "Beating Of Our Hearts", 132, [20, 3]],
             4081: [4081, "Hidden Gods", 178, [19, 5, 11]],
-            4082: [4082, "Aperture", 88, [15, 43, 2]],
             4086: [4086, "Faceshot", 96, [25, 22, 5]],
+            4089: [4089, "Information Flows", 182, [2, 43]],
             4091: [4091, "Dark Force", 106, [22, 5, 19]],
             4100: [4100, "Evening Wind", 120, [17, 32, 27]],
-            4106: [4106, "Her Beautiful Eyes", 128, [18, 12, 20]],
-            4107: [4107, "Just Win", 90, [16, 11, 40]],
+            4105: [4105, "Sad Memories", 132, [20, 18, 3]],
             4112: [4112, "Nature and Tranquility", 130, [3, 18, 34]],
             4118: [4118, "Calm Spirit", 500, [1, 32, 23]],
-            4128: [4128, "Memories", 144, [20, 18, 3]],
-            4137: [4137, "Arrival Of Autumn", 124, [20, 12, 18]],
-            4140: [4140, "Towards The Stars", 138, [19, 34, 12]],
-            4142: [4142, "City Vibe", 169, [1, 17, 2]],
+            4119: [4119, "Travel Vlog", 107, [17, 43, 34]],
+            4125: [4125, "Happy Rocking Birthday", 103, [16, 17, 8]],
+            4146: [4146, "Everything That Unites Us", 119, [17, 8, 2]],
+            4148: [4148, "Future Tools", 145, [43]],
             4160: [4160, "Gamer", 96, [25, 16, 31]],
             4162: [4162, "Inspiring Piano Memories", 144, [32, 3, 18]],
             4174: [4174, "Be Happy", 160, [9, 8, 26]],
-            4185: [4185, "Christmas Season", 96, [9, 16, 17]],
-            4191: [4191, "My Best Christmas", 133, [32, 34, 17]],
+            4176: [4176, "Digital Volition", 125, [16, 5, 11]],
             4195: [4195, "Casino", 107, [9, 16, 4]],
-            4200: [4200, "Serene", 342, [5, 33]],
             4201: [4201, "In A Silence", 348, [43, 1, 34]],
             4202: [4202, "Deep Forest", 348, [38, 33, 27]],
-            4206: [4206, "Island Vibe", 206, [16, 13, 43]],
             4208: [4208, "Digital Corporate Technology", 136, [11, 25, 40]],
-            4211: [4211, "Ancient Sky", 388, [43, 38, 23]],
             4215: [4215, "Depth", 133, [5, 1, 32]],
-            4217: [4217, "Summer Deep Party", 150, [16, 1, 39]],
-            4227: [4227, "Technologies Are Coming", 127, [43, 1, 34]],
-            4230: [4230, "Ghost Town", 147, [16, 40, 25]],
             4231: [4231, "Sweet Heat", 122, [1, 17, 2]],
-            4242: [4242, "Through the Ages", 137, [1, 32, 2]],
+            4233: [4233, "Strange World", 142, [21, 5, 33]],
+            4238: [4238, "Godfall", 96, [25, 22, 5]],
             4243: [4243, "Summer Rain", 143, [41, 1, 34]],
-            4254: [4254, "Limitless Sky", 149, [1, 38, 43]],
-            4265: [4265, "Stellar Sky", 131, [41, 1, 8]],
-            4267: [4267, "Lanterns", 131, [27, 41, 1]],
-            4272: [4272, "Riverbank", 143, [1, 34, 41]],
-            4273: [4273, "Muse", 135, [27, 41, 32]],
+            4269: [4269, "Clouds", 137, [41, 1, 32]],
             4275: [4275, "New Hero", 138, [5, 19, 11]],
             4284: [4284, "Dance With Me", 140, [1, 2, 32]],
             4285: [4285, "Dreaming Ahead", 216, [1, 43, 41]],
-            4289: [4289, "Didn't It Rain", 96, [20, 19]],
-            5004: [5004, "End of Everything", 132, [5, 33, 36]],
-            5007: [5007, "Overtime", 128, [25, 11, 40]],
             5019: [5019, "Vibes", 125, [27, 43, 42]],
-            5020: [5020, "Super Soldier", 140, [19, 5, 11]],
             5023: [5023, "Fashion Deep House", 156, [43, 15]],
-            5030: [5030, "Flying In The Clouds", 107, [1, 17, 2]],
-            5033: [5033, "Gentle Touch", 129, [1, 13, 17]],
+            5032: [5032, "Quantum Realm", 140, [19, 5, 11]],
             5037: [5037, "Apotheosis Of War", 155, [19, 7, 32]],
             5038: [5038, "Robot", 124, [5, 22, 11]],
             5039: [5039, "Simple Live", 138, [17, 32, 2]],
             5040: [5040, "Peace", 124, [41, 1, 17]],
-            5047: [5047, "Yoga", 207, [43, 34]],
-            5049: [5049, "Mental Repose", 150, [43, 32]],
-            5050: [5050, "Sunday Morning", 323, [43, 2]],
             5057: [5057, "Cosmic", 144, [43, 27]],
             5060: [5060, "Everything You Are", 97, [27, 17]],
             5061: [5061, "Bicycle Ride", 126, [17, 4, 8]],
             5062: [5062, "Tropical Summer", 140, [13, 2]],
-            5064: [5064, "Soul Vibe", 118, [27, 15]],
-            5066: [5066, "Storm (no vox)", 99, [1, 8, 2]],
             5070: [5070, "Surfing!", 70, [41, 1, 17]],
             5072: [5072, "Inspire", 166, [11, 32, 2]],
             5074: [5074, "Documentary", 164, [17, 2, 43]],
             5075: [5075, "Coffeehouse", 150, [41, 1, 43]],
             5094: [5094, "New York Lounge", 153, [27, 41]],
             5100: [5100, "Supernova", 179, [11, 16, 2]],
-            5104: [5104, "Unwind", 172, [43, 1, 27]],
             5108: [5108, "Travel", 152, [43, 2, 34]],
             5109: [5109, "Pop Party", 148, [16, 13, 17]],
             5116: [5116, "Morning Lights", 151, [27, 15, 1]],
-            5138: [5138, "Here She Comes", 154, [27, 15]],
-            5142: [5142, "Orange Sunset", 102, [25, 11]],
-            5144: [5144, "Health Promotion", 122, [8, 2]],
-            5145: [5145, "Bird's Yard", 94, [11, 32, 2]],
             5164: [5164, "We Can Fly", 147, [19, 11, 2]],
             5169: [5169, "Funny Detective", 60, [26, 4]],
-            5175: [5175, "Summer Lounge House", 181, [43, 1]],
             5178: [5178, "I Wanna Be With You", 91, [27, 12]],
             5181: [5181, "Humans After Us", 182, [19, 5, 20]],
             5186: [5186, "Merging Colors", 147, [19, 2, 32]],
-            5197: [5197, "Raindrops", 126, [5, 1, 2]],
+            5196: [5196, "Secrets of the House on the Hill", 110, [5, 21, 36]],
             5201: [5201, "End of the World", 189, [19, 11, 25]],
             5208: [5208, "The Spread of Evil", 144, [19, 11, 21]],
             5210: [5210, "Thirst For Extreme", 134, [16, 25, 22]],
-            5211: [5211, "Promethean", 161, [19, 7, 11]],
             5221: [5221, "Life Is Inevitable", 136, [19, 11]],
-            5224: [5224, "Riot", 104, [5, 25, 40]],
-            5226: [5226, "Night City", 93, [1, 13, 40]],
             5234: [5234, "Last Hope", 170, [11, 19, 32]],
-            5235: [5235, "The Final Step", 140, [19, 32, 2]],
             5237: [5237, "Joyful Life", 115, [8, 26]],
+            5240: [5240, "Braveheart", 160, [19, 7, 38]],
             5242: [5242, "Learn To Love", 156, [27, 1, 17]],
             5243: [5243, "Curious Kids", 105, [8, 9, 2]],
-            5250: [5250, "Cinematic Inspiring", 143, [1, 2, 27]],
             5251: [5251, "Light Comedy", 108, [8, 26, 9]],
-            5255: [5255, "Talk Dirty", 100, [25, 16, 5]],
             5257: [5257, "Acoustic", 146, [1, 17, 8]],
             5261: [5261, "Comedy", 55, [26, 8, 4]],
             5264: [5264, "Born to Win", 138, [22, 5, 25]],
-            5275: [5275, "Just Happy", 120, [2, 34]],
+            5265: [5265, "Lyrical Folk", 152, [43, 1, 8]],
+            5269: [5269, "The Terrifying Truth", 176, [21, 5, 33]],
+            5271: [5271, "Nostalgia", 130, [20, 3]],
+            5274: [5274, "Revelation", 140, [21, 5, 19]],
             5280: [5280, "Green Tea", 138, [27, 41, 1]],
-            5293: [5293, "Melancholia", 100, [43, 20]],
+            5282: [5282, "The Indie Rock", 135, [25, 22, 5]],
             5294: [5294, "For Kids", 110, [27, 26, 8]],
             5301: [5301, "Lama Tries to Cross the Road", 90, [9, 4, 26]],
             5304: [5304, "Successful Сompany", 178, [8, 27, 2]],
             5310: [5310, "Just Be Happy", 138, [8, 4, 2]],
             5312: [5312, "A Serene Day", 189, [27, 43, 1]],
+            5313: [5313, "Funny Clowns", 72, [26, 23]],
             5324: [5324, "Happy Children", 166, [27, 26, 8]],
             5325: [5325, "Furry Toys", 106, [9, 4, 8]],
             5326: [5326, "Love", 115, [1, 3, 34]],
+            5328: [5328, "Dance of Little Skeletons", 91, [9, 33]],
             5330: [5330, "Let's Get the Party", 101, [17, 4, 40]],
-            5332: [5332, "Sun Dance", 114, [20, 32, 3]],
-            5334: [5334, "The Whispering Shadow", 60, [20, 32, 3]],
+            5331: [5331, "Playful Sparrow", 96, [9, 8, 34]],
             5342: [5342, "Calming Waves", 164, [1, 2, 34]],
+            5343: [5343, "Sunset Dreams", 208, [27, 1, 17]],
             5347: [5347, "Cello Concerto in D major", 72, [23, 8, 9]],
-            5349: [5349, "Tears For Chicago", 155, [27, 12, 15]],
+            5348: [5348, "Cello Concerto in D major №2", 68, [8, 23, 9]],
             5350: [5350, "Sneaking Out", 85, [26]],
+            5352: [5352, "Scerzo in A minor", 69, [9, 23]],
             5354: [5354, "Scerzo in C minor", 84, [23, 9, 7]],
             5356: [5356, "Concerto in C minor", 71, [23, 9]],
-            5360: [5360, "Hearten", 161, [41, 1, 2]],
             5361: [5361, "Concerto in E major", 92, [9, 26, 23]],
-            5362: [5362, "Vapour", 163, [41, 1, 2]],
             5371: [5371, "Cybernetics", 174, [5, 1, 43]],
-            5391: [5391, "Attempt", 213, [41, 1, 2]],
-            5392: [5392, "Luminescence", 130, [41, 1, 43]],
             5394: [5394, "Rock Spot", 75, [22, 25, 16]],
             5400: [5400, "Morning Lo-Fi", 175, [27, 41, 1]],
-            5403: [5403, "Expectation", 272, [43, 1, 2]],
-            5404: [5404, "Get Back", 151, [26, 9, 43]],
+            5405: [5405, "News Time", 61, [43]],
             5407: [5407, "Elysium", 150, [43, 2, 11]],
-            5408: [5408, "Burnout", 130, [25, 16, 31]],
             5410: [5410, "Time Loop", 184, [5, 1, 17]],
             5412: [5412, "Rooftop Sunsets", 162, [27, 26, 41]],
             5414: [5414, "Feel The Energy", 142, [25, 16, 31]],
+            5415: [5415, "Late Night Latte", 177, [27, 41, 1]],
+            5416: [5416, "Alone At Night", 180, [27, 41, 1]],
+            5417: [5417, "Avalanche", 105, [22, 16, 31]],
             5419: [5419, "Adrenaline", 144, [16, 22, 31]],
             5423: [5423, "Lazy Bones", 93, [27, 41, 8]],
-            5424: [5424, "Meditative State", 232, [41, 1, 34]],
             5427: [5427, "Cheerful Clown Show", 56, [8, 9, 4]],
             5428: [5428, "Gentle Touch", 75, [20, 18, 12]],
             5429: [5429, "Heat Waves", 90, [25, 16, 1]],
-            5430: [5430, "Off The Grid", 96, [25, 17, 2]],
             5432: [5432, "Secular", 168, [41, 1, 8]],
             5433: [5433, "Funny Playful March", 55, [8, 17, 23]],
             5436: [5436, "Let's Put On A Show!", 120, [26, 8, 9]],
             5514: [5514, "Deep Ocean Meditation", 585, [1, 33, 43]],
-            5519: [5519, "Lazy Day", 176, [27, 43, 41]],
             5522: [5522, "Fountains", 96, [25, 16, 1]],
-            5523: [5523, "Gold Roses", 171, [27, 43, 41]],
-            5524: [5524, "Summer Chill", 120, [16, 1, 17]],
             5526: [5526, "Unbroken", 227, [25, 22, 11]],
+            5528: [5528, "Loving Someone", 136, [43, 27, 1]],
             5529: [5529, "It's Funk O'Clock", 138, [8, 17, 16]],
-            5530: [5530, "Leave It All Behind", 108, [25, 1, 16]],
             5536: [5536, "Calmness", 169, [27, 43, 41]],
             5543: [5543, "Afternoon", 154, [27, 43, 41]],
-            5544: [5544, "Follow Me", 156, [43, 1]],
-            5545: [5545, "Flying Observer", 233, [1, 2, 43]],
             5546: [5546, "Graceful Style", 116, [15, 43]],
-            5548: [5548, "Goals And Dreams", 138, [2, 43, 34]],
-            5550: [5550, "Together We're One", 86, [16, 25, 40]],
-            5554: [5554, "Chill Vibes", 119, [43, 27]],
             5555: [5555, "Scary Eve", 140, [9, 33, 21]],
+            5556: [5556, "A Spooktacular Day", 214, [7, 5, 9]],
+            5557: [5557, "Hip-Hop Halloween", 46, [9, 33]],
+            5558: [5558, "Spooky Funny Halloween", 62, [9, 33, 26]],
             5563: [5563, "Funky Saxophone", 120, [16, 13, 2]],
             5566: [5566, "Fun Maker", 103, [16, 17, 26]],
             5569: [5569, "In Fashion", 115, [43, 27, 15]],
             5572: [5572, "Smooth Vibes", 176, [27, 1, 15]],
             5574: [5574, "Lovely Date", 197, [1, 38, 32]],
-            5581: [5581, "Cloudy", 216, [41, 2, 34]],
+            5576: [5576, "Miracle", 114, [43, 27, 1]],
             5583: [5583, "Late Night Moves", 169, [1, 41, 17]],
-            5584: [5584, "Midnight Peak", 173, [1, 16, 17]],
             5587: [5587, "Body Shaking Party", 139, [15, 39]],
             5596: [5596, "Funk Electro Groove", 105, [5, 16, 17]],
+            5599: [5599, "I Got You", 132, [5, 31, 25]],
             5601: [5601, "Funky Halloween", 135, [9, 33, 21]],
             5602: [5602, "Scary Hip-Hop", 98, [9, 33, 26]],
             5604: [5604, "Happy Halloween", 77, [5, 9, 33]],
             5605: [5605, "Jack-o'-lantern", 129, [5, 9, 33]],
             5606: [5606, "Halloween Jokes", 70, [9, 4, 33]],
             5611: [5611, "Vacation", 143, [25, 16, 1]],
+            5612: [5612, "In A Dark Cave", 43, [21, 5, 33]],
+            5616: [5616, "Distant Planet", 65, [7, 21, 5]],
             5617: [5617, "Grim Witches Party", 131, [5, 9, 33]],
             5620: [5620, "Wind Of Change", 285, [27, 43, 1]],
             5623: [5623, "Light In The Dark", 148, [25, 11, 17]],
             5624: [5624, "Sunrise", 154, [43, 1, 17]],
             5625: [5625, "Nature", 138, [1, 38, 2]],
             5626: [5626, "Childrens Holiday", 140, [17, 8, 4]],
+            5627: [5627, "Children Background", 111, [8, 26, 4]],
             5628: [5628, "Children", 128, [27, 26, 8]],
             5629: [5629, "Poltergeist", 198, [5, 43, 25]],
-            5632: [5632, "Lilac", 291, [27, 43, 1]],
-            5635: [5635, "Shine On The Waves", 172, [1, 15, 43]],
-            5655: [5655, "Feel No Gravity", 179, [1, 17, 2]],
+            5634: [5634, "Charity", 130, [32, 34, 18]],
+            5646: [5646, "Breathe", 115, [16, 13, 2]],
             5656: [5656, "Chill Heart", 144, [27, 1, 3]],
             5657: [5657, "Get Up", 104, [25, 16, 31]],
             5658: [5658, "Life In A Trend", 157, [27, 15, 43]],
-            5660: [5660, "Inner Emptiness", 59, [20, 3]],
+            5659: [5659, "Beautiful Sunrise", 117, [18, 3, 32]],
             5666: [5666, "Night Shift", 131, [27, 12, 41]],
             5669: [5669, "Popular", 95, [25, 1, 13]],
             5670: [5670, "Happyish", 120, [16, 1, 13]],
             5671: [5671, "Behave", 96, [1, 17, 2]],
             5673: [5673, "Sax Days", 118, [16, 9, 39]],
-            5677: [5677, "Touch The Dreams", 139, [43, 27, 1]],
-            5679: [5679, "Dusty Vinyl", 217, [41, 1, 43]],
             5680: [5680, "Morning In New York", 129, [27, 15, 43]],
             5683: [5683, "Beauty Of Nature", 130, [8, 27, 2]],
             5684: [5684, "The Scent Of Love", 132, [27, 15, 43]],
             5685: [5685, "Comeback", 118, [19, 25, 5]],
             5688: [5688, "Time To Breathe", 168, [16, 2, 43]],
             5689: [5689, "So Much Fun", 108, [39, 9, 26]],
-            5692: [5692, "Bird's Yard", 145, [17, 8, 2]],
-            5694: [5694, "Healthcare", 178, [43, 2, 32]],
-            5698: [5698, "Warm Thoughts", 218, [43, 32, 2]],
+            5691: [5691, "Hope", 139, [1, 17, 32]],
             5699: [5699, "Will You Marry Me", 160, [1, 32, 2]],
-            5701: [5701, "Abstract Space", 122, [27, 2, 43]],
             5702: [5702, "Stay Together", 164, [27, 43, 41]],
-            5703: [5703, "Maximum Endurance", 129, [22, 5, 31]],
             5705: [5705, "Space Cyberpunk", 159, [25, 16, 5]],
-            5714: [5714, "Fire Festival", 58, [25, 16, 40]],
+            5710: [5710, "Morning Coffee", 177, [27, 41, 8]],
             5716: [5716, "Friends", 169, [27, 8, 32]],
-            5720: [5720, "Unreal Rest", 132, [27, 41, 34]],
-            5722: [5722, "Jingle Bells Trailerized", 74, [17, 8]],
-            5725: [5725, "My History", 109, [7, 19]],
-            5727: [5727, "Thoughts Become Things", 102, [38, 1, 32]],
-            5745: [5745, "Sport Corrosion", 146, [25, 22, 5]],
-            5753: [5753, "Samurai", 176, [5, 7, 33]],
-            5759: [5759, "Beyond the Miracle", 163, [43, 27, 1]],
+            5755: [5755, "Vinyl Jingle Bells", 126, [27, 17, 8]],
+            5760: [5760, "Fresh Air", 148, [17, 16, 8]],
+            5761: [5761, "Sunny Day", 150, [8, 17, 2]],
             5762: [5762, "Memories", 157, [20, 32, 18]],
             5765: [5765, "Love Intentions", 113, [27, 12, 41]],
-            5767: [5767, "Moonlight", 177, [27, 43, 1]],
-            5770: [5770, "Feel Now", 145, [17, 1, 2]],
-            5773: [5773, "Her Memories", 102, [43, 1, 27]],
+            5785: [5785, "The Snatch Up", 91, [9, 4, 26]],
+            5819: [5819, "War Thunder", 121, [22, 25, 31]],
+            5820: [5820, "Romantic Evening In The Park", 80, [18, 12, 27]],
+            5821: [5821, "Heartwarming Story", 63, [3, 18]],
             5824: [5824, "Echoes of the Mind", 124, [43, 27, 1]],
             5826: [5826, "Touching Stories", 145, [32, 2, 3]],
             5830: [5830, "Simple Joys Of Life", 137, [16, 2, 39]],
             5831: [5831, "Turn Up The Volume", 148, [8, 17, 39]],
             5833: [5833, "Remember Me", 298, [1, 38, 2]],
+            5839: [5839, "Magic Flower", 145, [41, 2, 34]],
             5841: [5841, "Pleasant evening", 100, [27, 41, 43]],
-            5843: [5843, "Funky Trap", 120, [25, 16, 2]],
-            5854: [5854, "I Want to Run Away", 253, [19, 43, 34]],
-            5857: [5857, "Calming Sky", 137, [1, 2, 34]],
+            5867: [5867, "Jingle Bells Slap House (Extended)", 190, [13, 8]],
             5878: [5878, "In Search Of A Hero", 126, [11]],
-            5881: [5881, "Frosty, Sunny Morning", 160, [41, 1, 2]],
             5888: [5888, "Cute Kids", 51, [8, 4, 34]],
-            5893: [5893, "Travelers", 92, [8, 34]],
-            5898: [5898, "Moments Together", 150, [1, 17, 32]],
+            5889: [5889, "Lazy Summer Rain", 63, [41, 1, 2]],
             5902: [5902, "Autumn Leaves", 117, [20, 18, 3]],
-            5903: [5903, "High Speed", 116, [22, 25, 16]],
-            5911: [5911, "Dreamscape", 116, [27]],
+            5906: [5906, "My Name Is Rock", 142, [25, 16, 17]],
+            5908: [5908, "Moving Clouds", 136, [27, 43]],
             5915: [5915, "Modern Trends", 93, [16, 17, 2]],
             5916: [5916, "Lounge Cafe", 201, [27, 43, 34]],
-            5929: [5929, "Luxury Life", 163, [27, 15, 43]],
-            5932: [5932, "Lovely Mood", 154, [27, 2, 34]],
+            5922: [5922, "Time", 160, [43, 1, 38]],
+            5936: [5936, "Forest Trails", 84, [20, 32, 3]],
             5937: [5937, "Calm Lake", 61, [27, 34, 42]],
             5938: [5938, "The Smell Of Spring", 158, [43, 27, 1]],
             5939: [5939, "Dance Of Leaves", 150, [27, 1, 2]],
             5940: [5940, "Light Rain", 186, [43, 27, 20]],
             5942: [5942, "Memories", 95, [20, 43, 32]],
+            5946: [5946, "Beginning of the Game", 114, [22, 7, 5]],
             5947: [5947, "Morning Walk", 168, [27, 41, 8]],
             5952: [5952, "Beautiful Moments", 130, [18, 12, 34]],
             5953: [5953, "In A Jazz Mood", 162, [27, 12]],
+            5955: [5955, "La Bamba", 159, [27, 8]],
+            5957: [5957, "Stay Close", 124, [20, 32, 3]],
             5959: [5959, "Feeling Hopeful", 132, [27, 2, 1]],
-            5976: [5976, "Sleep And Kids", 54, [8, 34]],
+            5977: [5977, "Slow Motion Feelings", 151, [43, 27]],
+            5991: [5991, "Training Day", 120, [22, 5, 16]],
+            5992: [5992, "Good Memories", 223, [27, 43, 1]],
+            5995: [5995, "Sensual Flow", 138, [27, 43, 1]],
             6005: [6005, "Harmony With The World", 153, [11, 17, 32]],
-            6012: [6012, "Late Night In Bronx", 177, [41, 1, 15]],
+            6010: [6010, "Big Band", 143, [4, 8, 26]],
+            6011: [6011, "East 233rd Street", 112, [41, 34, 27]],
             6013: [6013, "In This Summer", 170, [13, 8, 2]],
-            6014: [6014, "Soul Fly", 164, [1, 43, 34]],
-            6021: [6021, "Cute & Simple", 63, [8, 34, 12]],
+            6018: [6018, "Around", 221, [22, 5, 16]],
+            6020: [6020, "In The Morning Mist", 71, [1, 38, 27]],
+            6022: [6022, "Speed Racer", 188, [16, 25, 40]],
             6023: [6023, "Chilling Time", 122, [41, 43, 15]],
+            6024: [6024, "Future Love", 148, [2, 43, 27]],
+            6026: [6026, "Beautiful People", 163, [19, 11, 17]],
+            6027: [6027, "That Soaring Feeling", 119, [17, 2, 34]],
+            6028: [6028, "Waiting Is Over", 126, [5, 11, 25]],
             6037: [6037, "Gameboy", 120, [41, 8, 2]],
             6070: [6070, "Birdsong", 132, [41, 1, 8]],
             6071: [6071, "Stroll", 120, [41, 1, 34]],
             6072: [6072, "Morning Coffee", 144, [41, 1, 34]],
             6073: [6073, "Alley Cat", 121, [26, 41, 34]],
-            6074: [6074, "Warm Wind", 132, [41, 43, 34]],
             6075: [6075, "Quiet Place", 134, [41, 1, 34]],
             6076: [6076, "Rustle of Leaves", 132, [41, 1, 8]],
+            6077: [6077, "Another Day", 132, [41, 1, 8]],
             6078: [6078, "Far Away", 135, [41, 1, 8]],
             6079: [6079, "The Way Home", 135, [41, 1, 8]],
             6080: [6080, "My Street", 133, [41, 1, 2]],
+            6202: [6202, "Planet Zero", 190, [19, 11, 17]],
+            6205: [6205, "Not Your Hero", 155, [19, 11, 32]],
           },
           categories: [
             [
-              "popular",
-              "🔥",
-              "Popular",
-              [
-                1962, 5670, 2351, 202, 4208, 5186, 2184, 260, 2375, 5942, 3015,
-                1746, 2081, 3773, 5169, 1673, 3410, 4049, 2229, 4030, 3356,
-                1700, 774, 5745, 1897, 1338, 2208, 5714, 1351, 5773, 921, 576,
-                5932, 5857, 5881, 3219, 1e3, 5759, 5898, 5060, 5255, 5555, 5725,
-                2280, 878, 4185, 5064, 5722, 5753, 1891, 2221,
-              ],
-            ],
-            [
-              "aerials",
+              50,
               "🏙️",
               "Aerials",
               [
-                5611, 5371, 5201, 5583, 5257, 5181, 5164, 5522, 3805, 5584,
-                5429, 5624, 5824, 5432, 4112, 4202, 3854, 3747, 5186, 5536,
-                3823, 5545, 5312, 5694, 5669, 4200, 5428, 3890, 4215, 5391,
-                5940, 5403, 5625, 5770, 6071, 5197, 3822, 5543, 5671, 5360,
-                3835, 5066, 5767, 4289, 5841, 6005, 4014, 5334, 5826, 5030,
+                5611, 5429, 5572, 5683, 5536, 5257, 3805, 5164, 5620, 3928,
+                4112, 3854, 5181, 5201, 5624, 5583, 5371, 3747, 5629, 5522,
+                5671, 5821, 5280, 5942, 6005, 5666, 4202, 5432, 5625, 5940,
+                5543, 3835, 5186, 5312, 5938, 6080, 5936, 6037, 3972, 6071,
+                3887, 5826, 5889, 5039, 5841, 5342, 5839, 5669, 6020, 6027,
               ],
             ],
             [
-              "fashion",
+              2,
               "👠",
               "Fashion",
               [
-                5019, 2298, 3729, 5688, 4043, 5689, 4284, 5116, 5831, 181, 5574,
-                5109, 5596, 526, 1044, 1921, 5178, 3792, 5702, 806, 3638, 1852,
-                5175, 3320, 4217, 4082, 657, 5635, 724, 5544, 5569, 1336, 1098,
-                3681, 1094, 5843, 2211, 6023, 978, 5536, 5656, 5312, 5765, 2081,
-                5680, 3642, 1178, 1832, 5841, 1472,
+                4043, 5019, 4231, 5572, 3729, 5587, 5536, 526, 5689, 5684, 5109,
+                5178, 181, 5620, 5574, 4284, 5915, 5670, 5831, 5062, 1962, 5702,
+                5673, 3681, 5688, 1081, 1921, 2298, 1498, 5312, 6023, 5116,
+                5765, 5658, 657, 1044, 3127, 5596, 5830, 5841, 6011, 5656, 5947,
+                5680, 5957, 5569, 864, 5546, 5023, 5916,
               ],
             ],
             [
-              "cinema",
+              30,
               "🎥",
               "Cinema",
               [
-                3914, 621, 3935, 4081, 3955, 3891, 843, 3960, 529, 3136, 471,
-                459, 5201, 5100, 3850, 5526, 3290, 5181, 5211, 458, 2290, 1280,
-                5037, 3236, 3963, 3221, 2112, 2222, 1592, 3411, 1008, 825, 782,
-                472, 649, 3174, 1667, 1337, 1352, 3015, 651, 3020, 1402, 1735,
-                1746, 3585, 3881, 2379, 285, 1494,
+                5072, 3914, 171, 3290, 5100, 4081, 471, 3935, 843, 559, 3891,
+                621, 3960, 3955, 5037, 3735, 5181, 3882, 529, 5201, 5526, 3687,
+                661, 912, 5208, 450, 3136, 3850, 458, 459, 3088, 3621, 6005,
+                2290, 472, 2270, 1667, 3881, 4233, 2184, 1402, 729, 5685, 6028,
+                4275, 5946, 1313, 6205, 3127, 1746,
               ],
             ],
             [
-              "comedy",
+              46,
               "🤣",
               "Comedy",
               [
-                5689, 5412, 5566, 5350, 1983, 5061, 3957, 5237, 3211, 4174,
-                5251, 5169, 5529, 5070, 5294, 5243, 5606, 5626, 5261, 2316,
-                5555, 5361, 5356, 5433, 5605, 5602, 5310, 5354, 5436, 5601,
-                5617,
+                5412, 5566, 5689, 1983, 3957, 5251, 5350, 5331, 5169, 5529,
+                5310, 5061, 5261, 5606, 5427, 5626, 5070, 4174, 5243, 5604,
+                5237, 3211, 2316, 5325, 5301, 5294, 5436, 5324, 5617, 5330,
+                5313, 4125, 5605, 5555, 1315, 5328, 5433, 5347, 5348, 5354,
+                5602, 5601, 5356, 5557, 5558, 5361, 5352, 5556,
               ],
             ],
             [
-              "cooking",
+              36,
               "🥘",
               "Cooking",
               [
-                5019, 4043, 3841, 5412, 5075, 5566, 6079, 5423, 5178, 5702,
-                3738, 5684, 6074, 5432, 4243, 5400, 3681, 6037, 5280, 5666,
-                5947, 6080, 3676, 5572, 5620, 5658, 5679, 5937, 5916, 3885,
-                6073, 5349, 5939, 5720, 3634, 5959, 5915, 6078, 6014, 6075,
-                5911, 4100, 5519, 5554, 5581, 5677, 5953, 5033, 5929, 5523,
+                4043, 5019, 5075, 5572, 5415, 5412, 5683, 5536, 5566, 5684,
+                5178, 5620, 5915, 6079, 4100, 6076, 5953, 5702, 3681, 4243,
+                5280, 5710, 3841, 6077, 5416, 5666, 5400, 6078, 5094, 5432,
+                5543, 5312, 6075, 6080, 6023, 6037, 5658, 6071, 6072, 5423,
+                5841, 5947, 5680, 3738, 6073, 5916, 5995, 5937, 5955, 5992,
               ],
             ],
             [
-              "corporate",
+              1,
               "💼",
               "Corporate",
               [
-                266, 3263, 4284, 6013, 5257, 5242, 5164, 5109, 577, 5304, 1209,
-                5624, 2075, 5023, 4208, 209, 5040, 5186, 260, 5049, 5716, 5144,
-                2272, 457, 5108, 5692, 1796, 968, 1077, 5655, 3173, 3906, 4227,
-                5057, 5250, 4054, 3816, 3928, 1846, 5699, 1233, 5074, 5039,
-                5548, 1506, 303, 406, 446, 5275, 1104,
+                266, 6013, 5683, 4208, 5257, 1211, 3410, 3263, 260, 5109, 5304,
+                5164, 3928, 4284, 846, 5624, 2375, 5310, 5074, 4100, 5242, 482,
+                577, 263, 6005, 5265, 5716, 4174, 5040, 5108, 5528, 5405, 5186,
+                4148, 4285, 838, 2272, 554, 5039, 406, 428, 4146, 5760, 3464,
+                5623, 6027, 209, 1506, 3342, 5057,
               ],
             ],
             [
-              "education",
+              4,
               "🤓",
               "Education",
               [
-                3878, 3743, 5019, 4265, 266, 5688, 471, 4043, 4284, 5583, 3841,
-                5257, 5242, 5412, 5109, 5075, 5566, 5522, 5304, 5423, 5830,
-                4243, 5226, 3804, 5569, 5400, 5040, 5404, 3741, 3681, 6037,
-                3887, 5280, 5666, 4254, 5061, 5938, 5632, 3830, 4285, 5104,
-                5342, 6023, 3740, 1344, 5854, 5683, 5536, 5047, 5545,
+                3878, 4043, 5019, 4231, 266, 5075, 5572, 5415, 4119, 5412, 5683,
+                5536, 5257, 5566, 471, 3743, 5684, 5109, 5178, 5304, 5620, 4284,
+                5915, 5624, 5529, 5583, 4056, 5670, 202, 5074, 5062, 5061, 4100,
+                5242, 5953, 5522, 5702, 5671, 5563, 3681, 3773, 4243, 5688,
+                5280, 5710, 3841, 6077, 5416, 5265, 5626,
               ],
             ],
             [
-              "filming",
+              0,
+              "🔥",
+              "Popular",
+              [
+                4231, 621, 5906, 2351, 450, 5416, 5657, 5094, 5432, 4118, 5423,
+                3174, 980, 1224, 4215, 5038, 5761, 4269, 3474, 5646, 2161, 649,
+                6202, 774, 5274, 1028, 734, 1948, 5634, 5410, 5785, 1946, 5269,
+                4201, 5240, 5867, 5908, 5755, 4089, 1385, 2191, 5032, 3126, 858,
+                4176, 5959, 1592, 3264, 1812, 5060,
+              ],
+            ],
+            [
+              47,
               "📽️",
               "Filming",
               [
-                5611, 5019, 4265, 5371, 4081, 3955, 3729, 3891, 5234, 3960,
-                4043, 5394, 5201, 5100, 5583, 3841, 3850, 5257, 5526, 5181,
-                4056, 5705, 5432, 4275, 4112, 4231, 5563, 4243, 5685, 3804,
-                4202, 3854, 3895, 5007, 3687, 5072, 3747, 5400, 3541, 3882,
-                4162, 5020, 5040, 5186, 5404, 3972, 5145, 4072, 3961, 5326,
+                5072, 4043, 5611, 5019, 4231, 5429, 5572, 3729, 5536, 5100,
+                5257, 4081, 5234, 5196, 3891, 5109, 5178, 3805, 3960, 3955,
+                5164, 5037, 5394, 3928, 4112, 3854, 5264, 3735, 5181, 3882,
+                5201, 5624, 5583, 5526, 4056, 3687, 5371, 5208, 5074, 5612,
+                3747, 3850, 5629, 5522, 5563, 3773, 5821, 4243, 5280, 5942,
               ],
             ],
             [
-              "gaming",
+              27,
               "🕹️",
               "Gaming",
               [
-                5611, 3914, 1458, 3935, 4081, 4160, 786, 5234, 3960, 4071, 5394,
-                6013, 3850, 5526, 1885, 5264, 3308, 222, 2274, 5596, 4086, 5419,
-                5210, 3979, 5550, 5703, 261, 3882, 4107, 2290, 1426, 3181, 4091,
-                5038, 5224, 3963, 5629, 5903, 3857, 2278, 2348, 5657, 1371,
-                5142, 979, 1251, 3881, 841, 4016, 5530,
+                1458, 5611, 3914, 6013, 3308, 4091, 4081, 1426, 3935, 5234,
+                4160, 222, 3960, 5394, 5264, 1862, 3735, 5906, 3882, 5526, 5419,
+                5991, 4056, 5670, 3850, 5629, 5671, 5819, 4086, 5705, 5599,
+                2290, 1885, 5657, 5417, 3881, 4071, 6022, 5685, 6028, 4275,
+                5946, 6205, 2274, 786, 4238, 979, 5210, 5596, 6018,
               ],
             ],
             [
-              "kids",
+              10,
               "👶",
               "Kids",
               [
-                5689, 5412, 2351, 1947, 6079, 5350, 292, 3780, 6070, 5061, 1371,
-                4174, 5251, 5169, 1275, 1624, 3414, 3525, 3600, 1949, 403, 5427,
-                5628, 3227, 830, 1365, 1346, 3118, 4195, 5330, 5976, 3623, 5325,
-                5324, 6021, 3442, 3454, 3301, 402, 1681, 2356, 3613, 5604, 5888,
-                5893, 3485, 3369, 4191, 5301, 5347,
+                5412, 5689, 292, 5251, 5350, 5331, 5169, 1947, 6079, 5310, 2351,
+                5061, 403, 5261, 5606, 5427, 5626, 4174, 3525, 6070, 3780, 6075,
+                293, 5243, 4195, 1624, 5604, 3600, 5888, 401, 638, 2316, 1275,
+                5325, 5301, 561, 5294, 5955, 462, 5627, 905, 3356, 451, 6010,
+                5324, 5330, 3220, 3301, 402, 5628,
               ],
             ],
             [
-              "lifestyle",
+              45,
               "🏄",
               "Lifestyle",
               [
-                5611, 3878, 3743, 5019, 4265, 3729, 4160, 786, 3465, 5688, 4043,
-                5689, 4284, 6013, 3841, 5257, 5116, 5242, 5412, 5264, 3775,
-                5432, 5138, 3896, 3780, 5587, 4231, 5023, 5563, 5830, 3638,
-                4243, 5226, 5175, 3804, 4217, 4082, 5635, 3854, 4230, 5544,
-                5569, 5007, 3747, 6070, 5400, 3541, 4039, 3882, 5040,
+                3878, 4043, 5611, 5019, 4231, 5429, 5075, 5572, 6013, 5415,
+                3729, 4119, 5587, 5412, 5683, 5536, 5257, 5689, 3743, 1983,
+                5684, 5109, 4160, 5620, 3928, 3854, 5264, 3882, 4284, 5915,
+                5624, 5529, 6079, 5831, 5062, 5061, 3747, 5242, 6076, 5629,
+                5522, 5702, 5671, 5563, 3681, 3773, 4243, 5688, 5280, 5710,
               ],
             ],
             [
-              "nature",
+              49,
               "🌳",
               "Nature",
               [
-                5234, 2293, 5201, 3850, 5257, 5181, 5164, 5574, 5221, 3872,
-                5235, 3805, 3894, 5624, 5424, 4112, 3621, 3804, 4202, 3854,
-                5698, 3236, 3633, 4118, 5938, 5632, 3830, 4285, 5104, 2222,
-                4201, 5342, 5623, 5942, 5514, 5683, 4211, 6072, 3823, 5047,
-                5050, 5545, 4137, 1735, 4128, 4200, 5428, 5660, 3890, 4215,
+                5072, 2293, 5683, 5257, 5234, 3805, 5164, 3928, 4112, 3854,
+                5574, 5181, 3882, 5201, 5624, 3687, 5074, 3747, 3850, 5821,
+                3621, 5942, 6005, 5416, 5265, 5716, 5952, 4202, 5040, 4162,
+                5625, 5543, 5186, 3872, 5514, 5938, 6075, 5221, 3629, 4285,
+                5936, 6037, 3972, 4118, 6071, 3894, 3887, 6072, 3127, 5826,
               ],
             ],
             [
-              "podcast",
+              28,
               "🎙️",
               "Podcast",
               [
-                3914, 3743, 5019, 3476, 4265, 5371, 2298, 3955, 3465, 4071,
-                5688, 4043, 5100, 5583, 3841, 5412, 5221, 3535, 5208, 5075,
-                6070, 4039, 5020, 3741, 5145, 6037, 5280, 4091, 5037, 5843,
-                5632, 5629, 4285, 6023, 3740, 6076, 3473, 4267, 3773, 5004,
-                4273, 4041, 4272, 5680, 3619, 3831, 3470, 287, 5094, 5362,
+                4043, 3914, 5019, 5075, 5572, 5415, 5412, 4091, 5100, 5566,
+                3743, 5684, 5178, 3955, 5037, 5620, 1862, 3735, 5583, 6079,
+                4056, 3549, 5371, 5208, 3476, 6076, 5953, 5629, 5522, 5671,
+                3773, 5282, 5688, 5280, 3841, 1921, 5070, 2298, 5094, 5405,
+                6070, 3835, 5221, 6023, 4285, 3535, 4071, 6037, 5685, 4275,
               ],
             ],
             [
-              "science",
+              19,
               "🧪",
               "Science",
               [
-                5371, 3263, 5201, 5583, 5824, 2221, 504, 912, 806, 3320, 661,
-                291, 2290, 1280, 1094, 3221, 3830, 2375, 5342, 1592, 457, 414,
-                3608, 1303, 3594, 1796, 5407, 1077, 1836, 5878, 3173, 522, 278,
-                3906, 1695, 1416, 1233, 855, 1307, 1316, 406, 446, 4142, 5410,
-                5392, 1314, 3922, 5701, 2057, 408,
+                2221, 3263, 559, 5201, 5583, 2375, 5371, 661, 912, 482, 1081,
+                6005, 2290, 5343, 4148, 5977, 1746, 406, 5342, 3174, 1622, 6027,
+                5407, 5922, 5878, 2289, 408, 6026, 856, 855, 291, 5824, 3830,
+                1796, 3300, 446, 1233, 1303, 3585, 1234, 3856, 1028, 1744, 823,
+                5576, 5616, 6024, 3401, 522, 996,
               ],
             ],
             [
-              "sport",
+              21,
               "⚽",
               "Sport",
               [
-                5611, 3914, 1458, 621, 3935, 3955, 3891, 4160, 786, 5234, 3960,
-                4071, 3136, 5688, 5394, 5201, 5100, 6013, 1625, 5526, 3549,
-                4024, 1470, 2125, 3267, 3145, 1498, 5584, 5429, 187, 4206, 5414,
-                1929, 5670, 5424, 5524, 5673, 4056, 1373, 5705, 509, 3775, 5408,
-                176, 4275, 5430, 3896, 5563, 5226, 1187,
+                1458, 5072, 5611, 3914, 5429, 6013, 3308, 4208, 4091, 5100,
+                1426, 2138, 5414, 3935, 5234, 3891, 621, 4160, 222, 3960, 3955,
+                5037, 5394, 3928, 1884, 5264, 5906, 5181, 3882, 5201, 5526,
+                5419, 5991, 429, 4056, 5670, 3687, 3549, 661, 3136, 5629, 5522,
+                5671, 5673, 458, 5563, 5819, 4086, 5282, 5688,
               ],
             ],
             [
-              "tech",
+              48,
               "👨‍💻",
               "Tech",
               [
-                5611, 3878, 3743, 5019, 4265, 5371, 4160, 5234, 3960, 5688,
-                4043, 4284, 5394, 5201, 5583, 3841, 3850, 5242, 5181, 5109,
-                5432, 5430, 5587, 4231, 5023, 5563, 4243, 5226, 5175, 3804,
-                4217, 5544, 4208, 5569, 5007, 5400, 5550, 5020, 5040, 5186,
-                3741, 3681, 5145, 6037, 3961, 3887, 5280, 4091, 5224, 5843,
+                3878, 4043, 5611, 5019, 4231, 5429, 5075, 5572, 5587, 4208,
+                5536, 4091, 5234, 3743, 5684, 5109, 5178, 4160, 3960, 5394,
+                5620, 5906, 5181, 5201, 4284, 5915, 5583, 6079, 4056, 5371,
+                5062, 5061, 5242, 3850, 5629, 5522, 5702, 5671, 5563, 3681,
+                3773, 4243, 5282, 5688, 5280, 6005, 5599, 3841, 5416, 5070,
               ],
             ],
             [
-              "travel",
+              24,
               "✈️",
               "Travel",
               [
-                5611, 3743, 5019, 3476, 1084, 3729, 843, 2293, 5688, 471, 4043,
-                5201, 6013, 5583, 5257, 2082, 5242, 5412, 3290, 2359, 639, 5546,
-                5062, 5624, 187, 4206, 5824, 864, 6074, 3130, 2221, 5524, 2075,
-                509, 5432, 1180, 3780, 1046, 4231, 202, 5563, 5830, 1852, 4243,
-                1187, 783, 4202, 5635, 5544, 5569,
+                5072, 4043, 5611, 5019, 4231, 5572, 2293, 6013, 5415, 3290,
+                3729, 5412, 5683, 5536, 5257, 5566, 471, 2221, 843, 3743, 260,
+                5684, 5109, 5178, 3805, 5164, 5620, 3928, 188, 5201, 5915, 846,
+                5624, 5583, 6079, 202, 3687, 1673, 2351, 1084, 5074, 5062, 5061,
+                3476, 4100, 294, 5242, 6076, 5953, 5522,
               ],
             ],
             [
-              "vlog",
+              25,
               "🤳",
               "Vlog",
               [
-                3499, 3476, 1084, 2298, 3729, 266, 843, 2293, 5583, 2082, 5412,
-                2359, 1884, 5831, 3308, 5164, 181, 186, 3535, 5429, 5062, 187,
-                1929, 864, 1373, 509, 3775, 5432, 176, 1180, 292, 3780, 503,
-                2235, 806, 3638, 1852, 661, 783, 657, 3467, 724, 3154, 990, 450,
-                2383, 5072, 1336, 6070, 209,
+                5072, 5429, 266, 5075, 5572, 2293, 3729, 3308, 5412, 5566, 1426,
+                3499, 1211, 843, 526, 260, 292, 5164, 181, 5620, 1884, 1862,
+                188, 5583, 429, 3549, 1673, 5831, 661, 1084, 5062, 5061, 3476,
+                450, 294, 1962, 5522, 5702, 5671, 403, 3681, 3773, 263, 3154,
+                415, 5710, 2290, 1921, 802, 5666,
               ],
             ],
             [
-              "wedding",
+              26,
               "💍",
               "Wedding",
               [
-                471, 1106, 282, 5574, 171, 188, 5624, 3130, 2221, 4112, 912,
-                202, 288, 450, 1779, 3747, 4162, 204, 1822, 3961, 5428, 1082,
-                3432, 5660, 1242, 5940, 5902, 5293, 1948, 4106, 4140, 5334,
-                5826, 3309, 5952, 5332, 5692, 5762, 469, 1018, 1652, 5939, 1354,
-                4242, 5727, 5833, 3400, 6012, 729, 5699,
+                171, 5683, 1106, 471, 2221, 260, 4112, 5574, 188, 282, 5624,
+                202, 912, 3747, 450, 5821, 5942, 5952, 1088, 4162, 267, 5940,
+                5936, 729, 5765, 1747, 554, 5826, 3130, 2041, 5762, 5659, 4105,
+                1407, 5957, 1108, 408, 5691, 204, 5939, 5699, 5833, 5902, 649,
+                5271, 5428, 1779, 1242, 5326, 5820,
               ],
             ],
           ],
         })),
+        (function (e) {
+          if (!V().default.has("musicAssist.order")) {
+            const t = Object.keys(e.tracks).map(Number),
+              s = e.categories.map((e) => e.id).filter((e) => 0 !== e);
+            V().default.set("musicAssist.order", {
+              trackIds: ho(t),
+              categoryIds: [0, ...ho(s)],
+            });
+          }
+          const t = V().default.get("musicAssist.order");
+          e.categories.sort(
+            (e, s) => t.categoryIds.indexOf(e.id) - t.categoryIds.indexOf(s.id)
+          );
+          for (const s of e.categories)
+            s.trackIds.sort(
+              (e, s) => t.trackIds.indexOf(e) - t.trackIds.indexOf(s)
+            );
+        })(e.data)),
       e.data
     );
   }
-  k(), C(), v(), v(), y();
-  const mo = {
+  k(), C(), v(), v(), y(), V();
+  const go = {
     getTrackUrl: function (e) {
       const t = v().model.state.musicAssist;
       return e
@@ -10396,14 +10292,14 @@
       const e = v().model.state.musicAssist;
       if (!e.selectedTrackId) return null;
       if ("custom" === e.selectedTrackId) return e.customTrack.name;
-      const t = ho().tracks[e.selectedTrackId];
+      const t = mo().tracks[e.selectedTrackId];
       return t ? t.name : null;
     },
     getSelectedTrackCategory: function () {
       const e = v().model.state.musicAssist;
       if (!e.selectedTrackId) return null;
       if ("custom" === e.selectedTrackId) return null;
-      const t = ho().categories.find((t) =>
+      const t = mo().categories.find((t) =>
         t.trackIds.includes(e.selectedTrackId)
       );
       return t || null;
@@ -10416,7 +10312,7 @@
     },
   };
   W(), C(), m(), v(), v(), C();
-  const go = {
+  const po = {
     init: function () {
       this._preloadFfmpeg();
     },
@@ -10438,7 +10334,7 @@
     },
   };
   Z(), C();
-  const po = {
+  const fo = {
       init: function () {
         C().iframeBus.on(
           "ig.force-small-iframe-width",
@@ -10449,47 +10345,47 @@
         Z().$('iframe[name^="inssist-ig"]').style.width = e ? "550px" : null;
       },
     },
-    fo = function () {
-      go.init(), po.init();
+    vo = function () {
+      po.init(), fo.init();
     };
   y(), Z(), W(), C();
-  var vo = Object.assign(
+  var Co = Object.assign(
     function (e, t = !1) {
-      0 === Co.length &&
-        ((yo = new MutationObserver((e) => {
-          for (const t of Co) {
-            yo.disconnect();
+      0 === yo.length &&
+        ((bo = new MutationObserver((e) => {
+          for (const t of yo) {
+            bo.disconnect();
             try {
               t(e);
             } catch (e) {
               console.error("onDocMutations", e);
             }
-            if (!yo) return;
-            yo.observe(document.documentElement, {
+            if (!bo) return;
+            bo.observe(document.documentElement, {
               attributes: !0,
               childList: !0,
               subtree: !0,
             });
           }
         })),
-        yo.observe(document.documentElement, {
+        bo.observe(document.documentElement, {
           attributes: !0,
           childList: !0,
           subtree: !0,
         }));
-      Co.push(e), t && e();
+      yo.push(e), t && e();
     },
     {
       off: function (e) {
-        const t = Co.indexOf(e);
+        const t = yo.indexOf(e);
         if (-1 === t) return;
-        Co.splice(t, 1), 0 === Co.length && (yo.disconnect(), (yo = null));
+        yo.splice(t, 1), 0 === yo.length && (bo.disconnect(), (bo = null));
       },
     }
   );
-  const Co = [];
-  let yo;
-  const bo = {
+  const yo = [];
+  let bo;
+  const ko = {
     init: function () {
       (this.video = null),
         (this.audio = null),
@@ -10506,7 +10402,7 @@
         this.handleDataUpdates();
     },
     autoRegister: function () {
-      vo(() => {
+      Co(() => {
         const e = Z().$("video[music-assist-player]");
         e && !this.video
           ? this.register(e)
@@ -10749,7 +10645,7 @@
     },
   };
   v(), C();
-  const ko = {
+  const wo = {
       init: function () {
         C().iframeBus.on(
           "music-assist.should-generate-video",
@@ -10766,7 +10662,7 @@
       generate: async function (e) {
         if (!e) return;
         const t = URL.createObjectURL(e),
-          s = mo.getSelectedTrackUrl();
+          s = go.getSelectedTrackUrl();
         if (!s) return;
         const a = await Ys(t),
           n = e.name.split(".").pop(),
@@ -10815,7 +10711,7 @@
         );
       },
     },
-    wo = {
+    So = {
       init: function () {
         C().iframeBus.on(
           "music-assist.open-for-story-creation",
@@ -10829,8 +10725,8 @@
             "music-assist.set-video-current-time",
             this.setVideoCurrentTime.bind(this)
           ),
-          bo.init(),
           ko.init(),
+          wo.init(),
           this.manageTrial(),
           this.sendGaStats(),
           this.updateVideoUrlOnChange(),
@@ -10844,7 +10740,7 @@
         });
       },
       openForStoryCreation: function () {
-        const e = mo.getSelectedTrackCategory();
+        const e = go.getSelectedTrackCategory();
         v().transaction((t) => {
           (t.storyAssist.shown = !0),
             (t.storyAssist.selectedTabId = "music"),
@@ -10905,14 +10801,14 @@
         });
       },
       addTrackInfoToCaptionWhenNeeded: function () {
-        go.observeStateDuringCreation(
+        po.observeStateDuringCreation(
           (e) => e.musicAssist.selectedTrackId,
           async (e) => {
             let t = await C().iframeBus.send("ig.creation-get-caption");
             (t = t.replace(/(\n\n)?🎵.*\(tunetank.com\)/g, "")),
               (() => {
                 if ("custom" === e) return;
-                const s = ho().tracks[e];
+                const s = mo().tracks[e];
                 if (!s) return;
                 const a = `🎵 ${s.name} (tunetank.com)`;
                 0 === t.trim().length
@@ -10928,13 +10824,13 @@
           const e = v().model.state.musicAssist;
           return {
             isStory: e.isStory,
-            musicUrl: mo.getSelectedTrackUrl(),
+            musicUrl: go.getSelectedTrackUrl(),
             musicStart: e.selectedTrackStart,
             musicVolume: e.musicVolume,
             videoVolume: e.videoVolume,
           };
         };
-        go.observeStateDuringCreation(
+        po.observeStateDuringCreation(
           () => {
             const t = e();
             return [
@@ -10954,7 +10850,7 @@
       },
     };
   g(), v(), g(), v(), g(), v();
-  const So = {
+  const To = {
       root: {},
       body: {
         ...g().default.relative(),
@@ -11032,13 +10928,13 @@
         },
       },
     },
-    To = "music-assist-track-mediator.volume-video",
-    Eo = "music-assist-track-mediator.volume-music";
+    Eo = "music-assist-track-mediator.volume-video",
+    _o = "music-assist-track-mediator.volume-music";
   g().default.SvgIcon.registerSvgIcons([
-    `<symbol id="${To}" viewBox="0 0 24 24"><g transform="translate(-86 -82)"><path d="M0,0H24V24H0Z" transform="translate(86 82)" fill="none"/><g transform="translate(88 83.5)"><path d="M13.815,10.658A3.158,3.158,0,1,1,10.658,7.5a3.158,3.158,0,0,1,3.158,3.158Z" transform="translate(-2.842 -2.132)" fill="currentColor"/><path d="M7.815,13.262C5.708,13.262,1.5,14.32,1.5,16.42V18H14.131V16.42C14.131,14.32,9.923,13.262,7.815,13.262Zm6.126-7.61L12.615,6.987a2.619,2.619,0,0,1,0,3.071l1.326,1.334A4.04,4.04,0,0,0,13.941,5.652ZM16.554,3,15.267,4.287a6.3,6.3,0,0,1,0,8.478l1.287,1.287A7.759,7.759,0,0,0,16.554,3Z" fill="currentColor"/></g></g></symbol>`,
-    `<symbol id="${Eo}" viewBox="0 0 24 24"><path d="M0 0h24v24H0Z" fill="none"/><path d="M18.5 5.438a.937.937 0 0 0-1.22-.893L7.906 7.313a.937.937 0 0 0-.656.893v7.658a4.052 4.052 0 0 0-.937-.115c-1.554 0-2.813.84-2.813 1.875s1.259 1.877 2.812 1.877 2.812-.839 2.812-1.875v-6.847l7.5-2.2v5.41a4.052 4.052 0 0 0-.937-.115c-1.553 0-2.812.839-2.812 1.875s1.259 1.875 2.812 1.875 2.813-.839 2.813-1.875V5.438Z" fill="currentColor"/></symbol>`,
+    `<symbol id="${Eo}" viewBox="0 0 24 24"><g transform="translate(-86 -82)"><path d="M0,0H24V24H0Z" transform="translate(86 82)" fill="none"/><g transform="translate(88 83.5)"><path d="M13.815,10.658A3.158,3.158,0,1,1,10.658,7.5a3.158,3.158,0,0,1,3.158,3.158Z" transform="translate(-2.842 -2.132)" fill="currentColor"/><path d="M7.815,13.262C5.708,13.262,1.5,14.32,1.5,16.42V18H14.131V16.42C14.131,14.32,9.923,13.262,7.815,13.262Zm6.126-7.61L12.615,6.987a2.619,2.619,0,0,1,0,3.071l1.326,1.334A4.04,4.04,0,0,0,13.941,5.652ZM16.554,3,15.267,4.287a6.3,6.3,0,0,1,0,8.478l1.287,1.287A7.759,7.759,0,0,0,16.554,3Z" fill="currentColor"/></g></g></symbol>`,
+    `<symbol id="${_o}" viewBox="0 0 24 24"><path d="M0 0h24v24H0Z" fill="none"/><path d="M18.5 5.438a.937.937 0 0 0-1.22-.893L7.906 7.313a.937.937 0 0 0-.656.893v7.658a4.052 4.052 0 0 0-.937-.115c-1.554 0-2.813.84-2.813 1.875s1.259 1.877 2.812 1.877 2.812-.839 2.812-1.875v-6.847l7.5-2.2v5.41a4.052 4.052 0 0 0-.937-.115c-1.553 0-2.812.839-2.812 1.875s1.259 1.875 2.812 1.875 2.813-.839 2.813-1.875V5.438Z" fill="currentColor"/></symbol>`,
   ]);
-  class _o extends g().default.Component {
+  class Ao extends g().default.Component {
     constructor(e) {
       super(e),
         (this.onVideoVolumeChange = (e) => {
@@ -11099,7 +10995,7 @@
       return Glamor.createElement(
         "div",
         {
-          css: So.root,
+          css: To.root,
           className: `\n          MusicAssistPreview\n          ${
             this.props.isStory ? "MusicAssistPreview_story" : ""
           }\n          ${
@@ -11110,12 +11006,12 @@
         },
         Glamor.createElement(
           "div",
-          { css: So.body, style: { height: this.state.videoHeight } },
+          { css: To.body, style: { height: this.state.videoHeight } },
           this.renderVideo()
         ),
         Glamor.createElement(
           "div",
-          { css: So.footer },
+          { css: To.footer },
           this.renderVolumeBars(),
           this.renderHandle()
         )
@@ -11125,7 +11021,7 @@
       return this.props.isStory
         ? null
         : Glamor.createElement("video", {
-            css: So.video,
+            css: To.video,
             style: { height: this.state.videoHeight },
             src: this.props.videoUrl,
             controls: !0,
@@ -11137,11 +11033,11 @@
     renderVolumeBars() {
       return Glamor.createElement(
         "div",
-        { css: So.volumeBars },
+        { css: To.volumeBars },
         Glamor.createElement(
           "div",
           {
-            css: So.volumeBar,
+            css: To.volumeBar,
             className: `\n            MusicAssistPreview__volumeBar\n            ${
               0 === this.props.videoVolume
                 ? "MusicAssistPreview__volumeBar_inactive"
@@ -11149,11 +11045,11 @@
             }\n          `,
           },
           Glamor.createElement(g().default.SvgIcon, {
-            style: So.volumeBarIcon,
-            name: To,
+            style: To.volumeBarIcon,
+            name: Eo,
           }),
           Glamor.createElement(g().default.Range, {
-            style: So.volumeBarRange,
+            style: To.volumeBarRange,
             value: this.props.videoVolume,
             min: 0,
             max: 1,
@@ -11164,7 +11060,7 @@
         Glamor.createElement(
           "div",
           {
-            css: So.volumeBar,
+            css: To.volumeBar,
             className: `\n            MusicAssistPreview__volumeBar\n            ${
               0 === this.props.musicVolume
                 ? "MusicAssistPreview__volumeBar_inactive"
@@ -11172,11 +11068,11 @@
             }\n          `,
           },
           Glamor.createElement(g().default.SvgIcon, {
-            style: So.volumeBarIcon,
-            name: Eo,
+            style: To.volumeBarIcon,
+            name: _o,
           }),
           Glamor.createElement(g().default.Range, {
-            style: So.volumeBarRange,
+            style: To.volumeBarRange,
             value: this.props.musicVolume,
             min: 0,
             max: 1,
@@ -11190,20 +11086,20 @@
       return this.props.isStory || this.state.showVolumeBars
         ? null
         : Glamor.createElement("div", {
-            css: So.handle,
+            css: To.handle,
             onMouseDown: this.onHandleMouseDown,
             onDoubleClick: this.onHandleDoubleClick,
           });
     }
   }
-  var Ao = v().influx((e) => ({
+  var Po = v().influx((e) => ({
     isStory: e.musicAssist.isStory,
     videoUrl: e.musicAssist.videoUrl,
     videoVolume: e.musicAssist.videoVolume,
     musicVolume: e.musicAssist.musicVolume,
-  }))(_o);
+  }))(Ao);
   g(), v();
-  const Po = {
+  const Io = {
     root: {
       ...g().default.row,
       flexWrap: "wrap",
@@ -11220,14 +11116,14 @@
     categorySelected: { color: "#fff", background: g().default.color.link },
     emoji: { marginRight: 6 },
   };
-  class Io extends g().default.Component {
+  class xo extends g().default.Component {
     constructor(e) {
       super(e),
         (this.renderCategory = (e) => {
           const t = this.props.selectedCategoryId === e.id;
           return Glamor.createElement(g().default.Pill, {
             key: e.id,
-            style: [Po.category, t && Po.categorySelected],
+            style: [Io.category, t && Io.categorySelected],
             label: this.renderCategoryLabel(e),
             categoryId: e.id,
             onChange: this.onCategoryClick,
@@ -11241,7 +11137,7 @@
                 if (
                   ((s.selectedCategoryId = e),
                   0 === s.categoryIdsOrder.length &&
-                    (s.categoryIdsOrder = this.getCategoriesSortedByName().map(
+                    (s.categoryIdsOrder = this.getCategories().map(
                       (e) => e.id
                     )),
                   this.state.expanded)
@@ -11259,14 +11155,14 @@
       let e;
       return (
         (e = this.state.expanded
-          ? this.getCategoriesSortedByName()
+          ? this.getCategories()
           : [
               ...this.getCategoriesSortedByUsage().slice(0, 3),
               { id: "more", name: "• • •" },
             ]),
         Glamor.createElement(
           "div",
-          { css: Po.root },
+          { css: Io.root },
           e.map(this.renderCategory)
         )
       );
@@ -11275,35 +11171,27 @@
       return Glamor.createElement(
         "span",
         { "data-id": e.id },
-        e.emoji && Glamor.createElement("span", { css: Po.emoji }, e.emoji),
+        e.emoji && Glamor.createElement("span", { css: Io.emoji }, e.emoji),
         Glamor.createElement("span", null, e.name.toUpperCase())
       );
     }
-    getCategoriesSortedByName() {
-      return [...ho().categories].sort((e, t) =>
-        "popular" === e.id
-          ? -1
-          : "popular" === t.id || e.name > t.name
-          ? 1
-          : e.name < t.name
-          ? -1
-          : 0
-      );
+    getCategories() {
+      return [...mo().categories];
     }
     getCategoriesSortedByUsage() {
-      return this.getCategoriesSortedByName().sort(
+      return this.getCategories().sort(
         (e, t) =>
           this.props.categoryIdsOrder.indexOf(e.id) -
           this.props.categoryIdsOrder.indexOf(t.id)
       );
     }
   }
-  var xo = v().influx((e) => ({
+  var Go = v().influx((e) => ({
     selectedCategoryId: e.musicAssist.selectedCategoryId,
     categoryIdsOrder: e.musicAssist.categoryIdsOrder,
-  }))(Io);
+  }))(xo);
   g(), v();
-  const Go = {
+  const Do = {
       root: {
         ...g().default.row,
         ...g().default.alignItems.center,
@@ -11341,8 +11229,8 @@
         cursor: "pointer",
       },
     },
-    Do = "igswiss.upload";
-  class Bo extends g().default.Component {
+    Bo = "igswiss.upload";
+  class Fo extends g().default.Component {
     constructor(e) {
       super(e),
         (this.onChange = async (e) => {
@@ -11369,7 +11257,7 @@
               size: t.size,
               duration: a,
             }),
-              mo.canUseMusicAssist() &&
+              go.canUseMusicAssist() &&
                 ((e.musicAssist.selectedTrackId = "custom"),
                 (e.musicAssist.selectedTrackStart = 0));
           });
@@ -11388,20 +11276,20 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: [Go.root, this.state.dragOver && Go.rootDragOver] },
-        Glamor.createElement(g().default.SvgIcon, { style: Go.icon, name: Do }),
+        { css: [Do.root, this.state.dragOver && Do.rootDragOver] },
+        Glamor.createElement(g().default.SvgIcon, { style: Do.icon, name: Bo }),
         Glamor.createElement(
           "div",
-          { css: Go.body },
-          Glamor.createElement("div", { css: Go.title }, "UPLOAD CUSTOM .MP3"),
+          { css: Do.body },
+          Glamor.createElement("div", { css: Do.title }, "UPLOAD CUSTOM .MP3"),
           Glamor.createElement(
             "div",
-            { css: Go.description },
+            { css: Do.description },
             "Click or drag & drop an audio file to use."
           )
         ),
         Glamor.createElement("input", {
-          css: Go.input,
+          css: Do.input,
           type: "file",
           accept: this.allowedTypes.join(","),
           onChange: this.onChange,
@@ -11412,7 +11300,7 @@
     }
   }
   g(), v(), g(), v();
-  const Fo = {
+  const Oo = {
       root: {
         ...g().default.row,
         ...g().default.alignItems.center,
@@ -11487,17 +11375,17 @@
         overflow: "hidden",
       },
     },
-    Oo = "music-assist-track-mediator.play",
-    Mo = "music-assist-track-mediator.tick",
-    Lo = "music-assist-track-mediator.download",
-    Uo = "music-assist-track-mediator.open";
+    Mo = "music-assist-track-mediator.play",
+    Lo = "music-assist-track-mediator.tick",
+    Uo = "music-assist-track-mediator.download",
+    Ro = "music-assist-track-mediator.open";
   g().default.SvgIcon.registerSvgIcons([
-    `<symbol id="${Oo}" _dx="7%" viewBox="0 0 15.369 16.881"><path d="M13.973 6.019a2.8 2.8 0 0 1 0 4.842l-9.779 5.642A2.8 2.8 0 0 1 0 14.08V2.799A2.8 2.8 0 0 1 4.191.38Z" fill="currentColor"/></symbol>`,
-    `<symbol id="${Mo}" viewBox="0 0 23.409 16.721"><path d="M8.36 16.721 0 8.36l1.672-1.672L8.36 11.7 21.737 0l1.672 1.672L8.36 16.721Z" fill="currentColor" fill-rule="evenodd"/></symbol>`,
-    `<symbol id="${Lo}" viewBox="0 0 23 23"><path fill="none" d="M0 0h23v23H0z"/><path d="M5.501 18.016v-2h12v2Zm1.35-7.979 1.068-1.068 2.3 2.3V4.983h2.4v6.283l2.334-2.333 1.064 1.064-4.6 4.6Z" fill="currentColor"/></symbol>`,
-    `<symbol id="${Uo}" viewBox="0 0 23 23"><path fill="none" d="M0 0h23v23H0z"/><path d="M5 17.794V7.4h6.234L9.157 9.481H7.079v6.234h6.234v-2.077l2.079-2.079v6.235Zm4.313-6.079 5.351-5.352h-3.429V4.8H18v6.708h-1.569V8.13l-5.351 5.352Z" fill="currentColor"/></symbol>`,
+    `<symbol id="${Mo}" _dx="7%" viewBox="0 0 15.369 16.881"><path d="M13.973 6.019a2.8 2.8 0 0 1 0 4.842l-9.779 5.642A2.8 2.8 0 0 1 0 14.08V2.799A2.8 2.8 0 0 1 4.191.38Z" fill="currentColor"/></symbol>`,
+    `<symbol id="${Lo}" viewBox="0 0 23.409 16.721"><path d="M8.36 16.721 0 8.36l1.672-1.672L8.36 11.7 21.737 0l1.672 1.672L8.36 16.721Z" fill="currentColor" fill-rule="evenodd"/></symbol>`,
+    `<symbol id="${Uo}" viewBox="0 0 23 23"><path fill="none" d="M0 0h23v23H0z"/><path d="M5.501 18.016v-2h12v2Zm1.35-7.979 1.068-1.068 2.3 2.3V4.983h2.4v6.283l2.334-2.333 1.064 1.064-4.6 4.6Z" fill="currentColor"/></symbol>`,
+    `<symbol id="${Ro}" viewBox="0 0 23 23"><path fill="none" d="M0 0h23v23H0z"/><path d="M5 17.794V7.4h6.234L9.157 9.481H7.079v6.234h6.234v-2.077l2.079-2.079v6.235Zm4.313-6.079 5.351-5.352h-3.429V4.8H18v6.708h-1.569V8.13l-5.351 5.352Z" fill="currentColor"/></symbol>`,
   ]);
-  class Ro extends g().default.Component {
+  class No extends g().default.Component {
     constructor(...e) {
       var t;
       return (
@@ -11505,7 +11393,7 @@
         (this.onClick = () => {
           this.props.selected ||
             v().transaction((e) => {
-              mo.canUseMusicAssist()
+              go.canUseMusicAssist()
                 ? ((e.musicAssist.selectedTrackId = this.props.trackId),
                   (e.musicAssist.selectedTrackStart = 0),
                   (e.musicAssist.videoCurrentTime = 0))
@@ -11547,7 +11435,7 @@
         ? Glamor.createElement(
             "div",
             {
-              css: Fo.root,
+              css: Oo.root,
               className:
                 "MusicAssistTrack " +
                 (this.props.selected ? "MusicAssistTrack_selected" : ""),
@@ -11562,31 +11450,31 @@
     renderPlayButton() {
       return Glamor.createElement(
         "div",
-        { css: Fo.playButton, onClick: this.onPlayButtonClick },
+        { css: Oo.playButton, onClick: this.onPlayButtonClick },
         this.props.selected
           ? Glamor.createElement(g().default.SvgIcon, {
               style: { width: 17 },
-              name: Mo,
+              name: Lo,
             })
           : Glamor.createElement(g().default.SvgIcon, {
               style: { width: 12 },
-              name: Oo,
+              name: Mo,
             })
       );
     }
     renderBody() {
       return Glamor.createElement(
         "div",
-        { css: Fo.body },
+        { css: Oo.body },
         Glamor.createElement(
           "div",
-          { css: Fo.header },
+          { css: Oo.header },
           this.renderName(),
           this.renderStartLabel()
         ),
         Glamor.createElement(
           "div",
-          { css: Fo.subheader },
+          { css: Oo.subheader },
           this.renderInfo(),
           this.renderRange()
         )
@@ -11597,22 +11485,22 @@
         ? null
         : Glamor.createElement(
             "div",
-            { css: Fo.actions },
+            { css: Oo.actions },
             Glamor.createElement(
               "div",
-              { css: Fo.action, onClick: this.onDownloadClick },
-              Glamor.createElement(g().default.SvgIcon, { name: Lo })
+              { css: Oo.action, onClick: this.onDownloadClick },
+              Glamor.createElement(g().default.SvgIcon, { name: Uo })
             ),
             Glamor.createElement(g().default.Spacer, { width: "g1" }),
             Glamor.createElement(
               "div",
-              { css: Fo.action, onClick: this.onOpenClick },
-              Glamor.createElement(g().default.SvgIcon, { name: Uo })
+              { css: Oo.action, onClick: this.onOpenClick },
+              Glamor.createElement(g().default.SvgIcon, { name: Ro })
             )
           );
     }
     renderName() {
-      return Glamor.createElement("div", { css: Fo.name }, this.props.name);
+      return Glamor.createElement("div", { css: Oo.name }, this.props.name);
     }
     renderStartLabel() {
       if (!this.props.selected) return null;
@@ -11620,7 +11508,7 @@
         t = this.renderTime(this.props.duration);
       return Glamor.createElement(
         "div",
-        { css: Fo.startLabel },
+        { css: Oo.startLabel },
         "Start at ",
         e,
         " / ",
@@ -11637,7 +11525,7 @@
     renderInfo() {
       return this.props.selected
         ? null
-        : Glamor.createElement("div", { css: Fo.info }, this.props.info);
+        : Glamor.createElement("div", { css: Oo.info }, this.props.info);
     }
     renderRange() {
       return this.props.selected
@@ -11652,7 +11540,7 @@
         : null;
     }
   }
-  var No = v().influx((e, t) => {
+  var Vo = v().influx((e, t) => {
     const s = t.trackId,
       a = e.musicAssist.selectedTrackId === s;
     if ("custom" === s) {
@@ -11671,10 +11559,10 @@
         : {};
     }
     {
-      const t = ho().tracks[s];
+      const t = mo().tracks[s];
       return t
         ? {
-            url: mo.getTrackUrl(t.id),
+            url: go.getTrackUrl(t.id),
             name: t.name,
             filename: `${t.name}.mp3`,
             info: t.moods.join(" • "),
@@ -11685,31 +11573,31 @@
           }
         : {};
     }
-  })(Ro);
-  const Vo = { root: { marginLeft: -16, marginRight: -16 } };
-  class Ho extends g().default.Component {
+  })(No);
+  const Ho = { root: { marginLeft: -16, marginRight: -16 } };
+  class zo extends g().default.Component {
     render() {
       return Glamor.createElement(
         "div",
-        { css: Vo.root },
+        { css: Ho.root },
         this.props.hasCustomTrack &&
-          Glamor.createElement(No, { key: "custom", trackId: "custom" }),
+          Glamor.createElement(Vo, { key: "custom", trackId: "custom" }),
         this.props.trackIds.map((e) =>
-          Glamor.createElement(No, { key: e, trackId: e })
+          Glamor.createElement(Vo, { key: e, trackId: e })
         )
       );
     }
   }
-  var zo = v().influx((e) => {
+  var Wo = v().influx((e) => {
     const t = e.musicAssist;
     return {
-      trackIds: ho().categories.find((e) => e.id === t.selectedCategoryId)
+      trackIds: mo().categories.find((e) => e.id === t.selectedCategoryId)
         .trackIds,
       hasCustomTrack: !!t.customTrack,
     };
-  })(Ho);
+  })(zo);
   g(), v();
-  const Wo = {
+  const $o = {
     root: {},
     panel: {
       borderTop: g().default.border.dark,
@@ -11725,7 +11613,7 @@
     },
     panelText: { ...g().default.text.bleak },
   };
-  class $o extends g().default.Component {
+  class qo extends g().default.Component {
     constructor(...e) {
       var t;
       return (
@@ -11746,7 +11634,7 @@
         ? null
         : Glamor.createElement(
             "div",
-            { css: Wo.root },
+            { css: $o.root },
             this.renderPanel(),
             this.renderUpsellOverlay()
           );
@@ -11754,17 +11642,17 @@
     renderPanel() {
       return Glamor.createElement(
         "div",
-        { css: Wo.panel },
+        { css: $o.panel },
         Glamor.createElement(
           "div",
-          { css: Wo.panelBody },
+          { css: $o.panelBody },
           Glamor.createElement(g().default.SvgIcon, {
-            style: Wo.panelIcon,
+            style: $o.panelIcon,
             name: "warning-triangle",
           }),
           Glamor.createElement(
             "div",
-            { css: Wo.panelText },
+            { css: $o.panelText },
             "Please consider upgrading to ",
             Glamor.createElement("b", null, "add music"),
             " to video",
@@ -11788,11 +11676,11 @@
       });
     }
   }
-  var qo = v().influx((e) => ({
-    canUseMusicAssist: mo.canUseMusicAssist(),
+  var jo = v().influx((e) => ({
+    canUseMusicAssist: go.canUseMusicAssist(),
     showUpsellOverlay: e.musicAssist.showUpsellOverlay,
-  }))($o);
-  const jo = {
+  }))(qo);
+  const Yo = {
     disclaimer: {
       color: g().default.color.textBleak,
       fontWeight: 500,
@@ -11808,31 +11696,31 @@
       paddingBottom: g().default.space.g1,
     },
   };
-  class Yo extends g().default.Component {
+  class Zo extends g().default.Component {
     render() {
       return Glamor.createElement(
         React.Fragment,
         null,
-        Glamor.createElement(Ao, null),
+        Glamor.createElement(Po, null),
         this.renderDisclaimer(),
         Glamor.createElement(g().default.Spacer, { height: "g1h" }),
-        Glamor.createElement(xo, null),
+        Glamor.createElement(Go, null),
         Glamor.createElement(g().default.Spacer, { height: "g1" }),
         Glamor.createElement(
           "div",
-          { css: jo.scroll, key: this.props.selectedCategoryId },
+          { css: Yo.scroll, key: this.props.selectedCategoryId },
           Glamor.createElement(g().default.Spacer, { height: "g1" }),
-          Glamor.createElement(Bo, null),
+          Glamor.createElement(Fo, null),
           Glamor.createElement(g().default.Spacer, { height: "g1" }),
-          Glamor.createElement(zo, null)
+          Glamor.createElement(Wo, null)
         ),
-        Glamor.createElement(qo, null)
+        Glamor.createElement(jo, null)
       );
     }
     renderDisclaimer() {
       return Glamor.createElement(
         "div",
-        { css: jo.disclaimer },
+        { css: Yo.disclaimer },
         "Royalty-free music is provided by ",
         Glamor.createElement(
           "a",
@@ -11842,10 +11730,10 @@
       );
     }
   }
-  var Zo = v().influx((e) => ({
+  var Ko = v().influx((e) => ({
     selectedCategoryId: v().model.state.musicAssist.selectedCategoryId,
-  }))(Yo);
-  const Ko = {
+  }))(Zo);
+  const Qo = {
     root: {
       ...g().default.column,
       ...g().default.padding("g2 g2 0 g2"),
@@ -11872,16 +11760,16 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: Ko.root },
+        { css: Qo.root },
         this.renderCloseButton(),
         this.renderTabs(),
         Glamor.createElement(g().default.Spacer, { height: "g2" }),
-        Glamor.createElement(Zo, null)
+        Glamor.createElement(Ko, null)
       );
     }
     renderCloseButton() {
       return Glamor.createElement(g().default.CloseButton, {
-        style: Ko.closeButton,
+        style: Qo.closeButton,
         onClick: this.onCloseClick,
       });
     }
@@ -11892,13 +11780,13 @@
       });
     }
   }
-  var Qo = {
+  var Xo = {
     init: function () {
-      C().iframeBus.on("new-post-extra.option-click", Xo),
-        C().iframeBus.on("new-post-extra.cancel-click", ei),
-        C().iframeBus.on("new-post-extra.enter-page", ti),
-        C().iframeBus.on("new-post-extra.exit-page", si),
-        go.observeStateDuringCreation(
+      C().iframeBus.on("new-post-extra.option-click", ei),
+        C().iframeBus.on("new-post-extra.cancel-click", ti),
+        C().iframeBus.on("new-post-extra.enter-page", si),
+        C().iframeBus.on("new-post-extra.exit-page", ai),
+        po.observeStateDuringCreation(
           (e) =>
             e.coverAssist.shown
               ? "cover-assist"
@@ -11911,13 +11799,13 @@
             C().iframeBus.send("new-post-extra.synch-selected-option", e);
           }
         ),
-        go.observeStateDuringCreation(
-          () => mo.getSelectedTrackName(),
+        po.observeStateDuringCreation(
+          () => go.getSelectedTrackName(),
           (e) => {
             C().iframeBus.send("new-post-extra.update-pill-music", { name: e });
           }
         ),
-        go.observeStateDuringCreation(
+        po.observeStateDuringCreation(
           (e) => !!e.coverAssist.coverUrl,
           (e) => {
             C().iframeBus.send("new-post-extra.update-pill-cover", {
@@ -11927,7 +11815,7 @@
         );
     },
   };
-  function Xo(e) {
+  function ei(e) {
     v().transaction((t) => {
       const s = t.coverAssist.shown
         ? "cover-assist"
@@ -11947,7 +11835,7 @@
             : "music-assist" === e && (t.musicAssist.shown = !0));
     });
   }
-  function ei(e) {
+  function ti(e) {
     "music-assist" === e
       ? v().transaction((e) => {
           e.musicAssist.selectedTrackId = null;
@@ -11959,7 +11847,7 @@
             (e.coverAssist.frameGallerySelectedImage = null);
         });
   }
-  function ti({ videoDurationMs: e = 0 } = {}) {
+  function si({ videoDurationMs: e = 0 } = {}) {
     v().transaction((t) => {
       e && e < 2 * k().MINUTE
         ? ((t.tagAssist.shown = !1),
@@ -11975,7 +11863,7 @@
         (t.sidebar.isOpen = !1);
     });
   }
-  function si() {
+  function ai() {
     v().transaction((e) => {
       (e.tagAssist.shown = !1),
         (e.coverAssist.shown = !1),
@@ -11983,7 +11871,7 @@
     });
   }
   m(), v(), y(), w(), C(), oe();
-  var ai = {
+  var ni = {
     init: function () {
       v().model.observe(
         (e) => e.coverAssist.coverUrl,
@@ -11995,11 +11883,11 @@
           } else C().iframeBus.send("cover-assist.synch-cover", null);
         }
       ),
-        C().iframeBus.on("new-post-extra.creation-video-change", ni),
-        C().iframeBus.on("ig.published", oi);
+        C().iframeBus.on("new-post-extra.creation-video-change", oi),
+        C().iframeBus.on("ig.published", ii);
     },
   };
-  async function ni(e) {
+  async function oi(e) {
     if (
       (v().transaction((e) => {
         Object.assign(e.coverAssist, oe().default);
@@ -12046,7 +11934,7 @@
           (s.coverAssist.gridImages = n);
       });
   }
-  function oi(e) {
+  function ii(e) {
     const t = v().model.state;
     if (!t.coverAssist.coverUrl) return;
     if ("video" !== e) return;
@@ -12066,7 +11954,7 @@
       })(1);
   }
   g(), p(), m(), v(), y(), C();
-  class ii extends g().default.Component {
+  class ri extends g().default.Component {
     constructor(e) {
       super(e),
         (this._onCloseClick = () => {
@@ -12229,7 +12117,7 @@
       });
     }
   }
-  var ri = v().influx((e) => ({
+  var li = v().influx((e) => ({
     loading: e.coverAssist.loading,
     selectedTabId: e.coverAssist.selectedTabId,
     showGrid: e.coverAssist.showGrid,
@@ -12244,9 +12132,9 @@
     frameUploadImage: e.coverAssist.frameUploadImage,
     hasCoverAssistFeature: true,
     isCreatingReels: e.reels.creating,
-  }))(ii);
+  }))(ri);
   y(), C(), m(), v(), C();
-  const li = {
+  const ci = {
       init: function () {
         C().iframeBus.on(
           "story-assist.split-story-video",
@@ -12286,7 +12174,7 @@
         return await Yt.removeFile(e.name), a;
       },
     },
-    ci = {
+    di = {
       init: function () {
         C().iframeBus.on("story-assist.toggle", this.togglePanel.bind(this)),
           C().iframeBus.on(
@@ -12298,7 +12186,7 @@
             "story-assist.show-upsell",
             this._showUpsell.bind(this)
           ),
-          li.init(),
+          ci.init(),
           this._notifyPanelToggled(),
           this._toggleStoryAssistPanelWhenNeeded(),
           this._watchStoryCover(),
@@ -12321,7 +12209,7 @@
         return v().model.state.storyAssist.mentions.selectedUsers;
       },
       _notifyPanelToggled: function () {
-        go.observeStateDuringCreation(
+        po.observeStateDuringCreation(
           (e) => e.storyAssist.shown,
           (e) => {
             C().iframeBus.send("story-assist.panel-toggled", e);
@@ -12367,14 +12255,14 @@
       },
     };
   g(), v(), g(), g(), w(), v(), v(), f();
-  const di = function () {
+  const ui = function () {
     return (
       v().model.state.storyAssist.mentions.selectedUsers.length >=
       f().ig.maxMentions
     );
   };
   g();
-  const ui = {
+  const hi = {
     root: {
       ...g().default.row,
       ...g().default.alignItems.center,
@@ -12425,7 +12313,7 @@
     },
     removeButton: {},
   };
-  class hi extends g().default.Component {
+  class mi extends g().default.Component {
     constructor(...e) {
       var t;
       return (
@@ -12451,46 +12339,46 @@
         "div",
         {
           css: [
-            ui.root,
+            hi.root,
             this.props.style,
-            this.props.active && ui.rootActive,
-            this.props.onClick && ui.rootClickable,
+            this.props.active && hi.rootActive,
+            this.props.onClick && hi.rootClickable,
           ],
           onClick: this.props.onClick ? this.onClick : null,
         },
         Glamor.createElement(
           "div",
-          { css: ui.main, onClick: this.onMainClick },
+          { css: hi.main, onClick: this.onMainClick },
           Glamor.createElement("div", {
-            css: ui.avatar,
+            css: hi.avatar,
             style: { backgroundImage: `url('${this.props.user.avatar}')` },
             "cdn-proxy-image": this.props.user.avatar,
           }),
           Glamor.createElement(
             "div",
-            { css: ui.body },
+            { css: hi.body },
             Glamor.createElement(
               "div",
-              { css: ui.username },
+              { css: hi.username },
               this.props.user.username
             ),
             Glamor.createElement(
               "div",
-              { css: ui.fullName },
+              { css: hi.fullName },
               this.props.user.fullName
             )
           )
         ),
         this.props.onRemoveClick &&
           Glamor.createElement(g().default.SvgIcon, {
-            style: ui.removeButton,
+            style: hi.removeButton,
             name: "igswiss.close",
             onClick: this.onRemoveClick,
           })
       );
     }
   }
-  const mi = {
+  const gi = {
     root: { ...g().default.relative(), zIndex: 1 },
     dropdown: {
       ...g().default.absolute(),
@@ -12521,7 +12409,7 @@
       height: 60,
     },
   };
-  class gi extends g().default.Component {
+  class pi extends g().default.Component {
     constructor(e) {
       super(e),
         (this.onInput = (e) => {
@@ -12622,7 +12510,7 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: mi.root },
+        { css: gi.root },
         this.renderInput(),
         this.renderDropdown()
       );
@@ -12656,9 +12544,9 @@
         "div",
         {
           css: [
-            mi.dropdown,
-            !this.state.showDropdown && mi.dropdownHidden,
-            this.state.noDropdownAnimation && mi.dropdownNoAnimation,
+            gi.dropdown,
+            !this.state.showDropdown && gi.dropdownHidden,
+            this.state.noDropdownAnimation && gi.dropdownNoAnimation,
           ],
           onMouseDown: this.onDropdownMouseDown,
           ref: this.dropdown,
@@ -12666,11 +12554,11 @@
         0 === this.props.foundUsers.length &&
           Glamor.createElement(
             "div",
-            { css: mi.notFoundMessage },
+            { css: gi.notFoundMessage },
             "NO USERS FOUND"
           ),
         this.props.foundUsers.map((e, t) =>
-          Glamor.createElement(hi, {
+          Glamor.createElement(mi, {
             key: e.id,
             user: e,
             active: t === this.state.activeIndex,
@@ -12704,13 +12592,13 @@
         }, 300));
     }
   }
-  var pi = v().influx((e) => ({
+  var fi = v().influx((e) => ({
     query: e.storyAssist.mentions.query,
     foundUsers: e.storyAssist.mentions.foundUsers,
-    limitReached: di(),
-  }))(gi);
+    limitReached: ui(),
+  }))(pi);
   g(), v();
-  const fi = {
+  const vi = {
     root: { ...g().default.column, ...g().default.grow, overflow: "hidden" },
     label: { ...g().default.text.label, marginBottom: g().default.space.g1 },
     description: { ...g().default.text.bleak },
@@ -12723,7 +12611,7 @@
     userNew: { transform: "translateY(-5px)", opacity: 0 },
     userDelay: { transitionDelay: "100ms", transitionDuration: "600ms" },
   };
-  class vi extends g().default.Component {
+  class Ci extends g().default.Component {
     constructor(e) {
       super(e),
         (this.userList = g().default.createRef()),
@@ -12750,7 +12638,7 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: fi.root },
+        { css: vi.root },
         this.renderLabel(),
         this.renderUserList()
       );
@@ -12761,7 +12649,7 @@
         ? null
         : Glamor.createElement(
             "div",
-            { css: fi.label },
+            { css: vi.label },
             e,
             " ",
             1 === e ? "user" : "users",
@@ -12774,9 +12662,9 @@
     renderUserList() {
       return Glamor.createElement(
         "div",
-        { css: fi.userList, ref: this.userList },
+        { css: vi.userList, ref: this.userList },
         this.props.selectedUsers.map((e) =>
-          Glamor.createElement(Ci, {
+          Glamor.createElement(yi, {
             key: e.id,
             user: e,
             animateNew: this.state.mounted,
@@ -12785,7 +12673,7 @@
       );
     }
   }
-  class Ci extends g().default.Component {
+  class yi extends g().default.Component {
     constructor(e) {
       super(e),
         (this.onRemoveClick = ({ user: e }) => {
@@ -12805,23 +12693,23 @@
         }, 1e3);
     }
     render() {
-      return Glamor.createElement(hi, {
+      return Glamor.createElement(mi, {
         style: [
-          fi.user,
-          this.state.new && this.props.animateNew && fi.userNew,
-          this.state.delay && fi.userDelay,
+          vi.user,
+          this.state.new && this.props.animateNew && vi.userNew,
+          this.state.delay && vi.userDelay,
         ],
         user: this.props.user,
         onRemoveClick: this.onRemoveClick,
       });
     }
   }
-  var yi = v().influx((e) => ({
+  var bi = v().influx((e) => ({
     selectedUsers: e.storyAssist.mentions.selectedUsers,
-    limitReached: di(),
-  }))(vi);
+    limitReached: ui(),
+  }))(Ci);
   g(), v();
-  const bi = {
+  const ki = {
       root: {
         userSelect: "none",
         ...g().default.absolute(". 0 g3 0"),
@@ -12876,17 +12764,17 @@
         ...g().default.absolute(". . 62 65"),
       },
     },
-    ki = "story-assist-mentions-preview-mendiator.preview-day",
-    wi = "story-assist-mentions-preview-mendiator.preview-night";
+    wi = "story-assist-mentions-preview-mendiator.preview-day",
+    Si = "story-assist-mentions-preview-mendiator.preview-night";
   g().default.Image.registerImages({
-    [ki]: "ui-igswiss/story-assist-mentions-preview-day.png:440:862",
-    [wi]: "ui-igswiss/story-assist-mentions-preview-night.png:440:862",
+    [wi]: "ui-igswiss/story-assist-mentions-preview-day.png:440:862",
+    [Si]: "ui-igswiss/story-assist-mentions-preview-night.png:440:862",
   });
-  class Si extends g().default.Component {
+  class Ti extends g().default.Component {
     render() {
       return Glamor.createElement(
         "div",
-        { css: [bi.root, this.props.hasSelectedUsers && bi.rootInvisible] },
+        { css: [ki.root, this.props.hasSelectedUsers && ki.rootInvisible] },
         Glamor.createElement(
           "div",
           { css: [g().default.row, g().default.alignItems.center] },
@@ -12896,56 +12784,56 @@
           Glamor.createElement(g().default.Spacer, { width: "g1" }),
           Glamor.createElement(
             "div",
-            { css: bi.text },
+            { css: ki.text },
             "Tagged people will receive a DM message like this one:"
           )
         ),
         Glamor.createElement(g().default.Spacer, { height: "g2" }),
         Glamor.createElement(
           "div",
-          { css: bi.imageContainer },
+          { css: ki.imageContainer },
           Glamor.createElement(g().default.Image, {
-            style: [bi.image, bi.imageDay],
-            src: ki,
+            style: [ki.image, ki.imageDay],
+            src: wi,
           }),
           Glamor.createElement(g().default.Image, {
-            style: [bi.image, bi.imageNight],
-            src: wi,
+            style: [ki.image, ki.imageNight],
+            src: Si,
           }),
           Glamor.createElement(
             "div",
-            { css: bi.header },
+            { css: ki.header },
             Glamor.createElement("div", {
-              css: bi.avatar,
+              css: ki.avatar,
               style: { backgroundImage: `url('${this.props.avatar}')` },
               "cdn-proxy-image": this.props.avatar,
             }),
             Glamor.createElement(
               "div",
-              { css: bi.username },
+              { css: ki.username },
               this.props.username
             )
           ),
           Glamor.createElement("div", {
-            css: bi.threadAvatar,
+            css: ki.threadAvatar,
             style: { backgroundImage: `url('${this.props.avatar}')` },
             "cdn-proxy-image": this.props.avatar,
           }),
           Glamor.createElement("div", {
-            css: bi.cover,
+            css: ki.cover,
             style: { backgroundImage: `url('${this.props.cover}')` },
           })
         )
       );
     }
   }
-  var Ti = v().influx((e) => ({
+  var Ei = v().influx((e) => ({
     cover: e.storyAssist.coverUrl,
     avatar: e.authStatus.avatarUrl,
     username: e.authStatus.username,
     hasSelectedUsers: e.storyAssist.mentions.selectedUsers.length > 0,
-  }))(Si);
-  const Ei = {
+  }))(Ti);
+  const _i = {
     root: {
       ...g().default.column,
       ...g().default.grow,
@@ -12954,28 +12842,28 @@
     },
     description: { ...g().default.text.bleak },
   };
-  class _i extends g().default.Component {
+  class Ai extends g().default.Component {
     render() {
       return Glamor.createElement(
         "div",
-        { css: Ei.root },
+        { css: _i.root },
         this.renderDescription(),
         Glamor.createElement(g().default.Spacer, { height: "g1h" }),
-        Glamor.createElement(pi, null),
+        Glamor.createElement(fi, null),
         Glamor.createElement(g().default.Spacer, { height: "g3" }),
-        Glamor.createElement(yi, null),
-        Glamor.createElement(Ti, null)
+        Glamor.createElement(bi, null),
+        Glamor.createElement(Ei, null)
       );
     }
     renderDescription() {
       return Glamor.createElement(
         "div",
-        { css: Ei.description },
+        { css: _i.description },
         "Tag up to 30 people in your story. Tagged accounts will receive a notification. Story viewers won’t see whom you tagged."
       );
     }
   }
-  const Ai = {
+  const Pi = {
     root: {
       ...g().default.column,
       ...g().default.padding("g2 g2 0 g2"),
@@ -12985,11 +12873,11 @@
     },
     closeButton: { ...g().default.absolute("4 4 . .") },
   };
-  class Pi extends g().default.Component {
+  class Ii extends g().default.Component {
     render() {
       return Glamor.createElement(
         "div",
-        { css: Ai.root },
+        { css: Pi.root },
         this.renderTabs(),
         this.renderCloseButton(),
         Glamor.createElement(g().default.Spacer, { height: "g2" }),
@@ -13014,15 +12902,15 @@
     }
     renderCloseButton() {
       return Glamor.createElement(g().default.CloseButton, {
-        style: Ai.closeButton,
+        style: Pi.closeButton,
         onClick: this.onCloseClick,
       });
     }
     renderContent() {
       return "music" === this.props.selectedTabId
-        ? Glamor.createElement(Zo, null)
+        ? Glamor.createElement(Ko, null)
         : "mentions" === this.props.selectedTabId
-        ? Glamor.createElement(_i, null)
+        ? Glamor.createElement(Ai, null)
         : null;
     }
     onTabClick(e) {
@@ -13031,16 +12919,16 @@
       });
     }
     onCloseClick() {
-      ci.togglePanel(!1);
+      di.togglePanel(!1);
     }
   }
-  var Ii = v().influx((e) => ({
+  var xi = v().influx((e) => ({
     selectedTabId: e.storyAssist.selectedTabId,
     mentionCount: e.storyAssist.mentions.selectedUsers.length,
-  }))(Pi);
+  }))(Ii);
   g(), v();
-  const xi = { root: {}, rootWider: { left: -50, right: -50 } };
-  class Gi extends g().default.Component {
+  const Gi = { root: {}, rootWider: { left: -50, right: -50 } };
+  class Di extends g().default.Component {
     constructor(...e) {
       var t;
       return (
@@ -13055,7 +12943,7 @@
     }
     render() {
       return Glamor.createElement(ot, {
-        style: [xi.root, !this.props.widescreen && xi.rootWider],
+        style: [Gi.root, !this.props.widescreen && Gi.rootWider],
         feature: "video-stories",
         show: this.props.show,
         noArt: !0,
@@ -13063,19 +12951,19 @@
       });
     }
   }
-  var Di = v().influx((e) => ({
+  var Bi = v().influx((e) => ({
     show: e.storyAssist.showUpsellOverlay,
     widescreen: e.igView.fullscreen,
-  }))(Gi);
+  }))(Di);
   Z(), w(), z();
-  var Bi = {
+  var Fi = {
     init: async function () {
       return void 0;
-      (Mi = (await z().idbController.get("image-proxy.cache")) || {}),
-        (Oi = new Worker("/image-proxy/index-web-worker.js")),
+      (Li = (await z().idbController.get("image-proxy.cache")) || {}),
+        (Mi = new Worker("/image-proxy/index-web-worker.js")),
         (function () {
           const e = Symbol("prevUrl");
-          vo(() => {
+          Co(() => {
             Z()
               .$$(
                 '[style*="background-image:url"], [style*="background-image: url"]'
@@ -13085,17 +12973,17 @@
                   .split("(")[1]
                   .split(")")[0]
                   .replace(/['"]/g, "");
-                if (!(s in Mi)) return;
+                if (!(s in Li)) return;
                 if (t[e] === s) return;
                 const a = await (async function (e) {
-                  if (Fi[e]) return Fi[e];
+                  if (Oi[e]) return Oi[e];
                   return new Promise((t) => {
-                    Oi.postMessage({ url: e }),
-                      Oi.addEventListener("message", function s(a) {
+                    Mi.postMessage({ url: e }),
+                      Mi.addEventListener("message", function s(a) {
                         a.data.originalUrl === e &&
-                          (Oi.removeEventListener("message", s),
-                          (Fi[e] = a.data.objectUrl || e),
-                          t(Fi[e]));
+                          (Mi.removeEventListener("message", s),
+                          (Oi[e] = a.data.objectUrl || e),
+                          t(Oi[e]));
                       });
                   });
                 })(s);
@@ -13111,17 +12999,17 @@
       w().chromeBus.send("image-proxy.save", e);
     },
   };
-  const Fi = {};
-  let Oi,
-    Mi = null;
+  const Oi = {};
+  let Mi,
+    Li = null;
   H(), ie(), N(), C(), w(), y(), v(), m();
-  var Li = {
+  var Ui = {
     init: function () {
-      C().iframeBus.on("reels.is-pro", Ui),
-        C().iframeBus.on("reels.is-mobile-session", Ri),
-        C().iframeBus.on("reels.get-trial-data", Ni),
-        C().iframeBus.on("reels.authorize", Vi),
-        C().iframeBus.on("reels.open-billing", Hi),
+      C().iframeBus.on("reels.is-pro", Ri),
+        C().iframeBus.on("reels.is-mobile-session", Ni),
+        C().iframeBus.on("reels.get-trial-data", Vi),
+        C().iframeBus.on("reels.authorize", Hi),
+        C().iframeBus.on("reels.open-billing", zi),
         C().iframeBus.on("reels.creation-session-start", () => {
           v().transaction((e) => {
             e.reels.creating = !0;
@@ -13146,20 +13034,20 @@
         });
     },
   };
-  function Ui() {
+  function Ri() {
     return true;
   }
-  function Ri() {
+  function Ni() {
     return v().model.state.authStatus.isMobileSession;
   }
-  function Ni() {
+  function Vi() {
     return {
       hasPro: true,
       freeReels: Math.max(0, 2 - v().model.state.billing.trial.reels),
       maxFreeReels: 2,
     };
   }
-  async function Vi() {
+  async function Hi() {
     await w().chromeBus.send("auth.toggle-session-watcher", !1),
       await H().default(chrome.cookies.remove, {
         url: "https://*.instagram.com/*",
@@ -13185,20 +13073,20 @@
       C().iframeBus.send("reels.auth-performed", t),
       w().chromeBus.send("auth.refresh-user", { isSettingSessionId: t });
   }
-  function Hi() {
+  function zi() {
     m().gaController.sendEvent("user", "reels:open-billing"),
       Ge.openBilling("reels");
   }
   C();
-  var zi = {
+  var Wi = {
     init: function () {
       if (
-        ((Wi = !!window.electron),
-        ($i = ns.isIframe() && ns.getParams().isElectron),
-        !Wi && !$i)
+        (($i = !!window.electron),
+        (qi = ns.isIframe() && ns.getParams().isElectron),
+        !$i && !qi)
       )
         return;
-      Wi && C().iframeBus.on("electron-links.open-url", qi);
+      $i && C().iframeBus.on("electron-links.open-url", ji);
       document.addEventListener(
         "click",
         (e) => {
@@ -13209,21 +13097,21 @@
           s.startsWith("/") ||
             (e.preventDefault(),
             e.stopPropagation(),
-            $i ? C().iframeBus.send("electron-links.open-url", s) : qi(s));
+            qi ? C().iframeBus.send("electron-links.open-url", s) : ji(s));
         },
         { capture: !0 }
       );
     },
   };
-  let Wi, $i;
-  function qi(e) {
+  let $i, qi;
+  function ji(e) {
     chrome.tabs.create({ url: e, active: !0 });
   }
   Z(), C(), re();
-  var ji = {
+  var Yi = {
     init: function () {
       C().iframeBus.on("ig.ready", () => {
-        Ki.resolve(),
+        Qi.resolve(),
           Z()
             .$$("[cdn-proxy-image-processed]")
             .forEach((e) => {
@@ -13236,17 +13124,17 @@
           const e = window.fetch;
           window.fetch = async (...t) => {
             const s = t[0];
-            return Qi(s) && (t[0] = await Ji(s)), e.call(window, ...t);
+            return Xi(s) && (t[0] = await Ji(s)), e.call(window, ...t);
           };
         })(),
-        vo(() => {
+        Co(() => {
           Z()
             .$$("[cdn-proxy-image]")
             .forEach(async (e) => {
               let t = e.getAttribute("cdn-proxy-image");
               e.removeAttribute("cdn-proxy-image"),
                 e.setAttribute("cdn-proxy-image-processed", t),
-                (Qi(t) && ((t = await Ji(t)), !document.body.contains(e))) ||
+                (Xi(t) && ((t = await Ji(t)), !document.body.contains(e))) ||
                   ("IMG" === e.tagName
                     ? e.setAttribute("src", t)
                     : (e.style.backgroundImage = `url("${t}")`));
@@ -13254,27 +13142,27 @@
         });
     },
   };
-  const Yi = { domains: ["cdninstagram.com", "fbcdn.net"] },
-    Zi = {},
-    Ki = re().default();
+  const Zi = { domains: ["cdninstagram.com", "fbcdn.net"] },
+    Ki = {},
+    Qi = re().default();
   async function Ji(e) {
-    if ((await Ki, Zi[e]))
+    if ((await Qi, Ki[e]))
       try {
-        await fetch(Zi[e]);
+        await fetch(Ki[e]);
       } catch (t) {
-        delete Zi[e];
+        delete Ki[e];
       }
-    if (!Zi[e]) {
+    if (!Ki[e]) {
       const t = await C().iframeBus.send("cdn-proxy.fetch", e);
-      Zi[e] = t;
+      Ki[e] = t;
     }
-    return Zi[e];
+    return Ki[e];
   }
-  function Qi(e) {
-    return !!e && Yi.domains.some((t) => e.includes(t));
+  function Xi(e) {
+    return !!e && Zi.domains.some((t) => e.includes(t));
   }
   C();
-  const Xi = {
+  const er = {
     init: function () {
       C().iframeBus.on("strip-metadata.strip", this._stripMetadata.bind(this));
     },
@@ -13293,7 +13181,7 @@
     },
   };
   k(), C(), y(), m(), v();
-  const er = {
+  const tr = {
     init: function () {
       C().iframeBus.on("ghost-story-view.has-pro", this._hasPro.bind(this)),
         C().iframeBus.on(
@@ -13350,8 +13238,8 @@
     },
   };
   g(), v();
-  const tr = { root: {}, rootWider: { left: -50, right: -50 } };
-  class sr extends g().default.Component {
+  const sr = { root: {}, rootWider: { left: -50, right: -50 } };
+  class ar extends g().default.Component {
     constructor(...e) {
       var t;
       return (
@@ -13367,7 +13255,7 @@
     }
     render() {
       return Glamor.createElement(ot, {
-        style: [tr.root, !this.props.widescreen && tr.rootWider],
+        style: [sr.root, !this.props.widescreen && sr.rootWider],
         feature: "ghost-story-view",
         show: this.props.show,
         noArt: !0,
@@ -13375,11 +13263,11 @@
       });
     }
   }
-  var ar = v().influx((e) => ({
+  var nr = v().influx((e) => ({
       show: e.ghostStoryView.showUpsellOverlay,
       widescreen: e.igView.fullscreen,
-    }))(sr),
-    nr = {
+    }))(ar),
+    or = {
       waitForBackground: async function () {
         const e = await new Promise((e) =>
           chrome.runtime.getBackgroundPage((t) => e(t))
@@ -13392,7 +13280,7 @@
       },
     };
   v();
-  var or = {
+  var ir = {
     init: function () {
       if (v().model.state.version > 70) return;
       (document.body.innerHTML =
@@ -13407,7 +13295,7 @@
     },
   };
   w();
-  var ir = {
+  var rr = {
     init: function () {
       return new Promise((e) => {
         const t = Math.random();
@@ -13420,7 +13308,7 @@
     },
   };
   v(), C(), m();
-  var rr = function () {
+  var lr = function () {
     C().iframeBus.on("ig.open-media", () => {
       m().gaController.sendEvent("user", "ig:media-open");
     }),
@@ -13466,13 +13354,13 @@
     g(),
     P(),
     v();
-  const lr = {
+  const cr = {
     placeholder: { width: "100%", height: 300 },
     iframeWrapper: { ...g().default.relative() },
     iframeSubWrapper: { ...g().default.absolute(". -16 . -124") },
     iframe: { border: "none" },
   };
-  class cr extends g().default.Component {
+  class dr extends g().default.Component {
     render() {
       const e =
         !1 !== P().env.features.iframes &&
@@ -13480,25 +13368,25 @@
       return this.props.isOpen
         ? Glamor.createElement(
             "div",
-            { css: lr.iframeWrapper },
+            { css: cr.iframeWrapper },
             Glamor.createElement(
               "div",
-              { css: lr.iframeSubWrapper },
+              { css: cr.iframeSubWrapper },
               Glamor.createElement("iframe", {
-                css: lr.iframe,
+                css: cr.iframe,
                 src: e,
                 width: "100%",
                 height: "300px",
               })
             )
           )
-        : Glamor.createElement("div", { css: lr.placeholder });
+        : Glamor.createElement("div", { css: cr.placeholder });
     }
   }
-  var dr = v().influx((e) => ({
+  var ur = v().influx((e) => ({
     isOpen: e.sidebar.isOpen && "logo" === e.sidebar.selectedTabId,
-  }))(g().default.theme.ThemeAware(cr));
-  const ur = {
+  }))(g().default.theme.ThemeAware(dr));
+  const hr = {
     root: { ...g().default.padding("g2 g2 0 23") },
     card: {
       marginBottom: 24,
@@ -13519,7 +13407,7 @@
   g().default.Image.registerImages({
     "whats-new.fire": "ui-igswiss/billing-fire.png:50:50",
   });
-  class hr extends g().default.Component {
+  class mr extends g().default.Component {
     constructor(e) {
       super(e),
         (this._onRateUsClick = () => {
@@ -13550,7 +13438,7 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: ur.root },
+        { css: hr.root },
         this._renderHeader(),
         Glamor.createElement(g().default.Spacer, { height: "g1" }),
         this._renderProPanel(),
@@ -13636,7 +13524,7 @@
     _renderWhatsNew() {
       return Glamor.createElement(
         "div",
-        { css: ur.content },
+        { css: hr.content },
         this.props.whatsNew.map((e) => {
           const t = this._whatsNewItems.find((t) => t.id === e.id);
           return t
@@ -13649,7 +13537,7 @@
                   subheader: t.subheader,
                   hexImage: t.hexImage,
                   content: this._renderWhatsNewItemContent(t),
-                  style: ur.card,
+                  style: hr.card,
                 })
             : null;
         })
@@ -13712,7 +13600,7 @@
       return this.props.showRateUs
         ? Glamor.createElement(
             "div",
-            { css: ur.rateUs },
+            { css: hr.rateUs },
             Glamor.createElement(p().default.RateUsMini, {
               image: "rate-us-heart",
               content: Glamor.createElement(
@@ -13766,7 +13654,7 @@
     _renderContacts() {
       return Glamor.createElement(
         "div",
-        { css: ur.contacts },
+        { css: hr.contacts },
         "Contact details: ",
         Glamor.createElement(
           "a",
@@ -13776,24 +13664,24 @@
         Glamor.createElement(g().default.Spacer, { height: 24 }),
         "Share a word about us:",
         Glamor.createElement(g().default.Spacer, { height: 4 }),
-        Glamor.createElement(dr, null)
+        Glamor.createElement(ur, null)
       );
     }
   }
-  var mr = v().influx((e) => ({
+  var gr = v().influx((e) => ({
     hasPro: true,
     hasProPaid: true,
     hasProPromocode: y().stateProxy.hasProPromocode(),
     whatsNew: e.whatsNew,
     showRateUs: !e.rateUs.acknowledged,
     isAfterTheEndUser: e.isAfterTheEndUser,
-  }))(hr);
+  }))(mr);
   v();
-  var gr = v().action("whats-new.acknowledge-all", (e, t) => ({
+  var pr = v().action("whats-new.acknowledge-all", (e, t) => ({
     ...e,
     whatsNew: e.whatsNew.map((e) => ({ ...e, acknowledged: !0 })),
   }));
-  const pr = ({ props: e }) => ({
+  const fr = ({ props: e }) => ({
       width: "100%",
       height: "100%",
       ...("tab-dm" !== e.selectedTabId && {
@@ -13802,7 +13690,7 @@
         pointerEvents: "none",
       }),
     }),
-    fr = ({ props: e }) => ({
+    vr = ({ props: e }) => ({
       width: "100%",
       height: "100%",
       ...(e.schedule.showFallback && {
@@ -13815,7 +13703,7 @@
         pointerEvents: "none",
       }),
     }),
-    vr = {
+    Cr = {
       dm: "sidebar-mediator.dm",
       covers: "sidebar-mediator.covers",
       schedule: "sidebar-mediator.schedule",
@@ -13827,14 +13715,14 @@
     "sidebar-mediator.billing": "tab-billing.png:34:45",
   }),
     g().default.SvgIcon.registerSvgIcons([
-      `<symbol id="${vr.dm}" viewBox="0 0 43.414 43.414"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M42 1.414l-22.55 22.55M42 1.414l-14.35 41-8.2-18.45L1 15.764z"/></g></symbol>`,
-      `<symbol id="${vr.covers}" viewBox="0 0 35.699 48.18"><g transform="translate(-1317 -255)"><line y1="8" transform="translate(1326.5 256.5)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><path d="M0,16V0" transform="translate(1344.5 256.5)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><path d="M0,12V0" transform="translate(1335.5 256.5)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><path d="M30.891,0H2.808A2.809,2.809,0,0,0,0,2.808V22.466H33.7V2.808A2.809,2.809,0,0,0,30.891,0ZM0,29.331a5.617,5.617,0,0,0,5.617,5.617h5.617v5.617a5.617,5.617,0,0,0,11.233,0V34.947h5.617A5.617,5.617,0,0,0,33.7,29.331V26.523H0Zm16.85,9.127a2.106,2.106,0,1,1-2.106,2.106A2.106,2.106,0,0,1,16.85,38.458Z" transform="translate(1318 256)" fill="none" stroke="currentColor" stroke-width="2"/></g></symbol>`,
-      `<symbol id="${vr.schedule}" viewBox="0 0 42.004 42.004"><path d="M10.002 42.002a24.394 24.394 0 01-10-10v-26a6.007 6.007 0 016-6h26a24.394 24.394 0 0110 10v26a6.007 6.007 0 01-6 6zm-4-6a4.006 4.006 0 004 4h26a4 4 0 004-4V28.69l-.635-.6-1.855-1.748-.213-.207a1.713 1.713 0 00-2.3-.059l-4.164 3.563a3.726 3.726 0 01-2.619.908l2.154 4.092a.971.971 0 01-.365 1.3.881.881 0 01-.447.117.927.927 0 01-.812-.5l-6.648-12.6-4.57-8.67a1.722 1.722 0 00-3.039-.059L6.001 29.084zm-4-30v26a4 4 0 002 3.463V10.002a6 6 0 016-6h4a1 1 0 010 2h-4a4.008 4.008 0 00-4 4v15.313l6.9-12.062a3.539 3.539 0 016.256.107l2.939 5.582 1.637 3.092 2.92 5.537a1.968 1.968 0 001.367 1.031 1.926 1.926 0 001.637-.432l4.164-3.568a3.529 3.529 0 013.693-.564l1.855 1.459.635.6V10.002a4.006 4.006 0 00-4-4h-14a1 1 0 110-2H35.47a4.117 4.117 0 00-.637-.83 3.991 3.991 0 00-2.831-1.17h-26a4.007 4.007 0 00-4 4zm24.605 8.381a4.556 4.556 0 114.553 4.553 4.562 4.562 0 01-4.553-4.555zm1.768 0a2.789 2.789 0 102.785-2.791 2.788 2.788 0 00-2.785 2.789zM17.002 5.002a1 1 0 111 1 1 1 0 01-1-1z" fill="currentColor"/></symbol>`,
-      `<symbol id="${vr.hashtags}" viewBox="0 0 38.717 48.907"><path d="M3.802 48.907a3.889 3.889 0 01-3.8-3.8V4.725A4.726 4.726 0 014.725.003h33.051a.945.945 0 010 1.889 2.836 2.836 0 000 5.672.943.943 0 01.943.944v37.564a2.844 2.844 0 01-2.832 2.838zm-1.914-3.8a2.1 2.1 0 001.914 1.909h32.082a.943.943 0 00.943-.944V9.452H4.722a4.679 4.679 0 01-2.834-.974zm0-40.382a2.836 2.836 0 002.834 2.838H33.99a4.734 4.734 0 010-5.672H4.722a2.832 2.832 0 00-2.834 2.831zm19.471 35.412l.8-6.676h-7.207l-.84 6.676h-1.9l.8-6.676h-4.99v-1.934h5.238l.916-7.387H9.145v-1.934h5.273l.811-6.675h1.934l-.846 6.675h7.244l.809-6.675h1.9l-.811 6.675h4.955v1.934h-5.2l-.914 7.387h4.99v1.934h-5.24l-.8 6.676zm-6.189-8.609h7.244l.914-7.387h-7.207z" fill="currentColor"/></symbol>`,
-      `<symbol id="${vr.billing}" _dx="23%" viewBox="0 0 47.703 36.216"><path d="M18.108 18.108a8.554 8.554 0 10-8.554-8.554 8.579 8.579 0 008.554 8.554zm0 4.277C12.441 22.385 1 25.272 1 30.939v4.277h34.216v-4.277c0-5.667-11.441-8.554-17.108-8.554z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M32.695 1.008h-2.424v5.6h1.3V5.064h1.124c1.5 0 2.432-.776 2.432-2.024s-.936-2.032-2.432-2.032zm-.072 3h-1.056V2.064h1.056c.792 0 1.192.36 1.192.976s-.4.968-1.192.968zm8.384 2.6l-1.256-1.8a1.821 1.821 0 001.156-1.768c0-1.256-.94-2.032-2.436-2.032h-2.424v5.6h1.3v-1.56h1.188l1.08 1.56zM39.591 3.04c0 .608-.4.976-1.192.976h-1.056V2.064h1.056c.792 0 1.192.36 1.192.976zm5.048 3.668a2.9 2.9 0 003.068-2.9 2.9 2.9 0 00-3.064-2.9 2.9 2.9 0 00-3.064 2.9 2.9 2.9 0 003.06 2.9zm0-1.1a1.708 1.708 0 01-1.752-1.8 1.708 1.708 0 011.752-1.792 1.708 1.708 0 011.752 1.792A1.708 1.708 0 0144.639 5.6z" fill="currentColor"/></symbol>`,
-      `<symbol id="${vr.music}" viewBox="0 0 41.521 44.119"><g transform="translate(6595.268 7553.377)"><g transform="translate(-6595.268 -7524.327)" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7.534" cy="7.534" r="7.534" stroke="none"/><circle cx="7.534" cy="7.534" r="6.534" fill="none"/></g><g transform="translate(-6568.818 -7528.094)" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7.534" cy="7.534" r="7.534" stroke="none"/><circle cx="7.534" cy="7.534" r="6.534" fill="none"/></g><path d="M-6584-7516.793v-30.734l26.44-4.658v31.626" transform="translate(2.812)" fill="none" stroke="currentColor" stroke-width="2"/><line y1="5.023" x2="26.37" transform="translate(-6580.559 -7545.046)" fill="none" stroke="currentColor" stroke-width="2"/></g></symbol>`,
+      `<symbol id="${Cr.dm}" viewBox="0 0 43.414 43.414"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M42 1.414l-22.55 22.55M42 1.414l-14.35 41-8.2-18.45L1 15.764z"/></g></symbol>`,
+      `<symbol id="${Cr.covers}" viewBox="0 0 35.699 48.18"><g transform="translate(-1317 -255)"><line y1="8" transform="translate(1326.5 256.5)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><path d="M0,16V0" transform="translate(1344.5 256.5)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><path d="M0,12V0" transform="translate(1335.5 256.5)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/><path d="M30.891,0H2.808A2.809,2.809,0,0,0,0,2.808V22.466H33.7V2.808A2.809,2.809,0,0,0,30.891,0ZM0,29.331a5.617,5.617,0,0,0,5.617,5.617h5.617v5.617a5.617,5.617,0,0,0,11.233,0V34.947h5.617A5.617,5.617,0,0,0,33.7,29.331V26.523H0Zm16.85,9.127a2.106,2.106,0,1,1-2.106,2.106A2.106,2.106,0,0,1,16.85,38.458Z" transform="translate(1318 256)" fill="none" stroke="currentColor" stroke-width="2"/></g></symbol>`,
+      `<symbol id="${Cr.schedule}" viewBox="0 0 42.004 42.004"><path d="M10.002 42.002a24.394 24.394 0 01-10-10v-26a6.007 6.007 0 016-6h26a24.394 24.394 0 0110 10v26a6.007 6.007 0 01-6 6zm-4-6a4.006 4.006 0 004 4h26a4 4 0 004-4V28.69l-.635-.6-1.855-1.748-.213-.207a1.713 1.713 0 00-2.3-.059l-4.164 3.563a3.726 3.726 0 01-2.619.908l2.154 4.092a.971.971 0 01-.365 1.3.881.881 0 01-.447.117.927.927 0 01-.812-.5l-6.648-12.6-4.57-8.67a1.722 1.722 0 00-3.039-.059L6.001 29.084zm-4-30v26a4 4 0 002 3.463V10.002a6 6 0 016-6h4a1 1 0 010 2h-4a4.008 4.008 0 00-4 4v15.313l6.9-12.062a3.539 3.539 0 016.256.107l2.939 5.582 1.637 3.092 2.92 5.537a1.968 1.968 0 001.367 1.031 1.926 1.926 0 001.637-.432l4.164-3.568a3.529 3.529 0 013.693-.564l1.855 1.459.635.6V10.002a4.006 4.006 0 00-4-4h-14a1 1 0 110-2H35.47a4.117 4.117 0 00-.637-.83 3.991 3.991 0 00-2.831-1.17h-26a4.007 4.007 0 00-4 4zm24.605 8.381a4.556 4.556 0 114.553 4.553 4.562 4.562 0 01-4.553-4.555zm1.768 0a2.789 2.789 0 102.785-2.791 2.788 2.788 0 00-2.785 2.789zM17.002 5.002a1 1 0 111 1 1 1 0 01-1-1z" fill="currentColor"/></symbol>`,
+      `<symbol id="${Cr.hashtags}" viewBox="0 0 38.717 48.907"><path d="M3.802 48.907a3.889 3.889 0 01-3.8-3.8V4.725A4.726 4.726 0 014.725.003h33.051a.945.945 0 010 1.889 2.836 2.836 0 000 5.672.943.943 0 01.943.944v37.564a2.844 2.844 0 01-2.832 2.838zm-1.914-3.8a2.1 2.1 0 001.914 1.909h32.082a.943.943 0 00.943-.944V9.452H4.722a4.679 4.679 0 01-2.834-.974zm0-40.382a2.836 2.836 0 002.834 2.838H33.99a4.734 4.734 0 010-5.672H4.722a2.832 2.832 0 00-2.834 2.831zm19.471 35.412l.8-6.676h-7.207l-.84 6.676h-1.9l.8-6.676h-4.99v-1.934h5.238l.916-7.387H9.145v-1.934h5.273l.811-6.675h1.934l-.846 6.675h7.244l.809-6.675h1.9l-.811 6.675h4.955v1.934h-5.2l-.914 7.387h4.99v1.934h-5.24l-.8 6.676zm-6.189-8.609h7.244l.914-7.387h-7.207z" fill="currentColor"/></symbol>`,
+      `<symbol id="${Cr.billing}" _dx="23%" viewBox="0 0 47.703 36.216"><path d="M18.108 18.108a8.554 8.554 0 10-8.554-8.554 8.579 8.579 0 008.554 8.554zm0 4.277C12.441 22.385 1 25.272 1 30.939v4.277h34.216v-4.277c0-5.667-11.441-8.554-17.108-8.554z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M32.695 1.008h-2.424v5.6h1.3V5.064h1.124c1.5 0 2.432-.776 2.432-2.024s-.936-2.032-2.432-2.032zm-.072 3h-1.056V2.064h1.056c.792 0 1.192.36 1.192.976s-.4.968-1.192.968zm8.384 2.6l-1.256-1.8a1.821 1.821 0 001.156-1.768c0-1.256-.94-2.032-2.436-2.032h-2.424v5.6h1.3v-1.56h1.188l1.08 1.56zM39.591 3.04c0 .608-.4.976-1.192.976h-1.056V2.064h1.056c.792 0 1.192.36 1.192.976zm5.048 3.668a2.9 2.9 0 003.068-2.9 2.9 2.9 0 00-3.064-2.9 2.9 2.9 0 00-3.064 2.9 2.9 2.9 0 003.06 2.9zm0-1.1a1.708 1.708 0 01-1.752-1.8 1.708 1.708 0 011.752-1.792 1.708 1.708 0 011.752 1.792A1.708 1.708 0 0144.639 5.6z" fill="currentColor"/></symbol>`,
+      `<symbol id="${Cr.music}" viewBox="0 0 41.521 44.119"><g transform="translate(6595.268 7553.377)"><g transform="translate(-6595.268 -7524.327)" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7.534" cy="7.534" r="7.534" stroke="none"/><circle cx="7.534" cy="7.534" r="6.534" fill="none"/></g><g transform="translate(-6568.818 -7528.094)" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7.534" cy="7.534" r="7.534" stroke="none"/><circle cx="7.534" cy="7.534" r="6.534" fill="none"/></g><path d="M-6584-7516.793v-30.734l26.44-4.658v31.626" transform="translate(2.812)" fill="none" stroke="currentColor" stroke-width="2"/><line y1="5.023" x2="26.37" transform="translate(-6580.559 -7545.046)" fill="none" stroke="currentColor" stroke-width="2"/></g></symbol>`,
     ]);
-  class Cr extends g().default.Component {
+  class yr extends g().default.Component {
     constructor(...e) {
       var t;
       return (
@@ -13850,13 +13738,13 @@
                 ? (t.sidebar.isOpen = !t.sidebar.isOpen)
                 : ((t.sidebar.isOpen = !0), (t.sidebar.selectedTabId = e));
             }),
-            "logo" === this.props.selectedTabId && gr.dispatch();
+            "logo" === this.props.selectedTabId && pr.dispatch();
         }),
         (this._onSidePanelCloseClick = () => {
           v().transaction((e) => {
             e.sidebar.isOpen = !1;
           }),
-            "logo" === this.props.selectedTabId && gr.dispatch();
+            "logo" === this.props.selectedTabId && pr.dispatch();
         }),
         (this._onClosed = () => {
           v().transaction((e) => {
@@ -13924,14 +13812,14 @@
         tabs: [
           {
             id: "tab-dm",
-            svgIcon: vr.dm,
+            svgIcon: Cr.dm,
             title: "Direct Messages",
             features: ["send messages", "ghost mode"],
             badgeText: this.props.dm.badge,
           },
           {
             id: "tab-scheduling",
-            svgIcon: vr.schedule,
+            svgIcon: Cr.schedule,
             title: "Post Assistant",
             features: [
               "grid planner, bulk upload",
@@ -13941,7 +13829,7 @@
           },
           {
             id: "tab-tag-assist",
-            svgIcon: vr.hashtags,
+            svgIcon: Cr.hashtags,
             title: "Hashtag Assistant",
             features: [
               "manage hashtag collections",
@@ -13955,7 +13843,7 @@
             iconStyle: { position: "relative", left: -1 },
             ...(this.props.hasProPaid
               ? {
-                  svgIcon: vr.billing,
+                  svgIcon: Cr.billing,
                   features: [
                     "access to all advanced features",
                     `enabled with ${e} plan`,
@@ -13963,7 +13851,7 @@
                   ],
                 }
               : {
-                  svgIcon: vr.billing,
+                  svgIcon: Cr.billing,
                   iconStyle: { position: "relative", left: -1 },
                   features: [
                     "access to all advanced features",
@@ -13980,7 +13868,7 @@
         s = null;
       const a = this.props.selectedTabId;
       "logo" === a
-        ? (e = Glamor.createElement(mr, null))
+        ? (e = Glamor.createElement(gr, null))
         : "tab-dm" === a
         ? (s = 750)
         : "tab-tag-assist" === a
@@ -13997,7 +13885,7 @@
         this.props.loggedIn &&
         Glamor.createElement(
           "div",
-          { css: pr(this) },
+          { css: fr(this) },
           Glamor.createElement(no, null)
         );
       return {
@@ -14018,14 +13906,14 @@
       "tab-scheduling" === t
         ? (s = e.schedule.showBody || e.schedule.showFallback)
         : "tab-billing" === t
-        ? ((s = !0), (a = Glamor.createElement(Qe, null)))
+        ? ((s = !0), (a = Glamor.createElement(Je, null)))
         : "tab-dm" === t &&
           ((s = e.quickReplies.showBody), (a = Glamor.createElement(ss, null)));
       const n =
         this.props.loggedIn &&
         Glamor.createElement(
           "div",
-          { css: fr(this) },
+          { css: vr(this) },
           Glamor.createElement(fn, null)
         );
       return {
@@ -14040,7 +13928,7 @@
         : this._onExpandClick;
     }
   }
-  var yr = v().influx((e) => ({
+  var br = v().influx((e) => ({
     loggedIn: e.authStatus.isLoggedIn,
     selectedTabId: e.sidebar.selectedTabId,
     desktopPlatform: e.desktopPlatform,
@@ -14059,9 +13947,9 @@
     },
     dm: { badge: e.dm.badgeText },
     quickReplies: { showBody: e.quickReplies.shown },
-  }))(Cr);
+  }))(yr);
   g(), p(), v();
-  class br extends g().default.Component {
+  class kr extends g().default.Component {
     constructor(...e) {
       var t;
       return (
@@ -14125,13 +14013,13 @@
     }
   }
   v(), f(), m(), y(), g(), p();
-  const kr = (e) => ({
+  const wr = (e) => ({
       ...g().default.text.nowrap,
       opacity: 0,
       pointerEvents: "none",
       ...(e.showTosSummary && { opacity: 1, pointerEvents: "inherit" }),
     }),
-    wr = (e, t) => ({
+    Sr = (e, t) => ({
       ...g().default.absolute(". 0 31 ."),
       ...g().default.transition.fast,
       width: 406,
@@ -14145,7 +14033,7 @@
           pointerEvents: "inherit",
         }),
     });
-  class Sr extends g().default.Component {
+  class Tr extends g().default.Component {
     constructor(e) {
       super(e),
         (this._onButtonClick = () => {
@@ -14184,7 +14072,7 @@
         null,
         Glamor.createElement(
           "div",
-          { css: kr(this.props) },
+          { css: wr(this.props) },
           Glamor.createElement(g().default.LinkButton, {
             label: "CRACKED BY YEZER",
             color: g().default.color.textPassive,
@@ -14194,7 +14082,7 @@
         ),
         Glamor.createElement(
           "div",
-          { css: wr(this.props, this.state) },
+          { css: Sr(this.props, this.state) },
           Glamor.createElement(p().default.TosSummary, {
             onClose: this._onClose,
             onOkClick: this._onOkClick,
@@ -14206,33 +14094,33 @@
       );
     }
   }
-  var Tr = v().influx((e) => ({
+  var Er = v().influx((e) => ({
     showTosSummary: -1 === e.acknowledged.tosSummary,
-  }))(Sr);
+  }))(Tr);
   g(), p(), v(), m(), de(), C();
-  const Er = "ig-buttons-mediator.back",
-    _r = "ig-buttons-mediator.refresh",
-    Ar = "ig-buttons-mediator.fullscreen-enter",
-    Pr = "ig-buttons-mediator.fullscreen-exit",
-    Ir = "ig-buttons-mediator.switch-to-day",
-    xr = "ig-buttons-mediator.switch-to-night",
-    Gr = "ig-buttons-mediator.zen",
-    Dr = "ig-buttons-mediator.ghost-story-view-on",
-    Br = "ig-buttons-mediator.ghost-story-view-off",
-    Fr = "ig-buttons-mediator.zen-on";
+  const _r = "ig-buttons-mediator.back",
+    Ar = "ig-buttons-mediator.refresh",
+    Pr = "ig-buttons-mediator.fullscreen-enter",
+    Ir = "ig-buttons-mediator.fullscreen-exit",
+    xr = "ig-buttons-mediator.switch-to-day",
+    Gr = "ig-buttons-mediator.switch-to-night",
+    Dr = "ig-buttons-mediator.zen",
+    Br = "ig-buttons-mediator.ghost-story-view-on",
+    Fr = "ig-buttons-mediator.ghost-story-view-off",
+    Or = "ig-buttons-mediator.zen-on";
   g().default.SvgIcon.registerSvgIcons([
-    `<symbol id="${Er}" viewBox="0 0 40 40"><path fill="none" d="M0 0h40v40H0z"/><path d="M15.125 19.846l9.1-9.1-1.385-1.384-9.644 9.644a1.2 1.2 0 0 0 0 1.681l9.635 9.634 1.385-1.384z" fill="currentColor"/></symbol>`,
-    `<symbol id="${_r}" viewBox="0 0 40 40"><path fill="none" d="M0 0h40v40H0z"/><path d="M30.378 18.7a.82.82 0 1 0-1.618.258v.015a9.022 9.022 0 1 1-2.24-4.582L22.896 15.6l.518 1.555 4.917-1.639a.82.82 0 0 0 .561-.778V9.819h-1.64v2.994a10.546 10.546 0 1 0 3.126 5.887z" fill="currentColor"/></symbol>`,
-    `<symbol id="${Ar}" viewBox="0 0 40 40"><path fill="none" d="M0 0h40v40H0z"/><path d="M28.163 26.952l-3.722-3.722-1.211 1.211 3.722 3.722H24.06v1.721h5.824V24.06h-1.721zm-3.722-10.179l3.722-3.725v2.892h1.721v-5.824H24.06v1.721h2.892l-3.722 3.721zm-8.883 6.457l-3.722 3.722V24.06h-1.72v5.824h5.824v-1.721h-2.892l3.725-3.722zm.382-11.393v-1.721h-5.824v5.824h1.721v-2.892l3.721 3.725 1.215-1.215-3.725-3.721z" fill="currentColor"/></symbol>`,
-    `<symbol id="${Pr}" viewBox="0 0 40 40"><path fill="none" d="M0 0h40v40H0z"/><path d="M24.951 26.162l3.722 3.722 1.211-1.211-3.722-3.722h2.892V23.23H23.23v5.824h1.721zm3.722-16.046l-3.722 3.725v-2.892H23.23v5.824h5.824v-1.721h-2.892l3.722-3.721zM11.332 29.884l3.722-3.722v2.892h1.72V23.23H10.95v1.721h2.892l-3.725 3.722zm-.382-14.832v1.721h5.824v-5.824h-1.721v2.892l-3.721-3.725-1.215 1.215 3.725 3.721z" fill="currentColor"/></symbol>`,
-    `<symbol id="${Ir}" viewBox="0 0 40 40"><g transform="translate(3444 7623)"><rect width="40" height="40" transform="translate(-3444 -7623)" fill="none"/><path d="M11.166,20.406h3.118l-1.561,5.045ZM7.535,18.6l2.7,1.56L6.36,23.745Zm7.811,1.515,2.673-1.606,1.259,5.129Zm-9.2-7.347a6.622,6.622,0,1,1,6.621,6.529A6.576,6.576,0,0,1,6.14,12.766Zm-.8,2.579,1.607,2.673L1.816,19.277ZM18.6,17.917l1.56-2.7,3.588,3.875Zm1.81-6.75,5.045,1.561-5.045,1.558ZM0,12.723l5.045-1.557v3.118ZM1.707,6.36,6.855,7.534l-1.56,2.7Zm16.8,1.074,5.129-1.261-3.524,3.933ZM6.174,1.816l3.932,3.522L7.434,6.945Zm9.042,3.479,3.875-3.589L17.917,6.854Zm-4.049-.25L12.727,0l1.557,5.045Z" transform="translate(-3436.759 -7615.715)" fill="currentColor"/></g></symbol>`,
-    `<symbol id="${xr}" viewBox="0 0 40 40"><g transform="translate(3380 7623)"><rect width="40" height="40" transform="translate(-3380 -7623)" fill="none"/><g transform="translate(-3372.822 -7615.724)"><path d="M10.518,0a10.077,10.077,0,0,0-1.3.082A10.511,10.511,0,1,0,10.518,0ZM2.63,10.518A7.9,7.9,0,0,1,7.4,3.273a10.52,10.52,0,0,0,7.556,13.771A7.89,7.89,0,0,1,2.63,10.518Z" transform="translate(2.25 2.25)" fill="currentColor"/></g></g></symbol>`,
-    `<symbol id="${Gr}" viewBox="0 0 24.512 18.248"><path d="M24.3 14.632a8.813 8.813 0 00-2.357-1.69 9.42 9.42 0 002.271-4.292.719.719 0 00-.548-.7 9.941 9.941 0 00-3.588-.277c.044-.224.082-.449.112-.677a10.525 10.525 0 00-.27-4.118.718.718 0 00-.88-.508 10.6 10.6 0 00-3.729 1.848A10.866 10.866 0 0012.763.207a.719.719 0 00-1.016 0A10.866 10.866 0 009.2 4.222a10.6 10.6 0 00-3.729-1.848.718.718 0 00-.879.508 10.527 10.527 0 00-.158 4.798 9.941 9.941 0 00-3.586.276.719.719 0 00-.551.7 9.355 9.355 0 002.271 4.292A8.811 8.811 0 00.21 14.632a.718.718 0 000 1.016 8.877 8.877 0 0012.045.47 8.877 8.877 0 0012.031-.456.718.718 0 00.015-1.03zm-4.64-5.45a8.509 8.509 0 012.915 0 8.478 8.478 0 01-7.5 5.545 10.579 10.579 0 004.587-5.547zm-17.727 0a8.51 8.51 0 012.915 0 10.58 10.58 0 004.582 5.545 8.477 8.477 0 01-7.5-5.545zm4.552 7.629a7.383 7.383 0 01-4.7-1.672A7.322 7.322 0 013.7 14.007a9.9 9.9 0 005.826 2.159 7.42 7.42 0 01-3.043.646zm.4-6.624a9.15 9.15 0 01-1.077-6.2 9.171 9.171 0 012.96 1.746 10.921 10.921 0 001.249 7.677 9.122 9.122 0 01-3.125-3.222zm5.364 3.9a9.482 9.482 0 010-12.309 9.482 9.482 0 010 12.309zm3.705-6.155a10.931 10.931 0 00-.224-2.2A9.171 9.171 0 0118.7 3.98a9.143 9.143 0 01-4.21 9.423 10.9 10.9 0 001.471-5.474zm2.064 8.882a7.419 7.419 0 01-3.043-.646 9.9 9.9 0 005.826-2.159 7.326 7.326 0 011.917 1.133 7.383 7.383 0 01-4.693 1.67z" fill="currentColor"/></symbol>`,
-    `<symbol id="${Dr}" viewBox="0 0 26 26"><defs><linearGradient id="brand" x1=".5" x2=".5" y2="1.048" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#f27633"/><stop offset=".477" stop-color="#e94153"/><stop offset="1" stop-color="#8f2483"/></linearGradient></defs><path d="M12.972 26a13.078 13.078 0 0 1-6.128-1.525.9.9 0 1 1 .847-1.583 11.3 11.3 0 0 0 7.842 1.021.9.9 0 0 1 .409 1.748 13.138 13.138 0 0 1-2.97.338Zm-8.34-3.316a.9.9 0 0 1-.618-.246 12.952 12.952 0 0 1-3.7-6.363.9.9 0 0 1 1.748-.423 11.161 11.161 0 0 0 3.191 5.484.9.9 0 0 1-.618 1.548ZM.9 12.691H.815A.9.9 0 0 1 0 11.71a12.886 12.886 0 0 1 1.152-4.2.9.9 0 0 1 1.63.758 11.091 11.091 0 0 0-.982 3.611.9.9 0 0 1-.894.812Zm3.771-7.6a.9.9 0 0 1-.691-1.466q.116-.147.244-.289A.9.9 0 1 1 5.58 4.514c-.072.082-.141.165-.211.248a.9.9 0 0 1-.694.328Zm14.518 19.2a.9.9 0 0 1-.463-1.667A11.2 11.2 0 0 0 12.972 1.8a.9.9 0 1 1 0-1.8 13 13 0 0 1 6.682 24.161.893.893 0 0 1-.461.127Z" fill="url(#brand)"/><path d="M12.877 7.5A4.061 4.061 0 0 0 10.1 8.847 4.315 4.315 0 0 0 9 11.8v5.67a.351.351 0 0 0 .056.191.336.336 0 0 0 .15.126.324.324 0 0 0 .192.02.33.33 0 0 0 .171-.094l.519-.4a.326.326 0 0 1 .233-.066.331.331 0 0 1 .215.114l.895 1.039a.326.326 0 0 0 .471 0l.849-.985a.333.333 0 0 1 .113-.085.325.325 0 0 1 .273 0 .334.334 0 0 1 .113.085l.849.985a.326.326 0 0 0 .471 0l.895-1.039a.33.33 0 0 1 .215-.114.326.326 0 0 1 .233.066l.519.4a.33.33 0 0 0 .171.094.324.324 0 0 0 .192-.02.336.336 0 0 0 .149-.126.352.352 0 0 0 .056-.193v-5.841a4.235 4.235 0 0 0-.316-1.608 4.133 4.133 0 0 0-.9-1.354 3.989 3.989 0 0 0-1.34-.886 3.891 3.891 0 0 0-1.567-.279Zm-1.21 4.812a.652.652 0 0 1-.37-.116.683.683 0 0 1-.246-.309.706.706 0 0 1-.038-.4.7.7 0 0 1 .182-.352.661.661 0 0 1 .341-.188.648.648 0 0 1 .385.039.671.671 0 0 1 .3.253.7.7 0 0 1-.083.868.656.656 0 0 1-.471.207Zm2.667 0a.652.652 0 0 1-.37-.116.684.684 0 0 1-.246-.309.706.706 0 0 1-.038-.4.7.7 0 0 1 .182-.352.661.661 0 0 1 .341-.188.648.648 0 0 1 .385.039.671.671 0 0 1 .3.253.7.7 0 0 1-.083.868.656.656 0 0 1-.472.207Z" fill="url(#brand)"/></symbol>`,
-    `<symbol id="${Br}" viewBox="0 0 26 26"><path d="M12.972 26a13.078 13.078 0 0 1-6.128-1.525.9.9 0 1 1 .847-1.583 11.3 11.3 0 0 0 7.842 1.021.9.9 0 0 1 .409 1.748 13.138 13.138 0 0 1-2.97.338Zm-8.34-3.316a.9.9 0 0 1-.618-.246 12.952 12.952 0 0 1-3.7-6.363.9.9 0 0 1 1.748-.423 11.161 11.161 0 0 0 3.191 5.484.9.9 0 0 1-.618 1.548ZM.9 12.691H.815A.9.9 0 0 1 0 11.71a12.886 12.886 0 0 1 1.152-4.2.9.9 0 0 1 1.63.758 11.091 11.091 0 0 0-.982 3.611.9.9 0 0 1-.894.812Zm3.771-7.6a.9.9 0 0 1-.691-1.466q.116-.147.244-.289A.9.9 0 1 1 5.58 4.514c-.072.082-.141.165-.211.248a.9.9 0 0 1-.694.328Zm14.518 19.2a.9.9 0 0 1-.463-1.667A11.2 11.2 0 0 0 12.972 1.8a.9.9 0 1 1 0-1.8 13 13 0 0 1 6.682 24.161.893.893 0 0 1-.461.127Z" fill="currentColor"/><path d="M12.877 7.5A4.061 4.061 0 0 0 10.1 8.847 4.315 4.315 0 0 0 9 11.8v5.67a.351.351 0 0 0 .056.191.336.336 0 0 0 .15.126.324.324 0 0 0 .192.02.33.33 0 0 0 .171-.094l.519-.4a.326.326 0 0 1 .233-.066.331.331 0 0 1 .215.114l.895 1.039a.326.326 0 0 0 .471 0l.849-.985a.333.333 0 0 1 .113-.085.325.325 0 0 1 .273 0 .334.334 0 0 1 .113.085l.849.985a.326.326 0 0 0 .471 0l.895-1.039a.33.33 0 0 1 .215-.114.326.326 0 0 1 .233.066l.519.4a.33.33 0 0 0 .171.094.324.324 0 0 0 .192-.02.336.336 0 0 0 .149-.126.352.352 0 0 0 .056-.193v-5.841a4.235 4.235 0 0 0-.316-1.608 4.133 4.133 0 0 0-.9-1.354 3.989 3.989 0 0 0-1.34-.886 3.891 3.891 0 0 0-1.567-.279Zm-1.21 4.812a.652.652 0 0 1-.37-.116.683.683 0 0 1-.246-.309.706.706 0 0 1-.038-.4.7.7 0 0 1 .182-.352.661.661 0 0 1 .341-.188.648.648 0 0 1 .385.039.671.671 0 0 1 .3.253.7.7 0 0 1-.083.868.656.656 0 0 1-.471.207Zm2.667 0a.652.652 0 0 1-.37-.116.684.684 0 0 1-.246-.309.706.706 0 0 1-.038-.4.7.7 0 0 1 .182-.352.661.661 0 0 1 .341-.188.648.648 0 0 1 .385.039.671.671 0 0 1 .3.253.7.7 0 0 1-.083.868.656.656 0 0 1-.472.207Z" fill="currentColor"/></symbol>`,
+    `<symbol id="${_r}" viewBox="0 0 40 40"><path fill="none" d="M0 0h40v40H0z"/><path d="M15.125 19.846l9.1-9.1-1.385-1.384-9.644 9.644a1.2 1.2 0 0 0 0 1.681l9.635 9.634 1.385-1.384z" fill="currentColor"/></symbol>`,
+    `<symbol id="${Ar}" viewBox="0 0 40 40"><path fill="none" d="M0 0h40v40H0z"/><path d="M30.378 18.7a.82.82 0 1 0-1.618.258v.015a9.022 9.022 0 1 1-2.24-4.582L22.896 15.6l.518 1.555 4.917-1.639a.82.82 0 0 0 .561-.778V9.819h-1.64v2.994a10.546 10.546 0 1 0 3.126 5.887z" fill="currentColor"/></symbol>`,
+    `<symbol id="${Pr}" viewBox="0 0 40 40"><path fill="none" d="M0 0h40v40H0z"/><path d="M28.163 26.952l-3.722-3.722-1.211 1.211 3.722 3.722H24.06v1.721h5.824V24.06h-1.721zm-3.722-10.179l3.722-3.725v2.892h1.721v-5.824H24.06v1.721h2.892l-3.722 3.721zm-8.883 6.457l-3.722 3.722V24.06h-1.72v5.824h5.824v-1.721h-2.892l3.725-3.722zm.382-11.393v-1.721h-5.824v5.824h1.721v-2.892l3.721 3.725 1.215-1.215-3.725-3.721z" fill="currentColor"/></symbol>`,
+    `<symbol id="${Ir}" viewBox="0 0 40 40"><path fill="none" d="M0 0h40v40H0z"/><path d="M24.951 26.162l3.722 3.722 1.211-1.211-3.722-3.722h2.892V23.23H23.23v5.824h1.721zm3.722-16.046l-3.722 3.725v-2.892H23.23v5.824h5.824v-1.721h-2.892l3.722-3.721zM11.332 29.884l3.722-3.722v2.892h1.72V23.23H10.95v1.721h2.892l-3.725 3.722zm-.382-14.832v1.721h5.824v-5.824h-1.721v2.892l-3.721-3.725-1.215 1.215 3.725 3.721z" fill="currentColor"/></symbol>`,
+    `<symbol id="${xr}" viewBox="0 0 40 40"><g transform="translate(3444 7623)"><rect width="40" height="40" transform="translate(-3444 -7623)" fill="none"/><path d="M11.166,20.406h3.118l-1.561,5.045ZM7.535,18.6l2.7,1.56L6.36,23.745Zm7.811,1.515,2.673-1.606,1.259,5.129Zm-9.2-7.347a6.622,6.622,0,1,1,6.621,6.529A6.576,6.576,0,0,1,6.14,12.766Zm-.8,2.579,1.607,2.673L1.816,19.277ZM18.6,17.917l1.56-2.7,3.588,3.875Zm1.81-6.75,5.045,1.561-5.045,1.558ZM0,12.723l5.045-1.557v3.118ZM1.707,6.36,6.855,7.534l-1.56,2.7Zm16.8,1.074,5.129-1.261-3.524,3.933ZM6.174,1.816l3.932,3.522L7.434,6.945Zm9.042,3.479,3.875-3.589L17.917,6.854Zm-4.049-.25L12.727,0l1.557,5.045Z" transform="translate(-3436.759 -7615.715)" fill="currentColor"/></g></symbol>`,
+    `<symbol id="${Gr}" viewBox="0 0 40 40"><g transform="translate(3380 7623)"><rect width="40" height="40" transform="translate(-3380 -7623)" fill="none"/><g transform="translate(-3372.822 -7615.724)"><path d="M10.518,0a10.077,10.077,0,0,0-1.3.082A10.511,10.511,0,1,0,10.518,0ZM2.63,10.518A7.9,7.9,0,0,1,7.4,3.273a10.52,10.52,0,0,0,7.556,13.771A7.89,7.89,0,0,1,2.63,10.518Z" transform="translate(2.25 2.25)" fill="currentColor"/></g></g></symbol>`,
+    `<symbol id="${Dr}" viewBox="0 0 24.512 18.248"><path d="M24.3 14.632a8.813 8.813 0 00-2.357-1.69 9.42 9.42 0 002.271-4.292.719.719 0 00-.548-.7 9.941 9.941 0 00-3.588-.277c.044-.224.082-.449.112-.677a10.525 10.525 0 00-.27-4.118.718.718 0 00-.88-.508 10.6 10.6 0 00-3.729 1.848A10.866 10.866 0 0012.763.207a.719.719 0 00-1.016 0A10.866 10.866 0 009.2 4.222a10.6 10.6 0 00-3.729-1.848.718.718 0 00-.879.508 10.527 10.527 0 00-.158 4.798 9.941 9.941 0 00-3.586.276.719.719 0 00-.551.7 9.355 9.355 0 002.271 4.292A8.811 8.811 0 00.21 14.632a.718.718 0 000 1.016 8.877 8.877 0 0012.045.47 8.877 8.877 0 0012.031-.456.718.718 0 00.015-1.03zm-4.64-5.45a8.509 8.509 0 012.915 0 8.478 8.478 0 01-7.5 5.545 10.579 10.579 0 004.587-5.547zm-17.727 0a8.51 8.51 0 012.915 0 10.58 10.58 0 004.582 5.545 8.477 8.477 0 01-7.5-5.545zm4.552 7.629a7.383 7.383 0 01-4.7-1.672A7.322 7.322 0 013.7 14.007a9.9 9.9 0 005.826 2.159 7.42 7.42 0 01-3.043.646zm.4-6.624a9.15 9.15 0 01-1.077-6.2 9.171 9.171 0 012.96 1.746 10.921 10.921 0 001.249 7.677 9.122 9.122 0 01-3.125-3.222zm5.364 3.9a9.482 9.482 0 010-12.309 9.482 9.482 0 010 12.309zm3.705-6.155a10.931 10.931 0 00-.224-2.2A9.171 9.171 0 0118.7 3.98a9.143 9.143 0 01-4.21 9.423 10.9 10.9 0 001.471-5.474zm2.064 8.882a7.419 7.419 0 01-3.043-.646 9.9 9.9 0 005.826-2.159 7.326 7.326 0 011.917 1.133 7.383 7.383 0 01-4.693 1.67z" fill="currentColor"/></symbol>`,
+    `<symbol id="${Br}" viewBox="0 0 26 26"><defs><linearGradient id="brand" x1=".5" x2=".5" y2="1.048" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#f27633"/><stop offset=".477" stop-color="#e94153"/><stop offset="1" stop-color="#8f2483"/></linearGradient></defs><path d="M12.972 26a13.078 13.078 0 0 1-6.128-1.525.9.9 0 1 1 .847-1.583 11.3 11.3 0 0 0 7.842 1.021.9.9 0 0 1 .409 1.748 13.138 13.138 0 0 1-2.97.338Zm-8.34-3.316a.9.9 0 0 1-.618-.246 12.952 12.952 0 0 1-3.7-6.363.9.9 0 0 1 1.748-.423 11.161 11.161 0 0 0 3.191 5.484.9.9 0 0 1-.618 1.548ZM.9 12.691H.815A.9.9 0 0 1 0 11.71a12.886 12.886 0 0 1 1.152-4.2.9.9 0 0 1 1.63.758 11.091 11.091 0 0 0-.982 3.611.9.9 0 0 1-.894.812Zm3.771-7.6a.9.9 0 0 1-.691-1.466q.116-.147.244-.289A.9.9 0 1 1 5.58 4.514c-.072.082-.141.165-.211.248a.9.9 0 0 1-.694.328Zm14.518 19.2a.9.9 0 0 1-.463-1.667A11.2 11.2 0 0 0 12.972 1.8a.9.9 0 1 1 0-1.8 13 13 0 0 1 6.682 24.161.893.893 0 0 1-.461.127Z" fill="url(#brand)"/><path d="M12.877 7.5A4.061 4.061 0 0 0 10.1 8.847 4.315 4.315 0 0 0 9 11.8v5.67a.351.351 0 0 0 .056.191.336.336 0 0 0 .15.126.324.324 0 0 0 .192.02.33.33 0 0 0 .171-.094l.519-.4a.326.326 0 0 1 .233-.066.331.331 0 0 1 .215.114l.895 1.039a.326.326 0 0 0 .471 0l.849-.985a.333.333 0 0 1 .113-.085.325.325 0 0 1 .273 0 .334.334 0 0 1 .113.085l.849.985a.326.326 0 0 0 .471 0l.895-1.039a.33.33 0 0 1 .215-.114.326.326 0 0 1 .233.066l.519.4a.33.33 0 0 0 .171.094.324.324 0 0 0 .192-.02.336.336 0 0 0 .149-.126.352.352 0 0 0 .056-.193v-5.841a4.235 4.235 0 0 0-.316-1.608 4.133 4.133 0 0 0-.9-1.354 3.989 3.989 0 0 0-1.34-.886 3.891 3.891 0 0 0-1.567-.279Zm-1.21 4.812a.652.652 0 0 1-.37-.116.683.683 0 0 1-.246-.309.706.706 0 0 1-.038-.4.7.7 0 0 1 .182-.352.661.661 0 0 1 .341-.188.648.648 0 0 1 .385.039.671.671 0 0 1 .3.253.7.7 0 0 1-.083.868.656.656 0 0 1-.471.207Zm2.667 0a.652.652 0 0 1-.37-.116.684.684 0 0 1-.246-.309.706.706 0 0 1-.038-.4.7.7 0 0 1 .182-.352.661.661 0 0 1 .341-.188.648.648 0 0 1 .385.039.671.671 0 0 1 .3.253.7.7 0 0 1-.083.868.656.656 0 0 1-.472.207Z" fill="url(#brand)"/></symbol>`,
+    `<symbol id="${Fr}" viewBox="0 0 26 26"><path d="M12.972 26a13.078 13.078 0 0 1-6.128-1.525.9.9 0 1 1 .847-1.583 11.3 11.3 0 0 0 7.842 1.021.9.9 0 0 1 .409 1.748 13.138 13.138 0 0 1-2.97.338Zm-8.34-3.316a.9.9 0 0 1-.618-.246 12.952 12.952 0 0 1-3.7-6.363.9.9 0 0 1 1.748-.423 11.161 11.161 0 0 0 3.191 5.484.9.9 0 0 1-.618 1.548ZM.9 12.691H.815A.9.9 0 0 1 0 11.71a12.886 12.886 0 0 1 1.152-4.2.9.9 0 0 1 1.63.758 11.091 11.091 0 0 0-.982 3.611.9.9 0 0 1-.894.812Zm3.771-7.6a.9.9 0 0 1-.691-1.466q.116-.147.244-.289A.9.9 0 1 1 5.58 4.514c-.072.082-.141.165-.211.248a.9.9 0 0 1-.694.328Zm14.518 19.2a.9.9 0 0 1-.463-1.667A11.2 11.2 0 0 0 12.972 1.8a.9.9 0 1 1 0-1.8 13 13 0 0 1 6.682 24.161.893.893 0 0 1-.461.127Z" fill="currentColor"/><path d="M12.877 7.5A4.061 4.061 0 0 0 10.1 8.847 4.315 4.315 0 0 0 9 11.8v5.67a.351.351 0 0 0 .056.191.336.336 0 0 0 .15.126.324.324 0 0 0 .192.02.33.33 0 0 0 .171-.094l.519-.4a.326.326 0 0 1 .233-.066.331.331 0 0 1 .215.114l.895 1.039a.326.326 0 0 0 .471 0l.849-.985a.333.333 0 0 1 .113-.085.325.325 0 0 1 .273 0 .334.334 0 0 1 .113.085l.849.985a.326.326 0 0 0 .471 0l.895-1.039a.33.33 0 0 1 .215-.114.326.326 0 0 1 .233.066l.519.4a.33.33 0 0 0 .171.094.324.324 0 0 0 .192-.02.336.336 0 0 0 .149-.126.352.352 0 0 0 .056-.193v-5.841a4.235 4.235 0 0 0-.316-1.608 4.133 4.133 0 0 0-.9-1.354 3.989 3.989 0 0 0-1.34-.886 3.891 3.891 0 0 0-1.567-.279Zm-1.21 4.812a.652.652 0 0 1-.37-.116.683.683 0 0 1-.246-.309.706.706 0 0 1-.038-.4.7.7 0 0 1 .182-.352.661.661 0 0 1 .341-.188.648.648 0 0 1 .385.039.671.671 0 0 1 .3.253.7.7 0 0 1-.083.868.656.656 0 0 1-.471.207Zm2.667 0a.652.652 0 0 1-.37-.116.684.684 0 0 1-.246-.309.706.706 0 0 1-.038-.4.7.7 0 0 1 .182-.352.661.661 0 0 1 .341-.188.648.648 0 0 1 .385.039.671.671 0 0 1 .3.253.7.7 0 0 1-.083.868.656.656 0 0 1-.472.207Z" fill="currentColor"/></symbol>`,
   ]),
-    g().default.Image.registerImages({ [Fr]: "lotus.png:24.49:18.24" });
-  class Or extends g().default.Component {
+    g().default.Image.registerImages({ [Or]: "lotus.png:24.49:18.24" });
+  class Mr extends g().default.Component {
     constructor(...e) {
       var t;
       return (
@@ -14279,10 +14167,10 @@
       return Glamor.createElement(p().default.IgButtons, {
         isHorizontal: this.props.isHorizontal,
         buttons: [
-          { id: "back", icon: Er, onClick: this._onBackClick },
+          { id: "back", icon: _r, onClick: this._onBackClick },
           {
             id: "refresh",
-            icon: _r,
+            icon: Ar,
             onClick: this._onRefreshClick,
             onLongPress: () => {
               de().resetController.reset(), location.reload();
@@ -14290,17 +14178,17 @@
           },
           {
             id: "widescreen",
-            icon: this.props.isFullscreen ? Pr : Ar,
+            icon: this.props.isFullscreen ? Ir : Pr,
             onClick: this._onFullscreenClick,
           },
           {
             id: "theme",
-            icon: "night" === this.state.theme ? Ir : xr,
+            icon: "night" === this.state.theme ? xr : Gr,
             onClick: this._onToggleThemeClick,
           },
           {
             id: "story-ghost-view",
-            icon: this.props.ghostStoryViewEnabled ? Dr : Br,
+            icon: this.props.ghostStoryViewEnabled ? Br : Fr,
             tooltip: {
               title:
                 "GHOST STORY VIEW – " +
@@ -14317,8 +14205,8 @@
           },
           {
             id: "zen",
-            icon: this.props.zenModeEnabled ? null : Gr,
-            image: this.props.zenModeEnabled ? Fr : null,
+            icon: this.props.zenModeEnabled ? null : Dr,
+            image: this.props.zenModeEnabled ? Or : null,
             tooltip: {
               title: "ZEN MODE",
               text: Glamor.createElement(
@@ -14335,22 +14223,22 @@
       });
     }
   }
-  var Mr = v().influx((e) => ({
+  var Lr = v().influx((e) => ({
     isFullscreen: e.igView.fullscreen,
     zenModeEnabled: e.zen.enabled,
     ghostStoryViewEnabled: e.ghostStoryView.enabled,
-  }))(g().default.theme.ThemeAware(Or));
+  }))(g().default.theme.ThemeAware(Mr));
   g(), p(), A(), m(), C(), w(), v();
-  const Lr = ({ state: e }) => ({
+  const Ur = ({ state: e }) => ({
     ...(e.disableHover && {
       pointerEvents: "none !important",
       "& *": { pointerEvents: "none !important" },
     }),
   });
-  class Ur extends g().default.Component {
+  class Rr extends g().default.Component {
     constructor(e) {
       super(e),
-        Rr.call(this),
+        Nr.call(this),
         (this.state = { loggedInStatus: null, disableHover: !1 });
     }
     componentDidMount() {
@@ -14366,7 +14254,7 @@
       return e.hidden
         ? null
         : Glamor.createElement(p().default.AccountSwitcher, {
-            style: Lr(this),
+            style: Ur(this),
             accounts: e.accounts.map((t) => {
               const s = t.userId === e.selectedUserId && !e.addingNewAccount;
               let a = !0;
@@ -14405,7 +14293,7 @@
       );
     }
   }
-  var Rr = function () {
+  var Nr = function () {
       (this._onSwitchAccountClick = async (e) => {
         if (this.props.scheduleIsSaving)
           return void this._alertScheduleSaving();
@@ -14473,7 +14361,7 @@
           this.setState({ disableHover: !1 });
         });
     },
-    Nr = v().influx((e) => ({
+    Vr = v().influx((e) => ({
       hidden: e.welcome.shown,
       loggedIn: e.authStatus.isLoggedIn,
       selectedUserId: e.multiaccount.selectedUserId,
@@ -14492,9 +14380,9 @@
           };
         })
         .filter(Boolean),
-    }))(Ur);
+    }))(Rr);
   g(), p(), E(), P(), y(), v();
-  class Vr extends g().default.Component {
+  class Hr extends g().default.Component {
     constructor(...e) {
       var t;
       return (
@@ -14535,12 +14423,12 @@
       });
     }
   }
-  var Hr = v().influx((e) => ({
+  var zr = v().influx((e) => ({
     show: !e.acknowledged.theEnd || -1 === e.acknowledged.theEnd,
     hasSubscription: true,
-  }))(Vr);
+  }))(Hr);
   g(), p(), g(), p(), v(), m(), L();
-  class zr extends g().default.Component {
+  class Wr extends g().default.Component {
     constructor(...e) {
       var t;
       return (
@@ -14611,14 +14499,14 @@
       );
     }
   }
-  var Wr = v().influx((e) => ({ code: e.igTask.actionBlockCode }))(zr);
-  class $r extends g().default.Component {
+  var $r = v().influx((e) => ({ code: e.igTask.actionBlockCode }))(Wr);
+  class qr extends g().default.Component {
     render() {
       return Glamor.createElement(
         p().default.Snackbar,
         null,
         Glamor.createElement(he, null),
-        Glamor.createElement(Wr, null),
+        Glamor.createElement($r, null),
         Glamor.createElement(yn, null),
         Glamor.createElement(En, null),
         Glamor.createElement(ys, null),
@@ -14628,20 +14516,20 @@
       );
     }
   }
-  class qr extends g().default.Component {
+  class jr extends g().default.Component {
     render() {
       return Glamor.createElement(
         g().default.Fragment,
         null,
         Glamor.createElement(p().default.Layout, {
-          Sidebar: yr,
+          Sidebar: br,
           IgView: qn,
-          IgButtons: Mr,
-          Welcome: br,
+          IgButtons: Lr,
+          Welcome: kr,
           Tips: lt,
-          Tos: Tr,
-          AccountSwitcher: Nr,
-          Snackbar: $r,
+          Tos: Er,
+          AccountSwitcher: Vr,
+          Snackbar: qr,
           assistPanel: this._getAssistPanel(),
           igViewAfter: this._renderIgViewAfter(),
           isFullscreen: this.props.isFullscreen,
@@ -14655,26 +14543,26 @@
         }),
         Glamor.createElement(g().default.TooltipsContainer, null),
         Glamor.createElement(wn, null),
-        Glamor.createElement(Hr, null)
+        Glamor.createElement(zr, null)
       );
     }
     _getAssistPanel() {
       return this.props.isTagAssistShown
         ? Glamor.createElement(Nt, null)
         : this.props.isCoverAssistShown
-        ? Glamor.createElement(ri, null)
+        ? Glamor.createElement(li, null)
         : this.props.isMusicAssistShown
         ? Glamor.createElement(Jo, null)
         : this.props.isStoryAssistShown
-        ? Glamor.createElement(Ii, null)
+        ? Glamor.createElement(xi, null)
         : null;
     }
     _renderIgViewAfter() {
       return Glamor.createElement(
         React.Fragment,
         null,
-        Glamor.createElement(Di, null),
-        Glamor.createElement(ar, null)
+        Glamor.createElement(Bi, null),
+        Glamor.createElement(nr, null)
       );
     }
     _isAssistPanelShown() {
@@ -14690,7 +14578,7 @@
       C().iframeBus.send("ig.broadcast-scroll", e.deltaY);
     }
   }
-  var jr = v().influx((e) => ({
+  var Yr = v().influx((e) => ({
     isFullscreen: e.igView.fullscreen,
     isSidebarOpen:
       (e.authStatus.isLoggedIn || "logo" === e.sidebar.selectedTabId) &&
@@ -14703,7 +14591,7 @@
     isExperimentsBarShown: e.experiments.enabled,
     igViewFullscreenWidth: e.igView.fullscreenWidth,
     igViewWithBorder: e.igView.withBorder,
-  }))(qr);
+  }))(jr);
   g().default.init({
     _: o().default,
     pathPrefix: "/img/",
@@ -14754,24 +14642,24 @@
     },
     icons: [],
   });
-  const Yr = function () {
+  const Zr = function () {
     le().render(
       Glamor.createElement(
         ce().Provider,
         { store: v().model.store },
-        Glamor.createElement(jr, null)
+        Glamor.createElement(Yr, null)
       ),
       document.getElementById("app")
     );
   };
-  var Zr = {
+  var Kr = {
     send: function (e, ...t) {
       const s = JSON.stringify({ name: e, args: t });
       console.log(`electron-bus:${s}`);
     },
   };
   v();
-  var Kr = {
+  var Qr = {
     init: function () {
       if (!window.electron) return;
       (function () {
@@ -14784,7 +14672,7 @@
         });
       })(),
         document.body.addEventListener("dblclick", (e) => {
-          e.clientY > 40 || Zr.send("maximize");
+          e.clientY > 40 || Kr.send("maximize");
         });
     },
   };
@@ -14793,9 +14681,9 @@
       (window.Glamor = n()),
       (window.React = a),
       r().polyfillsController.init(),
-      zi.init(),
-      await nr.waitForBackground(),
-      await ir.init(),
+      Wi.init(),
+      await or.waitForBackground(),
+      await rr.init(),
       l().logController.init(),
       c().i18nController.init(),
       d().abTestingController.init(),
@@ -14806,13 +14694,13 @@
       Cs.init(),
       await h().synchController.init("popup", !1),
       await oo.cleanUpState(),
-      or.init(),
+      ir.init(),
       m().gaController.init().sendPageview(),
       me.init(),
       C().iframeBus.init(),
       Te.init(),
       as.init(),
-      rr(),
+      lr(),
       zn.init(),
       ha.init(),
       Zt.init(),
@@ -14820,20 +14708,20 @@
       _n.init(),
       io.init(),
       ro.init(),
-      Qo.init(),
-      ai.init(),
-      ci.init(),
-      wo.init(),
-      Bi.init(),
-      Li.init(),
+      Xo.init(),
+      ni.init(),
+      di.init(),
+      So.init(),
+      Fi.init(),
+      Ui.init(),
       Ge.init(),
       jn.init(),
-      ji.init(),
-      fo(),
-      Xi.init(),
+      Yi.init(),
+      vo(),
       er.init(),
-      Yr(),
-      Kr.init(),
+      tr.init(),
+      Zr(),
+      Qr.init(),
       chrome.runtime.sendMessage({ name: "update-user" }),
       w().chromeBus.send("popup.start"),
       w().chromeBus.on("popup.log", (...e) => console.log(...e));

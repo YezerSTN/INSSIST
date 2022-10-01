@@ -5,7 +5,7 @@
 
   "name": "__MSG_ext_name_production__",
   "description": "__MSG_ext_description__",
-  "version": "23.2.1",
+  "version": "23.4.1",
   "default_locale": "en",
   "icons": {
     "16": "img/icon-16.png",

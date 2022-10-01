@@ -42,8 +42,8 @@
     I = n("uqDnl"),
     P = n("6PPN4"),
     D = n("6ExGy"),
-    U = n("7rAex"),
-    O = n("1g0wW"),
+    O = n("7rAex"),
+    U = n("1g0wW"),
     _ = n("5ZuLE"),
     x = n("47HXs"),
     B = n("3wQfI"),
@@ -366,7 +366,7 @@
       n
     );
   }
-  I(), P(), D(), v(), U(), v(), I();
+  I(), P(), D(), v(), O(), v(), I();
   const oe = {
     init: function ({ parent: e }) {
       (this.parent = e),
@@ -662,7 +662,7 @@
     },
     ce = {
       init: function () {
-        (this.apiSender = new (U().Sender)({
+        (this.apiSender = new (O().Sender)({
           urlPrefix: v().env.options.apiUrl,
         })),
           oe.init({ parent: this }),
@@ -697,11 +697,11 @@
     v(),
     P(),
     I(),
-    U(),
+    O(),
     S(),
     c(),
     I(),
-    O(),
+    U(),
     k(),
     C(),
     w(),
@@ -836,11 +836,11 @@
         (n.bulk.dateDialog.startingDay.selectedDay = r);
     });
   }
-  F(), m(), S(), O();
+  F(), m(), S(), U();
   var ge = {
     init: async function () {
-      return void (await O().idbController.delete("image-proxy.cache"));
-      (me = (await O().idbController.get("image-proxy.cache")) || {}),
+      return void (await U().idbController.delete("image-proxy.cache"));
+      (me = (await U().idbController.get("image-proxy.cache")) || {}),
         pe.resolve(),
         S().chromeBus.on("image-proxy.save", ve),
         S().chromeBus.on("image-proxy.cache-item-used", be);
@@ -858,7 +858,7 @@
     const e = we;
     clearTimeout(e.timeout),
       (e.timeout = setTimeout(async () => {
-        O().idbController.set("image-proxy.cache", me);
+        U().idbController.set("image-proxy.cache", me);
       }, he));
   }
   H(), S();
@@ -1032,7 +1032,7 @@
     },
     onRequest: Pe,
   };
-  let Ue, Oe;
+  let Oe, Ue;
   function _e({
     details: e,
     isBeforeRequest: t,
@@ -1073,13 +1073,13 @@
         (null === (f = e.initiator) || void 0 === f
           ? void 0
           : f.startsWith(`chrome-extension://${chrome.runtime.id}`)) &&
-        (Ue = e.frameId);
+        (Oe = e.frameId);
     const m =
         n &&
         d("instagram.com") &&
         "POST" === e.method &&
         (c("/accounts/login/ajax/") || c("/one_tap_web_login/")),
-      v = n && d("instagram.com") && (a || c("/api/v1/")) && e.tabId !== Ue;
+      v = n && d("instagram.com") && (a || c("/api/v1/")) && e.tabId !== Oe;
     if (m || v) {
       let e =
         "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1";
@@ -1133,13 +1133,13 @@
       s && d("instagram.com"))
     ) {
       const e = o("x-ig-set-www-claim");
-      e && Oe !== e.value && (Oe = e.value);
+      e && Ue !== e.value && (Ue = e.value);
     }
     if (n && d("instagram.com")) {
       const e = o("x-ig-www-claim");
       e &&
         "auto" === e.value &&
-        (Oe ? u("x-ig-www-claim", Oe) : l("x-ig-www-claim"));
+        (Ue ? u("x-ig-www-claim", Ue) : l("x-ig-www-claim"));
     }
     s &&
       a &&
@@ -1517,7 +1517,7 @@
       name: "xs",
     });
   }
-  c(), C(), O(), I(), S(), R(), q();
+  c(), C(), U(), I(), S(), R(), q();
   var Ye = {
     init: function () {
       !(function () {
@@ -1541,7 +1541,7 @@
               continue;
             }
             const u = `schedule.fcs-post-preview:${o.id}`,
-              l = await c().default(() => O().idbController.get(u));
+              l = await c().default(() => U().idbController.get(u));
             if (l) {
               e[o.id] = URL.createObjectURL(l);
               continue;
@@ -1557,7 +1557,7 @@
               console.error(e);
               continue;
             }
-            await c().default(() => O().idbController.set(u, d.blob)),
+            await c().default(() => U().idbController.set(u, d.blob)),
               (a[o.id] = d.averageColor),
               (e[o.id] = URL.createObjectURL(d.blob));
           }
@@ -1631,16 +1631,16 @@
                 .flat()
                 .filter((e) => "local" === e.source)
                 .map((e) => e.id.toString()),
-              s = await O().idbController.getAllKeys();
+              s = await U().idbController.getAllKeys();
             for (const e of s)
               if (e.startsWith("schedule.fcs-post-preview:")) {
                 const n = e.split(":")[1];
                 if (t.includes(n)) continue;
-                await c().default(() => O().idbController.delete(e));
+                await c().default(() => U().idbController.delete(e));
               } else if (e.startsWith("schedule.local-post:")) {
                 const t = e.split(":")[1];
                 if (n.includes(t)) continue;
-                await c().default(() => O().idbController.delete(e));
+                await c().default(() => U().idbController.delete(e));
               }
           });
         })(),
@@ -1738,7 +1738,7 @@
       { field: "userStates", cb: () => "!ignored" },
       { field: "whatsNew", cb: () => "!ignored" },
     ],
-    nt = new (U().Sender)({ urlPrefix: v().env.options.apiUrl });
+    nt = new (O().Sender)({ urlPrefix: v().env.options.apiUrl });
   async function st({ key: e, filters: t, data: n } = {}) {
     if (
       ((e = e || "system"),
@@ -1936,7 +1936,7 @@
       return { value: t.value, label: t.label, color: t.color };
     })(at.getCredibility(e, t));
   }
-  O(), N(), x(), C();
+  U(), N(), x(), C();
   const ct = (e) =>
       "string" != typeof e && "boolean" != typeof e && "number" != typeof e
         ? JSON.stringify(e)
@@ -1972,7 +1972,7 @@
           (window.gaController = x().gaController),
           (window.fetcher = C().fetcher),
           (window.billing = ce),
-          (window.idbController = O().idbController),
+          (window.idbController = U().idbController),
           (window.sentryController = o().sentryController),
           (window.overseerController = et),
           (window.insightsController = ut),
@@ -2187,16 +2187,16 @@
   }),
     e(yt);
   var At = {};
-  O();
+  U();
   var Tt = {
     update: function (e) {
       return (
         (async function () {
-          const e = await O().idbController.getAllKeys();
+          const e = await U().idbController.getAllKeys();
           for (const t of e)
             (t.startsWith("schedule.fcs-post-preview:") ||
               t.startsWith("schedule.local-post:")) &&
-              O().idbController.delete(t);
+              U().idbController.delete(t);
         })(),
         e
       );
@@ -2237,8 +2237,8 @@
     return Dt;
   }),
     e(Pt);
-  var Ut = {},
-    Ot = {
+  var Ot = {},
+    Ut = {
       update: function (e) {
         const t = {
           ...e,
@@ -2251,10 +2251,10 @@
         return delete t.schedule.setup.selectedSetupType, t;
       },
     };
-  t(Ut, "default", function () {
-    return Ot;
+  t(Ot, "default", function () {
+    return Ut;
   }),
-    e(Ut);
+    e(Ot);
   var _t = {},
     xt = {
       update: function (e) {
@@ -2723,17 +2723,17 @@
   }),
     e(In);
   var Dn = {};
-  O();
-  var Un = {
+  U();
+  var On = {
     update: function (e) {
-      return e.userStates && O().idbController.delete("tag-assist.tag-data"), e;
+      return e.userStates && U().idbController.delete("tag-assist.tag-data"), e;
     },
   };
   t(Dn, "default", function () {
-    return Un;
+    return On;
   }),
     e(Dn);
-  var On = {},
+  var Un = {},
     _n = {
       update: function (e) {
         return e.userStates
@@ -2750,10 +2750,10 @@
           : e;
       },
     };
-  t(On, "default", function () {
+  t(Un, "default", function () {
     return _n;
   }),
-    e(On);
+    e(Un);
   var xn = {},
     Bn = {
       update: function (e) {
@@ -2767,10 +2767,10 @@
   }),
     e(xn);
   var En = {};
-  O();
+  U();
   var Ln = {
     update: function (e) {
-      return e.userStates && O().idbController.delete("tag-assist.tag-data"), e;
+      return e.userStates && U().idbController.delete("tag-assist.tag-data"), e;
     },
   };
   t(En, "default", function () {
@@ -3194,7 +3194,7 @@
   }),
     e(Is);
   var Ds = {},
-    Us = {
+    Os = {
       update: function (e) {
         let t;
         if (e.userStats) {
@@ -3208,10 +3208,10 @@
       },
     };
   t(Ds, "default", function () {
-    return Us;
+    return Os;
   }),
     e(Ds);
-  var Os = {},
+  var Us = {},
     _s = {
       update: function (e) {
         return e.userStats
@@ -3219,10 +3219,10 @@
           : e;
       },
     };
-  t(Os, "default", function () {
+  t(Us, "default", function () {
     return _s;
   }),
-    e(Os);
+    e(Us);
   var xs = {},
     Bs = {
       update: function (e) {
@@ -3500,7 +3500,7 @@
   }),
     e(ua);
   var ca = {};
-  O();
+  U();
   var da = {
     update: function (e) {
       const t = { ...e };
@@ -3508,10 +3508,10 @@
         delete t.analytics,
         delete t.insights,
         (async function () {
-          const e = await O().idbController.getAllKeys();
+          const e = await U().idbController.getAllKeys();
           for (const t of e)
             (t.startsWith("insights.") || t.startsWith("block:analytics:")) &&
-              O().idbController.delete(t);
+              U().idbController.delete(t);
         })(),
         t
       );
@@ -3665,7 +3665,7 @@
   }),
     e(Ia);
   var Da = {},
-    Ua = {
+    Oa = {
       update: function (e) {
         return {
           ...e,
@@ -3677,10 +3677,10 @@
       },
     };
   t(Da, "default", function () {
-    return Ua;
+    return Oa;
   }),
     e(Da);
-  var Oa = {},
+  var Ua = {},
     _a = {
       update: function (e) {
         return {
@@ -3699,10 +3699,10 @@
         };
       },
     };
-  t(Oa, "default", function () {
+  t(Ua, "default", function () {
     return _a;
   }),
-    e(Oa);
+    e(Ua);
   var xa = {},
     Ba = {
       update: function (e) {
@@ -3937,8 +3937,14 @@
   var ci = {},
     di = {
       update: function (e) {
-        const t = { ...e };
-        return t.userStates || delete t.sidebar, t;
+        return {
+          ...e,
+          musicAssist: {
+            ...e.musicAssist,
+            categoryIdsOrder: [],
+            selectedCategoryId: 0,
+          },
+        };
       },
     };
   t(ci, "default", function () {
@@ -3948,12 +3954,8 @@
   var fi = {},
     gi = {
       update: function (e) {
-        return e.igView
-          ? {
-              ...e,
-              igView: { ...e.igView, fullscreenWidth: 460, withBorder: !0 },
-            }
-          : e;
+        const t = { ...e };
+        return t.userStates || delete t.sidebar, t;
       },
     };
   t(fi, "default", function () {
@@ -3962,6 +3964,21 @@
     e(fi);
   var hi = {},
     pi = {
+      update: function (e) {
+        return e.igView
+          ? {
+              ...e,
+              igView: { ...e.igView, fullscreenWidth: 460, withBorder: !0 },
+            }
+          : e;
+      },
+    };
+  t(hi, "default", function () {
+    return pi;
+  }),
+    e(hi);
+  var mi = {},
+    vi = {
       update: function (e) {
         const t = {
           ...e,
@@ -3980,17 +3997,6 @@
         return delete t.insights.isActionBlockShown, t;
       },
     };
-  t(hi, "default", function () {
-    return pi;
-  }),
-    e(hi);
-  var mi = {},
-    vi = {
-      update: function (e) {
-        const t = { ...e, igTask: e.ff };
-        return delete t.ff, t;
-      },
-    };
   t(mi, "default", function () {
     return vi;
   }),
@@ -3998,7 +4004,8 @@
   var bi = {},
     wi = {
       update: function (e) {
-        return { ...e, igTask: { ...e.igTask, likeStatus: {} } };
+        const t = { ...e, igTask: e.ff };
+        return delete t.ff, t;
       },
     };
   t(bi, "default", function () {
@@ -4008,8 +4015,7 @@
   var Si = {},
     yi = {
       update: function (e) {
-        const t = { ...e, igTask: { ...e.igTask, actionBlockCode: null } };
-        return delete t.igTask.isActionBlockShown, t;
+        return { ...e, igTask: { ...e.igTask, likeStatus: {} } };
       },
     };
   t(Si, "default", function () {
@@ -4018,6 +4024,17 @@
     e(Si);
   var ki = {},
     Ai = {
+      update: function (e) {
+        const t = { ...e, igTask: { ...e.igTask, actionBlockCode: null } };
+        return delete t.igTask.isActionBlockShown, t;
+      },
+    };
+  t(ki, "default", function () {
+    return Ai;
+  }),
+    e(ki);
+  var Ti = {},
+    Ci = {
       update: function (e) {
         return e.userStates
           ? e
@@ -4033,12 +4050,12 @@
             };
       },
     };
-  t(ki, "default", function () {
-    return Ai;
+  t(Ti, "default", function () {
+    return Ci;
   }),
-    e(ki);
-  var Ti = {},
-    Ci = {
+    e(Ti);
+  var Ii = {},
+    Pi = {
       update: function (e) {
         return e.userStates
           ? {
@@ -4051,12 +4068,12 @@
           : e;
       },
     };
-  t(Ti, "default", function () {
-    return Ci;
+  t(Ii, "default", function () {
+    return Pi;
   }),
-    e(Ti);
-  var Ii = {},
-    Pi = {
+    e(Ii);
+  var Di = {},
+    Oi = {
       update: function (e) {
         if (!e.userStates) return e;
         const t = e.multiaccount.userIds;
@@ -4069,36 +4086,36 @@
         };
       },
     };
-  t(Ii, "default", function () {
-    return Pi;
+  t(Di, "default", function () {
+    return Oi;
   }),
-    e(Ii);
-  var Di = {},
-    Ui = {
+    e(Di);
+  var Ui = {},
+    _i = {
       update: function (e) {
         return e.userStates
           ? { ...e, igView: { ...e.igView, creationCardShown: !1 } }
           : e;
       },
     };
-  t(Di, "default", function () {
-    return Ui;
+  t(Ui, "default", function () {
+    return _i;
   }),
-    e(Di);
-  var Oi = {},
-    _i = {
+    e(Ui);
+  var xi = {},
+    Bi = {
       update: function (e) {
         return e.userStates
           ? { ...e, billing: { ...e.billing, recordedUsernames: [] } }
           : e;
       },
     };
-  t(Oi, "default", function () {
-    return _i;
+  t(xi, "default", function () {
+    return Bi;
   }),
-    e(Oi);
-  var xi = {},
-    Bi = {
+    e(xi);
+  var Ei = {},
+    Li = {
       update: function (e) {
         const t = {
           ...e,
@@ -4110,24 +4127,24 @@
         return delete t.schedule.setup.progress, t;
       },
     };
-  t(xi, "default", function () {
-    return Bi;
-  }),
-    e(xi);
-  var Ei = {},
-    Li = {
-      update: function (e) {
-        return e.userStates
-          ? { ...e, followUs: { shown: !1, acknowledged: !1 } }
-          : e;
-      },
-    };
   t(Ei, "default", function () {
     return Li;
   }),
     e(Ei);
   var Mi = {},
     Fi = {
+      update: function (e) {
+        return e.userStates
+          ? { ...e, followUs: { shown: !1, acknowledged: !1 } }
+          : e;
+      },
+    };
+  t(Mi, "default", function () {
+    return Fi;
+  }),
+    e(Mi);
+  var Hi = {},
+    Ri = {
       update: function (e) {
         if (!e.userStates) return e;
         const t = {
@@ -4138,12 +4155,12 @@
         return delete t.acknowledged.rateUs, t;
       },
     };
-  t(Mi, "default", function () {
-    return Fi;
+  t(Hi, "default", function () {
+    return Ri;
   }),
-    e(Mi);
-  var Hi = {},
-    Ri = {
+    e(Hi);
+  var qi = {},
+    Ni = {
       update: function (e) {
         if (!e.userStates) return e;
         const t = Date.now(),
@@ -4160,18 +4177,6 @@
         return delete n.rateUs.acknowledged, delete n.followUs.acknowledged, n;
       },
     };
-  t(Hi, "default", function () {
-    return Ri;
-  }),
-    e(Hi);
-  var qi = {},
-    Ni = {
-      update: function (e) {
-        if (!e.userStates) return e;
-        const t = { ...e, userDetails: {} };
-        return delete t.billing.promostory.followersCount, t;
-      },
-    };
   t(qi, "default", function () {
     return Ni;
   }),
@@ -4180,8 +4185,8 @@
     ji = {
       update: function (e) {
         if (!e.userStates) return e;
-        const t = { ...e, acknowledged: { ...e.acknowledged } };
-        return delete t.acknowledged.postLimitations, t;
+        const t = { ...e, userDetails: {} };
+        return delete t.billing.promostory.followersCount, t;
       },
     };
   t(Vi, "default", function () {
@@ -4191,7 +4196,9 @@
   var $i = {},
     Gi = {
       update: function (e) {
-        return e;
+        if (!e.userStates) return e;
+        const t = { ...e, acknowledged: { ...e.acknowledged } };
+        return delete t.acknowledged.postLimitations, t;
       },
     };
   t($i, "default", function () {
@@ -4200,6 +4207,16 @@
     e($i);
   var zi = {},
     Wi = {
+      update: function (e) {
+        return e;
+      },
+    };
+  t(zi, "default", function () {
+    return Wi;
+  }),
+    e(zi);
+  var Ji = {},
+    Ki = {
       update: function (e) {
         return {
           ...e,
@@ -4213,16 +4230,6 @@
         };
       },
     };
-  t(zi, "default", function () {
-    return Wi;
-  }),
-    e(zi);
-  var Ji = {},
-    Ki = {
-      update: function (e) {
-        return { ...e, schedule: { ...e.schedule, drafts: [] } };
-      },
-    };
   t(Ji, "default", function () {
     return Ki;
   }),
@@ -4230,11 +4237,7 @@
   var Yi = {},
     Xi = {
       update: function (e) {
-        const t = {
-          ...e,
-          dm: { ...e.dm, ghostModeEnabled: !1, ghostModeFailed: !1 },
-        };
-        return delete t.dm.showBadge, t;
+        return { ...e, schedule: { ...e.schedule, drafts: [] } };
       },
     };
   t(Yi, "default", function () {
@@ -4243,6 +4246,20 @@
     e(Yi);
   var Qi = {},
     Zi = {
+      update: function (e) {
+        const t = {
+          ...e,
+          dm: { ...e.dm, ghostModeEnabled: !1, ghostModeFailed: !1 },
+        };
+        return delete t.dm.showBadge, t;
+      },
+    };
+  t(Qi, "default", function () {
+    return Zi;
+  }),
+    e(Qi);
+  var er = {},
+    tr = {
       update: function (e) {
         const t = {
           ...e,
@@ -4257,13 +4274,13 @@
         return delete t.dm.showBadge, t;
       },
     };
-  t(Qi, "default", function () {
-    return Zi;
+  t(er, "default", function () {
+    return tr;
   }),
-    e(Qi);
-  var er = {};
-  O();
-  var tr = {
+    e(er);
+  var nr = {};
+  U();
+  var sr = {
     update: function (e) {
       const t = {
         ...e,
@@ -4274,44 +4291,19 @@
         (async function () {
           let e;
           try {
-            e = await O().idbController.getAllKeys();
+            e = await U().idbController.getAllKeys();
           } catch (e) {
             return;
           }
           for (const t of e) {
             if (!t.startsWith("schedule.drafts:")) continue;
             const e = t.replace("schedule.drafts:", ""),
-              n = await O().idbController.get(t);
-            O().idbController.set(`schedule.local-posts:${e}`, n),
-              O().idbController.delete(t);
+              n = await U().idbController.get(t);
+            U().idbController.set(`schedule.local-posts:${e}`, n),
+              U().idbController.delete(t);
           }
         })(),
         t
-      );
-    },
-  };
-  t(er, "default", function () {
-    return tr;
-  }),
-    e(er);
-  var nr = {};
-  O();
-  var sr = {
-    update: function (e) {
-      return (
-        (async function () {
-          let e;
-          try {
-            e = await O().idbController.getAllKeys();
-          } catch (e) {
-            return;
-          }
-          for (const t of e)
-            (t.startsWith("schedule.drafts:") ||
-              t.startsWith("schedule.local-posts:")) &&
-              O().idbController.delete(t);
-        })(),
-        { ...e, schedule: { ...e.schedule, bulkUploadErrors: [] } }
       );
     },
   };
@@ -4319,37 +4311,62 @@
     return sr;
   }),
     e(nr);
-  var ar = {},
-    ir = {
-      update: function (e) {
-        return { ...e, schedule: { ...e.schedule, localPosts: [] } };
-      },
-    };
+  var ar = {};
+  U();
+  var ir = {
+    update: function (e) {
+      return (
+        (async function () {
+          let e;
+          try {
+            e = await U().idbController.getAllKeys();
+          } catch (e) {
+            return;
+          }
+          for (const t of e)
+            (t.startsWith("schedule.drafts:") ||
+              t.startsWith("schedule.local-posts:")) &&
+              U().idbController.delete(t);
+        })(),
+        { ...e, schedule: { ...e.schedule, bulkUploadErrors: [] } }
+      );
+    },
+  };
   t(ar, "default", function () {
     return ir;
   }),
     e(ar);
-  var rr = {};
-  c(), O();
-  var or = {
+  var rr = {},
+    or = {
+      update: function (e) {
+        return { ...e, schedule: { ...e.schedule, localPosts: [] } };
+      },
+    };
+  t(rr, "default", function () {
+    return or;
+  }),
+    e(rr);
+  var ur = {};
+  c(), U();
+  var lr = {
     update: function (e) {
       return (
         (async function () {
-          const e = await c().default(() => O().idbController.getAllKeys(), []);
+          const e = await c().default(() => U().idbController.getAllKeys(), []);
           for (const t of e)
             t.startsWith("schedule.local-posts:") &&
-              O().idbController.delete(t);
+              U().idbController.delete(t);
         })(),
         { ...e, schedule: { ...e.schedule, localPosts: [] } }
       );
     },
   };
-  t(rr, "default", function () {
-    return or;
+  t(ur, "default", function () {
+    return lr;
   }),
-    e(rr);
-  var ur = {},
-    lr = {
+    e(ur);
+  var cr = {},
+    dr = {
       update: function (e) {
         const t = { ...e, schedule: { ...e.schedule } };
         return (
@@ -4364,12 +4381,12 @@
         );
       },
     };
-  t(ur, "default", function () {
-    return lr;
+  t(cr, "default", function () {
+    return dr;
   }),
-    e(ur);
-  var cr = {},
-    dr = {
+    e(cr);
+  var fr = {},
+    gr = {
       update: function (e) {
         if (!e.userStates) return e;
         const t = {
@@ -4389,28 +4406,28 @@
         return delete t.billing.promostory, t;
       },
     };
-  t(cr, "default", function () {
-    return dr;
+  t(fr, "default", function () {
+    return gr;
   }),
-    e(cr);
-  var fr = {},
-    gr = {
+    e(fr);
+  var hr = {},
+    pr = {
       update: function (e) {
         const t = { ...e, insights: { ...e.insights } };
         return delete t.insights.availability, t;
       },
     };
-  t(fr, "default", function () {
-    return gr;
+  t(hr, "default", function () {
+    return pr;
   }),
-    e(fr);
-  const hr = {
+    e(hr);
+  const mr = {
       "version-100": bt(wt).default,
       "version-101": bt(yt).default,
       "version-102": bt(At).default,
       "version-103": bt(Ct).default,
       "version-104": bt(Pt).default,
-      "version-105": bt(Ut).default,
+      "version-105": bt(Ot).default,
       "version-106": bt(_t).default,
       "version-107": bt(Bt).default,
       "version-108": bt(Lt).default,
@@ -4437,7 +4454,7 @@
       "version-129": bt(Tn).default,
       "version-130": bt(In).default,
       "version-131": bt(Dn).default,
-      "version-132": bt(On).default,
+      "version-132": bt(Un).default,
       "version-133": bt(xn).default,
       "version-134": bt(En).default,
       "version-135": bt(Mn).default,
@@ -4464,7 +4481,7 @@
       "version-156": bt(Ts).default,
       "version-157": bt(Is).default,
       "version-158": bt(Ds).default,
-      "version-159": bt(Os).default,
+      "version-159": bt(Us).default,
       "version-160": bt(xs).default,
       "version-161": bt(Es).default,
       "version-162": bt(Ms).default,
@@ -4491,7 +4508,7 @@
       "version-183": bt(Ta).default,
       "version-184": bt(Ia).default,
       "version-185": bt(Da).default,
-      "version-186": bt(Oa).default,
+      "version-186": bt(Ua).default,
       "version-187": bt(xa).default,
       "version-188": bt(Ea).default,
       "version-189": bt(Ma).default,
@@ -4508,48 +4525,49 @@
       "version-200": bt(ai).default,
       "version-201": bt(ri).default,
       "version-202": bt(ui).default,
-      "version-71": bt(ci).default,
-      "version-72": bt(fi).default,
-      "version-73": bt(hi).default,
-      "version-74": bt(mi).default,
-      "version-75": bt(bi).default,
-      "version-76": bt(Si).default,
-      "version-77": bt(ki).default,
-      "version-78": bt(Ti).default,
-      "version-79": bt(Ii).default,
-      "version-80": bt(Di).default,
-      "version-81": bt(Oi).default,
-      "version-82": bt(xi).default,
-      "version-83": bt(Ei).default,
-      "version-84": bt(Mi).default,
-      "version-85": bt(Hi).default,
-      "version-86": bt(qi).default,
-      "version-87": bt(Vi).default,
-      "version-88": bt($i).default,
-      "version-89": bt(zi).default,
-      "version-90": bt(Ji).default,
-      "version-91": bt(Yi).default,
-      "version-92": bt(Qi).default,
-      "version-93": bt(er).default,
-      "version-94": bt(nr).default,
-      "version-95": bt(ar).default,
-      "version-96": bt(rr).default,
-      "version-97": bt(ur).default,
-      "version-98": bt(cr).default,
-      "version-99": bt(fr).default,
+      "version-203": bt(ci).default,
+      "version-71": bt(fi).default,
+      "version-72": bt(hi).default,
+      "version-73": bt(mi).default,
+      "version-74": bt(bi).default,
+      "version-75": bt(Si).default,
+      "version-76": bt(ki).default,
+      "version-77": bt(Ti).default,
+      "version-78": bt(Ii).default,
+      "version-79": bt(Di).default,
+      "version-80": bt(Ui).default,
+      "version-81": bt(xi).default,
+      "version-82": bt(Ei).default,
+      "version-83": bt(Mi).default,
+      "version-84": bt(Hi).default,
+      "version-85": bt(qi).default,
+      "version-86": bt(Vi).default,
+      "version-87": bt($i).default,
+      "version-88": bt(zi).default,
+      "version-89": bt(Ji).default,
+      "version-90": bt(Yi).default,
+      "version-91": bt(Qi).default,
+      "version-92": bt(er).default,
+      "version-93": bt(nr).default,
+      "version-94": bt(ar).default,
+      "version-95": bt(rr).default,
+      "version-96": bt(ur).default,
+      "version-97": bt(cr).default,
+      "version-98": bt(fr).default,
+      "version-99": bt(hr).default,
     },
-    pr = {
+    vr = {
       versioners: {},
       init: function () {
         const e = /version-(\d+)/i;
-        Object.keys(hr)
+        Object.keys(mr)
           .map((t) => {
             const n = parseInt(t.match(e)[1]);
             return { key: t, version: n };
           })
           .sort((e, t) => e.version - t.version)
           .forEach((e) => {
-            this.versioners[e.version] = hr[e.key];
+            this.versioners[e.version] = mr[e.key];
           });
       },
       update: function (e) {
@@ -4575,8 +4593,8 @@
         return t;
       },
     };
-  pr.init(), j();
-  const mr = function (e) {
+  vr.init(), j();
+  const br = function (e) {
     const t = Array.isArray(e.whatsNew) ? e.whatsNew : [],
       n = j().default();
     let s = !1;
@@ -4592,23 +4610,23 @@
     return { ...e, whatsNew: a };
   };
   I(), V(), G();
-  var vr = I().action("state.setup-default-state", (e) =>
+  var wr = I().action("state.setup-default-state", (e) =>
     e.whatsNew ? e : { ...V().default(), ...G().default() }
   );
   z();
-  const br = {
+  const Sr = {
     init: function () {
-      vr.dispatch(), this._update();
+      wr.dispatch(), this._update();
     },
     _update: function () {
       let e = I().model.state;
-      (e = pr.update(e)),
-        (e = mr(e)),
+      (e = vr.update(e)),
+        (e = br(e)),
         e !== I().model.state && z().default.dispatch(e);
     },
   };
   D(), I();
-  const wr = {
+  const yr = {
     status: null,
     init: function () {
       this._subscribeToInflux();
@@ -4629,13 +4647,13 @@
     },
   };
   x(), N();
-  var Sr = {
+  var kr = {
     init: function () {
       chrome.runtime.setUninstallURL("https://github.com/YezerSTN/INSSIST");
     },
   };
   I();
-  const yr = {
+  const Ar = {
     init: function () {
       (this._goOnline = this._goOnline.bind(this)),
         (this._goOffline = this._goOffline.bind(this)),
@@ -4658,13 +4676,13 @@
     },
   };
   I(), P(), b();
-  const kr = new Q(b().sleepTimes.action);
-  var Ar = {
+  const Tr = new Q(b().sleepTimes.action);
+  var Cr = {
     init: async function () {
       log("ig-task: initialisation succeeded"),
         I().model.observe(
           () => P().stateProxy.userId(),
-          () => kr.cleanup(),
+          () => Tr.cleanup(),
           !1
         );
     },
@@ -4672,7 +4690,7 @@
   b();
   new Q(b().sleepTimes.peers);
   d(), W(), I(), S();
-  var Tr = {
+  var Ir = {
     init: function () {
       W().default("open-in-inssist", async (e) => {
         const t = await d().default(chrome.windows.getLastFocused),
@@ -4703,24 +4721,24 @@
     },
   };
   p(), m(), v(), C(), S(), J(), K();
-  var Cr = {
+  var Pr = {
     init: function () {
-      S().chromeBus.on("fusion.check-new-version", Ur),
+      S().chromeBus.on("fusion.check-new-version", _r),
         S().chromeBus.on("fusion.popup-tab-id", (e) => {
-          Ir = e;
+          Dr = e;
         }),
-        J().resetController.onReset(Dr),
+        J().resetController.onReset(Ur),
         chrome.tabs.onRemoved.addListener((e) => {
-          e === Ir && Pr && Or();
+          e === Dr && Or && xr();
         }),
         S().chromeBus.on("fusion.update-now-click", () => {
-          p().default.set("fusion.reload-popup-on-background-start", !0), Or();
+          p().default.set("fusion.reload-popup-on-background-start", !0), xr();
         }),
         p().default.get("fusion.reload-popup-on-background-start") &&
           (p().default.remove("fusion.reload-popup-on-background-start"),
           S().chromeBus.send("fusion.reload-popup")),
         chrome.alarms.onAlarm.addListener(async (e) => {
-          "fusion.refresh-config" === e.name && Ur();
+          "fusion.refresh-config" === e.name && _r();
         }),
         chrome.alarms.create("fusion.refresh-config", {
           when: Date.now(),
@@ -4728,11 +4746,11 @@
         });
     },
   };
-  let Ir, Pr;
-  function Dr() {
+  let Dr, Or;
+  function Ur() {
     p().default.remove("fusion.last-check-on");
   }
-  async function Ur() {
+  async function _r() {
     const e = 15 * m().MINUTE,
       t = Number(p().default.get("fusion.last-check-on"));
     if (t && Date.now() < t + e) return;
@@ -4749,37 +4767,37 @@
       i = JSON.parse(a);
     if (!i.config) return;
     const r = JSON.parse(JSON.stringify(n));
-    Pr = _r(r, i.config);
+    Or = Br(r, i.config);
     chrome.extension.getViews({ type: "tab" }).length > 0
       ? S().chromeBus.send("fusion.new-version-available")
-      : Or();
+      : xr();
   }
-  function Or() {
-    Pr && (p().default.set("fusion.config", Pr), location.reload());
+  function xr() {
+    Or && (p().default.set("fusion.config", Or), location.reload());
   }
-  function _r(e, t) {
-    for (const n in t) Z(e[n]) && Z(t[n]) ? _r(e[n], t[n]) : (e[n] = t[n]);
+  function Br(e, t) {
+    for (const n in t) Z(e[n]) && Z(t[n]) ? Br(e[n], t[n]) : (e[n] = t[n]);
     return e;
   }
   g(), m(), v(), k(), I(), Y(), X();
-  var xr = {
+  var Er = {
     init: function () {
       I().model.observe(
         (e) => e.authStatus.userId,
         () => {
-          Br();
+          Lr();
         }
       ),
         g().default(
           "tag-assist.update-account-stats",
           { period: 4 * m().HOUR },
           () => {
-            Br();
+            Lr();
           }
         );
     },
   };
-  async function Br(e = 0) {
+  async function Lr(e = 0) {
     const t = I().model.state,
       n = t.authStatus.userId;
     if (!n) return;
@@ -4791,7 +4809,7 @@
       o = await k().igApi.fetchUserPosts(r, 42);
     if (o.error)
       return e < 2
-        ? void Br(e + 1)
+        ? void Lr(e + 1)
         : void console.error("failed to update account stats", o);
     const u = o.result;
     let l = 0,
@@ -4813,13 +4831,13 @@
       };
     });
   }
-  var Er = {
+  var Mr = {
     init: function () {
-      xr.init();
+      Er.init();
     },
   };
   m(), d(), W(), S(), P(), x(), I(), W();
-  var Lr = {
+  var Fr = {
     init: function () {
       W().default("desktop-reels.drop-session", async () => {
         chrome.cookies.remove({
@@ -4833,16 +4851,16 @@
       });
     },
   };
-  var Mr = {
+  var Hr = {
     init: function () {
-      Lr.init(),
-        S().chromeBus.on("desktop-reels.get-initial-data", Fr),
-        W().default("desktop-reels.open-billing", Hr),
-        W().default("desktop-reels.submit-success", Rr),
-        W().default("desktop-reels.get-initial-data", qr);
+      Fr.init(),
+        S().chromeBus.on("desktop-reels.get-initial-data", Rr),
+        W().default("desktop-reels.open-billing", qr),
+        W().default("desktop-reels.submit-success", Nr),
+        W().default("desktop-reels.get-initial-data", Vr);
     },
   };
-  function Fr() {
+  function Rr() {
     return {
       hasPro: true,
       freeReels: Math.max(0, 2 - I().model.state.billing.trial.reels),
@@ -4850,7 +4868,7 @@
       isMobileSession: I().model.state.authStatus.isMobileSession,
     };
   }
-  async function Hr(e) {
+  async function qr(e) {
     const t = await d().default(chrome.windows.getLastFocused),
       n = await d().default(chrome.tabs.getSelected, t.id);
     chrome.tabs.create({ url: "https://app.inssist.com", active: !0 }),
@@ -4862,7 +4880,7 @@
       e.value.includes("keep-ig-tab") ||
         (await d().default(chrome.tabs.remove, n.id));
   }
-  async function Rr() {
+  async function Nr() {
     x().gaController.sendEvent("user", "reels:submit", "desktop"),
       true
         ? x().gaController.sendEvent("user", "pro-paid-usage:reels", "desktop")
@@ -4870,10 +4888,10 @@
             e.billing.trial.reels += 1;
           });
   }
-  function qr() {
+  function Vr() {
     chrome.cookies.set({
       name: "desktop-reels.initial-data",
-      value: JSON.stringify(Fr()),
+      value: JSON.stringify(Rr()),
       url: "https://www.instagram.com",
       path: "/",
       httpOnly: !1,
@@ -4897,27 +4915,27 @@
       ke.init(),
       De.init(),
       N().abTestingController.init(),
-      Sr.init(),
+      kr.init(),
       await D().synchController.init("background", !0),
-      br.init(),
+      Sr.init(),
       de.init(),
       et.init(),
       ht.init(),
-      Ar.init(),
+      Cr.init(),
       ut.init(),
       Qe.init(),
-      Tr.init(),
-      Cr.init(),
+      Ir.init(),
+      Pr.init(),
       ge.init(),
-      Er.init(),
       Mr.init(),
+      Hr.init(),
       x().gaController.init().sendPageview().sendInstall(),
       xe.init(),
       await xe.updateUser(),
       ce.init(),
       await ce.updatePro(),
-      wr.init(),
       yr.init(),
+      Ar.init(),
       (window._backgroundReady = !0);
   })();
 })();

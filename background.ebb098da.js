@@ -394,10 +394,10 @@
         }
         function g(e, t, r) {
           var n = e[t];
-          (de.call(e, t) && M(n, r) && (r !== W || t in e)) || b(e, t, r);
+          (de.call(e, t) && A(n, r) && (r !== W || t in e)) || b(e, t, r);
         }
         function v(e, t) {
-          for (var r = e.length; r--; ) if (M(e[r][0], t)) return r;
+          for (var r = e.length; r--; ) if (A(e[r][0], t)) return r;
           return -1;
         }
         function b(e, t, r) {
@@ -733,7 +733,7 @@
             case "[object Boolean]":
             case "[object Date]":
             case "[object Number]":
-              return M(+e, +t);
+              return A(+e, +t);
             case "[object Error]":
               return e.name == t.name && e.message == t.message;
             case "[object RegExp]":
@@ -774,7 +774,7 @@
         }
         function G(e, t) {
           var r = null == e ? W : e[t];
-          return !L(r) || (he && he in r) || !(R(r) ? me : $).test(A(r))
+          return !L(r) || (he && he in r) || !(R(r) ? me : $).test(M(r))
             ? W
             : r;
         }
@@ -782,7 +782,7 @@
           var t = e && e.constructor;
           return e === (("function" == typeof t && t.prototype) || le);
         }
-        function A(e) {
+        function M(e) {
           if (null != e) {
             try {
               return ue.call(e);
@@ -791,7 +791,7 @@
           }
           return "";
         }
-        function M(e, t) {
+        function A(e, t) {
           return e === t || (e != e && t != t);
         }
         function F(e) {
@@ -974,12 +974,12 @@
           Ie = G(J, "Promise"),
           Ge = G(J, "Set"),
           Oe = G(J, "WeakMap"),
-          Ae = G(Object, "create"),
-          Me = A(Te),
-          Fe = A(De),
-          Re = A(Ie),
-          Be = A(Ge),
-          Le = A(Oe),
+          Me = G(Object, "create"),
+          Ae = M(Te),
+          Fe = M(De),
+          Re = M(Ie),
+          Be = M(Ge),
+          Le = M(Oe),
           Ne = ge ? ge.prototype : W,
           je = Ne ? Ne.valueOf : W,
           ze = (function () {
@@ -993,7 +993,7 @@
             };
           })();
         (u.prototype.clear = function () {
-          (this.__data__ = Ae ? Ae(null) : {}), (this.size = 0);
+          (this.__data__ = Me ? Me(null) : {}), (this.size = 0);
         }),
           (u.prototype.delete = function (e) {
             return (
@@ -1004,7 +1004,7 @@
           }),
           (u.prototype.get = function (e) {
             var t = this.__data__;
-            return Ae
+            return Me
               ? "__lodash_hash_undefined__" === (e = t[e])
                 ? W
                 : e
@@ -1014,13 +1014,13 @@
           }),
           (u.prototype.has = function (e) {
             var t = this.__data__;
-            return Ae ? t[e] !== W : de.call(t, e);
+            return Me ? t[e] !== W : de.call(t, e);
           }),
           (u.prototype.set = function (e, t) {
             var r = this.__data__;
             return (
               (this.size += this.has(e) ? 0 : 1),
-              (r[e] = Ae && t === W ? "__lodash_hash_undefined__" : t),
+              (r[e] = Me && t === W ? "__lodash_hash_undefined__" : t),
               this
             );
           }),
@@ -1133,10 +1133,10 @@
           (We = function (e) {
             var t = _(e);
             if (
-              (e = (e = "[object Object]" == t ? e.constructor : W) ? A(e) : "")
+              (e = (e = "[object Object]" == t ? e.constructor : W) ? M(e) : "")
             )
               switch (e) {
-                case Me:
+                case Ae:
                   return "[object DataView]";
                 case Fe:
                   return "[object Map]";
@@ -1180,7 +1180,7 @@
           (c.cloneDeep = function (e) {
             return y(e, 5);
           }),
-          (c.eq = M),
+          (c.eq = A),
           (c.isArguments = Ve),
           (c.isArray = $e),
           (c.isArrayLike = F),
@@ -1233,7 +1233,7 @@
     return G;
   });
   var O = {};
-  const A = {
+  const M = {
     init: function () {
       (window.log = m.features.log
         ? (...e) => {
@@ -1252,9 +1252,9 @@
     },
   };
   r(O, "logController", function () {
-    return A;
+    return M;
   });
-  var M = {},
+  var A = {},
     F = function (e, t) {
       return (F =
         Object.setPrototypeOf ||
@@ -1794,7 +1794,7 @@
       !!$(e) && (X(t) ? t.test(e) : "string" == typeof t && -1 !== e.indexOf(t))
     );
   }
-  function Ae(e, t, r) {
+  function Me(e, t, r) {
     if (t in e) {
       var n = e[t],
         o = r(n);
@@ -1808,7 +1808,7 @@
       e[t] = o;
     }
   }
-  function Me(e) {
+  function Ae(e) {
     return Object.keys(e)
       .map(function (t) {
         return encodeURIComponent(t) + "=" + encodeURIComponent(e[t]);
@@ -1937,10 +1937,10 @@
       return Oe;
     }),
     r(ke, "fill", function () {
-      return Ae;
+      return Me;
     }),
     r(ke, "urlEncode", function () {
-      return Me;
+      return Ae;
     }),
     r(ke, "normalizeToSize", function () {
       return Be;
@@ -2278,7 +2278,7 @@
             ["debug", "info", "warn", "error", "log", "assert"].forEach(
               function (e) {
                 e in ct.console &&
-                  Ae(ct.console, e, function (t) {
+                  Me(ct.console, e, function (t) {
                     return function () {
                       for (var r = [], n = 0; n < arguments.length; n++)
                         r[n] = arguments[n];
@@ -2308,12 +2308,12 @@
                 t &&
                   t.hasOwnProperty &&
                   t.hasOwnProperty("addEventListener") &&
-                  (Ae(t, "addEventListener", function (e) {
+                  (Me(t, "addEventListener", function (e) {
                     return function (t, r, n) {
                       return (
                         r && r.handleEvent
                           ? ("click" === t &&
-                              Ae(r, "handleEvent", function (e) {
+                              Me(r, "handleEvent", function (e) {
                                 return function (t) {
                                   return (
                                     wt("click", mt.bind(null, "dom"))(t),
@@ -2322,7 +2322,7 @@
                                 };
                               }),
                             "keypress" === t &&
-                              Ae(r, "handleEvent", function (e) {
+                              Me(r, "handleEvent", function (e) {
                                 return function (t) {
                                   return (
                                     _t(mt.bind(null, "dom"))(t), e.call(this, t)
@@ -2336,7 +2336,7 @@
                       );
                     };
                   }),
-                  Ae(t, "removeEventListener", function (e) {
+                  Me(t, "removeEventListener", function (e) {
                     return function (t, r, n) {
                       try {
                         e.call(this, t, r.__sentry_wrapped__, n);
@@ -2353,7 +2353,7 @@
             var e = [],
               t = [],
               r = XMLHttpRequest.prototype;
-            Ae(r, "open", function (r) {
+            Me(r, "open", function (r) {
               return function () {
                 for (var n = [], o = 0; o < arguments.length; o++)
                   n[o] = arguments[o];
@@ -2394,7 +2394,7 @@
                 return (
                   "onreadystatechange" in i &&
                   "function" == typeof i.onreadystatechange
-                    ? Ae(i, "onreadystatechange", function (e) {
+                    ? Me(i, "onreadystatechange", function (e) {
                         return function () {
                           for (var t = [], r = 0; r < arguments.length; r++)
                             t[r] = arguments[r];
@@ -2406,7 +2406,7 @@
                 );
               };
             }),
-              Ae(r, "send", function (r) {
+              Me(r, "send", function (r) {
                 return function () {
                   for (var n = [], o = 0; o < arguments.length; o++)
                     n[o] = arguments[o];
@@ -2427,7 +2427,7 @@
         case "fetch":
           !(function () {
             if (!it()) return;
-            Ae(ct, "fetch", function (e) {
+            Me(ct, "fetch", function (e) {
               return function () {
                 for (var t = [], r = 0; r < arguments.length; r++)
                   t[r] = arguments[r];
@@ -2488,8 +2488,8 @@
               if (((lt = n), mt("history", { from: o, to: n }), e))
                 return e.apply(this, t);
             }),
-              Ae(ct.history, "pushState", t),
-              Ae(ct.history, "replaceState", t);
+              Me(ct.history, "pushState", t),
+              Me(ct.history, "replaceState", t);
           })();
           break;
         case "error":
@@ -3271,11 +3271,11 @@
         t.scope && t.client && e(t.scope);
       }),
       (e.prototype.run = function (e) {
-        var t = Mt(this);
+        var t = At(this);
         try {
           e(this);
         } finally {
-          Mt(t);
+          At(t);
         }
       }),
       (e.prototype.getIntegration = function (e) {
@@ -3313,7 +3313,7 @@
       (e.prototype._callExtensionMethod = function (e) {
         for (var t = [], r = 1; r < arguments.length; r++)
           t[r - 1] = arguments[r];
-        var n = At(),
+        var n = Mt(),
           o = n.__SENTRY__;
         if (o && o.extensions && "function" == typeof o.extensions[e])
           return o.extensions[e].apply(this, t);
@@ -3322,24 +3322,24 @@
       e
     );
   })();
-  function At() {
+  function Mt() {
     var e = We();
     return (e.__SENTRY__ = e.__SENTRY__ || { extensions: {}, hub: void 0 }), e;
   }
-  function Mt(e) {
-    var t = At(),
+  function At(e) {
+    var t = Mt(),
       r = Bt(t);
     return Lt(t, e), r;
   }
   function Ft() {
-    var e = At();
+    var e = Mt();
     return (
       (Rt(e) && !Bt(e).isOlderThan(3)) || Lt(e, new Ot()),
       He.isNodeEnv()
         ? (function (e) {
             try {
               var t =
-                (n = At().__SENTRY__) &&
+                (n = Mt().__SENTRY__) &&
                 n.extensions &&
                 n.extensions.domain &&
                 n.extensions.domain.active;
@@ -3469,7 +3469,7 @@
           );
         }),
         (e.prototype._encodedAuth = function () {
-          return Me({ sentry_key: this._dsnObject.user, sentry_version: "7" });
+          return Ae({ sentry_key: this._dsnObject.user, sentry_version: "7" });
         }),
         e
       );
@@ -4724,7 +4724,7 @@
       "XMLHttpRequestEventTarget",
       "XMLHttpRequestUpload",
     ],
-    Ar = (function () {
+    Mr = (function () {
       function e(t) {
         (this.name = e.id),
           (this._options = B(
@@ -4742,14 +4742,14 @@
         (e.prototype.setupOnce = function () {
           var e = We();
           (this._options.setTimeout &&
-            Ae(e, "setTimeout", this._wrapTimeFunction.bind(this)),
+            Me(e, "setTimeout", this._wrapTimeFunction.bind(this)),
           this._options.setInterval &&
-            Ae(e, "setInterval", this._wrapTimeFunction.bind(this)),
+            Me(e, "setInterval", this._wrapTimeFunction.bind(this)),
           this._options.requestAnimationFrame &&
-            Ae(e, "requestAnimationFrame", this._wrapRAF.bind(this)),
+            Me(e, "requestAnimationFrame", this._wrapRAF.bind(this)),
           this._options.XMLHttpRequest &&
             "XMLHttpRequest" in e &&
-            Ae(XMLHttpRequest.prototype, "send", this._wrapXHR.bind(this)),
+            Me(XMLHttpRequest.prototype, "send", this._wrapXHR.bind(this)),
           this._options.eventTarget) &&
             (Array.isArray(this._options.eventTarget)
               ? this._options.eventTarget
@@ -4793,7 +4793,7 @@
           r &&
             r.hasOwnProperty &&
             r.hasOwnProperty("addEventListener") &&
-            (Ae(r, "addEventListener", function (t) {
+            (Me(r, "addEventListener", function (t) {
               return function (r, n, o) {
                 try {
                   "function" == typeof n.handleEvent &&
@@ -4827,7 +4827,7 @@
                 );
               };
             }),
-            Ae(r, "removeEventListener", function (e) {
+            Me(r, "removeEventListener", function (e) {
               return function (t, r, n) {
                 try {
                   e.call(this, t, r.__sentry_wrapped__, n);
@@ -4846,7 +4846,7 @@
               o.forEach(function (e) {
                 e in n &&
                   "function" == typeof n[e] &&
-                  Ae(n, e, function (t) {
+                  Me(n, e, function (t) {
                     var r = {
                       mechanism: {
                         data: { function: e, handler: Pe(t) },
@@ -4869,7 +4869,7 @@
         e
       );
     })(),
-    Mr = (function () {
+    Ar = (function () {
       function e(t) {
         (this.name = e.id),
           (this._options = B(
@@ -5122,10 +5122,10 @@
     return Gr;
   }),
     r(Ir, "TryCatch", function () {
-      return Ar;
+      return Mr;
     }),
     r(Ir, "Breadcrumbs", function () {
-      return Mr;
+      return Ar;
     }),
     r(Ir, "LinkedErrors", function () {
       return Fr;
@@ -5163,7 +5163,7 @@
           );
         }),
         (t.prototype._sendEvent = function (t) {
-          var r = this.getIntegration(Mr);
+          var r = this.getIntegration(Ar);
           r && r.addSentryBreadcrumb(t), e.prototype._sendEvent.call(this, t);
         }),
         t
@@ -5172,8 +5172,8 @@
     jr = [
       new er.InboundFilters(),
       new er.FunctionToString(),
-      new Ar(),
       new Mr(),
+      new Ar(),
       new Gr(),
       new Fr(),
       new Br(),
@@ -5490,8 +5490,8 @@
     In,
     Gn,
     On,
-    An,
     Mn,
+    An,
     Fn,
     Rn,
     Bn,
@@ -5795,10 +5795,10 @@
         (an.Children = Gn),
         (On = ao),
         (an.Component = On),
-        (An = dn),
-        (an.Fragment = An),
-        (Mn = pn),
-        (an.Profiler = Mn),
+        (Mn = dn),
+        (an.Fragment = Mn),
+        (An = pn),
+        (an.Profiler = An),
         (Fn = lo),
         (an.PureComponent = Fn),
         (Rn = hn),
@@ -5949,13 +5949,13 @@
     Io,
     Go = !1;
   function Oo() {}
-  function Ao() {}
-  var Mo = {};
-  Mo = (Go ||
+  function Mo() {}
+  var Ao = {};
+  Ao = (Go ||
     ((Go = !0),
     (Do = {}),
     (Io = To()),
-    (Ao.resetWarningCache = Oo),
+    (Mo.resetWarningCache = Oo),
     (Do = function () {
       function e(e, t, r, n, o, i) {
         if (i !== Io) {
@@ -5988,7 +5988,7 @@
         oneOfType: t,
         shape: t,
         exact: t,
-        checkPropTypes: Ao,
+        checkPropTypes: Mo,
         resetWarningCache: Oo,
       };
       return (r.PropTypes = r), r;
@@ -6174,8 +6174,8 @@
     Ii,
     Gi,
     Oi,
-    Ai,
     Mi,
+    Ai,
     Fi,
     Ri,
     Bi,
@@ -6300,14 +6300,14 @@
       return Ni(e) === qo;
     }),
     (Wo.isPortal = Oi),
-    (Ai = function (e) {
+    (Mi = function (e) {
       return Ni(e) === Ko;
     }),
-    (Wo.isProfiler = Ai),
-    (Mi = function (e) {
+    (Wo.isProfiler = Mi),
+    (Ai = function (e) {
       return Ni(e) === Zo;
     }),
-    (Wo.isStrictMode = Mi),
+    (Wo.isStrictMode = Ai),
     (Fi = function (e) {
       return Ni(e) === ri;
     }),
@@ -6893,8 +6893,8 @@
     Ia,
     Ga,
     Oa,
-    Aa,
     Ma,
+    Aa,
     Fa,
     Ra,
     Ba,
@@ -7042,13 +7042,13 @@
         ((gs = !0),
         (Pa = {}),
         "undefined" == typeof window || "function" != typeof MessageChannel
-          ? ((Aa = null),
-            (Ma = null),
+          ? ((Ma = null),
+            (Aa = null),
             (Fa = function () {
-              if (null !== Aa)
+              if (null !== Ma)
                 try {
                   var e = Ca();
-                  Aa(!0, e), (Aa = null);
+                  Ma(!0, e), (Ma = null);
                 } catch (e) {
                   throw (setTimeout(Fa, 0), e);
                 }
@@ -7059,15 +7059,15 @@
             }),
             (Pa.unstable_now = Ca),
             (Ta = function (e) {
-              null !== Aa
+              null !== Ma
                 ? setTimeout(Ta, 0, e)
-                : ((Aa = e), setTimeout(Fa, 0));
+                : ((Ma = e), setTimeout(Fa, 0));
             }),
             (Da = function (e, t) {
-              Ma = setTimeout(e, t);
+              Aa = setTimeout(e, t);
             }),
             (Ia = function () {
-              clearTimeout(Ma);
+              clearTimeout(Aa);
             }),
             (Ga = function () {
               return !1;
@@ -7286,8 +7286,8 @@
     Is,
     Gs,
     Os,
-    As,
     Ms,
+    As,
     Fs,
     Rs,
     Bs,
@@ -7340,8 +7340,8 @@
     Il,
     Gl,
     Ol,
-    Al,
     Ml,
+    Al,
     Fl,
     Rl,
     Bl,
@@ -7394,8 +7394,8 @@
     Ic,
     Gc,
     Oc,
-    Ac,
     Mc,
+    Ac,
     Fc,
     Rc,
     Bc,
@@ -7448,8 +7448,8 @@
     Iu,
     Gu,
     Ou,
-    Au,
     Mu,
+    Au,
     Fu,
     Ru,
     Bu,
@@ -7502,8 +7502,8 @@
     Id,
     Gd,
     Od,
-    Ad,
     Md,
+    Ad,
     Fd,
     Rd,
     Bd,
@@ -7574,7 +7574,7 @@
     }
   }
   function Th(e, t, r, n, o, i, a, s, l) {
-    (Os = !1), (As = null), Ph.apply(Rs, arguments);
+    (Os = !1), (Ms = null), Ph.apply(Rs, arguments);
   }
   function Dh(e, t, r) {
     var n = e.type || "unknown-event";
@@ -7582,8 +7582,8 @@
       (function (e, t, r, n, o, i, a, s, l) {
         if ((Th.apply(this, arguments), Os)) {
           if (!Os) throw Error(Sh(198));
-          var c = As;
-          (Os = !1), (As = null), Ms || ((Ms = !0), (Fs = c));
+          var c = Ms;
+          (Os = !1), (Ms = null), As || ((As = !0), (Fs = c));
         }
       })(n, t, void 0, e),
       (e.currentTarget = null);
@@ -7633,21 +7633,21 @@
       }
     r && Ih();
   }
-  function Ah(e) {
+  function Mh(e) {
     if ((e = Ls(e))) {
       if ("function" != typeof qs) throw Error(Sh(280));
       var t = e.stateNode;
       t && ((t = Bs(t)), qs(e.stateNode, e.type, t));
     }
   }
-  function Mh(e) {
+  function Ah(e) {
     Ys ? (Zs ? Zs.push(e) : (Zs = [e])) : (Ys = e);
   }
   function Fh() {
     if (Ys) {
       var e = Ys,
         t = Zs;
-      if (((Zs = Ys = null), Ah(e), t)) for (e = 0; e < t.length; e++) Ah(t[e]);
+      if (((Zs = Ys = null), Mh(e), t)) for (e = 0; e < t.length; e++) Mh(t[e]);
     }
   }
   function Rh(e, t) {
@@ -8074,8 +8074,8 @@
     return e;
   }
   function mp(e) {
-    var t = Ml.get(e);
-    return void 0 === t && ((t = new Map()), Ml.set(e, t)), t;
+    var t = Al.get(e);
+    return void 0 === t && ((t = new Map()), Al.set(e, t)), t;
   }
   function fp(e) {
     var t = e,
@@ -8210,7 +8210,7 @@
   function Ep(e) {
     if ((null !== e && (Fl = yp(Fl, e)), (e = Fl), (Fl = null), e)) {
       if ((wp(e, _p), Fl)) throw Error(Sh(95));
-      if (Ms) throw ((e = Fs), (Ms = !1), (Fs = null), e);
+      if (As) throw ((e = Fs), (As = !1), (Fs = null), e);
     }
   }
   function xp(e) {
@@ -8309,7 +8309,7 @@
         case "reset":
           break;
         default:
-          -1 === Al.indexOf(e) && Np(e, t);
+          -1 === Ml.indexOf(e) && Np(e, t);
       }
       r.set(e, null);
     }
@@ -8372,7 +8372,7 @@
     }
     e.blockedOn = null;
   }
-  function Ap(e) {
+  function Mp(e) {
     if (null !== e.blockedOn) return !1;
     var t = Wp(e.topLevelType, e.eventSystemFlags, e.container, e.nativeEvent);
     if (null !== t) {
@@ -8381,8 +8381,8 @@
     }
     return !0;
   }
-  function Mp(e, t, r) {
-    Ap(e) && r.delete(t);
+  function Ap(e, t, r) {
+    Mp(e) && r.delete(t);
   }
   function Fp() {
     for (jl = !1; 0 < zl.length; ) {
@@ -8399,11 +8399,11 @@
       );
       null !== t ? (e.blockedOn = t) : zl.shift();
     }
-    null !== Hl && Ap(Hl) && (Hl = null),
-      null !== Ul && Ap(Ul) && (Ul = null),
-      null !== Wl && Ap(Wl) && (Wl = null),
-      Vl.forEach(Mp),
-      $l.forEach(Mp);
+    null !== Hl && Mp(Hl) && (Hl = null),
+      null !== Ul && Mp(Ul) && (Ul = null),
+      null !== Wl && Mp(Wl) && (Wl = null),
+      Vl.forEach(Ap),
+      $l.forEach(Ap);
   }
   function Rp(e, t) {
     e.blockedOn === t &&
@@ -8895,7 +8895,7 @@
   }
   function Tm(e, t, r) {
     return (
-      ((e = _m.getPooled(Bc.change, e, t, r)).type = "change"), Mh(r), vm(e), e
+      ((e = _m.getPooled(Bc.change, e, t, r)).type = "change"), Ah(r), vm(e), e
     );
   }
   function Dm(e) {
@@ -8908,9 +8908,9 @@
     if ("change" === e) return t;
   }
   function Om() {
-    Lc && (Lc.detachEvent("onpropertychange", Am), (Nc = Lc = null));
+    Lc && (Lc.detachEvent("onpropertychange", Mm), (Nc = Lc = null));
   }
-  function Am(e) {
+  function Mm(e) {
     if ("value" === e.propertyName && Im(Nc))
       if (((e = Tm(Nc, e, xp(e))), Xs)) Ep(e);
       else {
@@ -8922,9 +8922,9 @@
         }
       }
   }
-  function Mm(e, t, r) {
+  function Am(e, t, r) {
     "focus" === e
-      ? (Om(), (Nc = r), (Lc = t).attachEvent("onpropertychange", Am))
+      ? (Om(), (Nc = r), (Lc = t).attachEvent("onpropertychange", Mm))
       : "blur" === e && Om();
   }
   function Fm(e) {
@@ -9068,9 +9068,9 @@
         return 98;
       case Ou:
         return 97;
-      case Au:
-        return 96;
       case Mu:
+        return 96;
+      case Au:
         return 95;
       default:
         throw Error(Sh(332));
@@ -9085,9 +9085,9 @@
       case 97:
         return Ou;
       case 96:
-        return Au;
-      case 95:
         return Mu;
+      case 95:
+        return Au;
       default:
         throw Error(Sh(332));
     }
@@ -9774,10 +9774,10 @@
       r = up(t, e.type);
     t !== r && (Vm(rd, e), Vm(td, r));
   }
-  function Af(e) {
+  function Mf(e) {
     rd.current === e && (Wm(td), Wm(rd));
   }
-  function Mf(e) {
+  function Af(e) {
     for (var t = e; null !== t; ) {
       if (13 === t.tag) {
         var r = t.memoizedState;
@@ -10545,7 +10545,7 @@
       switch (o) {
         case "forwards":
           for (r = t.child, o = null; null !== r; )
-            null !== (e = r.alternate) && null === Mf(e) && (o = r),
+            null !== (e = r.alternate) && null === Af(e) && (o = r),
               (r = r.sibling);
           null === (r = o)
             ? ((o = t.child), (t.child = null))
@@ -10554,7 +10554,7 @@
           break;
         case "backwards":
           for (r = null, o = t.child, t.child = null; null !== o; ) {
-            if (null !== (e = o.alternate) && null === Mf(e)) {
+            if (null !== (e = o.alternate) && null === Af(e)) {
               t.child = o;
               break;
             }
@@ -10633,7 +10633,7 @@
           null
         );
       case 5:
-        Af(t), (r = Df(nd.current));
+        Mf(t), (r = Df(nd.current));
         var o = t.type;
         if (null !== e && null != t.stateNode)
           kd(e, t, o, n, r), e.ref !== t.ref && (t.effectTag |= 128);
@@ -10653,7 +10653,7 @@
                 break;
               case "video":
               case "audio":
-                for (e = 0; e < Al.length; e++) Np(Al[e], n);
+                for (e = 0; e < Ml.length; e++) Np(Ml[e], n);
                 break;
               case "source":
                 Np("error", n);
@@ -10737,7 +10737,7 @@
                 break;
               case "video":
               case "audio":
-                for (s = 0; s < Al.length; s++) Np(Al[s], e);
+                for (s = 0; s < Ml.length; s++) Np(Ml[s], e);
                 s = n;
                 break;
               case "source":
@@ -10862,7 +10862,7 @@
                 0 != (1 & od.current)
                   ? Vd === Fd && (Vd = Ld)
                   : ((Vd !== Fd && Vd !== Ld) || (Vd = Nd),
-                    0 !== Kd && null !== Hd && (Ov(Hd, Wd), Av(Hd, Kd)))),
+                    0 !== Kd && null !== Hd && (Ov(Hd, Wd), Mv(Hd, Kd)))),
               (r || n) && (t.effectTag |= 4),
               null)
         );
@@ -10878,7 +10878,7 @@
           if (o) Sg(n, !1);
           else if (Vd !== Fd || (null !== e && 0 != (64 & e.effectTag)))
             for (i = t.child; null !== i; ) {
-              if (null !== (e = Mf(i))) {
+              if (null !== (e = Af(i))) {
                 for (
                   t.effectTag |= 64,
                     Sg(n, !1),
@@ -10925,7 +10925,7 @@
             }
         } else {
           if (!o)
-            if (null !== (e = Mf(i))) {
+            if (null !== (e = Af(i))) {
               if (
                 ((t.effectTag |= 64),
                 (o = !0),
@@ -10977,7 +10977,7 @@
           throw Error(Sh(285));
         return (e.effectTag = (-4097 & t) | 64), e;
       case 5:
-        return Af(e), null;
+        return Mf(e), null;
       case 13:
         return (
           Wm(od),
@@ -11051,7 +11051,7 @@
     }
     throw Error(Sh(163));
   }
-  function Ag(e, t) {
+  function Mg(e, t) {
     if (null !== (t = null !== (t = t.updateQueue) ? t.lastEffect : null)) {
       var r = (t = t.next);
       do {
@@ -11063,7 +11063,7 @@
       } while (r !== t);
     }
   }
-  function Mg(e, t) {
+  function Ag(e, t) {
     if (null !== (t = null !== (t = t.updateQueue) ? t.lastEffect : null)) {
       var r = (t = t.next);
       do {
@@ -11081,7 +11081,7 @@
       case 11:
       case 15:
       case 22:
-        return void Mg(3, r);
+        return void Ag(3, r);
       case 1:
         if (((e = r.stateNode), 4 & r.effectTag))
           if (null === t) e.componentDidMount();
@@ -11343,7 +11343,7 @@
       case 14:
       case 15:
       case 22:
-        return void Ag(3, t);
+        return void Mg(3, t);
       case 1:
         return;
       case 5:
@@ -11505,7 +11505,7 @@
     );
   }
   function qg() {
-    return (zd & (Ad | Md)) !== Gd
+    return (zd & (Md | Ad)) !== Gd
       ? 1073741821 - ((Hu() / 10) | 0)
       : 0 !== uh
       ? uh
@@ -11515,7 +11515,7 @@
     if (0 == (2 & (t = t.mode))) return 1073741823;
     var n = Jm();
     if (0 == (4 & t)) return 99 === n ? 1073741823 : 1073741822;
-    if ((zd & Ad) !== Gd) return Wd;
+    if ((zd & Md) !== Gd) return Wd;
     if (null !== r) e = sf(e, 0 | r.timeoutMs || 5e3, 250);
     else
       switch (n) {
@@ -11542,7 +11542,7 @@
     if (null !== (e = Kg(e, t))) {
       var r = Jm();
       1073741823 === t
-        ? (zd & Od) !== Gd && (zd & (Ad | Md)) === Gd
+        ? (zd & Od) !== Gd && (zd & (Md | Ad)) === Gd
           ? ev(e)
           : (Qg(e), zd === Gd && of())
         : Qg(e),
@@ -11576,7 +11576,7 @@
         n = n.return;
       }
     return (
-      null !== o && (Hd === o && (sv(t), Vd === Nd && Ov(o, Wd)), Av(o, t)), o
+      null !== o && (Hd === o && (sv(t), Vd === Nd && Ov(o, Wd)), Mv(o, t)), o
     );
   }
   function Xg(e) {
@@ -11635,13 +11635,13 @@
     }
   }
   function Jg(e, t) {
-    if (((uh = 0), t)) return Mv(e, (t = qg())), Qg(e), null;
+    if (((uh = 0), t)) return Av(e, (t = qg())), Qg(e), null;
     var r = Xg(e);
     if (0 !== r) {
-      if (((t = e.callbackNode), (zd & (Ad | Md)) !== Gd)) throw Error(Sh(327));
+      if (((t = e.callbackNode), (zd & (Md | Ad)) !== Gd)) throw Error(Sh(327));
       if ((gv(), (e === Hd && r === Wd) || nv(e, r), null !== Ud)) {
         var n = zd;
-        zd |= Ad;
+        zd |= Md;
         for (var o = iv(); ; )
           try {
             cv();
@@ -11663,7 +11663,7 @@
             case Rd:
               throw Error(Sh(345));
             case Bd:
-              Mv(e, 2 < r ? 2 : r);
+              Av(e, 2 < r ? 2 : r);
               break;
             case Ld:
               if (
@@ -11766,11 +11766,11 @@
   }
   function ev(e) {
     var t = e.lastExpiredTime;
-    if (((t = 0 !== t ? t : 1073741823), (zd & (Ad | Md)) !== Gd))
+    if (((t = 0 !== t ? t : 1073741823), (zd & (Md | Ad)) !== Gd))
       throw Error(Sh(327));
     if ((gv(), (e === Hd && t === Wd) || nv(e, t), null !== Ud)) {
       var r = zd;
-      zd |= Ad;
+      zd |= Md;
       for (var n = iv(); ; )
         try {
           lv();
@@ -11821,7 +11821,7 @@
             Gf(), Wm(Eu), Wm(_u);
             break;
           case 5:
-            Af(n);
+            Mf(n);
             break;
           case 4:
             Gf();
@@ -12049,7 +12049,7 @@
     do {
       gv();
     } while (null !== ih);
-    if ((zd & (Ad | Md)) !== Gd) throw Error(Sh(327));
+    if ((zd & (Md | Ad)) !== Gd) throw Error(Sh(327));
     var r = e.finishedWork,
       n = e.finishedExpirationTime;
     if (null === r) return null;
@@ -12081,7 +12081,7 @@
       null !== o)
     ) {
       var i = zd;
-      (zd |= Md), (Id.current = null), (pc = oc);
+      (zd |= Ad), (Id.current = null), (pc = oc);
       var a = tm();
       if (rm(a)) {
         if ("selectionStart" in a)
@@ -12302,9 +12302,9 @@
   function vv() {
     if (null === ih) return !1;
     var e = ih;
-    if (((ih = null), (zd & (Ad | Md)) !== Gd)) throw Error(Sh(331));
+    if (((ih = null), (zd & (Md | Ad)) !== Gd)) throw Error(Sh(331));
     var t = zd;
-    for (zd |= Md, e = e.current.firstEffect; null !== e; ) {
+    for (zd |= Ad, e = e.current.firstEffect; null !== e; ) {
       try {
         var r = e;
         if (0 != (512 & r.effectTag))
@@ -12313,7 +12313,7 @@
             case 11:
             case 15:
             case 22:
-              Ag(5, r), Mg(5, r);
+              Mg(5, r), Ag(5, r);
           }
       } catch (t) {
         if (null === e) throw Error(Sh(330));
@@ -12549,7 +12549,7 @@
       t <= e.lastPingedTime && (e.lastPingedTime = 0),
       t <= e.lastExpiredTime && (e.lastExpiredTime = 0);
   }
-  function Av(e, t) {
+  function Mv(e, t) {
     t > e.firstPendingTime && (e.firstPendingTime = t);
     var r = e.firstSuspendedTime;
     0 !== r &&
@@ -12561,7 +12561,7 @@
         : t >= e.lastSuspendedTime && (e.lastSuspendedTime = t + 1),
       t > e.nextKnownPendingLevel && (e.nextKnownPendingLevel = t));
   }
-  function Mv(e, t) {
+  function Av(e, t) {
     var r = e.lastExpiredTime;
     (0 === r || r > t) && (e.lastExpiredTime = t);
   }
@@ -12722,12 +12722,12 @@
     if (((Ds = {}), (Is = Co()), (Gs = on()), Ts(), !Is)) throw Error(Sh(227));
     var e;
     (Os = !1),
-      (As = null),
-      (Ms = !1),
+      (Ms = null),
+      (As = !1),
       (Fs = null),
       (Rs = {
         onError: function (e) {
-          (Os = !0), (As = e);
+          (Os = !0), (Ms = e);
         },
       }),
       (Bs = null),
@@ -12900,11 +12900,11 @@
       (Il = pp("animationiteration")),
       (Gl = pp("animationstart")),
       (Ol = pp("transitionend")),
-      (Al =
+      (Ml =
         "abort canplay canplaythrough durationchange emptied encrypted ended error loadeddata loadedmetadata loadstart pause play playing progress ratechange seeked seeking stalled suspend timeupdate volumechange waiting".split(
           " "
         )),
-      (Ml = new ("function" == typeof WeakMap ? WeakMap : Map)()),
+      (Al = new ("function" == typeof WeakMap ? WeakMap : Map)()),
       (Fl = null),
       (Rl = []),
       (jl = !1),
@@ -13200,8 +13200,8 @@
             ),
         },
       }),
-      (Ac = !1),
       (Mc = !1),
+      (Ac = !1),
       (Fc = {
         eventTypes: Oc,
         extractEvents: function (e, t, r, n) {
@@ -13222,7 +13222,7 @@
               i = void 0;
             }
           else
-            Mc
+            Ac
               ? Cm(e, r) && (i = Oc.compositionEnd)
               : "keydown" === e &&
                 229 === r.keyCode &&
@@ -13231,10 +13231,10 @@
             i
               ? (Ic &&
                   "ko" !== r.locale &&
-                  (Mc || i !== Oc.compositionStart
-                    ? i === Oc.compositionEnd && Mc && (o = bm())
+                  (Ac || i !== Oc.compositionStart
+                    ? i === Oc.compositionEnd && Ac && (o = bm())
                     : ((Ec = "value" in (_c = n) ? _c.value : _c.textContent),
-                      (Mc = !0))),
+                      (Ac = !0))),
                 (i = kc.getPooled(i, t, r, n)),
                 o ? (i.data = o) : null !== (o = Sm(r)) && (i.data = o),
                 vm(i),
@@ -13246,17 +13246,17 @@
                     case "compositionend":
                       return Sm(t);
                     case "keypress":
-                      return 32 !== t.which ? null : ((Ac = !0), Gc);
+                      return 32 !== t.which ? null : ((Mc = !0), Gc);
                     case "textInput":
-                      return (e = t.data) === Gc && Ac ? null : e;
+                      return (e = t.data) === Gc && Mc ? null : e;
                     default:
                       return null;
                   }
                 })(e, r)
               : (function (e, t) {
-                  if (Mc)
+                  if (Ac)
                     return "compositionend" === e || (!Pc && Cm(e, t))
-                      ? ((e = bm()), (xc = Ec = _c = null), (Mc = !1), e)
+                      ? ((e = bm()), (xc = Ec = _c = null), (Ac = !1), e)
                       : null;
                   switch (e) {
                     case "paste":
@@ -13329,7 +13329,7 @@
             if (jc) a = Bm;
             else {
               a = Fm;
-              var s = Mm;
+              var s = Am;
             }
           else
             (i = o.nodeName) &&
@@ -13812,8 +13812,8 @@
       (Iu = Ts().unstable_ImmediatePriority),
       (Gu = Ts().unstable_UserBlockingPriority),
       (Ou = Ts().unstable_NormalPriority),
-      (Au = Ts().unstable_LowPriority),
-      (Mu = Ts().unstable_IdlePriority),
+      (Mu = Ts().unstable_LowPriority),
+      (Au = Ts().unstable_IdlePriority),
       (Fu = {}),
       (Ru = Ts().unstable_shouldYield),
       (Bu = void 0 !== Pu ? Pu : function () {}),
@@ -14158,8 +14158,8 @@
       (Dd = il.ReactCurrentDispatcher),
       (Id = il.ReactCurrentOwner),
       (Od = 8),
-      (Ad = 16),
-      (Md = 32),
+      (Md = 16),
+      (Ad = 32),
       (Rd = 1),
       (Bd = 2),
       (Ld = 3),
@@ -14585,13 +14585,13 @@
         }
       }),
       (Lh = function () {
-        (zd & (1 | Ad | Md)) === Gd &&
+        (zd & (1 | Md | Ad)) === Gd &&
           ((function () {
             if (null !== sh) {
               var e = sh;
               (sh = null),
                 e.forEach(function (e, t) {
-                  Mv(t, e), Qg(t);
+                  Av(t, e), Qg(t);
                 }),
                 of();
             }
@@ -14618,7 +14618,7 @@
           function (e) {
             wp(e, gm);
           },
-          Mh,
+          Ah,
           Fh,
           Up,
           Ep,
@@ -14692,7 +14692,7 @@
       }),
       (Ds.findDOMNode = vh),
       (bh = function (e, t) {
-        if ((zd & (Ad | Md)) !== Gd) throw Error(Sh(187));
+        if ((zd & (Md | Ad)) !== Gd) throw Error(Sh(187));
         var r = zd;
         zd |= 1;
         try {
@@ -14983,7 +14983,7 @@
           jt(e);
       },
     };
-  r(M, "sentryController", function () {
+  r(A, "sentryController", function () {
     return db;
   });
   var hb = {},
@@ -15206,7 +15206,7 @@
       return Gb;
     });
   var Ob = {};
-  function Ab(e, { delay: t, period: r, when: n }, o) {
+  function Mb(e, { delay: t, period: r, when: n }, o) {
     const i = {};
     "number" == typeof t && (i.delayInMinutes = t / E),
       "number" == typeof r && (i.periodInMinutes = r / E),
@@ -15217,9 +15217,9 @@
       });
   }
   r(Ob, "default", function () {
-    return Ab;
+    return Mb;
   });
-  var Mb = {};
+  var Ab = {};
   const Fb = "https://www.instagram.com/",
     Rb = {
       maxMentions: 30,
@@ -15452,7 +15452,7 @@
       },
       locale: { url: Fb, regexp: /"locale":"([^"]+)"/ },
     };
-  r(Mb, "ig", function () {
+  r(Ab, "ig", function () {
     return Rb;
   });
   const Bb = {
@@ -15461,7 +15461,7 @@
     posts: { min: 500, max: 1500 },
     peers: { min: 600, max: 7e3 },
   };
-  r(Mb, "sleepTimes", function () {
+  r(Ab, "sleepTimes", function () {
     return Bb;
   });
   const Lb = {
@@ -15475,7 +15475,7 @@
     faqUrl: "https://github.com/YezerSTN/INSSIST",
     faqBillingUrl: "https://github.com/YezerSTN/INSSIST",
   };
-  r(Mb, "common", function () {
+  r(Ab, "common", function () {
     return Lb;
   });
   var Nb = {},
@@ -15751,12 +15751,12 @@
   r(Hb, "iframeBus", function () {
     return xy;
   });
-  var Ay = {},
-    My = {};
+  var My = {},
+    Ay = {};
   function Fy(e, t, r) {
     return r.indexOf(e) === t;
   }
-  r(My, "default", function () {
+  r(Ay, "default", function () {
     return Fy;
   });
   var Ry = {};
@@ -16151,8 +16151,8 @@
                 I,
                 G,
                 O,
-                A,
                 M,
+                A,
                 F;
               if (!e) return null;
               const R =
@@ -16298,14 +16298,14 @@
                   null == e ||
                   null === (O = e.node) ||
                   void 0 === O ||
-                  null === (A = O.owner) ||
-                  void 0 === A
+                  null === (M = O.owner) ||
+                  void 0 === M
                     ? void 0
-                    : A.username,
+                    : M.username,
                 isVideo:
-                  null == e || null === (M = e.node) || void 0 === M
+                  null == e || null === (A = e.node) || void 0 === A
                     ? void 0
-                    : M.is_video,
+                    : A.is_video,
                 type: t[R] || "photo",
                 isLiked:
                   (null == e || null === (F = e.node) || void 0 === F
@@ -16851,16 +16851,16 @@
           });
     }
   }
-  r(Ay, "ec", function () {
+  r(My, "ec", function () {
     return rw;
   }),
-    r(Ay, "Response", function () {
+    r(My, "Response", function () {
       return ow;
     }),
-    r(Ay, "IgUsersPage", function () {
+    r(My, "IgUsersPage", function () {
       return bw;
     }),
-    r(Ay, "igApi", function () {
+    r(My, "igApi", function () {
       return lw;
     });
   var yw = {},
@@ -17718,12 +17718,21 @@
   r(Gw, "default", function () {
     return Ow;
   });
-  var Aw = Zv("state.acknowledge", (e, t) => {
+  var Mw = Zv("state.acknowledge", (e, t) => {
       const r = wb.getUnixTime();
       return { ...e, acknowledged: { ...e.acknowledged, [t]: r } };
     }),
-    Mw = {},
+    Aw = {},
     Fw = () => [
+      {
+        id: "v23.3.0",
+        header: "Major Functionality Fixes",
+        subheader: "v23.3.0",
+        hexImage: "hex-bug",
+        content: [
+          "Restored all app functions broken due to recent changes introduced by Instagram update to internal data and media handling systems.",
+        ],
+      },
       {
         id: "v23.1.0",
         header: "Instagram Update Bug Fixes",
@@ -18311,12 +18320,12 @@
         ],
       },
     ];
-  r(Mw, "default", function () {
+  r(Aw, "default", function () {
     return Fw;
   });
   var Rw = {},
     Bw = () => ({
-      version: 202,
+      version: 203,
       authStatus: {
         userId: null,
         username: null,
@@ -18348,7 +18357,7 @@
         musicVolume: 0.5,
         videoCurrentTime: 0,
         categoryIdsOrder: [],
-        selectedCategoryId: "popular",
+        selectedCategoryId: 0,
         selectedTrackId: null,
         selectedTrackStart: 0,
         customTrack: null,
@@ -18553,6 +18562,15 @@
     followUs: { shown: !1 },
     rateUs: { shown: !1, rate: null },
     whatsNew: [
+      {
+        id: "v23.3.0",
+        header: "Major Functionality Fixes",
+        subheader: "v23.3.0",
+        hexImage: "hex-bug",
+        content: [
+          "Restored all app functions broken due to recent changes introduced by Instagram update to internal data and media handling systems.",
+        ],
+      },
       {
         id: "v23.1.0",
         header: "Instagram Update Bug Fixes",
@@ -19181,7 +19199,7 @@
   r(Lw, "default", function () {
     return zw;
   });
-  const Hw = { acknowledge: Aw };
+  const Hw = { acknowledge: Mw };
   r(yw, "actions", function () {
     return Hw;
   }),
@@ -19366,7 +19384,7 @@
     return t;
   });
   const qw = {
-      version: 202,
+      version: 203,
       authStatus: {
         userId: null,
         username: null,
@@ -19398,7 +19416,7 @@
         musicVolume: 0.5,
         videoCurrentTime: 0,
         categoryIdsOrder: [],
-        selectedCategoryId: "popular",
+        selectedCategoryId: 0,
         selectedTrackId: null,
         selectedTrackStart: 0,
         customTrack: null,
@@ -20202,21 +20220,21 @@
     return G_;
   });
   var O_ = {},
-    A_ = {
+    M_ = {
       reset: function () {
-        M_(), ob.send("reset.reset");
+        A_(), ob.send("reset.reset");
       },
       onReset: function (e) {
-        M_(e), ob.on("reset.reset", e);
+        A_(e), ob.on("reset.reset", e);
       },
     };
-  const M_ = l_();
+  const A_ = l_();
   r(O_, "resetController", function () {
-    return A_;
+    return M_;
   });
   var F_ = {},
     R_ = {
-      version: 127,
+      version: 128,
       dmSelectors: {
         general: {
           reactRoot: ["#react-root", '[id^="mount"]'],
@@ -20280,12 +20298,12 @@
           ],
           tabsContainer: [
             ".emXTk > div:first-child",
-            ".PolarisDirectInboxTabbedHeader > div:first-child",
+            ".PolarisDesktopDirectPage > div.PolarisDirectInboxTabbedHeader > div:first-child",
           ],
-          folderTab: [".k8Vux", ".PolarisDirectInboxTabbedHeader > a"],
+          folderTab: [".k8Vux", "nav.PolarisDirectInboxTabbedHeader > div"],
           folderTabGeneral: [
             ".k8Vux:nth-child(2)",
-            ".PolarisDirectInboxTabbedHeader > a:nth-child(2)",
+            "nav.PolarisDirectInboxTabbedHeader > div:nth-child(2)",
           ],
           folderTabsContainer: [
             '.emXTk [style*="60%"]',
@@ -20313,6 +20331,9 @@
             ".QOqBd",
             ".PolarisDirectInboxList > div > .PolarisIGCoreBox._ab99._ab8o",
           ],
+          conversationItemWrapSkeleton: [
+            ".PolarisDirectInboxList > div > .PolarisIGCoreBox._ab9k",
+          ],
           conversationItem: [
             ".-qQT3",
             ".rOtsg",
@@ -20334,7 +20355,7 @@
           ],
           threadListSpinner: [
             ".N9abW .HVWg4",
-            ".PolarisIGVirtualList.PolarisDirectInboxList ._aba8",
+            ".PolarisIGVirtualList.PolarisDirectInboxList > div > ._ab9h",
           ],
         },
         dialog: {
@@ -20370,17 +20391,27 @@
             "#react-root > section",
             "#react-root > div > div > section",
             "section.PolarisBaseShell",
+            "section.PolarisRefreshedBaseShell",
           ],
+          rootNewNavDesign: ["section.PolarisRefreshedBaseShell"],
           content: [
             "#react-root > section > *:nth-child(2)",
             "main.PolarisShellContent",
+            "main.PolarisRefreshedShellContent",
           ],
-          contentSection: "main.PolarisShellContent > section",
+          contentSection: [
+            "main.PolarisShellContent > section",
+            "main.PolarisRefreshedShellContent > section",
+          ],
           header: ["._9ezyW", "header.PolarisGenericMobileHeader"],
           headerContent: [".b5itu", "header.PolarisGenericMobileHeader ._ab16"],
           headerTitle: [".K3Sf1", "h1.PolarisGenericMobileHeader"],
-          main: [".uzKWK", ".PolarisBaseShell main.PolarisShellContent._a996"],
-          mainContent: ".mJ2Qv",
+          main: [
+            ".uzKWK",
+            ".PolarisBaseShell main.PolarisShellContent._a996",
+            ".PolarisRefreshedBaseShell main",
+          ],
+          pageLayoutNewNavDesign: [".PolarisPageLayoutHandler"],
           nextPageLoaderProfile: ["._4emnV", ".PolarisVirtualPostsGrid._aanh"],
           nextPageLoaderExplore: [
             'html[data-page="exploreLandingPage"] .Id0Rh',
@@ -20390,29 +20421,76 @@
             'html[data-page="feedPage"] .Id0Rh',
             'html[data-page="feedPage"] .PolarisGenericVirtualFeed._aalg',
           ],
-          tabBar: [".KGiwt", ".PolarisNavigation > ._abpb"],
-          tabBarWrap: [".ZoygQ", ".PolarisNavigation"],
-          tabBarTopWrap: ".f11OC",
+          creationPopup: [
+            ".PolarisMobileCreationNavItem ._aa5x",
+            ".PolarisMobileCreationNavItem ._ad8j",
+            ".PolarisMobileCreationNavItem ._aa5-",
+          ],
+          creationPopupPostButton: [
+            '.PolarisMobileCreationNavItem ._aa5x [role="button"]:first-child',
+            '.PolarisMobileCreationNavItem ._ad8j [role="button"]:first-child',
+            '.PolarisMobileCreationNavItem ._aa5- [role="button"]:first-child',
+          ],
+          creationPopupStoryButton: [
+            '.PolarisMobileCreationNavItem ._aa5x [role="button"]:last-child',
+            '.PolarisMobileCreationNavItem ._ad8j [role="button"]:last-child',
+            '.PolarisMobileCreationNavItem ._aa5- [role="button"]:last-child',
+          ],
+          tabBar: [
+            ".KGiwt",
+            ".PolarisNavigation > ._abpb",
+            '.PolarisNavigation[style*="transform"]',
+          ],
+          tabBarWrap: [
+            ".ZoygQ",
+            ".PolarisNavigation",
+            ".IGDSBox > .PolarisNavigation",
+          ],
+          tabBarContainer: [".IGDSBox > .PolarisNavigation > div"],
           tabBarInput: [
             ".ZoygQ input",
             ".PolarisNavigation input.PolarisImageFileForm",
           ],
+          tabBarCreatePostInput: [
+            ".PolarisMobileCreationNavItem > form:last-child > input",
+          ],
+          tabBarButton: ['.PolarisNavigation[style*="transform"] > div'],
           tabBarCreatePostButton: [
             "._0TPg",
             ".BvyAW > div:nth-child(3)",
             '[data-testid="new-post-button"]',
             ".PolarisMobileNavLoggedIn._abp8",
+            ".PolarisMobileNavLoggedIn > div:nth-child(3)",
+            '.PolarisNavigation[style*="transform"] > div:nth-child(3)',
           ],
+          tabBarCreatePostButtonLink: [
+            '[data-testid="new-post-button"] a',
+            ".PolarisMobileNavLoggedIn._abp8 a",
+            ".PolarisMobileNavLoggedIn > div:nth-child(3) a",
+            '.PolarisNavigation[style*="transform"] > div:nth-child(3) a',
+          ],
+          tabBarCreatePostIconOldNavDesign: [".PolarisMobileNavLoggedIn > svg"],
           tabBarAvatarContainer: [
             ".PolarisMobileNavLoggedInButton span.PolarisUserAvatar",
           ],
           storyTrayViewerAvatarContainer: [
             ".PolarisStoryTray .PolarisStoryTray._aauk:first-child span.PolarisUserAvatar",
           ],
-          tabBarLink: ".PolarisMobileNavLoggedIn a",
-          storyFooter: [".mLi3m", "footer.PolarisMobileStoriesFooter"],
+          tabBarLink: [
+            ".PolarisMobileNavLoggedIn a",
+            '.PolarisNavigation[style*="transform"] a',
+          ],
+          storyFooter: [
+            ".mLi3m",
+            "footer.PolarisMobileStoriesFooter",
+            "footer.PolarisMobileOwnerStoriesOverlay",
+          ],
           storyQuickReactionsBackground: ".x4U7z",
-          storyPreviewContainer: [".zGtbP", ".PolarisShellContent ._aac4"],
+          storyPreviewContainer: [
+            ".zGtbP",
+            ".PolarisShellContent ._aac4",
+            ".PolarisRefreshedShellContent ._aac4",
+          ],
           settingsRectangle: ".BvMHM",
           recommendationsContainer: [
             ".bq3Mi",
@@ -20485,7 +20563,11 @@
           root: [".RnEpo.xpORG._9Mt7n", ".PolarisIGCoreModalBackdrop > ._ac7o"],
           handle: [".BHY8D", ".PolarisIGCoreSheet._ac7m"],
           igIcon: ".glyphsSpriteApp_Icon_36.u-__7",
-          sendEmailLink: ['.-qQT3[href^="mailto:"]', '._abm4[href^="mailto:"]'],
+          sendEmailLink: [
+            '.-qQT3[href^="mailto:"]',
+            '._abm4[href^="mailto:"]',
+            '._abm4 [href^="mailto:"]',
+          ],
           shareMenuItem: [
             ".RnEpo.xpORG._9Mt7n .-qQT3",
             ".PolarisIGCoreModalBackdrop > ._ac7o ._abm4",
@@ -20510,8 +20592,14 @@
           ],
         },
         storyViewer: {
-          root: ".PolarisMobileOwnerStories.PolarisStoriesReel",
-          avatar: ".PolarisMobileOwnerStories img.PolarisUserAvatar",
+          root: [
+            ".PolarisMobileOwnerStories.PolarisStoriesReel",
+            ".PolarisMobileStoriesPage > .PolarisMobileStories",
+          ],
+          avatar: [
+            ".PolarisMobileOwnerStories img.PolarisUserAvatar",
+            ".PolarisMobileOwnerStoriesOverlay img.PolarisUserAvatar",
+          ],
           time: ["time.PwV9z", "time.PolarisStoriesHeaderOwner"],
           pollContainer: ".tj63N",
           pollButtons: ".tj63N",
@@ -20640,9 +20728,12 @@
           ],
         },
         profilePage: {
-          content: [".v9tJq", "main.PolarisShellContent > .PolarisProfilePage"],
+          content: [
+            ".v9tJq",
+            "main.PolarisShellContent > .PolarisProfilePage",
+            "main.PolarisRefreshedShellContent > .PolarisProfilePage",
+          ],
           header: [".zw3Ow", ".PolarisProfilePage header"],
-          headerFirstRow: [".XBGH5"],
           username: [
             ".KV-D4",
             "section.PolarisProfilePageHeader h2.PolarisIGCoreText",
@@ -20914,6 +21005,7 @@
           ".PolarisPostFunctional .PolarisPostFunctional.PolarisPhotoWithIndicator",
           ".PolarisPostFunctional .PolarisMedia.PolarisVideo",
           ".PolarisPostFunctional .PolarisSidecar li.PolarisVirtualHSnapScrollComponents",
+          ".PolarisPostVideoPlayerWrapper[style]",
         ],
         "post-video": [
           ".GRtmf video",
@@ -20925,16 +21017,22 @@
           ".PolarisPost ._aatk video + img",
           ".PolarisPostFunctional ._ab12 video + img",
         ],
-        "post-video-overlay-play": [
-          ".B1JlO .PyenC",
-          ".PolarisVideoPlayButton._aakh",
-        ],
-        "post-video-overlay-control": [
+        "post-video-overlay": [
           ".B1JlO .fXIG0",
           ".PolarisVideoPlayButton._aakl",
+          ".PolarisVideoPlayButton._aakh",
+          ".VideoPlayerComponentContainer[data-visualcompletion]",
         ],
-        "post-tagged-people-button": [".G_hoz", "._a3gq ._a9-6"],
-        "story-container": [".qbCDp", ".PolarisMobileOwnerStories._aa2i"],
+        "post-tagged-people-button": [
+          ".G_hoz",
+          "._a3gq ._a9-6",
+          ".PolarisVideo ._a9-6",
+        ],
+        "story-container": [
+          ".qbCDp",
+          ".PolarisMobileOwnerStories._aa2i",
+          "section > .PolarisMobileStories",
+        ],
         "story-image": [".qbCDp img", "img.PolarisStoryImage"],
         "story-video": [".qbCDp video", "video.PolarisStoryVideo"],
         "story-loading-preview": ".qbCDp canvas",
@@ -21089,6 +21187,9 @@
         general: {
           pandaErrorImage: "._1ldz",
           cookieBannerTitle: "#cookie_banner_title",
+          fbLoginRequiredContainer: ".UIPage_LoggedOut",
+          headerMessageIconContainer:
+            ".MediaManagerInstagramComposerHeaderMessage",
         },
         sidePanel: {
           root: "#creator_studio_sliding_tray_root",
@@ -21436,14 +21537,14 @@
     return VS(":focus", e);
   };
   aE.focus = OE;
-  var AE = function (e) {
+  var ME = function (e) {
     return VS(":hover", e);
   };
-  aE.hover = AE;
-  var ME = function (e) {
+  aE.hover = ME;
+  var AE = function (e) {
     return VS(":indeterminate", e);
   };
-  aE.indeterminate = ME;
+  aE.indeterminate = AE;
   var FE = function (e) {
     return VS(":in-range", e);
   };
@@ -21777,14 +21878,14 @@
   };
   Dx.createMarkupForStyles = Gx;
   var Ox = /-(.)/g;
-  var Ax = function (e) {
+  var Mx = function (e) {
       return e.replace(Ox, function (e, t) {
         return t.toUpperCase();
       });
     },
-    Mx = /^-ms-/;
+    Ax = /^-ms-/;
   ek(function (e) {
-    return Ax(e.replace(Mx, "ms-"));
+    return Mx(e.replace(Ax, "ms-"));
   });
   var Fx = {};
   Object.defineProperty(Fx, "__esModule", { value: !0 });
@@ -22042,7 +22143,7 @@
   var gk = function (e) {
     for (var t in e) {
       var r = e[t],
-        n = (0, Mk.default)(YC, t, r, e, ZC);
+        n = (0, Ak.default)(YC, t, r, e, ZC);
       n && (e[t] = n), (0, Gk.default)(ZC, t, e);
     }
     return e;
@@ -22206,14 +22307,14 @@
   var Gk = qC((Sk = Sk.default)),
     Ok = {};
   Object.defineProperty(Ok, "__esModule", { value: !0 });
-  var Ak = function (e, t, r, n, o) {
+  var Mk = function (e, t, r, n, o) {
     for (var i = 0, a = e.length; i < a; ++i) {
       var s = e[i](t, r, n, o);
       if (s) return s;
     }
   };
-  Ok.default = Ak;
-  var Mk = qC((Ok = Ok.default)),
+  Ok.default = Mk;
+  var Ak = qC((Ok = Ok.default)),
     Fk = {};
   Object.defineProperty(Fk, "__esModule", { value: !0 });
   var Rk = function (e, t) {
@@ -22435,8 +22536,8 @@
   };
   IC.default = GC;
   var OC,
-    AC = {},
-    MC = /[A-Z]/g,
+    MC = {},
+    AC = /[A-Z]/g,
     FC = /^ms-/,
     RC = {};
   function BC(e) {
@@ -22444,17 +22545,17 @@
   }
   function LC(e) {
     if (RC.hasOwnProperty(e)) return RC[e];
-    var t = e.replace(MC, BC);
+    var t = e.replace(AC, BC);
     return (RC[e] = FC.test(t) ? "-" + t : t);
   }
-  r(AC, "default", function () {
+  r(MC, "default", function () {
     return LC;
   }),
-    (OC = AC),
+    (OC = MC),
     Object.defineProperty(OC, "__esModule", { value: !0 });
   var NC = (function (e) {
     return e && e.__esModule ? e : { default: e };
-  })(AC);
+  })(MC);
   var jC = UC((IC = IC.default)),
     zC = UC(Hk),
     HC = UC(Tk);
@@ -22782,12 +22883,12 @@
   function OS(e, t) {
     return e ? "@media " + e.substring(6) + " and " + t.substring(6) : t;
   }
-  function AS(e, t) {
+  function MS(e, t) {
     return e ? "@supports " + e.substring(9) + " and " + t.substring(9) : t;
   }
-  function MS(e) {
+  function AS(e) {
     for (var t = [], r = 0; r < e.length; r++)
-      t = Array.isArray(e[r]) ? t.concat(MS(e[r])) : t.concat(e[r]);
+      t = Array.isArray(e[r]) ? t.concat(AS(e[r])) : t.concat(e[r]);
     return t;
   }
   var FS = {
@@ -22812,7 +22913,7 @@
       l = t.src,
       c = void 0 === l ? {} : l;
     Array.isArray(c) || (c = [c]),
-      (c = MS(c)).forEach(function (t) {
+      (c = AS(c)).forEach(function (t) {
         if (bS(t)) {
           var r = (function (e) {
             if (bS(e)) {
@@ -22870,7 +22971,7 @@
                 return 0 === e.indexOf("@supports");
               })(r)
             )
-              RS(e, { selector: n, mq: i, supp: AS(s, r), src: t[r] });
+              RS(e, { selector: n, mq: i, supp: MS(s, r), src: t[r] });
             else if ("composes" === r);
             else {
               var o = e;
@@ -23246,7 +23347,7 @@
   };
   $_.propMerge = KS;
   var XS = eP(on()),
-    QS = eP(Mo),
+    QS = eP(Ao),
     JS = eP(Co());
   function eP(e) {
     return e && e.__esModule ? e : { default: e };
@@ -23655,9 +23756,9 @@
     OP = (e) =>
       e
         .split(" ")
-        .map((e) => ("." === e ? "0" : MP.space[e] || `${e}px`))
+        .map((e) => ("." === e ? "0" : AP.space[e] || `${e}px`))
         .join(" "),
-    AP = (e) => {
+    MP = (e) => {
       e = e || "";
       const [t, r, n, o, i] = e.split(" "),
         a = {},
@@ -23667,9 +23768,9 @@
             "." !== t &&
             (t.endsWith("%")
               ? (a[e] = t)
-              : t.startsWith("-") && MP.space[t.slice(1)]
-              ? (a[e] = -1 * MP.space[t.slice(1)])
-              : (a[e] = MP.space[t] || `${t}px`));
+              : t.startsWith("-") && AP.space[t.slice(1)]
+              ? (a[e] = -1 * AP.space[t.slice(1)])
+              : (a[e] = AP.space[t] || `${t}px`));
         };
       return (
         s("top", t),
@@ -23680,7 +23781,7 @@
         a
       );
     },
-    MP = {
+    AP = {
       Component: IP,
       Fragment: xo.Fragment,
       createRef: xo.createRef,
@@ -23756,10 +23857,10 @@
       },
       padding: (e) => ({ padding: OP(e) }),
       margin: (e) => ({ margin: OP(e) }),
-      fixed: (e) => ({ position: "fixed", ...AP(e) }),
-      relative: (e) => ({ position: "relative", ...AP(e) }),
-      absolute: (e) => ({ position: "absolute", ...AP(e) }),
-      sticky: (e) => ({ position: "sticky", ...AP(e) }),
+      fixed: (e) => ({ position: "fixed", ...MP(e) }),
+      relative: (e) => ({ position: "relative", ...MP(e) }),
+      absolute: (e) => ({ position: "absolute", ...MP(e) }),
+      sticky: (e) => ({ position: "sticky", ...MP(e) }),
       fullWidth: { width: "100%" },
       shadow: {
         sh4: { boxShadow: "var(--sh4)" },
@@ -23780,7 +23881,7 @@
           borderTop: "none",
           borderLeft: `${e || 7}px solid transparent`,
           borderRight: `${e || 7}px solid transparent`,
-          borderBottom: `${e || 7}px solid ${t || MP.color.borderDark}`,
+          borderBottom: `${e || 7}px solid ${t || AP.color.borderDark}`,
         }),
         right: ({ size: e, color: t } = {}) => ({
           width: 0,
@@ -23788,12 +23889,12 @@
           borderTop: `${e || 7}px solid transparent`,
           borderRight: "none",
           borderBottom: `${e || 7}px solid transparent`,
-          borderLeft: `${e || 7}px solid ${t || MP.color.borderDark}`,
+          borderLeft: `${e || 7}px solid ${t || AP.color.borderDark}`,
         }),
         down: ({ size: e, color: t } = {}) => ({
           width: 0,
           height: 0,
-          borderTop: `${e || 7}px solid ${t || MP.color.borderDark}`,
+          borderTop: `${e || 7}px solid ${t || AP.color.borderDark}`,
           borderLeft: `${e || 7}px solid transparent`,
           borderRight: `${e || 7}px solid transparent`,
           borderBottom: "none",
@@ -23803,7 +23904,7 @@
           height: 0,
           borderTop: `${e || 7}px solid transparent`,
           borderLeft: "none",
-          borderRight: `${e || 7}px solid ${t || MP.color.borderDark}`,
+          borderRight: `${e || 7}px solid ${t || AP.color.borderDark}`,
           borderBottom: `${e || 7}px solid transparent`,
         }),
       },
@@ -23850,9 +23951,9 @@
           if (null == e) return null;
           if (0 === e && r) return null;
           if (0 === t && r) return null;
-          if (0 === t) return MP.palette.intensity[0];
-          const n = Math.round(((MP.palette.intensity.length - 1) * e) / t);
-          return MP.palette.intensity[n];
+          if (0 === t) return AP.palette.intensity[0];
+          const n = Math.round(((AP.palette.intensity.length - 1) * e) / t);
+          return AP.palette.intensity[n];
         },
       },
       border: {
@@ -23929,11 +24030,11 @@
           color: o,
           opacity: i,
         }) => ({
-          fontFamily: e || MP.font.primary,
+          fontFamily: e || AP.font.primary,
           fontSize: t || 14,
           lineHeight: r || "18px",
           fontWeight: n || 400,
-          color: o || MP.color.textNormal,
+          color: o || AP.color.textNormal,
           opacity: i || 1,
         }),
         capitalize: { textTransform: "capitalize" },
@@ -24044,7 +24145,7 @@
       },
       animation: {
         of: ({ name: e, timing: t, duration: r, iteractionCount: n }) => ({
-          animationName: MP.animation[e] || e,
+          animationName: AP.animation[e] || e,
           animationTimingFunction: t || "var(--timing-function)",
           animationDuration: r || "800ms",
           animationIterationCount: n || "1",
@@ -24094,11 +24195,11 @@
         borderRadius: "var(--r4)",
         background: "var(--no-data-gradient)",
       },
-      hitbox: (e) => ({ ...MP.absolute(`-${e} -${e} -${e} -${e}`) }),
+      hitbox: (e) => ({ ...AP.absolute(`-${e} -${e} -${e} -${e}`) }),
       hitboxBefore: (e) => ({
         "&::before": {
           content: '""',
-          ...MP.absolute(`-${e} -${e} -${e} -${e}`),
+          ...AP.absolute(`-${e} -${e} -${e} -${e}`),
         },
       }),
       hoverState: function (e, t) {
@@ -24141,19 +24242,19 @@
         };
       },
       box: ({ width: e = "100%", height: t = 300, ...r } = {}) => ({
-        ...MP.row,
-        ...MP.center,
+        ...AP.row,
+        ...AP.center,
         width: e,
         height: t,
         fontSize: 16,
         fontWeight: 600,
-        color: MP.color.textBleak,
+        color: AP.color.textBleak,
         background: "rgba(0, 0, 0, 0.1)",
-        "&[href]": { color: MP.color.link },
+        "&[href]": { color: AP.color.link },
         ...r,
       }),
     };
-  "undefined" != typeof window && (window.ui = MP);
+  "undefined" != typeof window && (window.ui = AP);
   const FP = {
     tooltips: [],
     containers: [],
@@ -24188,11 +24289,11 @@
       this.containers = this.containers.filter((t) => t !== e);
     },
   };
-  class RP extends MP.Component {
+  class RP extends AP.Component {
     constructor(e) {
       super(e),
         (this.anchor = null),
-        (this.anchor = MP.createRef()),
+        (this.anchor = AP.createRef()),
         (this.id = Math.random().toString().slice(2));
     }
     componentDidMount() {
@@ -24216,9 +24317,9 @@
     color: "inherit",
     width: "100%",
     height: "100%",
-    ...(e.onClick && { ...MP.clickable }),
+    ...(e.onClick && { ...AP.clickable }),
   });
-  class LP extends MP.Component {
+  class LP extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -24282,15 +24383,15 @@
   (LP.svgElement = null), (LP.icons = {}), (LP.styles = {});
   const NP = {
     root: (e) => ({
-      ...MP.relative(""),
+      ...AP.relative(""),
       height: e.size,
       width: e.size,
       pointerEvents: "none",
     }),
     valueRing: (e) => ({
-      ...MP.absolute("0 0 0 0"),
+      ...AP.absolute("0 0 0 0"),
       ...(e.spinning && {
-        animationName: MP.animation.spin,
+        animationName: AP.animation.spin,
         animationDuration: "1s",
         animationTimingFunction: "linear",
         animationIterationCount: "infinite",
@@ -24303,7 +24404,7 @@
       transformOrigin: "50% 50%",
     },
   };
-  class jP extends MP.Component {
+  class jP extends AP.Component {
     render() {
       const {
         size: e,
@@ -24343,8 +24444,8 @@
     size: 40,
     thickness: 2,
     value: 0,
-    color: MP.theme.valueOf("day", MP.color.link),
-    background: MP.color.borderDark,
+    color: AP.theme.valueOf("day", AP.color.link),
+    background: AP.color.borderDark,
     spinning: !1,
   };
   const zP = ({ size: e, thickness: t, value: r, color: n }) => {
@@ -24381,62 +24482,62 @@
   }
   const UP = {
     root: (e) => ({
-      ...MP.text.nowrap,
+      ...AP.text.nowrap,
       ...(e.isLightBackground || e.cancel
-        ? MP.clickableInversed
-        : MP.clickable),
-      ...(e.small ? MP.text.hashtag : MP.text.group1),
+        ? AP.clickableInversed
+        : AP.clickable),
+      ...(e.small ? AP.text.hashtag : AP.text.group1),
       fontWeight: 600,
-      ...(e.disabled ? MP.disabledWithoutTransparency : {}),
-      ...(e.small ? MP.padding("4 g1 4 g1") : MP.padding("g1 g3 g1 g3")),
-      ...MP.borderRadius.r4,
+      ...(e.disabled ? AP.disabledWithoutTransparency : {}),
+      ...(e.small ? AP.padding("4 g1 4 g1") : AP.padding("g1 g3 g1 g3")),
+      ...AP.borderRadius.r4,
       color:
         e.color ||
         (e.cancel
-          ? MP.color.link
-          : MP.theme.valueOf("day", MP.color.textInversed)),
+          ? AP.color.link
+          : AP.theme.valueOf("day", AP.color.textInversed)),
       backgroundColor: e.disabled
-        ? MP.color.iconPassive
-        : e.background || (e.cancel ? MP.color.bgLight3 : MP.color.link),
+        ? AP.color.iconPassive
+        : e.background || (e.cancel ? AP.color.bgLight3 : AP.color.link),
       border: "none",
       transition: "all var(--transition-300)",
       transitionProperty: "box-shadow, border-color, background-color, color",
       boxShadow: e.shadow && `0 3px 6px ${e.shadow}`,
       "&:hover": { boxShadow: e.shadow && `0 5px 10px ${e.shadow}` },
       "&:active": { boxShadow: e.shadow && `0 1px 2px ${e.shadow}` },
-      ...MP.relative(),
-      ...(e.isIconAtRight && { ...MP.rowReverse }),
+      ...AP.relative(),
+      ...(e.isIconAtRight && { ...AP.rowReverse }),
       ...(e.borderColor && {
         "&::before": {
           content: '""',
-          ...MP.absolute("0 0 0 0"),
+          ...AP.absolute("0 0 0 0"),
           borderRadius: "inherit",
           border: `1px solid ${e.borderColor}`,
         },
       }),
     }),
     icon: (e) => ({
-      marginRight: e.label ? (e.small ? MP.space.g1 : MP.space.g1h) : 0,
-      ...(e.isIconAtRight && { marginRight: "0", marginLeft: MP.space.g2 }),
+      marginRight: e.label ? (e.small ? AP.space.g1 : AP.space.g1h) : 0,
+      ...(e.isIconAtRight && { marginRight: "0", marginLeft: AP.space.g2 }),
     }),
-    label: { ...MP.relative() },
+    label: { ...AP.relative() },
     fill: {
-      ...MP.absolute("0 0 0 0"),
+      ...AP.absolute("0 0 0 0"),
       borderRadius: "inherit",
       overflow: "hidden",
     },
     fillProgress: (e) => ({
       width: "100%",
       height: "100%",
-      background: MP.color.link,
+      background: AP.color.link,
       transformOrigin: "top left",
       transform: `scaleX(${e.fill.value || 0})`,
-      ...MP.transition.fast,
+      ...AP.transition.fast,
       ...e.fill.style,
     }),
     progress: { marginLeft: 12, marginRight: -8 },
   };
-  class WP extends MP.Component {
+  class WP extends AP.Component {
     constructor(e) {
       super(e),
         (this._onClick = () => {
@@ -24451,7 +24552,7 @@
           this.props.icon &&
           Glamor.createElement(
             "div",
-            { css: [MP.row, MP.alignItems.center, UP.icon(this.props)] },
+            { css: [AP.row, AP.alignItems.center, UP.icon(this.props)] },
             Glamor.createElement(LP, { name: this.props.icon })
           ),
         t = Glamor.createElement("div", { css: UP.label }, this.props.label),
@@ -24467,15 +24568,15 @@
         HP(
           {
             css: [
-              MP.row,
-              MP.alignItems.center,
+              AP.row,
+              AP.alignItems.center,
               UP.root(this.props),
               this.props.style,
             ],
             tabIndex: this.props.tabIndex,
             onClick: this._onClick,
           },
-          MP.hoverState(this, "hovered")
+          AP.hoverState(this, "hovered")
         ),
         r,
         e,
@@ -24529,7 +24630,7 @@
       ...(e.grow ? { flexGrow: 1 } : {}),
       ...e.style,
     });
-  class qP extends MP.Component {
+  class qP extends AP.Component {
     render() {
       return Glamor.createElement("div", { css: $P(this.props) });
     }
@@ -24548,27 +24649,27 @@
   }
   qP.defaultProps = { width: 0, height: 0 };
   const ZP = (e) => ({
-      ...(e.onClick ? MP.clickable : { cursor: "default" }),
+      ...(e.onClick ? AP.clickable : { cursor: "default" }),
       padding: 1,
     }),
     KP = (e) => ({
       fontSize: e.mini ? 8 : 9,
       fontWeight: 700,
-      fontFamily: MP.font.primary,
+      fontFamily: AP.font.primary,
       width: e.mini ? 12 : 14,
       height: e.mini ? 12 : 14,
       padding: 1,
       borderRadius: "50%",
-      background: e.color ? e.color : MP.color.link,
-      color: MP.theme.valueOf("day", MP.color.textInversed),
-      ...MP.relative(),
-      ...MP.hitboxBefore(7),
+      background: e.color ? e.color : AP.color.link,
+      color: AP.theme.valueOf("day", AP.color.textInversed),
+      ...AP.relative(),
+      ...AP.hitboxBefore(7),
     }),
     XP = (e) => ({
       height: e.mini ? 9 : 10,
       lineHeight: e.mini ? "9px" : "10px",
     });
-  class QP extends MP.Component {
+  class QP extends AP.Component {
     constructor(e) {
       super(e),
         (this._onClick = () => {
@@ -24579,7 +24680,7 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: [MP.row, ZP(this.props)], onClick: this._onClick },
+        { css: [AP.row, ZP(this.props)], onClick: this._onClick },
         this._renderLabel(),
         this._renderTooltip()
       );
@@ -24590,9 +24691,9 @@
         YP(
           {
             className: "info-circle",
-            css: [MP.row, MP.center, KP(this.props), this.props.style],
+            css: [AP.row, AP.center, KP(this.props), this.props.style],
           },
-          MP.hoverState(this, "hovered")
+          AP.hoverState(this, "hovered")
         ),
         Glamor.createElement(
           "span",
@@ -24604,7 +24705,7 @@
     _renderTooltip() {
       if (!this.props.tooltip) return null;
       const e = {
-        background: this.props.color || MP.color.link,
+        background: this.props.color || AP.color.link,
         ...this.props.tooltip,
       };
       return Glamor.createElement(RP, YP({ shown: this.state.hovered }, e));
@@ -24615,22 +24716,22 @@
     "&:hover .info-circle": { opacity: 1 },
   };
   const JP = ({ props: e }) => ({
-    ...MP.text.nowrap,
-    ...MP.text.hashtag,
-    ...MP.padding("2 6"),
-    ...MP.borderRadius.r4,
-    ...MP.text.uppercase,
+    ...AP.text.nowrap,
+    ...AP.text.hashtag,
+    ...AP.padding("2 6"),
+    ...AP.borderRadius.r4,
+    ...AP.text.uppercase,
     border: "2px solid",
-    color: e.color || MP.color.textPassive,
+    color: e.color || AP.color.textPassive,
     fontWeight: 600,
     width: "min-content",
   });
-  class eT extends MP.Component {
+  class eT extends AP.Component {
     render() {
       return this.props.text
         ? Glamor.createElement(
             "div",
-            { css: [MP.row, MP.alignItems.center, JP(this)] },
+            { css: [AP.row, AP.alignItems.center, JP(this)] },
             this.props.text,
             this._renderInfoCircle()
           )
@@ -24639,18 +24740,18 @@
     _renderInfoCircle() {
       if (!this.props.info) return null;
       const e = {
-        color: MP.theme.valueOf("day", MP.color.textPassive),
+        color: AP.theme.valueOf("day", AP.color.textPassive),
         ...this.props.info,
       };
       return Glamor.createElement(
-        MP.Fragment,
+        AP.Fragment,
         null,
         Glamor.createElement(qP, { width: "g1" }),
         Glamor.createElement(QP, e)
       );
     }
   }
-  class tT extends MP.Component {
+  class tT extends AP.Component {
     static registerImages(e) {
       tT.images = { ...(tT.images || {}), ...e };
     }
@@ -24678,21 +24779,21 @@
   (tT.pathPrefix = ""), (tT.images = null);
   const rT = {
       root: (e, t) => ({
-        ...MP.relative(),
-        ...("day" === t.theme ? MP.shadow.sh4 : { border: MP.border.dark }),
-        ...MP.borderRadius.r4,
-        ...MP.padding("g1 0"),
-        backgroundColor: MP.color.bgLight1,
+        ...AP.relative(),
+        ...("day" === t.theme ? AP.shadow.sh4 : { border: AP.border.dark }),
+        ...AP.borderRadius.r4,
+        ...AP.padding("g1 0"),
+        backgroundColor: AP.color.bgLight1,
         flex: "1 0 auto",
         minHeight: e.hexImage ? 84 : 0,
       }),
       header: (e) => ({
         ...(e.subheader || e.hexImage || e.content
-          ? MP.padding("0 g2 g1 g2")
-          : MP.padding("0 g2 0 g2")),
-        ...MP.text.contentTitle,
+          ? AP.padding("0 g2 g1 g2")
+          : AP.padding("0 g2 0 g2")),
+        ...AP.text.contentTitle,
         borderBottom:
-          e.subheader || e.hexImage || e.content ? MP.border.dark : null,
+          e.subheader || e.hexImage || e.content ? AP.border.dark : null,
         wordBreak: "break-word",
         ...(e.hexImage && { paddingRight: 50 }),
       }),
@@ -24705,13 +24806,13 @@
         borderRadius: 4,
       }),
       subheader: {
-        ...MP.padding("g1 g2"),
-        ...MP.text.tooltipText,
-        color: MP.color.textPassive,
+        ...AP.padding("g1 g2"),
+        ...AP.text.tooltipText,
+        color: AP.color.textPassive,
       },
-      hexImage: { ...MP.absolute("12 -11 . .") },
-      hexImagePart: { ...MP.absolute("-8 -35 . .") },
-      content: { ...MP.padding("0 g2 g1 g2"), ...MP.text.contentText },
+      hexImage: { ...AP.absolute("12 -11 . .") },
+      hexImagePart: { ...AP.absolute("-8 -35 . .") },
+      content: { ...AP.padding("0 g2 g1 g2"), ...AP.text.contentText },
       contentParagraph: (e, t) => ({ paddingBottom: t < e.length - 1 ? 4 : 0 }),
     },
     nT = {
@@ -24719,11 +24820,11 @@
       "hex-part-night": "ui-core/hex-part-night.png:100:100",
     };
   tT.registerImages(nT);
-  class oT extends MP.Component {
+  class oT extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
-        { css: [MP.column, rT.root(this.props, this.state), this.props.style] },
+        { css: [AP.column, rT.root(this.props, this.state), this.props.style] },
         this._renderHeader(),
         this._renderHexImage(),
         this._renderSubheader(),
@@ -24738,7 +24839,7 @@
         t = this.props.header;
       return Glamor.createElement(
         "div",
-        { css: [MP.row, MP.alignItems.center, rT.header(this.props)] },
+        { css: [AP.row, AP.alignItems.center, rT.header(this.props)] },
         e,
         t
       );
@@ -24784,21 +24885,21 @@
       return Glamor.createElement("div", { css: rT.content }, e);
     }
   }
-  var iT = MP.theme.ThemeAware(oT);
+  var iT = AP.theme.ThemeAware(oT);
   const aT = {
     root: (e) => ({
-      ...MP.clickable,
-      ...MP.noselect,
-      ...(e.disabled ? MP.disabled : {}),
+      ...AP.clickable,
+      ...AP.noselect,
+      ...(e.disabled ? AP.disabled : {}),
       ...QP.cssShowOnHover,
     }),
     icon: (e) => ({
-      ...MP.padding("0 g1 0 0"),
-      color: e.value ? MP.color.link : MP.color.bgNeutral,
+      ...AP.padding("0 g1 0 0"),
+      color: e.value ? AP.color.link : AP.color.bgNeutral,
     }),
     label: {
-      ...MP.text.elementNormal,
-      color: MP.color.textNormal,
+      ...AP.text.elementNormal,
+      color: AP.color.textNormal,
       paddingTop: 2,
     },
   };
@@ -24806,7 +24907,7 @@
     '<symbol id="checkbox-on" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path d="M19,3H5A2.006,2.006,0,0,0,3,5V19a2.006,2.006,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V5a2.006,2.006,0,0,0-2-2ZM10,17,5,12l1-1,4,3,8-7,1,1-9,9Z" fill="currentColor" fill-rule="evenodd"/></symbol>',
     '<symbol id="checkbox-off" viewBox="0 0 24 24"><g transform="translate(8192 4666)"><rect width="24" height="24" transform="translate(-8192 -4666)" fill="none"/><path d="M16,18H2a2,2,0,0,1-2-2V2A2,2,0,0,1,2,0H16a2,2,0,0,1,2,2V16A2,2,0,0,1,16,18ZM2,2V16H16V2Z" transform="translate(-8189 -4663)" fill="currentColor"/></g></symbol>',
   ]);
-  class sT extends MP.Component {
+  class sT extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -24831,7 +24932,7 @@
         n =
           e.info &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { width: "g2" }),
             Glamor.createElement(QP, e.info)
@@ -24840,9 +24941,9 @@
         "div",
         {
           css: [
-            MP.row,
-            MP.justifyContent.between,
-            MP.alignItems.center,
+            AP.row,
+            AP.justifyContent.between,
+            AP.alignItems.center,
             aT.root(this.props),
             this.props.style,
           ],
@@ -24850,7 +24951,7 @@
         },
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.alignItems.start] },
+          { css: [AP.row, AP.alignItems.start] },
           t,
           r
         ),
@@ -24860,19 +24961,19 @@
   }
   const lT = {
     root: (e) => ({
-      ...MP.clickable,
-      ...MP.noselect,
-      ...(e.disabled ? MP.disabledWithoutTransparency : {}),
+      ...AP.clickable,
+      ...AP.noselect,
+      ...(e.disabled ? AP.disabledWithoutTransparency : {}),
       ...QP.cssShowOnHover,
     }),
-    label: { marginLeft: MP.space.g1, ...MP.text.elementNormal },
-    icon: (e) => ({ color: e.disabled ? MP.color.iconPassive : MP.color.link }),
+    label: { marginLeft: AP.space.g1, ...AP.text.elementNormal },
+    icon: (e) => ({ color: e.disabled ? AP.color.iconPassive : AP.color.link }),
   };
   LP.registerSvgIcons([
     '<symbol id="radio-on" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path d="M12,7a5,5,0,1,0,5,5,4.951,4.951,0,0,0-5-5Zm0-5A10,10,0,1,0,22,12,10.029,10.029,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8,8.024,8.024,0,0,1-8,8Z" fill="currentColor" fill-rule="evenodd"/></symbol>',
     '<symbol id="radio-off" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path d="M12,2A10,10,0,1,0,22,12,10.029,10.029,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8,8.024,8.024,0,0,1-8,8Z" fill="currentColor" fill-rule="evenodd"/></symbol>',
   ]);
-  class cT extends MP.Component {
+  class cT extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -24895,7 +24996,7 @@
         n =
           e.info &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { width: "g2" }),
             Glamor.createElement(QP, e.info)
@@ -24904,9 +25005,9 @@
         "div",
         {
           css: [
-            MP.row,
-            MP.justifyContent.between,
-            MP.alignItems.center,
+            AP.row,
+            AP.justifyContent.between,
+            AP.alignItems.center,
             lT.root(this.props),
             this.props.style,
           ],
@@ -24914,7 +25015,7 @@
         },
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.alignItems.center] },
+          { css: [AP.row, AP.alignItems.center] },
           t,
           r
         ),
@@ -24935,9 +25036,9 @@
       }).apply(this, arguments);
   }
   const dT = {
-    root: { "> div:not(:last-child)": { marginBottom: MP.space.g1 } },
+    root: { "> div:not(:last-child)": { marginBottom: AP.space.g1 } },
   };
-  class hT extends MP.Component {
+  class hT extends AP.Component {
     render() {
       if (!this.props.items || 0 === this.props.items.length) return null;
       const e = this.props.items.map((e) => {
@@ -24960,15 +25061,15 @@
       });
       return Glamor.createElement(
         "div",
-        { css: [MP.column, dT.root] },
+        { css: [AP.column, dT.root] },
         e.map((e, t) => Glamor.createElement(cT, uT({ key: t }, e)))
       );
     }
   }
   const pT = {
       root: ({ props: e }) => ({
-        ...MP.transition.fast,
-        color: MP.color.textPassive,
+        ...AP.transition.fast,
+        color: AP.color.textPassive,
         width: 40,
         height: 40,
         cursor: "pointer",
@@ -24977,7 +25078,7 @@
         ...(e.small && { width: 24, height: 24 }),
         "&:hover": { opacity: 0.7 },
         "&:active": { opacity: 1 },
-        "&::before": { content: '""', ...MP.absolute("-4 -4 -4 -4") },
+        "&::before": { content: '""', ...AP.absolute("-4 -4 -4 -4") },
       }),
       icon: { width: "100%", height: "100%" },
     },
@@ -24985,7 +25086,7 @@
   LP.registerSvgIcons([
     `<symbol id="${mT}" viewBox="0 0 40 40"><path d="M0 0h40v40H0z" fill="transparent"/><path d="M12.626 25.797l6.062-6.061-6.062-6.061 1.313-1.313L20 18.424l6.061-6.062 1.313 1.313-6.06 6.062 6.06 6.06-1.313 1.313-6.062-6.06-6.06 6.06z" fill="currentColor"/></symbol>`,
   ]);
-  class fT extends MP.Component {
+  class fT extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -25011,41 +25112,41 @@
   const gT = {
     root: (e) => ({
       padding: "6px 0",
-      backgroundColor: MP.color.bgLight3,
+      backgroundColor: AP.color.bgLight3,
       maxHeight: e || null,
       overflowY: "auto",
-      ...MP.shadow.sh6,
-      ...MP.borderRadius.r4,
+      ...AP.shadow.sh6,
+      ...AP.borderRadius.r4,
     }),
-    item: { ...MP.relative() },
+    item: { ...AP.relative() },
     itemEnabled: {
       cursor: "pointer",
       transition: "none",
-      color: MP.color.textNormal,
+      color: AP.color.textNormal,
       ":hover": {
-        color: MP.color.textInversed,
-        backgroundColor: MP.color.link,
+        color: AP.color.textInversed,
+        backgroundColor: AP.color.link,
       },
       ":active": {
-        color: MP.color.textInversed,
-        backgroundColor: MP.color.link,
+        color: AP.color.textInversed,
+        backgroundColor: AP.color.link,
       },
     },
     itemDisabled: {
       cursor: "default",
       filter: "none",
-      color: MP.color.textNormal,
+      color: AP.color.textNormal,
       backgroundColor: "initial",
-      ...MP.disabled,
+      ...AP.disabled,
     },
     selectionIndicator: {
-      ...MP.absolute("0 . 0 0"),
+      ...AP.absolute("0 . 0 0"),
       width: 4,
-      backgroundColor: MP.color.link,
+      backgroundColor: AP.color.link,
     },
-    label: { ...MP.padding("g0h g1h") },
+    label: { ...AP.padding("g0h g1h") },
   };
-  class vT extends MP.Component {
+  class vT extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -25062,7 +25163,7 @@
       const t = this._normalizeMaxHeight();
       return Glamor.createElement(
         "div",
-        { css: [MP.column, gT.root(t)] },
+        { css: [AP.column, gT.root(t)] },
         e.map((e, t) =>
           this.props.renderer
             ? this.props.renderer(e, t, this.props)
@@ -25085,7 +25186,7 @@
       );
     }
   }
-  class bT extends MP.Component {
+  class bT extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -25104,13 +25205,13 @@
           Glamor.createElement("div", { css: gT.selectionIndicator }),
         n = Glamor.createElement(
           "div",
-          { css: [gT.label, MP.text.elementNormal, MP.text.nowrap] },
+          { css: [gT.label, AP.text.elementNormal, AP.text.nowrap] },
           e.label
         );
       return Glamor.createElement(
         "div",
         {
-          css: [t, MP.row, MP.alignItems.stretch, gT.item],
+          css: [t, AP.row, AP.alignItems.stretch, gT.item],
           onClick: this._onClick,
         },
         r,
@@ -25119,60 +25220,60 @@
     }
   }
   const yT = {
-    root: { width: "100%", ...MP.noselect },
+    root: { width: "100%", ...AP.noselect },
     mainContainer: { position: "relative" },
     valueContainer: (e) => ({
       overflow: "hidden",
       outline: "none",
-      ...MP.alignItems.center,
-      ...MP.justifyContent.between,
-      ...(e.inline ? { ...MP.clickable } : { ...MP.grow }),
+      ...AP.alignItems.center,
+      ...AP.justifyContent.between,
+      ...(e.inline ? { ...AP.clickable } : { ...AP.grow }),
       minHeight: e.inline ? 24 : 35,
       cursor: e.disabled ? "default" : "pointer",
-      ...(e.disabled ? MP.disabled : {}),
+      ...(e.disabled ? AP.disabled : {}),
       ...(e.inline
         ? {}
         : {
-            border: `1px solid ${MP.color.borderDark}`,
-            background: MP.color.bgLight1,
+            border: `1px solid ${AP.color.borderDark}`,
+            background: AP.color.bgLight1,
             borderRadius: 4,
             padding: "6px 11px",
           }),
     }),
-    iconAndValue: { ...MP.row, ...MP.alignItems.center, minWidth: 1 },
+    iconAndValue: { ...AP.row, ...AP.alignItems.center, minWidth: 1 },
     label: (e) => ({
-      fontFamily: MP.font.primary,
+      fontFamily: AP.font.primary,
       fontSize: 9,
       fontWeight: 600,
       lineHeight: "11px",
       color:
-        e.error && e.error.hasError ? MP.color.error : MP.color.textPassive,
+        e.error && e.error.hasError ? AP.color.error : AP.color.textPassive,
       marginBottom: 4,
-      ...MP.transition.superfast,
+      ...AP.transition.superfast,
     }),
     value: (e) => ({
-      ...MP.text.elementNormal,
-      ...MP.text.ellipsis,
+      ...AP.text.elementNormal,
+      ...AP.text.ellipsis,
       padding: e.inline ? "1px 0 0 0" : "0 0 1px 0",
-      color: MP.color.textNormal,
+      color: AP.color.textNormal,
     }),
     triangleWrap: ({ props: e }) => ({
-      ...MP.row,
-      ...MP.center,
+      ...AP.row,
+      ...AP.center,
       width: 14,
       height: 14,
       borderRadius: "50%",
-      color: MP.color.link,
-      marginLeft: MP.space.g1,
-      ...(e.highlightTriangle && { background: MP.color.link, color: "#FFF" }),
+      color: AP.color.link,
+      marginLeft: AP.space.g1,
+      ...(e.highlightTriangle && { background: AP.color.link, color: "#FFF" }),
     }),
     triangle: {
-      ...MP.relative(),
+      ...AP.relative(),
       flexShrink: 0,
       transform: "translateY(0.5px)",
     },
     menu: (e, t) => ({
-      ...MP.transition.fast,
+      ...AP.transition.fast,
       position: "absolute",
       zIndex: 9999,
       top: e.inline ? 32 : 43,
@@ -25191,18 +25292,18 @@
       }),
     }),
     error: {
-      fontFamily: MP.font.primary,
+      fontFamily: AP.font.primary,
       fontSize: 9,
       fontWeight: 500,
       lineHeight: "11px",
-      color: MP.color.error,
+      color: AP.color.error,
       marginTop: 2,
     },
   };
   LP.registerSvgIcons([
     '<symbol id="dropdown-triangle" viewBox="0 0 8.005 4.002"><path d="M0,0,4,4l-4,4Z" transform="translate(8.005) rotate(90)" fill="currentColor"/></symbol>',
   ]);
-  class wT extends MP.Component {
+  class wT extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -25284,12 +25385,12 @@
           );
       return Glamor.createElement(
         "div",
-        { css: [MP.column, yT.root] },
+        { css: [AP.column, yT.root] },
         i,
         Glamor.createElement(
           "button",
           {
-            css: [MP.row, yT.mainContainer, this.props.style],
+            css: [AP.row, yT.mainContainer, this.props.style],
             onBlur: this._onBlur,
             onFocus: this._onFocus,
             onKeyDown: this._onKeyDown,
@@ -25298,7 +25399,7 @@
             "div",
             {
               css: [
-                MP.row,
+                AP.row,
                 yT.valueContainer(this.props),
                 this.props.togglerStyle,
               ],
@@ -25323,7 +25424,7 @@
         this.props.error.message &&
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.justifyContent.end, yT.error] },
+          { css: [AP.row, AP.justifyContent.end, yT.error] },
           this.props.error.message
         )
       );
@@ -25342,36 +25443,36 @@
       }).apply(this, arguments);
   }
   const ET = {
-    root: { ...QP.cssShowOnHover, ...MP.relative() },
+    root: { ...QP.cssShowOnHover, ...AP.relative() },
     button: (e) => ({
       position: "relative",
-      ...MP.text.group2,
-      ...(e.disabled ? MP.disabled : {}),
+      ...AP.text.group2,
+      ...(e.disabled ? AP.disabled : {}),
       ...(e.small ? { fontSize: 12 } : {}),
       height: 18,
       lineHeight: "17px",
       color:
         e.color ||
         (e.cancel
-          ? MP.color.textPassive
+          ? AP.color.textPassive
           : e.disabled
-          ? MP.color.bgNeutral
-          : MP.color.link),
+          ? AP.color.bgNeutral
+          : AP.color.link),
       background: "none",
       border: "none",
-      ...(e.onClick && { ...MP.clickable }),
+      ...(e.onClick && { ...AP.clickable }),
     }),
     hitbox: (e) => ({
-      ...MP.absolute("-8 -8 -8 -8"),
-      ...(e.small && { ...MP.absolute("-4 -4 -4 -4") }),
+      ...AP.absolute("-8 -8 -8 -8"),
+      ...(e.small && { ...AP.absolute("-4 -4 -4 -4") }),
       ...e.hitboxStyle,
     }),
     icon: (e) => ({
-      marginRight: MP.space.g1,
+      marginRight: AP.space.g1,
       ...(e.label ? {} : { margin: 0 }),
     }),
   };
-  class xT extends MP.Component {
+  class xT extends AP.Component {
     constructor(e) {
       super(e),
         (this._onClick = (e) => {
@@ -25386,25 +25487,25 @@
             "div",
             _T(
               {
-                css: [MP.row, MP.alignItems.center, ET.root, this.props.style],
+                css: [AP.row, AP.alignItems.center, ET.root, this.props.style],
                 className: this.props.className,
               },
-              MP.hoverState(this, "hovered")
+              AP.hoverState(this, "hovered")
             ),
             Glamor.createElement(
               "button",
               _T(
                 {
                   css: [
-                    MP.row,
-                    MP.alignItems.center,
+                    AP.row,
+                    AP.alignItems.center,
                     ET.button(this.props),
                     this.props.buttonStyle,
                   ],
                   tabIndex: this.props.tabIndex,
                   onClick: this._onClick,
                 },
-                MP.onLongPress(this.props.onLongPress, 2e3)
+                AP.onLongPress(this.props.onLongPress, 2e3)
               ),
               this._renderHitbox(),
               this._renderIcon(),
@@ -25441,7 +25542,7 @@
     _renderInfo() {
       return this.props.info
         ? Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { width: "g2" }),
             Glamor.createElement(QP, this.props.info)
@@ -25463,52 +25564,52 @@
   }
   const CT = {
     root: {
-      background: MP.color.bgLight2,
+      background: AP.color.bgLight2,
       maxWidth: 406,
-      ...MP.borderRadius.r4,
-      ...MP.shadow.sh10,
-      "& a": { color: MP.color.textNormal },
+      ...AP.borderRadius.r4,
+      ...AP.shadow.sh10,
+      "& a": { color: AP.color.textNormal },
     },
     title: {
-      ...MP.row,
-      ...MP.text.group2,
+      ...AP.row,
+      ...AP.text.group2,
       paddingBottom: 8,
-      paddingRight: MP.space.g3,
+      paddingRight: AP.space.g3,
     },
     icon: ({ props: e }) => ({
       flexShrink: 0,
-      marginRight: MP.space.g1,
+      marginRight: AP.space.g1,
       ...e.iconStyle,
     }),
     content: {
-      ...MP.relative(),
-      ...MP.padding("g2 g2 g1h g2"),
-      ...MP.text.tooltipText,
-      color: MP.color.textNormal,
+      ...AP.relative(),
+      ...AP.padding("g2 g2 g1h g2"),
+      ...AP.text.tooltipText,
+      color: AP.color.textNormal,
       borderBottom: "1px solid var(--color-border-dark)",
     },
     contentItem: { paddingBottom: 8 },
     inner: { width: "100%" },
     marker: (e) => ({
-      ...MP.absolute("0 . . 16"),
+      ...AP.absolute("0 . . 16"),
       width: 80,
       height: 4,
-      backgroundColor: e.markerColor || MP.color.link,
+      backgroundColor: e.markerColor || AP.color.link,
     }),
-    closeButtonWrapper: { ...MP.absolute("0 0 . .") },
+    closeButtonWrapper: { ...AP.absolute("0 0 . .") },
     closeButton: { transform: "scale(0.8)" },
     action: (e) => ({
-      ":not(:last-child)": { marginRight: MP.space.g2 },
+      ":not(:last-child)": { marginRight: AP.space.g2 },
       ...(!e && { flexGrow: 1 }),
     }),
     subcontent: {
-      ...MP.padding("g1h g2 g1h g2"),
-      ...MP.text.tooltipText,
-      color: MP.color.textNormal,
+      ...AP.padding("g1h g2 g1h g2"),
+      ...AP.text.tooltipText,
+      color: AP.color.textNormal,
       opacity: 0.5,
     },
   };
-  class ST extends MP.Component {
+  class ST extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -25525,7 +25626,7 @@
         { css: CT.root },
         Glamor.createElement(
           "div",
-          { css: [MP.row, CT.content] },
+          { css: [AP.row, CT.content] },
           Glamor.createElement("div", { css: CT.marker(this.props) }),
           Glamor.createElement(
             "div",
@@ -25580,7 +25681,7 @@
         ? null
         : Glamor.createElement(
             "div",
-            { css: MP.row },
+            { css: AP.row },
             e.map((e, t) =>
               Glamor.createElement(
                 "div",
@@ -25617,38 +25718,38 @@
   const TT = {
     root: { width: "100%" },
     label: (e) => ({
-      fontFamily: MP.font.primary,
+      fontFamily: AP.font.primary,
       fontSize: 9,
       fontWeight: 600,
       lineHeight: "11px",
       color:
-        e.error && e.error.hasError ? MP.color.error : MP.color.textPassive,
+        e.error && e.error.hasError ? AP.color.error : AP.color.textPassive,
       marginBottom: 4,
-      ...MP.transition.superfast,
+      ...AP.transition.superfast,
       transitionProperty: "color",
     }),
-    controls: { ...MP.relative() },
-    leftControls: { ...MP.relative(), zIndex: 2 },
+    controls: { ...AP.relative() },
+    leftControls: { ...AP.relative(), zIndex: 2 },
     marker: (e, t) => ({
-      ...MP.absolute("0 . 0 0 10"),
-      ...MP.transition.superfast,
+      ...AP.absolute("0 . 0 0 10"),
+      ...AP.transition.superfast,
       transitionProperty: "background-color",
       backgroundColor:
-        e.error && e.error.hasError ? MP.color.error : MP.color.link,
+        e.error && e.error.hasError ? AP.color.error : AP.color.link,
       width: 0,
       ...((t.focus || (e.error && e.error.hasError)) && { width: 4, left: -4 }),
     }),
     input: (e) => ({
-      ...MP.text.elementNormal,
-      ...MP.padding("6 11"),
-      color: MP.color.textNormal,
+      ...AP.text.elementNormal,
+      ...AP.padding("6 11"),
+      color: AP.color.textNormal,
       lineHeight:
-        e.lines && e.lines > 1 ? "22px" : MP.text.elementNormal.lineHeight,
+        e.lines && e.lines > 1 ? "22px" : AP.text.elementNormal.lineHeight,
       width: "100%",
       border: "none",
       background: "none",
       outline: "none",
-      "::placeholder": { color: MP.color.textNormal, opacity: 0.5 },
+      "::placeholder": { color: AP.color.textNormal, opacity: 0.5 },
       zIndex: 1,
       "\n      &[type=number]::-webkit-inner-spin-button,\n      &[type=number]::-webkit-outer-spin-button\n    ":
         { WebkitAppearance: "none", margin: 0 },
@@ -25656,45 +25757,45 @@
     }),
     icon: { paddingLeft: 4 },
     background: (e) => ({
-      ...MP.absolute("0 0 0 0"),
-      border: `1px solid ${MP.color.borderDark}`,
-      background: MP.color.bgLight1,
+      ...AP.absolute("0 0 0 0"),
+      border: `1px solid ${AP.color.borderDark}`,
+      background: AP.color.bgLight1,
       borderRadius: e.focus ? "0 4px 4px 0" : "4px 4px 4px 4px",
     }),
-    rightControls: { ...MP.absolute(". 0 0 . 3") },
+    rightControls: { ...AP.absolute(". 0 0 . 3") },
     button: (e, t) => ({
-      ...MP.margin("0 1 1 0"),
-      ...MP.padding("6 7 6 24"),
-      ...MP.transition.superfast,
+      ...AP.margin("0 1 1 0"),
+      ...AP.padding("6 7 6 24"),
+      ...AP.transition.superfast,
       transitionProperty: "opacity",
       borderRadius: "0 4px 4px 0",
-      background: `linear-gradient(\n      to right,\n      transparent,\n      ${MP.color.bgLight1} 20px,\n      ${MP.color.bgLight1}\n    )`,
+      background: `linear-gradient(\n      to right,\n      transparent,\n      ${AP.color.bgLight1} 20px,\n      ${AP.color.bgLight1}\n    )`,
       opacity: 0,
       pointerEvents: "none",
       ...(t.hovered ? { opacity: 1, pointerEvents: "inherit" } : {}),
       ...e.buttonStyle,
     }),
     progress: {
-      ...MP.margin("0 1 1 0"),
-      ...MP.padding("7 8 7 10"),
+      ...AP.margin("0 1 1 0"),
+      ...AP.padding("7 8 7 10"),
       pointerEvents: "none",
       borderRadius: "0 4px 4px 0",
-      background: `linear-gradient(\n      to right,\n      transparent,\n      ${MP.color.bgLight1} 20px,\n      ${MP.color.bgLight1}\n    )`,
+      background: `linear-gradient(\n      to right,\n      transparent,\n      ${AP.color.bgLight1} 20px,\n      ${AP.color.bgLight1}\n    )`,
     },
     info: (e, t) => ({
-      ...MP.padding("g1 g1 g1 0"),
+      ...AP.padding("g1 g1 g1 0"),
       visibility: t.hovered || !e.info.showOnHover ? "visible" : "hidden",
     }),
     error: {
-      fontFamily: MP.font.primary,
+      fontFamily: AP.font.primary,
       fontSize: 9,
       fontWeight: 500,
       lineHeight: "11px",
-      color: MP.color.error,
+      color: AP.color.error,
       marginTop: 2,
     },
   };
-  class DT extends MP.Component {
+  class DT extends AP.Component {
     constructor(e) {
       super(e),
         (this._onElementFocus = (e) => {
@@ -25721,15 +25822,15 @@
             (this.input.current.blur(),
             this.props.onEnter && this.props.onEnter(e));
         }),
-        (this.input = MP.createRef()),
+        (this.input = AP.createRef()),
         (this.state = { hovered: !1, focus: !1 });
     }
     render() {
       return Glamor.createElement(
         "label",
         PT(
-          { css: [MP.column, TT.root, this.props.style] },
-          MP.hoverState(this, "hovered")
+          { css: [AP.column, TT.root, this.props.style] },
+          AP.hoverState(this, "hovered")
         ),
         this._renderLabel(),
         Glamor.createElement(
@@ -25737,13 +25838,13 @@
           {
             css: [
               TT.controls,
-              this.props.disabled && MP.disabled,
-              this.props.fixed && MP.disabledWithoutTransparency,
+              this.props.disabled && AP.disabled,
+              this.props.fixed && AP.disabledWithoutTransparency,
             ],
           },
           Glamor.createElement(
             "div",
-            { css: [MP.row, MP.alignItems.center, TT.leftControls] },
+            { css: [AP.row, AP.alignItems.center, TT.leftControls] },
             this._renderBackground(),
             this._renderMarker(),
             this._renderIcon(),
@@ -25751,7 +25852,7 @@
           ),
           Glamor.createElement(
             "div",
-            { css: [MP.row, MP.alignItems.end, TT.rightControls] },
+            { css: [AP.row, AP.alignItems.end, TT.rightControls] },
             this._renderButton(),
             this._renderProgress(),
             this._renderInfo()
@@ -25792,7 +25893,7 @@
         this.props.error.message &&
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.justifyContent.end, TT.error] },
+          { css: [AP.row, AP.justifyContent.end, TT.error] },
           this.props.error.message
         )
       );
@@ -25841,8 +25942,8 @@
             "div",
             {
               css: [
-                MP.row,
-                MP.alignItems.center,
+                AP.row,
+                AP.alignItems.center,
                 TT.button(this.props, this.state),
               ],
             },
@@ -25906,7 +26007,7 @@
   const IT = {
     thinSpace: { minWidth: "0.2em", height: "1px", display: "inline-block" },
   };
-  class GT extends MP.Component {
+  class GT extends AP.Component {
     render() {
       return "number" != typeof this.props.value
         ? null
@@ -25915,7 +26016,7 @@
         : this._renderWithThinSpaces();
     }
     _renderAsShortNumber() {
-      return MP.toShortNumber(this.props.value);
+      return AP.toShortNumber(this.props.value);
     }
     _renderWithThinSpaces() {
       const e = this.props.value,
@@ -25930,12 +26031,12 @@
           .join("")
           .split(":");
       return Glamor.createElement(
-        MP.Fragment,
+        AP.Fragment,
         null,
         e < 0 ? "-" : "",
         t.map((e, t) =>
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             { key: t },
             t > 0 && Glamor.createElement("span", { css: IT.thinSpace }),
             e
@@ -25956,23 +26057,23 @@
         return e;
       }).apply(this, arguments);
   }
-  const AT = (e) => ({
-    ...MP.text.nowrap,
-    ...MP.text.hashtag,
+  const MT = (e) => ({
+    ...AP.text.nowrap,
+    ...AP.text.hashtag,
     fontWeight: 600,
-    ...(e.disabled ? MP.disabledWithoutTransparency : {}),
-    ...MP.padding("4 g1 4 g1"),
-    ...MP.borderRadius.r4,
-    color: MP.theme.valueOf("day", MP.color.textInversed),
+    ...(e.disabled ? AP.disabledWithoutTransparency : {}),
+    ...AP.padding("4 g1 4 g1"),
+    ...AP.borderRadius.r4,
+    color: AP.theme.valueOf("day", AP.color.textInversed),
     backgroundColor: e.value
       ? e.selectColor
       : e.disabled
-      ? MP.color.iconPassive
-      : MP.color.bgNeutral,
+      ? AP.color.iconPassive
+      : AP.color.bgNeutral,
     border: "none",
-    ...(!e.disabled && !!e.onChange && { ...MP.clickable }),
+    ...(!e.disabled && !!e.onChange && { ...AP.clickable }),
   });
-  class MT extends MP.Component {
+  class AT extends AP.Component {
     constructor(e) {
       super(e),
         (this._onClick = () => {
@@ -25991,8 +26092,8 @@
       return Glamor.createElement(
         "button",
         OT(
-          { css: [MP.row, MP.alignItems.center, AT(this.props), r] },
-          MP.hoverState(this, "hovered"),
+          { css: [AP.row, AP.alignItems.center, MT(this.props), r] },
+          AP.hoverState(this, "hovered"),
           { tabIndex: this.props.tabIndex, onClick: this._onClick }
         ),
         i,
@@ -26009,7 +26110,7 @@
             OT(
               {
                 shown: this.state.hovered,
-                background: e.value ? e.selectColor : MP.color.iconPassive,
+                background: e.value ? e.selectColor : AP.color.iconPassive,
               },
               e.tooltip
             )
@@ -26017,33 +26118,33 @@
         : null;
     }
   }
-  MT.defaultProps = { selectColor: MP.color.link };
+  AT.defaultProps = { selectColor: AP.color.link };
   const FT = {
     root: (e) => ({
-      ...MP.noselect,
-      ...MP.shadow.sh6,
-      ...MP.text.uppercase,
-      ...MP.transition.fast,
-      ...MP.padding("14 70 13 41"),
-      ...MP.text.group1,
-      ...(e.disabled ? MP.disabledWithoutTransparency : {}),
+      ...AP.noselect,
+      ...AP.shadow.sh6,
+      ...AP.text.uppercase,
+      ...AP.transition.fast,
+      ...AP.padding("14 70 13 41"),
+      ...AP.text.group1,
+      ...(e.disabled ? AP.disabledWithoutTransparency : {}),
       transitionProperty: "box-shadow",
-      color: MP.color.textNormal,
-      background: MP.color.bgLight3,
+      color: AP.color.textNormal,
+      background: AP.color.bgLight3,
       border: "none",
       borderRadius: 23,
       cursor: "pointer",
       position: "relative",
-      "&:hover": { ...(e.disabled ? {} : MP.shadow.sh10) },
-      "&:active": { ...(e.disabled ? {} : MP.shadow.sh4) },
+      "&:hover": { ...(e.disabled ? {} : AP.shadow.sh10) },
+      "&:active": { ...(e.disabled ? {} : AP.shadow.sh4) },
     }),
     label: { flexGrow: 1 },
-    goIcon: { ...MP.absolute("14 15"), color: MP.color.link },
+    goIcon: { ...AP.absolute("14 15"), color: AP.color.link },
   };
   LP.registerSvgIcons([
     '<symbol id="primary-button-go-icon" viewBox="0 0 18 18"><path d="M9,18a9,9,0,1,1,9-9A9.01,9.01,0,0,1,9,18ZM7.667,4h0L6,5.667,9.334,9,6,12.334,7.667,14l5-5-5-5Z" fill="currentColor"/></symbol>',
   ]);
-  class RT extends MP.Component {
+  class RT extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -26059,13 +26160,13 @@
       return Glamor.createElement(
         "button",
         {
-          css: [MP.row, MP.alignItems.center, FT.root(e), e.style],
+          css: [AP.row, AP.alignItems.center, FT.root(e), e.style],
           tabIndex: e.tabIndex,
           onClick: this._onClick,
         },
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.justifyContent.center, FT.label] },
+          { css: [AP.row, AP.justifyContent.center, FT.label] },
           e.label
         ),
         Glamor.createElement(
@@ -26089,22 +26190,22 @@
       }).apply(this, arguments);
   }
   const LT = ({ props: e }) => ({
-    ...MP.alignItems.center,
-    ...MP.justifyContent.center,
-    ...MP.shadow.sh6,
-    ...MP.transition.fast,
-    width: e.size || MP.space.g5,
-    height: e.size || MP.space.g5,
-    color: e.color || MP.color.dark,
-    background: MP.color.bgLight3,
+    ...AP.alignItems.center,
+    ...AP.justifyContent.center,
+    ...AP.shadow.sh6,
+    ...AP.transition.fast,
+    width: e.size || AP.space.g5,
+    height: e.size || AP.space.g5,
+    color: e.color || AP.color.dark,
+    background: AP.color.bgLight3,
     border: "none",
     borderRadius: "50%",
     cursor: "pointer",
     transitionProperty: "transform, box-shadow",
     position: "relative",
     zIndex: 1,
-    "&:hover": { ...MP.shadow.sh10 },
-    "&:active": { ...MP.shadow.sh4 },
+    "&:hover": { ...AP.shadow.sh10 },
+    "&:active": { ...AP.shadow.sh4 },
     ...(e.flat && {
       boxShadow: "none !important",
       transformOrigin: "center",
@@ -26113,7 +26214,7 @@
       "&:active": { transform: "scale(0.95)" },
     }),
   });
-  class NT extends MP.Component {
+  class NT extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -26128,8 +26229,8 @@
       return Glamor.createElement(
         "button",
         BT(
-          { css: [MP.row, LT(this), this.props.style], onClick: this._onClick },
-          MP.onLongPress(this.props.onLongPress)
+          { css: [AP.row, LT(this), this.props.style], onClick: this._onClick },
+          AP.onLongPress(this.props.onLongPress)
         ),
         this._renderIcon()
       );
@@ -26144,34 +26245,34 @@
   }
   const jT = {
     root: (e) => ({
-      ...MP.relative(),
-      ...(e.disabled ? MP.disabled : MP.clickable),
-      ...MP.noselect,
+      ...AP.relative(),
+      ...(e.disabled ? AP.disabled : AP.clickable),
+      ...AP.noselect,
     }),
     thumb: (e) => ({
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.justifyContent.center,
-      ...MP.absolute(`. . . ${e.value ? 28 : 9} 1`),
-      ...MP.transition.superfast,
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.justifyContent.center,
+      ...AP.absolute(`. . . ${e.value ? 28 : 9} 1`),
+      ...AP.transition.superfast,
       transitionProperty: "left, background-color",
       width: 20,
       height: 20,
       boxShadow: "0 2px 2px rgba(0, 0, 0, 0.24)",
       borderRadius: "50%",
-      backgroundColor: e.value ? MP.color.link : MP.color.bgNeutral,
+      backgroundColor: e.value ? AP.color.link : AP.color.bgNeutral,
     }),
     track: {
-      ...MP.margin("8 10 8 12"),
-      backgroundColor: MP.color.iconActionable,
+      ...AP.margin("8 10 8 12"),
+      backgroundColor: AP.color.iconActionable,
       opacity: 0.3,
       width: 34,
       height: 14,
       borderRadius: 7,
     },
-    label: { ...MP.text.elementNormal },
+    label: { ...AP.text.elementNormal },
   };
-  class zT extends MP.Component {
+  class zT extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -26187,7 +26288,7 @@
       return Glamor.createElement(
         "div",
         {
-          css: [MP.row, MP.alignItems.center, jT.root(this.props)],
+          css: [AP.row, AP.alignItems.center, jT.root(this.props)],
           onClick: this._onClick,
         },
         Glamor.createElement("div", { css: jT.track }),
@@ -26213,57 +26314,57 @@
       }).apply(this, arguments);
   }
   const UT = {
-      root: { width: "100%", ...MP.relative() },
+      root: { width: "100%", ...AP.relative() },
       table: { width: "100%", borderCollapse: "collapse" },
       head: (e) => ({ visibility: e.noHead ? "collapse" : "visible" }),
       headCell: (e, t) => ({
-        ...MP.padding("0 g5 g1 0"),
-        ...MP.text.nowrap,
-        ...MP.noselect,
-        fontFamily: MP.font.primary,
+        ...AP.padding("0 g5 g1 0"),
+        ...AP.text.nowrap,
+        ...AP.noselect,
+        fontFamily: AP.font.primary,
         fontSize: 10,
         lineHeight: "13px",
         fontWeight: "500",
         textAlign: "left",
-        color: MP.color.textPassive,
+        color: AP.color.textPassive,
         ...("width" in e ? { width: e.width } : {}),
         ...("minWidth" in e ? { minWidth: e.minWidth } : {}),
         ...(e.info && !e.info.fixed ? QP.cssShowOnHover : {}),
-        ...(e.onSortClick ? MP.clickable : {}),
+        ...(e.onSortClick ? AP.clickable : {}),
         ...t.headCellStyle,
       }),
-      headCellContent: { ...MP.relative(), minHeight: 14 },
+      headCellContent: { ...AP.relative(), minHeight: 14 },
       sortArrow: (e) => ({
-        ...MP.absolute("5 . . -12"),
+        ...AP.absolute("5 . . -12"),
         width: 0,
         height: 0,
         borderLeft: "4px solid transparent",
         borderRight: "4px solid transparent",
         borderTop:
-          "descending" === e ? `4px solid ${MP.color.textPassive}` : null,
+          "descending" === e ? `4px solid ${AP.color.textPassive}` : null,
         borderBottom:
-          "ascending" === e ? `4px solid ${MP.color.textPassive}` : null,
+          "ascending" === e ? `4px solid ${AP.color.textPassive}` : null,
       }),
-      info: { marginLeft: MP.space.g1 },
+      info: { marginLeft: AP.space.g1 },
       bodyRow: (e) => ({
-        borderBottom: `1px solid ${MP.color.borderDark}`,
+        borderBottom: `1px solid ${AP.color.borderDark}`,
         "&:first-child": { borderTop: "1px solid transparent" },
         ...(e.minRowHeight ? { height: e.minRowHeight } : {}),
         ...e.rowStyle,
       }),
       emptyRow: (e) => ({ height: e.minRowHeight || 45 }),
       bodyCell: (e) => ({
-        ...MP.padding("g1h g5 g1h 0"),
-        ...MP.text.elementNormal,
+        ...AP.padding("g1h g5 g1h 0"),
+        ...AP.text.elementNormal,
         ...e.bodyCellStyle,
       }),
       pagination: {
-        ...MP.row,
-        ...MP.alignItems.center,
-        ...MP.justifyContent.end,
-        ...MP.text.tooltipText,
-        marginTop: MP.space.g1h,
-        color: MP.color.textNormal,
+        ...AP.row,
+        ...AP.alignItems.center,
+        ...AP.justifyContent.end,
+        ...AP.text.tooltipText,
+        marginTop: AP.space.g1h,
+        color: AP.color.textNormal,
         height: 18,
       },
       paginationButton: {
@@ -26271,27 +26372,27 @@
         height: 18,
         position: "relative",
         border: "none",
-        color: MP.color.link,
+        color: AP.color.link,
         background: "transparent",
         cursor: "pointer",
-        "&:disabled": { cursor: "default", color: MP.color.iconPassive },
+        "&:disabled": { cursor: "default", color: AP.color.iconPassive },
         "&::after": {
           content: "''",
           borderRadius: "50%",
-          background: MP.color.link,
+          background: AP.color.link,
           opacity: 0,
-          ...MP.absolute("1 1 1 1"),
+          ...AP.absolute("1 1 1 1"),
         },
         "&:hover:not(:disabled)::after": { opacity: 0.07 },
         "&:active:not(:disabled)::after": { opacity: 0.14 },
-        "&::before": { content: "''", ...MP.absolute("-4 -4 -4 -4") },
+        "&::before": { content: "''", ...AP.absolute("-4 -4 -4 -4") },
       },
       paginationButtonPrev: { transform: "scaleX(-1)" },
       noDataOverlay: {
-        ...MP.row,
-        ...MP.center,
-        ...MP.absolute("25 0 0 0"),
-        ...MP.noDataGradient,
+        ...AP.row,
+        ...AP.center,
+        ...AP.absolute("25 0 0 0"),
+        ...AP.noDataGradient,
         fontSize: 14,
       },
     },
@@ -26301,7 +26402,7 @@
     `<symbol id="${WT}" viewBox="0 0 18 18"><g transform="translate(.75 .75)" fill="none" stroke="currentColor"><circle cx="8.25" cy="8.25" r="8.25" stroke="none"/><circle cx="8.25" cy="8.25" r="7.75" fill="none"/></g><path d="M7.5 4.5L6.45 5.55 9.9 9l-3.45 3.45L7.5 13.5 12 9z" fill="currentColor"/><path d="M0 0h18v18H0z" fill="none"/></symbol>`,
     `<symbol id="${VT}" viewBox="0 0 18 18"><g transform="translate(.75 .75)" fill="none" stroke="currentColor"><circle cx="8.25" cy="8.25" r="8.25" stroke="none"/><circle cx="8.25" cy="8.25" r="7.75" fill="none"/></g><path d="M5.5 4.5L4.45 5.55 7.9 9l-3.45 3.45L5.5 13.5 10 9z" fill="currentColor"/><path d="M9.5 4.5L8.45 5.55 11.9 9l-3.45 3.45L9.5 13.5 14 9z" fill="currentColor"/><path d="M0 0h18v18H0z" fill="none"/></symbol>`,
   ]);
-  class $T extends MP.Component {
+  class $T extends AP.Component {
     constructor(e) {
       super(e), qT.call(this), (this._clickPrevented = !1), (this.state = {});
     }
@@ -26362,14 +26463,14 @@
               },
               Glamor.createElement(
                 "div",
-                { css: [MP.row, MP.alignItems.center, UT.headCellContent] },
+                { css: [AP.row, AP.alignItems.center, UT.headCellContent] },
                 e.sort &&
                   Glamor.createElement("div", { css: UT.sortArrow(e.sort) }),
                 e.label,
                 e.info &&
                   Glamor.createElement(
                     "div",
-                    { css: [MP.row, UT.info] },
+                    { css: [AP.row, UT.info] },
                     Glamor.createElement(QP, HT({ mini: !0 }, e.info))
                   )
               )
@@ -26451,7 +26552,7 @@
         ),
         r > 2 &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { width: "g2" }),
             Glamor.createElement(
@@ -26568,11 +26669,11 @@
         this.props.onRowHover(null);
       });
   };
-  class YT extends MP.Component {
+  class YT extends AP.Component {
     constructor(e) {
       super(e),
         ZT.call(this),
-        (this._rootRef = MP.createRef()),
+        (this._rootRef = AP.createRef()),
         (this._io = null),
         (this.state = { visible: !e.tableProps.renderOnlyVisibleRows });
     }
@@ -26611,7 +26712,7 @@
       const e = this.props;
       return this.state.visible
         ? Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             e.tableProps.columns.map((t, r) =>
               Glamor.createElement(
@@ -26643,9 +26744,9 @@
       height: e.graphStyle && e.graphStyle.columnMaxHeight ? null : "100%",
     }),
     graph: { width: "100%", height: "100%" },
-    columnWrapper: { ...MP.relative(), width: "100%" },
-    column: { ...MP.absolute(". 0 0 0") },
-    cap: { ...MP.absolute("0 0 . 0"), height: 3, maxHeight: "100%" },
+    columnWrapper: { ...AP.relative(), width: "100%" },
+    column: { ...AP.absolute(". 0 0 0") },
+    cap: { ...AP.absolute("0 0 . 0"), height: 3, maxHeight: "100%" },
     gap: {},
     labelsContainer: {
       width: "100%",
@@ -26653,13 +26754,13 @@
       marginTop: 4,
     },
     label: {
-      ...MP.text.hashtag,
+      ...AP.text.hashtag,
       fontSize: 12,
-      color: MP.color.textPassive,
+      color: AP.color.textPassive,
       paddingTop: 4,
     },
   };
-  class XT extends MP.Component {
+  class XT extends AP.Component {
     constructor(e) {
       super(e),
         (this._onItemEnter = (e) => {
@@ -26708,7 +26809,7 @@
           columnWidth: null,
           columnGapWidth: 2,
           columnMaxHeight: null,
-          color: MP.color.iconPassive,
+          color: AP.color.iconPassive,
           fixCapOnHover: !1,
           ...this.props.graphStyle,
         },
@@ -26716,7 +26817,7 @@
         o = this._renderLabels({ graphStyle: r, items: e, maxValue: t });
       return Glamor.createElement(
         "div",
-        { css: [MP.column, MP.alignItems.stretch, KT.root(this.props)] },
+        { css: [AP.column, AP.alignItems.stretch, KT.root(this.props)] },
         n,
         o
       );
@@ -26739,7 +26840,7 @@
       return Glamor.createElement(
         "div",
         {
-          css: [MP.row, MP.alignItems.end, KT.graph, n, this.props.style],
+          css: [AP.row, AP.alignItems.end, KT.graph, n, this.props.style],
           onMouseLeave: this._onMouseLeave,
         },
         e.map((n, a) => {
@@ -26757,7 +26858,7 @@
             },
             l = { backgroundColor: n.color || null };
           return Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             { key: a },
             Glamor.createElement(
               "div",
@@ -26789,8 +26890,8 @@
             ? this.props.items[this.state.hoveredIndex].labels
             : this.props.labels,
         n = {
-          ...MP.justifyContent.between,
-          ...MP.alignItems.center,
+          ...AP.justifyContent.between,
+          ...AP.alignItems.center,
           ...KT.labelsContainer,
           minHeight: 20,
           maxWidth:
@@ -26801,7 +26902,7 @@
         };
       return Glamor.createElement(
         "div",
-        { css: [MP.row, n] },
+        { css: [AP.row, n] },
         (r || []).map((e, t) =>
           Glamor.createElement("div", { key: t, css: KT.label }, e)
         )
@@ -26828,28 +26929,28 @@
   const QT = {
     root: {},
     tab: ({ selectedTabId: e }, t, r) => ({
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.margin(". g3 . ."),
-      ...MP.padding(". . 10 ."),
-      ...MP.text.group2,
-      ...(!r && MP.clickable),
-      ...(r && MP.disabled),
-      ...MP.noselect,
-      ...MP.relative(),
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.margin(". g3 . ."),
+      ...AP.padding(". . 10 ."),
+      ...AP.text.group2,
+      ...(!r && AP.clickable),
+      ...(r && AP.disabled),
+      ...AP.noselect,
+      ...AP.relative(),
       "&:last-child": { marginRight: 0 },
       ...(e === t && {
         "&::before": {
           content: '""',
-          ...MP.absolute(". . 0 0"),
+          ...AP.absolute(". . 0 0"),
           width: 48,
           height: 2,
-          background: MP.color.link,
+          background: AP.color.link,
         },
       }),
     }),
   };
-  class JT extends MP.Component {
+  class JT extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -26869,7 +26970,7 @@
       return e
         ? Glamor.createElement(
             "div",
-            { css: [MP.row, QT.root, t] },
+            { css: [AP.row, QT.root, t] },
             e.map((e, t) => {
               let r = e,
                 n = e,
@@ -26892,7 +26993,7 @@
                   n,
                   !!o &&
                     Glamor.createElement(
-                      MP.Fragment,
+                      AP.Fragment,
                       null,
                       Glamor.createElement(qP, { width: "g1" }),
                       Glamor.createElement(QP, { mini: !0, tooltip: o })
@@ -26906,10 +27007,10 @@
   }
   const eD = {
       root: ({ props: e, state: t }) => ({
-        ...MP.absolute(`${t.top} . . ${t.left}`),
+        ...AP.absolute(`${t.top} . . ${t.left}`),
         maxWidth: 300,
         ...("shown" in e && {
-          ...MP.transition.fast,
+          ...AP.transition.fast,
           transitionProperty: "opacity, transform",
           ...((!e.shown || !t.showDelayPassed) && {
             opacity: 0,
@@ -26919,14 +27020,14 @@
         }),
       }),
       container: ({ props: e }) => ({
-        ...MP.padding("g1 10 0 10"),
-        backgroundColor: e.background || MP.color.link,
+        ...AP.padding("g1 10 0 10"),
+        backgroundColor: e.background || AP.color.link,
         maxWidth: 300,
         minWidth: 100,
       }),
       arrow: ({ props: e, state: t }) => ({
-        color: e.background || MP.color.link,
-        ...MP.absolute("-3 12 . ."),
+        color: e.background || AP.color.link,
+        ...AP.absolute("-3 12 . ."),
         ...(e.arrowAtCenter && { left: "50%", marginLeft: -4 }),
         ...(t.triangleDeltaX && {
           marginRight: -1 * t.triangleDeltaX,
@@ -26937,21 +27038,21 @@
         }),
       }),
       title: {
-        ...MP.text.tooltipTitle,
-        color: MP.theme.valueOf("day", MP.color.textInversed),
+        ...AP.text.tooltipTitle,
+        color: AP.theme.valueOf("day", AP.color.textInversed),
         paddingBottom: 8,
       },
       text: {
-        ...MP.text.tooltipText,
-        color: MP.theme.valueOf("day", MP.color.textInversed),
+        ...AP.text.tooltipText,
+        color: AP.theme.valueOf("day", AP.color.textInversed),
       },
-      paragraph: { ...MP.padding("0 0 8 0") },
+      paragraph: { ...AP.padding("0 0 8 0") },
     },
     tD = "tooltip-element.arrow";
   LP.registerSvgIcons([
     `<symbol id="${tD}" viewBox="0 0 8 3"><path d="M200,0l4-3,4,3Z" transform="translate(-200 3)" fill="currentColor" opacity="0.95"/></symbol>`,
   ]);
-  class rD extends MP.Component {
+  class rD extends AP.Component {
     constructor(e) {
       super(e),
         (this._setShowTimeout = () => {
@@ -26967,7 +27068,7 @@
                 showTimeout: this._showTimeout,
               });
         }),
-        (this._rootRef = MP.createRef()),
+        (this._rootRef = AP.createRef()),
         (this._showTimeout = null),
         (this.state = {
           top: 0,
@@ -27017,12 +27118,12 @@
       return Glamor.createElement(
         "div",
         {
-          css: [MP.row, MP.justifyContent.end, eD.root(this), o],
+          css: [AP.row, AP.justifyContent.end, eD.root(this), o],
           ref: this._rootRef,
         },
         Glamor.createElement(
           "div",
-          { css: [MP.column, eD.container(this)] },
+          { css: [AP.column, eD.container(this)] },
           i,
           a,
           l,
@@ -27063,8 +27164,8 @@
       }).apply(this, arguments);
   }
   rD.groups = {};
-  const oD = { root: { ...MP.absolute("0 0 0 0 100"), pointerEvents: "none" } };
-  class iD extends MP.Component {
+  const oD = { root: { ...AP.absolute("0 0 0 0 100"), pointerEvents: "none" } };
+  class iD extends AP.Component {
     constructor(e) {
       super(e), (this.state = { tooltips: [] });
     }
@@ -27077,7 +27178,7 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: [MP.row, oD.root] },
+        { css: [AP.row, oD.root] },
         this.state.tooltips.map((e, t) =>
           Glamor.createElement(
             rD,
@@ -27088,12 +27189,12 @@
     }
   }
   const aD = {
-    root: { ...MP.row, maxWidth: 490, color: MP.color.textNormal },
+    root: { ...AP.row, maxWidth: 490, color: AP.color.textNormal },
     icon: ({ props: e }) => ({
-      ...MP.row,
-      ...MP.justifyContent.center,
+      ...AP.row,
+      ...AP.justifyContent.center,
       flexShrink: 0,
-      marginRight: MP.space.g2,
+      marginRight: AP.space.g2,
       color: e.iconColor,
       ...(e.label &&
         !e.narrow && { marginTop: 15, ...(!!e.progress && { marginTop: 17 }) }),
@@ -27101,32 +27202,32 @@
     svgIcon: { height: 32, width: 32 },
     content: {},
     header: ({ props: e }) => ({
-      ...MP.row,
-      ...MP.alignItems.center,
-      marginBottom: MP.space.g1h,
+      ...AP.row,
+      ...AP.alignItems.center,
+      marginBottom: AP.space.g1h,
       ...(!e.title && { display: "none" }),
     }),
     headerText: {},
     body: {},
     label: {
       marginBottom: 4,
-      ...MP.text.of({
+      ...AP.text.of({
         size: 9,
         height: "11px",
         weight: 600,
-        color: MP.color.textPassive,
+        color: AP.color.textPassive,
       }),
     },
-    title: { ...MP.text.group1 },
+    title: { ...AP.text.group1 },
     text: {
-      ...MP.text.contentText,
-      "&:not(:last-child)": { marginBottom: MP.space.g2 },
+      ...AP.text.contentText,
+      "&:not(:last-child)": { marginBottom: AP.space.g2 },
     },
-    paragraph: { "&:not(:last-child)": { marginBottom: MP.space.g1 } },
-    buttons: { ...MP.row, ...MP.text.nowrap },
-    button: { "&:not(:last-child)": { marginRight: MP.space.g3 } },
+    paragraph: { "&:not(:last-child)": { marginBottom: AP.space.g1 } },
+    buttons: { ...AP.row, ...AP.text.nowrap },
+    button: { "&:not(:last-child)": { marginRight: AP.space.g3 } },
   };
-  class sD extends MP.Component {
+  class sD extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -27215,40 +27316,40 @@
   }
   sD.defaultProps = {
     icon: "warning-triangle-large",
-    iconColor: MP.color.attention,
+    iconColor: AP.color.attention,
   };
   const cD = {
-    root: { ...MP.relative() },
+    root: { ...AP.relative() },
     colon: ({ props: e }) => ({
-      ...MP.absolute("6 . . 31"),
+      ...AP.absolute("6 . . 31"),
       content: ":",
       fontSize: 14,
       fontWeight: 500,
       lineHeight: "18px",
-      color: MP.color.textNormal,
+      color: AP.color.textNormal,
       zIndex: 2,
       ...(!!e.label && { top: 21 }),
     }),
-    input: { fontFamily: MP.font.monospace },
+    input: { fontFamily: AP.font.monospace },
     underscores: ({ props: e }) => ({
-      ...MP.absolute("24 . . 11"),
-      ...MP.row,
+      ...AP.absolute("24 . . 11"),
+      ...AP.row,
       lineHeight: "18px",
       zIndex: 2,
       ...(!!e.label && { top: 39 }),
     }),
     underscore: (e) => ({
-      ...MP.absolute(),
+      ...AP.absolute(),
       width: 8,
       height: 1,
-      background: MP.color.textBleak,
+      background: AP.color.textBleak,
       "&:nth-child(2)": { left: 9 },
       "&:nth-child(3)": { left: 27 },
       "&:nth-child(4)": { left: 36 },
       ...(!e && { display: "none" }),
     }),
   };
-  class uD extends MP.Component {
+  class uD extends AP.Component {
     constructor(e) {
       super(e),
         (this._onInput = (e) => {
@@ -27296,7 +27397,7 @@
           (e) => e === this._slot
         )),
         (this._back = !1),
-        (this.inputRef = MP.createRef()),
+        (this.inputRef = AP.createRef()),
         "number" == typeof e.time)
       ) {
         let t = e.time / 1e3 / 60;
@@ -27382,11 +27483,11 @@
     hD =
       "\n    hsla(225deg, 4%, 20%, 1) 0%,\n    hsla(225deg, 4%, 20%, 0.738) 19%,\n    hsla(225deg, 4%, 20%, 0.541) 34%,\n    hsla(225deg, 4%, 20%, 0.382) 47%,\n    hsla(225deg, 4%, 20%, 0.278) 56.5%,\n    hsla(225deg, 4%, 20%, 0.194) 65%,\n    hsla(225deg, 4%, 20%, 0.126) 73%,\n    hsla(225deg, 4%, 20%, 0.075) 80.2%,\n    hsla(225deg, 4%, 20%, 0.042) 86.1%,\n    hsla(225deg, 4%, 20%, 0.021) 91%,\n    hsla(225deg, 4%, 20%, 0.008) 95.2%,\n    hsla(225deg, 4%, 20%, 0.002) 98.2%,\n    hsla(225deg, 4%, 20%, 0) 100%\n  ",
     pD = {
-      root: { height: "100%", ...MP.relative() },
+      root: { height: "100%", ...AP.relative() },
       fade: {
         height: "min(60px, 18%)",
-        ...MP.absolute(". 0 . 0 1"),
-        ...MP.transition.fast,
+        ...AP.absolute(". 0 . 0 1"),
+        ...AP.transition.fast,
       },
       fadeTop: {
         top: 0,
@@ -27403,13 +27504,13 @@
         ".FadedScroller_atBottom > &": { opacity: 0, pointerEvents: "none" },
       },
       content: {
-        ...MP.absolute("0 0 0 0"),
+        ...AP.absolute("0 0 0 0"),
         padding: "inherit",
         overflow: "auto",
         contentVisibility: "auto",
       },
     };
-  class mD extends MP.Component {
+  class mD extends AP.Component {
     constructor(e) {
       super(e),
         (this._updateState = () => {
@@ -27435,7 +27536,7 @@
                 document.removeEventListener("mousemove", e));
             });
         }),
-        (this._contentRef = MP.createRef()),
+        (this._contentRef = AP.createRef()),
         (this._resizeObserver = null);
     }
     componentDidMount() {
@@ -27478,10 +27579,10 @@
     }
   }
   const fD = {
-    root: { width: "100%", height: 14, color: MP.color.link, ...MP.relative() },
-    track: { ...MP.absolute("5 0 . 0"), height: 4, borderRadius: 1 },
+    root: { width: "100%", height: 14, color: AP.color.link, ...AP.relative() },
+    track: { ...AP.absolute("5 0 . 0"), height: 4, borderRadius: 1 },
     extraValue: {
-      ...MP.absolute("5 0 . 0"),
+      ...AP.absolute("5 0 . 0"),
       opacity: 0.5,
       height: 4,
       background: "currentColor",
@@ -27494,7 +27595,7 @@
       background: "transparent",
       cursor: "pointer",
       color: "currentColor",
-      ...MP.absolute("5 0 . 0"),
+      ...AP.absolute("5 0 . 0"),
       "&::-webkit-slider-thumb": {
         appearance: "none",
         width: 14,
@@ -27504,7 +27605,7 @@
       },
     },
   };
-  class gD extends MP.Component {
+  class gD extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -27534,7 +27635,7 @@
       return Glamor.createElement("div", {
         css: fD.track,
         style: {
-          background: `linear-gradient(\n            to right,\n            currentColor ${e}%,\n            ${MP.color.iconPassive} ${e}%\n          )`,
+          background: `linear-gradient(\n            to right,\n            currentColor ${e}%,\n            ${AP.color.iconPassive} ${e}%\n          )`,
         },
       });
     }
@@ -27570,9 +27671,9 @@
   }
   const vD = {
     root: { width: "100%" },
-    label: { textAlign: "right", marginBottom: MP.space.g0h, ...MP.text.label },
+    label: { textAlign: "right", marginBottom: AP.space.g0h, ...AP.text.label },
   };
-  class bD extends MP.Component {
+  class bD extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -27623,7 +27724,7 @@
         n && tT.registerImages(n),
         o && LP.registerSvgIcons(o);
     },
-    ...MP,
+    ...AP,
     ActionButton: WP,
     Badge: eT,
     Card: iT,
@@ -27639,7 +27740,7 @@
     LinkButton: xT,
     Menu: vT,
     NumberRenderer: GT,
-    Pill: MT,
+    Pill: AT,
     PrimaryButton: RT,
     ProgressRing: jP,
     RoundButton: NT,
@@ -27675,18 +27776,18 @@
   }
   const ED = {
     root: ({ props: e }) => ({
-      ...(e.isHorizontal && { ...MP.row, ...MP.center }),
+      ...(e.isHorizontal && { ...AP.row, ...AP.center }),
     }),
     button: ({ props: e }) => ({
       width: "min-content",
       "&:not(:last-child)": {
-        marginBottom: MP.space.g3,
-        ...(e.isHorizontal && { marginBottom: 0, marginRight: MP.space.g3 }),
+        marginBottom: AP.space.g3,
+        ...(e.isHorizontal && { marginBottom: 0, marginRight: AP.space.g3 }),
       },
     }),
     buttonTooltip: { marginTop: 5 },
   };
-  class xD extends MP.Component {
+  class xD extends AP.Component {
     constructor(e) {
       super(e),
         (this._renderButtonTooltip = (e) =>
@@ -27727,7 +27828,7 @@
               icon: e.icon,
               image: e.image,
               size: "40",
-              color: MP.color.iconActionable,
+              color: AP.color.iconActionable,
               flat: this.props.isHorizontal,
               onClick: e.onClick,
               onLongPress: e.onLongPress,
@@ -27764,7 +27865,7 @@
     CD = {
       root: { width: 378, height: 740, position: "relative" },
       frame: { width: 378, height: 740, position: "relative" },
-      header: { ...MP.absolute("28 28 . 28") },
+      header: { ...AP.absolute("28 28 . 28") },
       time: ({ colorScheme: e }) => ({
         position: "absolute",
         left: 19,
@@ -27775,16 +27876,16 @@
         fontSize: 12,
         lineHeight: 1.25,
         fontWeight: 700,
-        fontFamily: MP.font.secondary,
+        fontFamily: AP.font.secondary,
         color: e.time,
       }),
-      timeDivider: { ...MP.padding("0 1"), position: "relative", top: -1 },
+      timeDivider: { ...AP.padding("0 1"), position: "relative", top: -1 },
       bars: ({ colorScheme: e }) => ({
         position: "absolute",
         top: 3,
         right: 48,
-        ...MP.alignItems.end,
-        ...MP.justifyContent.between,
+        ...AP.alignItems.end,
+        ...AP.justifyContent.between,
         width: 14,
         height: 10,
         color: e.bars,
@@ -27810,12 +27911,12 @@
         borderColor: e.battery,
       }),
       batteryFill: ({ colorScheme: e }) => ({
-        ...MP.absolute("1 1 1 1"),
+        ...AP.absolute("1 1 1 1"),
         borderRadius: 1,
         background: e.batteryFill,
       }),
       batteryPlus: ({ colorScheme: e }) => ({
-        ...MP.absolute("2 . 2 100%"),
+        ...AP.absolute("2 . 2 100%"),
         width: 2,
         marginLeft: 2,
         transform: "translateX(-0.5px) scaleX(0.65)",
@@ -27829,7 +27930,7 @@
         "ui-igswiss/iphone-frame-night.png:357:698",
     };
   tT.registerImages(SD);
-  class PD extends MP.Component {
+  class PD extends AP.Component {
     constructor(e) {
       super(e), (this._timer = null), (this.state = { time: this._getTime() });
     }
@@ -27867,7 +27968,7 @@
             ),
             Glamor.createElement(
               "div",
-              { css: [MP.row, CD.bars({ colorScheme: r })] },
+              { css: [AP.row, CD.bars({ colorScheme: r })] },
               Glamor.createElement("div", { css: CD.bar }),
               Glamor.createElement("div", { css: CD.bar }),
               Glamor.createElement("div", { css: CD.bar }),
@@ -27894,7 +27995,7 @@
       };
     }
   }
-  var TD = MP.theme.ThemeAware(PD);
+  var TD = AP.theme.ThemeAware(PD);
   function DD() {
     return (DD =
       Object.assign ||
@@ -27913,8 +28014,8 @@
     },
     GD = {
       root: {
-        ...MP.row,
-        ...MP.center,
+        ...AP.row,
+        ...AP.center,
         width: "100%",
         height: "100%",
         "&:hover iframe": { pointerEvents: "all" },
@@ -27932,23 +28033,23 @@
         pointerEvents: "none",
         filter: "blur(50px)",
         opacity: 0.2,
-        background: MP.color.dark,
+        background: AP.color.dark,
         ...(e.isFrameless && { display: "none" }),
       }),
       background: ({ props: e, colorScheme: t }) => ({
-        ...MP.absolute("18 21 18 21"),
+        ...AP.absolute("18 21 18 21"),
         background: t.igBackground,
         ...(e.isDarkBackground && { background: ID.night.igBackground }),
-        ...(e.isSplashShown && { background: MP.color.bgLight2 }),
+        ...(e.isSplashShown && { background: AP.color.bgLight2 }),
       }),
       screen: ({ props: e }) => ({
-        ...MP.row,
-        ...MP.justifyContent.center,
-        ...MP.absolute("47 . . 21"),
+        ...AP.row,
+        ...AP.justifyContent.center,
+        ...AP.absolute("47 . . 21"),
         width: 333,
         height: 671,
         ...(e.isFrameless && {
-          ...MP.relative("0 0 0 0"),
+          ...AP.relative("0 0 0 0"),
           width: "100%",
           height: "100%",
         }),
@@ -27961,16 +28062,16 @@
         pointerEvents: "none",
       }),
       loading: ({ props: e, colorScheme: t }) => ({
-        ...MP.absolute("0 0 . 0"),
-        ...MP.row,
-        ...MP.center,
-        ...MP.text.hashtag,
-        ...MP.transition.superslow,
+        ...AP.absolute("0 0 . 0"),
+        ...AP.row,
+        ...AP.center,
+        ...AP.text.hashtag,
+        ...AP.transition.superslow,
         height: 40,
         textAlign: "center",
         pointerEvents: "none",
         background: t.igBackground,
-        color: MP.color.textBleak,
+        color: AP.color.textBleak,
         ...(e.isFrameless && { height: 44 }),
         ...(!e.isLoadingShown && {
           transform: "translateY(-10px)",
@@ -27978,13 +28079,13 @@
         }),
       }),
       splash: ({ props: e }) => ({
-        ...MP.column,
-        ...MP.alignItems.center,
-        ...MP.transition.slow,
-        ...MP.absolute("0 0 0 0"),
+        ...AP.column,
+        ...AP.alignItems.center,
+        ...AP.transition.slow,
+        ...AP.absolute("0 0 0 0"),
         overflow: "hidden",
-        background: MP.color.bgLight2,
-        ...(e.isFrameless && { ...MP.justifyContent.center }),
+        background: AP.color.bgLight2,
+        ...(e.isFrameless && { ...AP.justifyContent.center }),
         ...(!e.isSplashShown && { opacity: 0, pointerEvents: "none" }),
       }),
       splashLogo: ({ props: e }) => ({
@@ -27997,18 +28098,18 @@
         ...(e.isFrameless && { marginTop: -80, left: 0 }),
       }),
       splashTitle: {
-        ...MP.text.mainTitle,
-        ...MP.text.uppercase,
+        ...AP.text.mainTitle,
+        ...AP.text.uppercase,
         marginTop: 27,
-        color: MP.color.textNormal,
+        color: AP.color.textNormal,
       },
       phone: ({ props: e }) => ({
         pointerEvents: "none",
         ...(e.isFrameless && { display: "none" }),
       }),
       creationCard: ({ props: e }) => ({
-        ...MP.absolute(". . 53 50%"),
-        ...MP.transition.fast,
+        ...AP.absolute(". . 53 50%"),
+        ...AP.transition.fast,
         transform: "translateX(-50%)",
         ...(!e.isCreationCardShown && {
           opacity: 0,
@@ -28019,7 +28120,7 @@
       }),
     };
   tT.registerImages({ "ig-view.logo": "ui-igswiss/logo-572.png:286:286" });
-  class OD extends MP.Component {
+  class OD extends AP.Component {
     render() {
       const { props: e, state: t } = this,
         r = { props: e, state: t, colorScheme: ID[t.theme] || ID.day };
@@ -28086,57 +28187,57 @@
         : null;
     }
   }
-  var AD = MP.theme.ThemeAware(OD);
-  const MD = {
+  var MD = AP.theme.ThemeAware(OD);
+  const AD = {
     root: {
-      ...MP.relative(),
-      ...MP.padding("19 0"),
-      ...MP.shadow.sh10,
+      ...AP.relative(),
+      ...AP.padding("19 0"),
+      ...AP.shadow.sh10,
       width: 207,
       borderRadius: 6,
-      background: MP.color.bgLight2,
+      background: AP.color.bgLight2,
     },
-    buttonWrap: { ...MP.relative() },
+    buttonWrap: { ...AP.relative() },
     button: {
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.clickable,
-      ...MP.noselect,
-      ...MP.padding("9 16 9 16"),
-      ...MP.text.of({
-        family: MP.font.primary,
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.clickable,
+      ...AP.noselect,
+      ...AP.padding("9 16 9 16"),
+      ...AP.text.of({
+        family: AP.font.primary,
         size: 11,
         height: "14px",
         weight: 700,
-        color: MP.color.textActionable,
+        color: AP.color.textActionable,
       }),
       ":hover": { filter: "brightness(140%)" },
     },
     buttonIcon: { width: 24, height: 24 },
     marker: {
-      ...MP.absolute(". . 0 50%"),
+      ...AP.absolute(". . 0 50%"),
       width: 92,
       height: 4,
       transform: "translateX(-50%)",
-      backgroundColor: MP.color.textActionable,
+      backgroundColor: AP.color.textActionable,
     },
     triangle: {
-      ...MP.absolute("100% . . 50%"),
-      ...MP.triangle.down({ size: 4, color: MP.color.textActionable }),
+      ...AP.absolute("100% . . 50%"),
+      ...AP.triangle.down({ size: 4, color: AP.color.textActionable }),
       transform: "translateX(-50%)",
     },
     watermarkWrap: {
-      ...MP.absolute("14 0 . ."),
+      ...AP.absolute("14 0 . ."),
       width: 54,
       height: 70,
       overflow: "hidden",
       pointerEvents: "none",
     },
-    watermark: { width: 70, height: 70, color: MP.color.borderLight },
+    watermark: { width: 70, height: 70, color: AP.color.borderLight },
     badge: {
-      ...MP.absolute("50% 0 . ."),
-      ...MP.row,
-      ...MP.center,
+      ...AP.absolute("50% 0 . ."),
+      ...AP.row,
+      ...AP.center,
       transform: "translateY(-50%)",
       width: 36,
       height: 17,
@@ -28144,8 +28245,8 @@
         "linear-gradient(183deg, #fd7726 -14%, #ef1834 60%, #c70bc0 128%)",
       borderRadius: "3px 0 0 3px",
       pointerEvents: "none",
-      ...MP.text.of({
-        family: MP.font.primary,
+      ...AP.text.of({
+        family: AP.font.primary,
         size: 9,
         height: "17px",
         weight: 600,
@@ -28153,7 +28254,7 @@
       }),
     },
   };
-  class FD extends MP.Component {
+  class FD extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -28161,15 +28262,15 @@
         (this._renderButton = (e) =>
           Glamor.createElement(
             "div",
-            { css: MD.buttonWrap, key: e.label },
+            { css: AD.buttonWrap, key: e.label },
             Glamor.createElement(
               "div",
-              { css: MD.button, onClick: e.onClick },
-              Glamor.createElement(LP, { style: MD.buttonIcon, name: e.icon }),
+              { css: AD.button, onClick: e.onClick },
+              Glamor.createElement(LP, { style: AD.buttonIcon, name: e.icon }),
               Glamor.createElement(qP, { width: 11 }),
               e.label
             ),
-            e.badge && Glamor.createElement("div", { css: MD.badge }, e.badge)
+            e.badge && Glamor.createElement("div", { css: AD.badge }, e.badge)
           )),
         t
       );
@@ -28177,15 +28278,15 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: MD.root },
+        { css: AD.root },
         this.props.buttons.map(this._renderButton),
-        Glamor.createElement("div", { css: MD.marker }),
-        Glamor.createElement("div", { css: MD.triangle }),
+        Glamor.createElement("div", { css: AD.marker }),
+        Glamor.createElement("div", { css: AD.triangle }),
         Glamor.createElement(
           "div",
-          { css: MD.watermarkWrap },
+          { css: AD.watermarkWrap },
           Glamor.createElement(LP, {
-            style: MD.watermark,
+            style: AD.watermark,
             name: "igswiss.logo",
           })
         )
@@ -28227,15 +28328,15 @@
         },
         {
           title: "Competitive",
-          content: `It will not be easy for your post to get featured among the top ones for this hashtag. Your average post's daily likes is ${MP.toShortNumber(
+          content: `It will not be easy for your post to get featured among the top ones for this hashtag. Your average post's daily likes is ${AP.toShortNumber(
             t.avgLikes
-          )}, and the hashtag average is ${MP.toShortNumber(e.avgLikes)}.`,
+          )}, and the hashtag average is ${AP.toShortNumber(e.avgLikes)}.`,
         },
         {
           title: "Very Competitive",
-          content: `It is extremely unlikely that your post will get featured among the top ones for this hashtag. Your average post's daily likes is ${MP.toShortNumber(
+          content: `It is extremely unlikely that your post will get featured among the top ones for this hashtag. Your average post's daily likes is ${AP.toShortNumber(
             t.avgLikes
-          )}, and the hashtag average is ${MP.toShortNumber(e.avgLikes)}.`,
+          )}, and the hashtag average is ${AP.toShortNumber(e.avgLikes)}.`,
         },
       ];
     for (let e = 0; e < o.length; e++) if (n < o[e]) return i[e];
@@ -28243,7 +28344,7 @@
   }
   function jD(e, t) {
     const r = zD(HD(e), HD(t));
-    return null === r ? null : r >= 3 ? MP.color.error : MP.color.primary;
+    return null === r ? null : r >= 3 ? AP.color.error : AP.color.primary;
   }
   function zD(e, t) {
     return null === e || null === t ? null : e / t;
@@ -28298,22 +28399,22 @@
     });
   const VD = {
     root: {
-      ...MP.column,
-      ...MP.padding("g2 g3 0 g3"),
-      ...MP.relative(),
+      ...AP.column,
+      ...AP.padding("g2 g3 0 g3"),
+      ...AP.relative(),
       height: "100%",
     },
-    title: { ...MP.text.mainTitle },
-    closeButton: { ...MP.absolute("g1 g1 . .") },
+    title: { ...AP.text.mainTitle },
+    closeButton: { ...AP.absolute("g1 g1 . .") },
     content: {
-      ...MP.grow,
+      ...AP.grow,
       height: "100%",
-      marginTop: MP.space.g1,
-      marginLeft: `calc(-1 * ${MP.space.g2})`,
-      marginRight: `calc(-1 * ${MP.space.g2})`,
+      marginTop: AP.space.g1,
+      marginLeft: `calc(-1 * ${AP.space.g2})`,
+      marginRight: `calc(-1 * ${AP.space.g2})`,
     },
   };
-  class $D extends MP.Component {
+  class $D extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -28338,49 +28439,49 @@
     }
   }
   const qD = {
-    root: { ...MP.column, ...MP.relative(), width: "100%", height: "100%" },
+    root: { ...AP.column, ...AP.relative(), width: "100%", height: "100%" },
     tabBar: ({ props: e }) => ({
-      ...MP.padding("g2 g2 0 g2"),
-      marginBottom: MP.space.g1h,
+      ...AP.padding("g2 g2 0 g2"),
+      marginBottom: AP.space.g1h,
       ...("schedule" === e.placement && { marginTop: 3 }),
     }),
     body: ({ props: e }) => ({
-      ...MP.grow,
+      ...AP.grow,
       ...("sidebar" === e.placement && {
-        marginRight: `calc(-1 * ${MP.space.g1})`,
+        marginRight: `calc(-1 * ${AP.space.g1})`,
       }),
     }),
     proWarning: ({ props: e }) => ({
-      ...MP.padding("g1h g2"),
-      borderTop: MP.border.dark,
+      ...AP.padding("g1h g2"),
+      borderTop: AP.border.dark,
       ...("sidebar" === e.placement && { paddingBottom: 30 }),
     }),
-    proWarningRow: { ...MP.row },
-    proWarningIcon: { width: 18, flexShrink: 0, color: MP.color.attention },
-    proWarningText: { ...MP.text.bleak, marginLeft: MP.space.g1h },
-    proWarningButton: { color: MP.color.textInversed, marginTop: MP.space.g1h },
+    proWarningRow: { ...AP.row },
+    proWarningIcon: { width: 18, flexShrink: 0, color: AP.color.attention },
+    proWarningText: { ...AP.text.bleak, marginLeft: AP.space.g1h },
+    proWarningButton: { color: AP.color.textInversed, marginTop: AP.space.g1h },
     tips: {
-      ...MP.padding("g1h g2"),
-      borderTop: MP.border.dark,
+      ...AP.padding("g1h g2"),
+      borderTop: AP.border.dark,
       "&:empty": { display: "none" },
     },
     loadingOverlay: {
-      ...MP.absolute("0 0 0 0 10"),
-      ...MP.row,
-      ...MP.center,
-      background: MP.color.bgLight3,
+      ...AP.absolute("0 0 0 0 10"),
+      ...AP.row,
+      ...AP.center,
+      background: AP.color.bgLight3,
     },
     closeButton: ({ props: e }) => ({
-      ...MP.absolute("g0h g0h . ."),
+      ...AP.absolute("g0h g0h . ."),
       ...("schedule" === e.placement && {
-        top: MP.space.g1,
-        right: MP.space.g1,
+        top: AP.space.g1,
+        right: AP.space.g1,
       }),
     }),
   };
-  class YD extends MP.Component {
+  class YD extends AP.Component {
     constructor(e) {
-      super(e), (this._bodyRef = MP.createRef());
+      super(e), (this._bodyRef = AP.createRef());
     }
     componentDidUpdate(e) {
       const t = e,
@@ -28422,7 +28523,7 @@
             { css: qD.proWarning(this) },
             Glamor.createElement(
               "div",
-              { css: MP.row },
+              { css: AP.row },
               Glamor.createElement(LP, {
                 style: qD.proWarningIcon,
                 name: "warning-triangle",
@@ -28432,7 +28533,7 @@
             Glamor.createElement(WP, {
               label: "UPGRADE TO PRO",
               style: qD.proWarningButton,
-              background: MP.color.attention,
+              background: AP.color.attention,
               onClick: e.onUpgradeClick,
             })
           )
@@ -28465,22 +28566,22 @@
   }
   const ZD = {
     root: {
-      ...MP.column,
-      paddingTop: MP.space.g1,
+      ...AP.column,
+      paddingTop: AP.space.g1,
       width: "100%",
       height: "100%",
     },
-    input: { ...MP.padding("0 g2") },
+    input: { ...AP.padding("0 g2") },
     content: {
-      ...MP.column,
-      ...MP.margin("g2 0"),
-      ...MP.padding("0 g2"),
+      ...AP.column,
+      ...AP.margin("g2 0"),
+      ...AP.padding("0 g2"),
       flexGrow: 1,
     },
-    textarea: { ...MP.padding("0 g2 g2 g2") },
-    welcome: { height: "100%", ...MP.text.of({ size: 14, height: "24px" }) },
+    textarea: { ...AP.padding("0 g2 g2 g2") },
+    welcome: { height: "100%", ...AP.text.of({ size: 14, height: "24px" }) },
   };
-  class KD extends MP.Component {
+  class KD extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -28539,31 +28640,31 @@
     }
   }
   const XD = {
-    root: { paddingTop: MP.space.g1, paddingBottom: MP.space.g5 },
-    ranking: { ...MP.padding("0 g2") },
-    rankingLabel: { ...MP.text.label, marginBottom: MP.space.g0h },
+    root: { paddingTop: AP.space.g1, paddingBottom: AP.space.g5 },
+    ranking: { ...AP.padding("0 g2") },
+    rankingLabel: { ...AP.text.label, marginBottom: AP.space.g0h },
     rankingTitle: ({ props: e }) => ({
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.text.group2,
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.text.group2,
       ...(e.rankingColor && { color: e.rankingColor }),
     }),
-    rankingInfoCircle: { marginLeft: MP.space.g1 },
+    rankingInfoCircle: { marginLeft: AP.space.g1 },
     rankingDescription: {
-      ...MP.text.bleak,
-      marginTop: MP.space.g1h,
+      ...AP.text.bleak,
+      marginTop: AP.space.g1h,
       minHeight: 54,
     },
     buttons: {
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.padding("0 g2"),
-      marginTop: MP.space.g1h,
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.padding("0 g2"),
+      marginTop: AP.space.g1h,
     },
-    button: { marginRight: MP.space.g3, "&:last-child": { marginRight: 0 } },
-    content: { marginTop: MP.space.g2 },
+    button: { marginRight: AP.space.g3, "&:last-child": { marginRight: 0 } },
+    content: { marginTop: AP.space.g2 },
   };
-  class QD extends MP.Component {
+  class QD extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -28642,15 +28743,15 @@
     }
   }
   const JD = {
-    root: { width: "100%", ...MP.padding("g1 g2 g5") },
+    root: { width: "100%", ...AP.padding("g1 g2 g5") },
     newCollection: {},
-    collections: { marginTop: MP.space.g3 },
+    collections: { marginTop: AP.space.g3 },
     collection: {
-      marginBottom: MP.space.g3,
+      marginBottom: AP.space.g3,
       "&:last-child": { marginBottom: 0 },
     },
   };
-  class eI extends MP.Component {
+  class eI extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -28692,25 +28793,25 @@
         flexShrink: 0,
         width: 22,
         height: 22,
-        marginRight: MP.space.g1h,
+        marginRight: AP.space.g1h,
         color: "#707070",
-        ...("bulb" === e.icon && { color: MP.color.attention }),
+        ...("bulb" === e.icon && { color: AP.color.attention }),
       }),
       content: {
-        fontFamily: MP.font.secondary,
+        fontFamily: AP.font.secondary,
         fontSize: 11,
         color: "#6E6D6E",
       },
-      paragraph: { "&:not(:last-child)": { marginBottom: MP.space.g0h } },
-      buttons: { ...MP.row, marginTop: MP.space.g1 },
-      button: { "&:not(:last-child)": { marginRight: MP.space.g3 } },
+      paragraph: { "&:not(:last-child)": { marginBottom: AP.space.g0h } },
+      buttons: { ...AP.row, marginTop: AP.space.g1 },
+      button: { "&:not(:last-child)": { marginRight: AP.space.g3 } },
     },
     rI = { exclamation: "tip.exclamation", bulb: "tip.bulb" };
   LP.registerSvgIcons([
     `<symbol id="${rI.exclamation}" viewBox="0 0 22 22"><path d="M11.241 21.952c5.916 0 10.711-4.795 10.711-10.711C21.952 5.326 17.157.53 11.241.53 5.326.53.53 5.326.53 11.241c0 5.916 4.796 10.711 10.711 10.711z" fill="currentColor"/><path d="M9.825 6.65h2.846l-.474 6.992h-1.9L9.825 6.65zm1.423 10.833a1.451 1.451 0 01-1.364-.854 1.32 1.32 0 01-.105-.538 1.282 1.282 0 01.413-.972 1.476 1.476 0 011.056-.39c.39-.015.77.126 1.056.39a1.282 1.282 0 01.413.972 1.32 1.32 0 01-.421.987 1.452 1.452 0 01-1.048.405z" fill="#fff"/></symbol>`,
     `<symbol id="${rI.bulb}" viewBox="0 0 23 23"><path d="M9.494 7.623a2.347 2.347 0 0 1 1.657-.687.469.469 0 1 0 0-.938A3.286 3.286 0 0 0 7.869 9.28a.469.469 0 1 0 .938 0c0-.621.248-1.217.687-1.657z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M22.184 11.092c0 6.126-4.966 11.092-11.092 11.092S0 17.218 0 11.092 4.966 0 11.092 0s11.092 4.966 11.092 11.092zM8.965 17.956a.938.938 0 0 1-.157-.518l-.001-1.124h4.687v1.124a.938.938 0 0 1-.157.518l-.5.753a.938.938 0 0 1-.781.419h-1.81a.939.939 0 0 1-.781-.419l-.5-.753zM7.27 12.674a5.157 5.157 0 1 1 7.76 0 8.43 8.43 0 0 0-1.53 2.68v.023H8.8v-.023a8.423 8.423 0 0 0-1.53-2.68z" fill="currentColor"/></symbol>`,
   ]);
-  class nI extends MP.Component {
+  class nI extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -28729,7 +28830,7 @@
         t = [].concat(this.props.content);
       return Glamor.createElement(
         "div",
-        { css: [MP.row, tI.root] },
+        { css: [AP.row, tI.root] },
         Glamor.createElement(LP, { style: tI.icon(this), name: rI[e] }),
         Glamor.createElement(
           "div",
@@ -28777,50 +28878,50 @@
       }).apply(this, arguments);
   }
   const iI = {
-    root: { ...MP.column, width: "100%", height: "100%" },
-    groups: { marginBottom: MP.space.g2 },
+    root: { ...AP.column, width: "100%", height: "100%" },
+    groups: { marginBottom: AP.space.g2 },
     groupsLabel: {
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.text.label,
-      marginBottom: MP.space.g0h,
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.text.label,
+      marginBottom: AP.space.g0h,
     },
     groupsInfo: {
-      marginLeft: MP.space.g1,
+      marginLeft: AP.space.g1,
       ".tag-assist-panel-ladder__groups:not(:hover) &": { opacity: 0 },
     },
-    groupsRow: { ...MP.row },
+    groupsRow: { ...AP.row },
     group: ({ props: e, state: t }, r) => ({
-      ...MP.column,
-      ...MP.center,
-      ...MP.noselect,
-      ...MP.borderRadius.r4,
-      ...MP.clickableInversed,
-      ...MP.padding(". g1"),
+      ...AP.column,
+      ...AP.center,
+      ...AP.noselect,
+      ...AP.borderRadius.r4,
+      ...AP.clickableInversed,
+      ...AP.padding(". g1"),
       flexShrink: 0,
       minWidth: 68,
       height: 35,
       cursor: "pointer",
-      color: MP.color.textNormal,
-      border: MP.border.dark,
-      background: MP.color.bgLight1,
+      color: AP.color.textNormal,
+      border: AP.border.dark,
+      background: AP.color.bgLight1,
       marginRight: 5,
       "&:last-child": { marginRight: 0 },
       ...(e.selectedGroupId === r.id && {
         borderColor: "transparent",
-        background: MP.color.primary,
-        color: MP.color.textInversed,
+        background: AP.color.primary,
+        color: AP.color.textInversed,
       }),
     }),
     groupTitle: {
-      ...MP.text.of({
+      ...AP.text.of({
         size: 12,
         weight: 600,
         height: "15px",
         color: "inherit",
       }),
     },
-    groupCount: { ...MP.row, marginTop: 4 },
+    groupCount: { ...AP.row, marginTop: 4 },
     groupCountBox: ({ props: e, state: t }, r, n) => ({
       width: 4,
       height: 4,
@@ -28829,13 +28930,13 @@
       background: "night" === t.theme ? "#505050" : "#C4C4C4",
       ...(e.selectedGroupId === r.id && {
         background:
-          "night" === t.theme ? "rgba(0, 0, 0, 0.3)" : MP.color.bgLight3,
+          "night" === t.theme ? "rgba(0, 0, 0, 0.3)" : AP.color.bgLight3,
       }),
       ...(r.count > n && {
         background:
           "night" === t.theme && e.selectedGroupId === r.id
-            ? MP.color.bgLight3
-            : MP.color.positive,
+            ? AP.color.bgLight3
+            : AP.color.positive,
       }),
     }),
     content: ({ props: e }) => ({
@@ -28846,15 +28947,15 @@
       }),
     }),
     groupContent: {
-      marginLeft: `calc(-1 * ${MP.space.g2})`,
-      marginRight: `calc(-1 * ${MP.space.g2})`,
+      marginLeft: `calc(-1 * ${AP.space.g2})`,
+      marginRight: `calc(-1 * ${AP.space.g2})`,
     },
     warning: {
-      marginTop: MP.space.g3,
-      "&:first-child": { marginTop: MP.space.g1 },
+      marginTop: AP.space.g3,
+      "&:first-child": { marginTop: AP.space.g1 },
     },
   };
-  class aI extends MP.Component {
+  class aI extends AP.Component {
     constructor(e) {
       super(e),
         (this._renderGroupButton = (e) =>
@@ -28984,20 +29085,20 @@
             { css: iI.warning },
             Glamor.createElement(
               "div",
-              { css: MP.text.group2 },
+              { css: AP.text.group2 },
               "Could not find enough tags in this category 🧐"
             ),
             Glamor.createElement(qP, { height: "6" }),
             Glamor.createElement(
               "div",
-              { css: MP.text.bleak },
+              { css: AP.text.bleak },
               "Do not worry! Sometimes it is difficult to find hashtags to rank for, especially if account engagement is not high enough. Pick hashtags from the next category, considering the tags with low engagement first."
             ),
             Glamor.createElement(qP, { height: "g2" }),
             Glamor.createElement(nI, {
               icon: "bulb",
               content: Glamor.createElement(
-                MP.Fragment,
+                AP.Fragment,
                 null,
                 Glamor.createElement("b", null, "Tip:"),
                 " Try searching for Long-tail tags. For example, if you are posting a photo of a #britishcat, search for: #britishcat",
@@ -29018,36 +29119,36 @@
         : null;
     }
   }
-  var sI = MP.theme.ThemeAware(aI);
+  var sI = AP.theme.ThemeAware(aI);
   const lI = {
       root: {},
-      label: { ...MP.row, ...MP.alignItems.center },
+      label: { ...AP.row, ...AP.alignItems.center },
       iconContainer: {
-        ...MP.row,
-        ...MP.alignItems.center,
-        ...MP.relative(),
+        ...AP.row,
+        ...AP.alignItems.center,
+        ...AP.relative(),
         width: 13,
-        marginRight: MP.space.g1,
+        marginRight: AP.space.g1,
       },
       iconCopy: ({ state: e }) => ({
-        ...MP.absolute(". . . 2"),
+        ...AP.absolute(". . . 2"),
         width: 12,
         height: 12,
-        ...MP.transition.slow,
+        ...AP.transition.slow,
         ...(e.copied && { opacity: 0, transform: "translateY(-5px)" }),
       }),
       iconTick: ({ state: e }) => ({
-        ...MP.absolute(". . . 3"),
+        ...AP.absolute(". . . 3"),
         width: 11,
         height: 11,
         transform: "translateY(-0.3px)",
-        ...MP.transition.slow,
+        ...AP.transition.slow,
         ...(!e.copied && { opacity: 0, transform: "translateY(5px)" }),
       }),
     },
     cI = "igswiss.copy",
     uI = "igswiss.tick";
-  class dI extends MP.Component {
+  class dI extends AP.Component {
     constructor(e) {
       super(e),
         (this._onClick = () => {
@@ -29086,9 +29187,9 @@
   const hI = {
     root: { width: "100%" },
     textarea: {},
-    buttons: { ...MP.row, ...MP.justifyContent.end, marginTop: MP.space.g1 },
+    buttons: { ...AP.row, ...AP.justifyContent.end, marginTop: AP.space.g1 },
   };
-  class pI extends MP.Component {
+  class pI extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -29123,13 +29224,13 @@
   }
   const fI = {
       root: {
-        ...MP.row,
-        ...MP.alignItems.end,
-        ...MP.justifyContent.between,
+        ...AP.row,
+        ...AP.alignItems.end,
+        ...AP.justifyContent.between,
         width: "100%",
       },
       input: { paddingLeft: 6 },
-      latinOnlySwitch: { marginLeft: MP.space.g1 },
+      latinOnlySwitch: { marginLeft: AP.space.g1 },
     },
     gI = "tag-assist-panel-ladder.glob",
     vI = "igswiss.close",
@@ -29137,7 +29238,7 @@
   LP.registerSvgIcons([
     `<symbol id="${gI}" viewBox="0 0 15.418 16.11"><path fill="currentColor" d="M7.354 16.11v-1.1a3 3 0 00-.911-2.068 1.282 1.282 0 01-.378-.911v-1.292a1.287 1.287 0 00-.664-1.125c-.292-.163-1.3-.718-1.968-1.054a5.836 5.836 0 01-1.277-.879l-.031-.028a4.635 4.635 0 01-.728-.835c-.222-.326-.525-.775-.819-1.21l-.264-.389-.313-.464A8.079 8.079 0 014.165.647l.966.485a.635.635 0 00.288.069.647.647 0 00.646-.646V.098a8.016 8.016 0 01.982-.1l1.142 1.141a.647.647 0 010 .911l-.191.191-.413.414a.32.32 0 000 .457l.187.191a.316.316 0 010 .453l-.322.322a.311.311 0 01-.227.1h-.361a.315.315 0 00-.227.091l-.4.39a.328.328 0 00-.063.374l.629 1.26a.321.321 0 01-.287.465h-.227a.306.306 0 01-.211-.08l-.373-.326a.664.664 0 00-.426-.156.646.646 0 00-.2.033l-1.257.417a.484.484 0 00-.063.891l.445.223a2.718 2.718 0 001.226.286c.241 0 .5.357.754.7a2.118 2.118 0 00.534.59h2.692a1.283 1.283 0 01.911.378l.553.553a1.217 1.217 0 01.361.867 1.86 1.86 0 01-.557 1.332l-.453.453a1.017 1.017 0 00-.251.434l-.03.12-.014.055v.012a4.855 4.855 0 01-.144.494l-.7 1.889a8.132 8.132 0 01-1.73.187zm7.992-7.031l-1.176-.294a.987.987 0 01-.573-.4l-.724-1.09a.96.96 0 010-1.074l.791-1.185a.953.953 0 01.37-.326l.525-.262a7.872 7.872 0 01.787 4.632z"/></symbol>`,
   ]);
-  class yI extends MP.Component {
+  class yI extends AP.Component {
     constructor(e) {
       super(e), (this.state = { latinOnlyHovered: !1 });
     }
@@ -29176,7 +29277,7 @@
         "div",
         mI(
           { css: fI.latinOnlySwitch },
-          MP.hoverState(this, "latinOnlyHovered")
+          AP.hoverState(this, "latinOnlyHovered")
         ),
         Glamor.createElement(zT, {
           value: !this.props.latinOnly,
@@ -29191,14 +29292,14 @@
           showDelay: 800,
           text: this.props.latinOnly
             ? Glamor.createElement(
-                MP.Fragment,
+                AP.Fragment,
                 null,
                 "Show hashtags with emojis",
                 Glamor.createElement("br", null),
                 "and non-latin characters"
               )
             : Glamor.createElement(
-                MP.Fragment,
+                AP.Fragment,
                 null,
                 "Hide hashtags with emojis",
                 Glamor.createElement("br", null),
@@ -29211,17 +29312,17 @@
   const wI = {
     root: {},
     label: {
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.text.label,
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.text.label,
       height: 14,
-      marginBottom: MP.space.g0h,
+      marginBottom: AP.space.g0h,
     },
-    noTagsMessage: { marginTop: MP.space.g0h, ...MP.text.bleak },
-    tags: { ...MP.row, flexWrap: "wrap", marginBottom: -4 },
+    noTagsMessage: { marginTop: AP.space.g0h, ...AP.text.bleak },
+    tags: { ...AP.row, flexWrap: "wrap", marginBottom: -4 },
     tag: { marginRight: 4, marginBottom: 4 },
   };
-  class _I extends MP.Component {
+  class _I extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -29264,19 +29365,19 @@
         engagement: {
           text: [
             Glamor.createElement(
-              MP.Fragment,
+              AP.Fragment,
               null,
               "An average number of likes and comments ",
               Glamor.createElement("strong", null, "top posts"),
               " for the hashtag get in 24 hours, relative to your account’s average."
             ),
             Glamor.createElement(
-              MP.Fragment,
+              AP.Fragment,
               null,
               "The higher the engagement, the less likely it is for your post to be seen among the top for that hashtag."
             ),
             Glamor.createElement(
-              MP.Fragment,
+              AP.Fragment,
               null,
               "When choosing hashtags for your post, try to build a hashtag ladder, e.g.:",
               Glamor.createElement(
@@ -29304,12 +29405,12 @@
         posts: {
           text: [
             Glamor.createElement(
-              MP.Fragment,
+              AP.Fragment,
               null,
               "An average number of posts made for this hashtag every 24 hours."
             ),
             Glamor.createElement(
-              MP.Fragment,
+              AP.Fragment,
               null,
               "The lower this number, the easier it is to compete for the place among the top posts for this hashtag."
             ),
@@ -29317,7 +29418,7 @@
         },
         likes: {
           text: Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             "An average number of likes that a ",
             Glamor.createElement("strong", null, "top post"),
@@ -29326,7 +29427,7 @@
         },
         comments: {
           text: Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             "An average number of comments that a ",
             Glamor.createElement("strong", null, "top post"),
@@ -29336,19 +29437,19 @@
         reach: {
           text: [
             Glamor.createElement(
-              MP.Fragment,
+              AP.Fragment,
               null,
               "An estimated number of users that a ",
               Glamor.createElement("strong", null, "top post"),
               " with this hashtag reaches in the first 24 hours since it is posted."
             ),
             Glamor.createElement(
-              MP.Fragment,
+              AP.Fragment,
               null,
               "This value is very rough estimate and is not meant to be precise. The higher this value the better."
             ),
             Glamor.createElement(
-              MP.Fragment,
+              AP.Fragment,
               null,
               "If your post is not featured among the top ones for the hashtag, the actual reach will be lower."
             ),
@@ -29358,39 +29459,39 @@
       EI),
     kI = {
       root: {
-        ...MP.fullWidth,
-        ...MP.relative(),
-        "& table": { ...MP.column },
-        "& thead": { ...MP.column },
-        "& tbody": { ...MP.column },
+        ...AP.fullWidth,
+        ...AP.relative(),
+        "& table": { ...AP.column },
+        "& thead": { ...AP.column },
+        "& tbody": { ...AP.column },
         "& tr": {
-          ...MP.row,
-          ...MP.alignItems.center,
+          ...AP.row,
+          ...AP.alignItems.center,
           border: "none !important",
         },
       },
-      body: { marginTop: MP.space.g1 },
-      bodyRow: { "&:hover": { backgroundColor: MP.color.bgLight1 } },
+      body: { marginTop: AP.space.g1 },
+      bodyRow: { "&:hover": { backgroundColor: AP.color.bgLight1 } },
       headCell: {
         "&:nth-child(1)": { width: "60%" },
         "&:nth-child(2)": { width: "40%" },
       },
       bodyCell: {
-        ...MP.padding("3 0"),
-        ...MP.text.elementNormal,
+        ...AP.padding("3 0"),
+        ...AP.text.elementNormal,
         fontSize: 12,
-        "&:nth-child(1)": { width: "60%", ...MP.padding("0 g2") },
+        "&:nth-child(1)": { width: "60%", ...AP.padding("0 g2") },
         "&:nth-child(2)": { width: "40%" },
       },
       paginator: ({ props: e }, t) => ({
-        marginRight: MP.space.g3,
+        marginRight: AP.space.g3,
         ...(e.tags.length <= t && { display: "none" }),
       }),
-      passive: { color: MP.color.textPassive },
-      high: { color: MP.color.error },
-      bottomButton: { ...MP.absolute(". . 0 g2") },
+      passive: { color: AP.color.textPassive },
+      high: { color: AP.color.error },
+      bottomButton: { ...AP.absolute(". . 0 g2") },
     };
-  class CI extends MP.Component {
+  class CI extends AP.Component {
     constructor(e) {
       super(e),
         (this._renderTagCell = (e) =>
@@ -29422,14 +29523,14 @@
             ? Glamor.createElement("div", { css: kI.passive }, "N/A")
             : !Number.isFinite(t) || t > 99
             ? Glamor.createElement(
-                MP.Fragment,
+                AP.Fragment,
                 null,
                 Glamor.createElement("span", { css: kI.high }, "▲99x"),
                 " higher"
               )
             : t >= 3
             ? Glamor.createElement(
-                MP.Fragment,
+                AP.Fragment,
                 null,
                 Glamor.createElement(
                   "span",
@@ -29440,7 +29541,7 @@
                 ),
                 " higher"
               )
-            : Glamor.createElement(MP.Fragment, null, Math.round(100 * t), "%");
+            : Glamor.createElement(AP.Fragment, null, Math.round(100 * t), "%");
         }),
         (this._onCheckClick = ({ tagName: e }) => {
           this.props.onCheckClick && this.props.onCheckClick(e);
@@ -29507,42 +29608,42 @@
     }
   }
   const SI = {
-      root: { ...MP.fullWidth },
+      root: { ...AP.fullWidth },
       button: {
-        ...MP.row,
-        ...MP.noselect,
-        ...MP.fullWidth,
-        ...MP.borderRadius.r4,
-        ...MP.padding("g2 g3 g2 g3"),
-        ...MP.clickableInversed,
+        ...AP.row,
+        ...AP.noselect,
+        ...AP.fullWidth,
+        ...AP.borderRadius.r4,
+        ...AP.padding("g2 g3 g2 g3"),
+        ...AP.clickableInversed,
         minHeight: 80,
-        border: MP.border.dark,
-        background: MP.color.bgLight1,
+        border: AP.border.dark,
+        background: AP.color.bgLight1,
       },
-      buttonIcon: { flexShrink: 0, marginRight: MP.space.g3 },
+      buttonIcon: { flexShrink: 0, marginRight: AP.space.g3 },
       buttonBody: {},
-      buttonTitle: { ...MP.text.group1, color: MP.color.link },
-      buttonText: { ...MP.text.bleak, marginTop: MP.space.g0h },
+      buttonTitle: { ...AP.text.group1, color: AP.color.link },
+      buttonText: { ...AP.text.bleak, marginTop: AP.space.g0h },
       form: {},
-      formButtons: { ...MP.row },
+      formButtons: { ...AP.row },
       formError: {
-        ...MP.text.elementNormal,
+        ...AP.text.elementNormal,
         lineHeight: "18px",
-        color: MP.color.error,
+        color: AP.color.error,
       },
     },
     PI = "tag-assist-new-collection.hashtag-book";
   LP.registerSvgIcons([
     `<symbol id="${PI}" viewBox="0 0 35 45"><g transform="translate(13580 3457)"><rect width="35" height="45" transform="translate(-13580 -3457)" fill="none"/><path d="M19771.053,6573.718a3.49,3.49,0,0,1-3.41-3.414V6534.05a4.24,4.24,0,0,1,4.234-4.239h29.637a.848.848,0,0,1,0,1.7,2.546,2.546,0,0,0,0,5.092.846.846,0,0,1,.846.848v33.724a2.553,2.553,0,0,1-2.539,2.548Zm-1.717-3.414a1.888,1.888,0,0,0,1.717,1.713h28.768a.846.846,0,0,0,.846-.848v-32.876h-28.789a4.19,4.19,0,0,1-2.541-.875Zm0-36.254a2.545,2.545,0,0,0,2.541,2.548h26.244a4.258,4.258,0,0,1,0-5.092h-26.244A2.541,2.541,0,0,0,19769.336,6534.05Zm17.459,31.791.723-5.993h-6.463l-.754,5.993h-1.7l.721-5.993h-4.475v-1.736h4.7l.822-6.631h-4.512v-1.736h4.729l.727-5.993h1.734l-.76,5.993h6.5l.725-5.993h1.705l-.727,5.993h4.443v1.736h-4.662l-.82,6.631h4.475v1.736h-4.7l-.721,5.993Zm-5.549-7.729h6.5l.818-6.631h-6.463Z" transform="translate(-33347.641 -9986.342)" fill="#A5AAAE"/></g></symbol>`,
   ]);
-  class TI extends MP.Component {
+  class TI extends AP.Component {
     constructor(e) {
       super(e),
         (this._onNameInputEnter = (e) => {
           e.preventDefault(), this.textInputRef.current.input.current.focus();
         }),
-        (this.nameInputRef = MP.createRef()),
-        (this.textInputRef = MP.createRef());
+        (this.nameInputRef = AP.createRef()),
+        (this.textInputRef = AP.createRef());
     }
     componentDidUpdate(e) {
       const t = e,
@@ -29637,48 +29738,48 @@
     }
   }
   const DI = {
-    root: { ...MP.fullWidth },
+    root: { ...AP.fullWidth },
     header: {
-      ...MP.row,
-      ...MP.justifyContent.between,
-      ...MP.relative(),
-      marginBottom: MP.space.g1h,
+      ...AP.row,
+      ...AP.justifyContent.between,
+      ...AP.relative(),
+      marginBottom: AP.space.g1h,
     },
-    name: { ...MP.text.elementNormal, ...MP.text.ellipsis, fontWeight: 600 },
+    name: { ...AP.text.elementNormal, ...AP.text.ellipsis, fontWeight: 600 },
     actions: {
-      ...MP.row,
-      ...MP.text.nowrap,
-      ...MP.transition.superfast,
-      marginLeft: MP.space.g2,
-      background: MP.color.bgLight3,
+      ...AP.row,
+      ...AP.text.nowrap,
+      ...AP.transition.superfast,
+      marginLeft: AP.space.g2,
+      background: AP.color.bgLight3,
       ".tag-assist-collection:not(:hover) &": {
-        ...MP.absolute("0 0 0 ."),
+        ...AP.absolute("0 0 0 ."),
         opacity: 0,
         pointerEvents: "none",
       },
     },
     actionButton: {
-      ...MP.row,
-      marginRight: MP.space.g2,
+      ...AP.row,
+      marginRight: AP.space.g2,
       "&:last-child": { marginRight: 0 },
     },
-    tagList: { marginLeft: MP.space.g1 },
-    form: { marginLeft: MP.space.g1 },
-    formFooter: { ...MP.row, ...MP.justifyContent.between },
+    tagList: { marginLeft: AP.space.g1 },
+    form: { marginLeft: AP.space.g1 },
+    formFooter: { ...AP.row, ...AP.justifyContent.between },
     formError: {
-      ...MP.text.elementNormal,
+      ...AP.text.elementNormal,
       lineHeight: "18px",
-      color: MP.color.error,
+      color: AP.color.error,
     },
   };
-  class II extends MP.Component {
+  class II extends AP.Component {
     constructor(e) {
       super(e),
         (this._onNameInputEnter = (e) => {
           e.preventDefault(), this.textInputRef.current.input.current.focus();
         }),
-        (this.nameInputRef = MP.createRef()),
-        (this.textInputRef = MP.createRef());
+        (this.nameInputRef = AP.createRef()),
+        (this.textInputRef = AP.createRef());
     }
     componentDidUpdate(e) {
       const t = e,
@@ -29699,7 +29800,7 @@
       return this.props.editing
         ? null
         : Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             this._renderViewModeHeader(),
             this._renderTags()
@@ -29708,7 +29809,7 @@
     _renderEditMode() {
       return this.props.editing
         ? Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             this._renderEditModeHeader(),
             this._renderForm()
@@ -29818,7 +29919,7 @@
           ),
           Glamor.createElement(xT, {
             small: !0,
-            color: MP.color.error,
+            color: AP.color.error,
             label: "DELETE COLLECTION",
             onClick: this.props.onDeleteClick,
           })
@@ -29829,25 +29930,25 @@
   let GI = null;
   const OI = {
       root: ({ props: e, state: t }) => ({
-        ...MP.relative(),
-        ...MP.padding("6 g1h 6 g1h"),
-        ...MP.text.bleakSemiBold,
-        ...MP.borderRadius.r4,
+        ...AP.relative(),
+        ...AP.padding("6 g1h 6 g1h"),
+        ...AP.text.bleakSemiBold,
+        ...AP.borderRadius.r4,
         width: "min-content",
         maxWidth: "100%",
-        color: MP.color.textNormal,
-        border: MP.border.dark,
-        background: MP.color.bgLight1,
+        color: AP.color.textNormal,
+        border: AP.border.dark,
+        background: AP.color.bgLight1,
         overflow: "hidden",
         ...(e.color && {
-          color: MP.theme.valueOf("day", MP.color.dark),
+          color: AP.theme.valueOf("day", AP.color.dark),
           borderColor: e.color,
           background: e.color,
         }),
         ...(e.clickable && {
           cursor: "pointer",
-          ...MP.noselect,
-          ...MP.transition.fast,
+          ...AP.noselect,
+          ...AP.transition.fast,
           transitionProperty: "transform, box-shadow",
           "&:hover:not(:active)": {
             transform: "translateY(-1px)",
@@ -29862,30 +29963,30 @@
         }),
       }),
       selectionMarker: ({ props: e }) => ({
-        ...MP.absolute("14 . . 7"),
-        ...MP.transition.fast,
+        ...AP.absolute("14 . . 7"),
+        ...AP.transition.fast,
         width: 4,
         height: 4,
-        background: MP.color.link,
+        background: AP.color.link,
         borderRadius: "50%",
         ...(e.color && { background: "currentColor" }),
         ...(!e.selected && { opacity: 0, transform: "translateX(-4px)" }),
       }),
       content: ({ props: e }) => ({
-        ...MP.row,
-        ...MP.alignItems.center,
-        ...MP.transition.fast,
+        ...AP.row,
+        ...AP.alignItems.center,
+        ...AP.transition.fast,
         ...(e.selected && { transform: "translateX(4px)" }),
       }),
-      bannedMarker: { marginRight: MP.space.g1 },
-      flaggedMarker: { marginRight: MP.space.g1 },
-      name: { ...MP.text.ellipsis },
-      spinner: { marginLeft: MP.space.g1 },
+      bannedMarker: { marginRight: AP.space.g1 },
+      flaggedMarker: { marginRight: AP.space.g1 },
+      name: { ...AP.text.ellipsis },
+      spinner: { marginLeft: AP.space.g1 },
       popup: ({ state: e }) => ({
         position: "fixed",
         top: e.popupY,
         left: e.popupX,
-        ...MP.transition.fast,
+        ...AP.transition.fast,
         transitionProperty: "opacity, transform",
         ...(!e.showPopup && {
           opacity: 0,
@@ -29894,13 +29995,13 @@
         }),
       }),
     },
-    AI = "tag-pill.banned-marker",
-    MI = "tag-pill.flagged-marker";
+    MI = "tag-pill.banned-marker",
+    AI = "tag-pill.flagged-marker";
   LP.registerSvgIcons([
-    `<symbol id="${AI}" viewBox="0 0 14 14"><path d="M7.563.563a7,7,0,1,0,7,7A7,7,0,0,0,7.563.563ZM11.235,3.89a5.194,5.194,0,0,1,.584,6.651L4.584,3.306A5.194,5.194,0,0,1,11.235,3.89ZM3.89,11.235a5.194,5.194,0,0,1-.584-6.651l7.235,7.235a5.194,5.194,0,0,1-6.651-.584Z" transform="translate(-0.563 -0.563)" fill="#e34e21"/></symbol>`,
-    `<symbol id="${MI}" viewBox="0 0 14 12.112"><g transform="translate(0.358 0.311)"><path d="M8.244,4.925a1.985,1.985,0,0,1,3.364,0l5.054,8.386a1.864,1.864,0,0,1-1.682,2.8H4.871a1.864,1.864,0,0,1-1.682-2.8Z" transform="translate(-3.283 -4.305)" fill="#e34e21"/><path d="M1.118-6.666.752-11.3l1.443.009L1.83-6.666Zm-.3.694H2.13v1.294H.818Z" transform="translate(5.145 14.65)" fill="#fff"/></g></symbol>`,
+    `<symbol id="${MI}" viewBox="0 0 14 14"><path d="M7.563.563a7,7,0,1,0,7,7A7,7,0,0,0,7.563.563ZM11.235,3.89a5.194,5.194,0,0,1,.584,6.651L4.584,3.306A5.194,5.194,0,0,1,11.235,3.89ZM3.89,11.235a5.194,5.194,0,0,1-.584-6.651l7.235,7.235a5.194,5.194,0,0,1-6.651-.584Z" transform="translate(-0.563 -0.563)" fill="#e34e21"/></symbol>`,
+    `<symbol id="${AI}" viewBox="0 0 14 12.112"><g transform="translate(0.358 0.311)"><path d="M8.244,4.925a1.985,1.985,0,0,1,3.364,0l5.054,8.386a1.864,1.864,0,0,1-1.682,2.8H4.871a1.864,1.864,0,0,1-1.682-2.8Z" transform="translate(-3.283 -4.305)" fill="#e34e21"/><path d="M1.118-6.666.752-11.3l1.443.009L1.83-6.666Zm-.3.694H2.13v1.294H.818Z" transform="translate(5.145 14.65)" fill="#fff"/></g></symbol>`,
   ]);
-  class FI extends MP.Component {
+  class FI extends AP.Component {
     constructor(e) {
       if (
         (super(e),
@@ -29929,8 +30030,8 @@
                 }, 300));
             }, 200));
         }),
-        (this.rootRef = MP.createRef()),
-        (this.popupRef = MP.createRef()),
+        (this.rootRef = AP.createRef()),
+        (this.popupRef = AP.createRef()),
         (this.popupHandled = !1),
         (this.popupHovered = !1),
         (this.popupShowTimeout = null),
@@ -29998,12 +30099,12 @@
     }
     _renderBannedMarker() {
       return this.props.banned
-        ? Glamor.createElement(LP, { style: OI.bannedMarker, name: AI })
+        ? Glamor.createElement(LP, { style: OI.bannedMarker, name: MI })
         : null;
     }
     _renderFlaggedMarker() {
       return this.props.flagged
-        ? Glamor.createElement(LP, { style: OI.flaggedMarker, name: MI })
+        ? Glamor.createElement(LP, { style: OI.flaggedMarker, name: AI })
         : null;
     }
     _renderName() {
@@ -30102,14 +30203,14 @@
       });
     }
   }
-  var RI = MP.theme.ThemeAware(FI);
+  var RI = AP.theme.ThemeAware(FI);
   const BI = {
       root: {
         minWidth: 420,
-        backgroundColor: MP.color.bgLight3,
-        ...MP.padding("g1h 0 g1 0"),
-        ...MP.borderRadius.r4,
-        ...MP.shadow.sh6,
+        backgroundColor: AP.color.bgLight3,
+        ...AP.padding("g1h 0 g1 0"),
+        ...AP.borderRadius.r4,
+        ...AP.shadow.sh6,
       },
       tableRow: {
         cursor: "pointer",
@@ -30117,17 +30218,17 @@
         borderBottom: "none !important",
         "& svg.action-icon": { visibility: "hidden" },
         "&:hover": {
-          backgroundColor: MP.color.bgLight1,
+          backgroundColor: AP.color.bgLight1,
           "& svg.action-icon": { visibility: "visible" },
         },
       },
-      bodyCell: { ...MP.padding("3 0 3 0") },
-      engagementRenderer: { ...MP.text.elementNormal, fontSize: 12 },
-      reachRenderer: { ...MP.text.elementNormal, fontSize: 12 },
+      bodyCell: { ...AP.padding("3 0 3 0") },
+      engagementRenderer: { ...AP.text.elementNormal, fontSize: 12 },
+      reachRenderer: { ...AP.text.elementNormal, fontSize: 12 },
       naRenderer: {
-        ...MP.text.elementNormal,
+        ...AP.text.elementNormal,
         fontSize: 12,
-        color: MP.color.textPassive,
+        color: AP.color.textPassive,
       },
       actionIcon: { marginRight: 12 },
     },
@@ -30139,7 +30240,7 @@
     `<symbol id="${NI}" viewBox="0 0 20 20"><rect width="20" height="20" fill="none"/><path d="M18391,8195v-4h-4v-3h4v-4h3v4h4v3h-4v4Z" transform="translate(-18382.5 -8179.5)" fill="#1ba2f9"/></symbol>`,
     `<symbol id="${jI}" viewBox="0 0 20 20"><rect width="20" height="20" fill="none"/><rect width="3" height="11" transform="translate(15.502 8.5) rotate(90)" fill="#e34e21"/></symbol>`,
   ]);
-  class zI extends MP.Component {
+  class zI extends AP.Component {
     constructor(e) {
       super(e),
         (this._renderTagCell = (e) => {
@@ -30152,7 +30253,7 @@
             { tag: i, selected: a, isLoading: s, isSelected: l } = e;
           return Glamor.createElement(
             "div",
-            { key: i.name, css: [MP.row, MP.alignItems.center] },
+            { key: i.name, css: [AP.row, AP.alignItems.center] },
             Glamor.createElement(qP, { width: "g1h" }),
             Glamor.createElement(RI, {
               tag: i,
@@ -30180,7 +30281,7 @@
                 { css: BI.engagementRenderer },
                 Glamor.createElement(
                   "span",
-                  { css: { color: MP.color.error } },
+                  { css: { color: AP.color.error } },
                   "▲99x"
                 ),
                 " higher"
@@ -30191,7 +30292,7 @@
                 { css: BI.engagementRenderer },
                 Glamor.createElement(
                   "span",
-                  { css: { color: MP.color.error } },
+                  { css: { color: AP.color.error } },
                   "▲",
                   Math.round(n),
                   "x"
@@ -30221,9 +30322,9 @@
                 "div",
                 {
                   css: [
-                    MP.row,
-                    MP.alignItems.center,
-                    MP.justifyContent.between,
+                    AP.row,
+                    AP.alignItems.center,
+                    AP.justifyContent.between,
                     BI.naRenderer,
                   ],
                 },
@@ -30234,13 +30335,13 @@
                 "div",
                 {
                   css: [
-                    MP.row,
-                    MP.alignItems.center,
-                    MP.justifyContent.between,
+                    AP.row,
+                    AP.alignItems.center,
+                    AP.justifyContent.between,
                     BI.reachRenderer,
                   ],
                 },
-                MP.toShortNumber(o),
+                AP.toShortNumber(o),
                 i
               );
         }),
@@ -30282,7 +30383,7 @@
         }));
       return Glamor.createElement(
         "div",
-        { css: [MP.column, BI.root] },
+        { css: [AP.column, BI.root] },
         Glamor.createElement($T, {
           pageSize: 10,
           rowStyle: BI.tableRow,
@@ -30307,7 +30408,7 @@
       }).apply(this, arguments);
   }
   const UI = {
-      title: { ...MP.text.bleakSemiBold, paddingRight: MP.space.g1 },
+      title: { ...AP.text.bleakSemiBold, paddingRight: AP.space.g1 },
       content: ({ props: e }) => ({
         ...(e.blurred && {
           opacity: 0.45,
@@ -30317,15 +30418,15 @@
         }),
       }),
       icon: ({ iconColor: e }) => ({
-        color: e || MP.color.primary,
-        marginRight: MP.space.g1,
+        color: e || AP.color.primary,
+        marginRight: AP.space.g1,
       }),
-      value: { ...MP.text.contentTitle },
-      na: { color: MP.color.textPassive },
-      subValue: { ...MP.text.bleakSemiBold, fontSize: 10, lineHeight: "12px" },
+      value: { ...AP.text.contentTitle },
+      na: { color: AP.color.textPassive },
+      subValue: { ...AP.text.bleakSemiBold, fontSize: 10, lineHeight: "12px" },
       tooltip: ({ hovered: e }) => ({
         opacity: e ? 1 : 0,
-        ...MP.transition.superfast,
+        ...AP.transition.superfast,
       }),
     },
     WI = "tag-stats-popup-item.metric.engagement",
@@ -30340,7 +30441,7 @@
     `<symbol id="${qI}" viewBox="0 0 20 23"><rect width="20" height="23" fill="none"/><path d="M15.865,0H1.916A1.918,1.918,0,0,0,0,1.916V12.134A1.918,1.918,0,0,0,1.916,14.05H6.337L7.8,16.978a1.267,1.267,0,0,0,1.09.8,1.267,1.267,0,0,0,1.09-.8l1.464-2.928h4.421a1.918,1.918,0,0,0,1.916-1.916V1.916A1.918,1.918,0,0,0,15.865,0Z" transform="translate(1.277 3.036)" fill="#556180"/></symbol>`,
     `<symbol id="${YI}" viewBox="0 0 20 23"><rect width="20" height="23" fill="none"/><path d="M15.622,2.682a9.15,9.15,0,1,0,0,12.94A9.145,9.145,0,0,0,15.622,2.682ZM15.24,14.317a9.172,9.172,0,0,0-1.367-1.012,14.8,14.8,0,0,0,.552-3.57h2.69a7.911,7.911,0,0,1-1.875,4.583ZM1.189,9.735h2.69a14.8,14.8,0,0,0,.552,3.57,9.172,9.172,0,0,0-1.367,1.012A7.912,7.912,0,0,1,1.189,9.735ZM3.065,3.986A9.172,9.172,0,0,0,4.431,5a14.8,14.8,0,0,0-.552,3.57H1.189A7.912,7.912,0,0,1,3.065,3.986Zm5.5,1.133A7.922,7.922,0,0,1,5.851,4.43c.494-1.273,1.406-2.8,2.718-3.178Zm0,1.168V8.569H5.046a13.738,13.738,0,0,1,.442-3.023A9.089,9.089,0,0,0,8.569,6.287Zm0,3.448v2.282a9.089,9.089,0,0,0-3.081.742,13.738,13.738,0,0,1-.442-3.023Zm0,3.45v3.867c-1.312-.378-2.224-1.905-2.718-3.178A7.922,7.922,0,0,1,8.569,13.185Zm1.166,0a7.922,7.922,0,0,1,2.718.689c-.494,1.273-1.406,2.8-2.718,3.178Zm0-1.168V9.735h3.523a13.738,13.738,0,0,1-.442,3.023,9.089,9.089,0,0,0-3.081-.742Zm0-3.448V6.287a9.089,9.089,0,0,0,3.081-.742,13.738,13.738,0,0,1,.442,3.023Zm0-3.45V1.252c1.312.378,2.224,1.905,2.718,3.178A7.923,7.923,0,0,1,9.735,5.119Zm2.619-3.285a7.949,7.949,0,0,1,2.067,1.32,8.014,8.014,0,0,1-.938.712,8.779,8.779,0,0,0-1.129-2.032ZM4.821,3.866a8.017,8.017,0,0,1-.938-.712A7.949,7.949,0,0,1,5.95,1.834,8.782,8.782,0,0,0,4.821,3.866Zm0,10.572A8.78,8.78,0,0,0,5.95,16.469a7.949,7.949,0,0,1-2.067-1.32A8.014,8.014,0,0,1,4.821,14.438Zm8.662,0a8.018,8.018,0,0,1,.938.712,7.949,7.949,0,0,1-2.067,1.32,8.778,8.778,0,0,0,1.129-2.032Zm.942-5.869A14.8,14.8,0,0,0,13.873,5,9.174,9.174,0,0,0,15.24,3.986a7.912,7.912,0,0,1,1.875,4.583Z" transform="translate(1 2)" fill="#1ba2f9"/></symbol>`,
   ]);
-  class ZI extends MP.Component {
+  class ZI extends AP.Component {
     constructor(e) {
       super(e), (this.state = { hovered: !1 });
     }
@@ -30383,30 +30484,30 @@
         u = null != o && Glamor.createElement("div", { css: UI.subValue }, o);
       return Glamor.createElement(
         "div",
-        HI({ css: [MP.column] }, MP.hoverState(this, "hovered")),
+        HI({ css: [AP.column] }, AP.hoverState(this, "hovered")),
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.alignItems.center] },
+          { css: [AP.row, AP.alignItems.center] },
           a,
           s
         ),
         Glamor.createElement(qP, { height: "g1" }),
         Glamor.createElement(
           "div",
-          { css: [MP.row, UI.content(this)] },
+          { css: [AP.row, UI.content(this)] },
           l,
-          Glamor.createElement("div", { css: MP.column }, c, u)
+          Glamor.createElement("div", { css: AP.column }, c, u)
         )
       );
     }
   }
   ZI.defaultProps = { title: "METRIC" };
   const KI = {
-      root: { ...MP.row, ...MP.fullWidth },
-      icon: { flexShrink: 0, width: 28, height: 28, marginRight: MP.space.g1h },
+      root: { ...AP.row, ...AP.fullWidth },
+      icon: { flexShrink: 0, width: 28, height: 28, marginRight: AP.space.g1h },
       body: {},
-      title: { marginBottom: MP.space.g1, ...MP.text.group2 },
-      content: { ...MP.text.bleak },
+      title: { marginBottom: AP.space.g1, ...AP.text.group2 },
+      content: { ...AP.text.bleak },
     },
     XI = "tag-stats-popup-message.flagged",
     QI = "tag-stats-popup-message.banned";
@@ -30414,7 +30515,7 @@
     `<symbol id="${XI}" viewBox="0 0 28.117 24.326"><g transform="translate(0.358 0.311)"><path d="M13.606,5.864a3.987,3.987,0,0,1,6.757,0L30.514,22.706a3.744,3.744,0,0,1-3.378,5.614H6.833a3.744,3.744,0,0,1-3.378-5.614Z" transform="translate(-3.283 -4.305)" fill="#e34e21"/><path d="M1.486-2,.752-11.3l2.9.019L2.917-2ZM.884-.6H3.519v2.6H.884Z" transform="translate(11.449 18.346)" fill="#fff"/></g></symbol>`,
     `<symbol id="${QI}" viewBox="0 0 40 40"><path d="M20.563.563a20,20,0,1,0,20,20A20,20,0,0,0,20.563.563ZM31.055,10.07a14.841,14.841,0,0,1,1.667,19L12.052,8.4A14.84,14.84,0,0,1,31.055,10.07ZM10.07,31.055a14.841,14.841,0,0,1-1.667-19l20.671,20.67a14.84,14.84,0,0,1-19-1.667Z" transform="translate(-0.563 -0.563)" fill="#e34e21"/></symbol>`,
   ]);
-  class JI extends MP.Component {
+  class JI extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -30442,73 +30543,73 @@
   }
   const eG = {
       root: {
-        ...MP.relative(),
-        ...MP.borderRadius.r4,
-        ...MP.shadow.sh10,
+        ...AP.relative(),
+        ...AP.borderRadius.r4,
+        ...AP.shadow.sh10,
         width: 292,
         cursor: "default",
-        backgroundColor: MP.color.bgLight3,
+        backgroundColor: AP.color.bgLight3,
       },
       marker: ({ props: e }) => ({
-        ...MP.absolute("50% 0 . ."),
+        ...AP.absolute("50% 0 . ."),
         transform: "translateY(-50%)",
         width: 4,
         height: 30,
-        background: MP.color.link,
+        background: AP.color.link,
         ...(e.markerDy && { marginTop: e.markerDy }),
         ...(e.markerAtLeft && { left: 0, right: "auto" }),
         "&::before": {
           content: '""',
           transform: "translateY(-50%)",
-          ...MP.absolute("50% . . 100%"),
-          ...MP.triangle.right({ size: 3, color: MP.color.link }),
+          ...AP.absolute("50% . . 100%"),
+          ...AP.triangle.right({ size: 3, color: AP.color.link }),
           ...(e.markerAtLeft && {
             left: "auto",
             right: "100%",
-            ...MP.triangle.left({ size: 3, color: MP.color.link }),
+            ...AP.triangle.left({ size: 3, color: AP.color.link }),
           }),
         },
       }),
       header: {
-        ...MP.row,
-        ...MP.alignItems.center,
-        ...MP.padding("g1h g3 g1h g3"),
+        ...AP.row,
+        ...AP.alignItems.center,
+        ...AP.padding("g1h g3 g1h g3"),
         minHeight: 32,
       },
-      title: { ...MP.text.ellipsis, ...MP.text.contentTitle },
+      title: { ...AP.text.ellipsis, ...AP.text.contentTitle },
       gotoIcon: {
         flexShrink: 0,
-        marginLeft: MP.space.g1,
-        marginRight: MP.space.g1,
-        color: MP.color.link,
+        marginLeft: AP.space.g1,
+        marginRight: AP.space.g1,
+        color: AP.color.link,
       },
       refreshIcon: ({ props: e }) => ({
         flexShrink: 0,
         width: 16,
         height: 16,
-        color: MP.color.link,
+        color: AP.color.link,
         marginLeft: "auto",
         ...(!e.showRefreshButton && { display: "none" }),
       }),
       metricGrid: {
-        ...MP.fullWidth,
-        ...MP.padding("g1h g3 g1h g3"),
+        ...AP.fullWidth,
+        ...AP.padding("g1h g3 g1h g3"),
         gridTemplateColumns: "repeat(1, 100fr)",
-        gridColumnGap: MP.space.g3,
-        gridRowGap: MP.space.g3,
+        gridColumnGap: AP.space.g3,
+        gridRowGap: AP.space.g3,
         justifyItems: "stretch",
-        backgroundColor: MP.color.bgLight1,
-        borderTop: MP.border.dark,
-        borderBottom: MP.border.dark,
+        backgroundColor: AP.color.bgLight1,
+        borderTop: AP.border.dark,
+        borderBottom: AP.border.dark,
       },
-      message: { marginTop: MP.space.g1, ...MP.padding("g1 g3 g2 g3") },
+      message: { marginTop: AP.space.g1, ...AP.padding("g1 g3 g2 g3") },
     },
     tG = "tag-stats-popup.goto",
     rG = "igswiss.refresh";
   LP.registerSvgIcons([
     `<symbol id="${tG}" viewBox="0 0 32 32"><rect width="32" height="32" fill="none"/><path d="M15729,6145.5v-10h6l-2,2h-2v6h6v-2l2-2v6Zm4.147-5.847,5.148-5.148h-3.3V6133h6.51v6.451H15740V6136.2l-5.147,5.147Z" transform="translate(-15718.508 -6123.5)" fill="currentColor"/></symbol>`,
   ]);
-  class nG extends MP.Component {
+  class nG extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -30588,7 +30689,7 @@
         };
       return Glamor.createElement(
         "div",
-        { css: [MP.grid, eG.metricGrid] },
+        { css: [AP.grid, eG.metricGrid] },
         Glamor.createElement(ZI, s),
         Glamor.createElement(ZI, c),
         Glamor.createElement(ZI, d)
@@ -30617,13 +30718,13 @@
           ? {
               title: "Inssist PRO",
               content: Glamor.createElement(
-                MP.Fragment,
+                AP.Fragment,
                 null,
                 "Get the most out of hashtags with Inssist PRO. Hashtag metrics, ladders and collections included.",
                 Glamor.createElement(qP, { height: "g1h" }),
                 Glamor.createElement(
                   "div",
-                  { css: MP.row },
+                  { css: AP.row },
                   Glamor.createElement(xT, {
                     label: "UPGRADE NOW",
                     onClick: this.props.onUpgradeClick,
@@ -30655,7 +30756,7 @@
             null,
             Glamor.createElement(
               "span",
-              { css: { color: MP.color.error } },
+              { css: { color: AP.color.error } },
               "▲99x"
             ),
             " your average"
@@ -30666,7 +30767,7 @@
             null,
             Glamor.createElement(
               "span",
-              { css: { color: MP.color.error } },
+              { css: { color: AP.color.error } },
               "▲",
               Math.round(e),
               "x"
@@ -30683,10 +30784,10 @@
   }
   const oG = {
     root: ({ props: e }) => ({
-      ...MP.row,
-      ...MP.center,
-      ...MP.absolute("0 0 0 0"),
-      ...MP.transition.slow,
+      ...AP.row,
+      ...AP.center,
+      ...AP.absolute("0 0 0 0"),
+      ...AP.transition.slow,
       transitionProperty: "opacity",
       zIndex: 10,
       backdropFilter: "blur(4px)",
@@ -30694,32 +30795,32 @@
       overflow: "hidden",
       "&::before": {
         content: '""',
-        ...MP.absolute("0 0 0 0 -1"),
-        background: MP.color.bgLight3,
+        ...AP.absolute("0 0 0 0 -1"),
+        background: AP.color.bgLight3,
         opacity: 0.75,
       },
       ...(!e.show && { pointerEvents: "none", opacity: 0 }),
     }),
     art: {
-      ...MP.absolute(". 0 0 ."),
+      ...AP.absolute(". 0 0 ."),
       zIndex: 0,
       "@media (max-width: 1350px)": { display: "none" },
     },
     content: ({ props: e }) => ({
-      ...MP.transition.slow,
+      ...AP.transition.slow,
       transitionProperty: "transform",
       userSelect: "text",
       ...(!e.show && { transform: "scale(1.1)" }),
     }),
   };
-  class iG extends MP.Component {
+  class iG extends AP.Component {
     constructor(e) {
       super(e),
         (this._onOverlayClick = (e) => {
           this._contentRef.current.contains(e.target) ||
             (this.props.onOverlayClick && this.props.onOverlayClick());
         }),
-        (this._contentRef = MP.createRef());
+        (this._contentRef = AP.createRef());
     }
     render() {
       return Glamor.createElement(
@@ -30747,34 +30848,34 @@
   }
   const aG = {
     root: {
-      ...MP.relative(),
+      ...AP.relative(),
       transition: "all 300ms var(--timing-function) 0ms",
       borderRadius: "50%",
     },
     rootSizes: {},
     frame: {
-      ...MP.absolute("2 2 2 2"),
-      backgroundColor: MP.color.bgLight1,
+      ...AP.absolute("2 2 2 2"),
+      backgroundColor: AP.color.bgLight1,
       borderRadius: "50%",
     },
-    imagePositionInset: MP.absolute("4 4 4 4"),
-    imagePositionFull: MP.absolute("0 0 0 0"),
+    imagePositionInset: AP.absolute("4 4 4 4"),
+    imagePositionFull: AP.absolute("0 0 0 0"),
     image: {
       flexShrink: 0,
       borderRadius: "50%",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
-      backgroundColor: MP.color.bgLight1,
+      backgroundColor: AP.color.bgLight1,
     },
     greyOutOverlay: (e) => ({
-      ...(e.frame ? MP.absolute("4 4 4 4") : MP.absolute("0 0 0 0")),
+      ...(e.frame ? AP.absolute("4 4 4 4") : AP.absolute("0 0 0 0")),
       borderRadius: "50%",
       opacity: 0.6,
-      backgroundColor: MP.color.bgLight1,
+      backgroundColor: AP.color.bgLight1,
     }),
   };
-  class sG extends MP.Component {
+  class sG extends AP.Component {
     constructor(e) {
       super(e),
         (this.mounted = !1),
@@ -30841,43 +30942,43 @@
   }
   (sG.defaultProps = { size: 36 }), (sG.loadedImages = {});
   const cG = {
-    root: { paddingTop: 8, width: 350, ...MP.noselect },
+    root: { paddingTop: 8, width: 350, ...AP.noselect },
     container: {
-      ...MP.relative(),
+      ...AP.relative(),
       maxWidth: "100%",
-      backgroundColor: MP.color.bgLight2,
-      ...MP.padding("g2 g2 g0h g2"),
-      ...MP.borderRadius.r4,
-      ...MP.shadow.sh10,
+      backgroundColor: AP.color.bgLight2,
+      ...AP.padding("g2 g2 g0h g2"),
+      ...AP.borderRadius.r4,
+      ...AP.shadow.sh10,
     },
     marker: (e) => ({
-      ...MP.absolute("0 11"),
+      ...AP.absolute("0 11"),
       width: 40,
       height: 4,
       backgroundColor: e.marker,
     }),
     triangle: (e) => ({
-      ...MP.absolute("-3 27"),
-      ...MP.triangle.up({ size: 4, color: e.marker }),
+      ...AP.absolute("-3 27"),
+      ...AP.triangle.up({ size: 4, color: e.marker }),
     }),
-    title: { ...MP.text.group2, paddingBottom: MP.space.g1 },
+    title: { ...AP.text.group2, paddingBottom: AP.space.g1 },
     content: {
-      ...MP.text.tooltipText,
-      color: MP.color.textNormal,
-      paddingBottom: MP.space.g1,
+      ...AP.text.tooltipText,
+      color: AP.color.textNormal,
+      paddingBottom: AP.space.g1,
     },
-    actions: { paddingBottom: MP.space.g1 },
-    action: { paddingRight: MP.space.g1 },
+    actions: { paddingBottom: AP.space.g1 },
+    action: { paddingRight: AP.space.g1 },
   };
-  class uG extends MP.Component {
+  class uG extends AP.Component {
     render() {
       const { title: e, content: t, actions: r } = this.props;
       return Glamor.createElement(
         "div",
-        { css: [MP.row, MP.justifyContent.end, cG.root, this.props.style] },
+        { css: [AP.row, AP.justifyContent.end, cG.root, this.props.style] },
         Glamor.createElement(
           "div",
-          { css: [MP.column, cG.container] },
+          { css: [AP.column, cG.container] },
           Glamor.createElement("div", { css: cG.marker(this.props) }),
           Glamor.createElement("div", { css: cG.triangle(this.props) }),
           e && Glamor.createElement("div", { css: cG.title }, e),
@@ -30885,7 +30986,7 @@
           r &&
             Glamor.createElement(
               "div",
-              { css: [MP.row, cG.actions] },
+              { css: [AP.row, cG.actions] },
               r.map((e, t) =>
                 Glamor.createElement(
                   xT,
@@ -30897,7 +30998,7 @@
       );
     }
   }
-  uG.defaultProps = { marker: MP.color.link };
+  uG.defaultProps = { marker: AP.color.link };
   const dG = 62,
     hG = 52,
     pG = 8,
@@ -30915,16 +31016,16 @@
       }).apply(this, arguments);
   }
   const gG = {
-    root: { ...MP.relative() },
+    root: { ...AP.relative() },
     avatar: (e) => ({
-      ...(e.onClick && MP.clickable),
+      ...(e.onClick && AP.clickable),
       paddingRight: e.selected ? 0 : pG,
       paddingTop: e.selected ? 0 : (dG - hG) / 2,
       paddingBottom: e.selected ? 0 : (dG - hG) / 2,
     }),
     card: ({ props: e, state: t }) => ({
-      ...MP.absolute(`${dG} 0 . .`),
-      ...MP.transition.fast,
+      ...AP.absolute(`${dG} 0 . .`),
+      ...AP.transition.fast,
       ...((!t.hovered || e.loading) && {
         opacity: 0,
         transform: "translateY(2px)",
@@ -30932,7 +31033,7 @@
       }),
     }),
   };
-  class vG extends MP.Component {
+  class vG extends AP.Component {
     constructor(e) {
       super(e),
         (this._onDisconnectAccountClick = () => {
@@ -30944,7 +31045,7 @@
           this.props.onClick &&
             (this.props.onClick(this.props), this._dropHoverState());
         }),
-        (this.rootRef = MP.createRef()),
+        (this.rootRef = AP.createRef()),
         (this.state = { hovered: !1 });
     }
     render() {
@@ -30952,7 +31053,7 @@
         "div",
         fG(
           { css: [gG.root, this.props.style], ref: this.rootRef },
-          MP.hoverState(this, "hovered")
+          AP.hoverState(this, "hovered")
         ),
         Glamor.createElement(
           "div",
@@ -30965,12 +31066,12 @@
             frame:
               this.props.frameColor ||
               (this.props.loading
-                ? MP.color.iconPassive
+                ? AP.color.iconPassive
                 : this.state.hovered && !this.props.selected
-                ? MP.color.iconActionable
+                ? AP.color.iconActionable
                 : this.props.loggedIn && this.props.selected
-                ? MP.color.primary
-                : MP.color.iconPassive),
+                ? AP.color.primary
+                : AP.color.iconPassive),
           })
         ),
         this._renderCard()
@@ -31038,26 +31139,26 @@
   vG.defaultProps = { loggedIn: !0, selected: !1 };
   const yG = {
       root: ({ state: e }) => ({
-        ...MP.relative(),
+        ...AP.relative(),
         ...(e.disableHover && { "& *": { pointerEvents: "none !important" } }),
       }),
       selectedRenderer: {
-        ...MP.absolute("0 0 . ."),
+        ...AP.absolute("0 0 . ."),
         "&::before": {
           content: '""',
-          ...MP.absolute("-20 -20 -20 0"),
+          ...AP.absolute("-20 -20 -20 0"),
           zIndex: 1e3,
         },
       },
       newAccount: ({ props: e }) => ({
         "&::after": {
           content: '""',
-          ...MP.absolute("2 2 2 2"),
-          background: MP.color.appBackground,
+          ...AP.absolute("2 2 2 2"),
+          background: AP.color.appBackground,
           borderRadius: "50%",
         },
       }),
-      newAccountPlusIcon: { ...MP.absolute("16 . . 16"), zIndex: 1 },
+      newAccountPlusIcon: { ...AP.absolute("16 . . 16"), zIndex: 1 },
       switchContent: ({ state: e }) => ({
         pointerEvents: e.switcherHovered || e.rootHovered ? "inherit" : "none",
       }),
@@ -31068,7 +31169,7 @@
           (r = e.addingNewAccount ? e.accounts.length : e.accounts.length - 1),
           r > 5 && (r = 5),
           {
-            ...MP.absolute("-20 -10 . ."),
+            ...AP.absolute("-20 -10 . ."),
             width:
               dG +
               (t ? 68 : 0) +
@@ -31082,41 +31183,41 @@
       },
       switchRenderer: ({ props: e, state: t, index: r, hasPaginators: n }) => {
         const o = {
-          ...MP.transition.fast,
+          ...AP.transition.fast,
           opacity: r < 0 || r >= 5 ? 0 : 1,
           pointerEvents: r < 0 || r >= 5 ? "none" : "inherit",
         };
         let i = null;
         if (!e.disableSwitch && t.switcherHovered) {
           let e = (r + 1) * (hG + pG) + (dG - hG - pG);
-          n && (e += 34), (i = MP.absolute(`0 ${e} . .`));
+          n && (e += 34), (i = AP.absolute(`0 ${e} . .`));
         } else if (!e.disableSwitch && t.rootHovered) {
           const e = (r + 1) * mG + (dG - hG - pG);
-          i = MP.absolute(`0 ${e} . .`);
-        } else i = MP.absolute("0 2 . .");
+          i = AP.absolute(`0 ${e} . .`);
+        } else i = AP.absolute("0 2 . .");
         return { ...o, ...i };
       },
       paginator: ({ props: e, state: t }) => ({
         visibility:
           !e.disableSwitch && t.switcherHovered ? "visible" : "hidden",
         opacity: !e.disableSwitch && t.switcherHovered ? 1 : 0,
-        ...MP.clickable,
+        ...AP.clickable,
         transition: "all 300ms var(--timing-function) 0ms",
-        color: MP.color.iconPassive,
-        ":hover": { color: MP.color.iconActionable },
+        color: AP.color.iconPassive,
+        ":hover": { color: AP.color.iconActionable },
       }),
       leftPaginator: {
         transform: "rotate(-180deg)",
-        ...MP.absolute(`0 ${dG + 34 + 5 * (hG + pG)} . .`),
+        ...AP.absolute(`0 ${dG + 34 + 5 * (hG + pG)} . .`),
       },
-      rightPaginator: { ...MP.absolute(`0 ${dG} . .`) },
+      rightPaginator: { ...AP.absolute(`0 ${dG} . .`) },
       addIcon: ({ props: e, state: t, hasPaginators: r }) => ({
         ...(r
-          ? MP.absolute(`0 ${dG + 76 + 5 * (hG + pG)} . .`)
-          : MP.absolute(
+          ? AP.absolute(`0 ${dG + 76 + 5 * (hG + pG)} . .`)
+          : AP.absolute(
               `0 ${e.accounts.length * (hG + pG) + (dG - hG - pG)} . .`
             )),
-        paddingRight: r ? 0 : MP.space.g2,
+        paddingRight: r ? 0 : AP.space.g2,
         visibility:
           !e.disableSwitch &&
           (1 !== e.accounts.length ? t.switcherHovered : t.rootHovered)
@@ -31130,10 +31231,10 @@
         transition: "all 600ms var(--timing-function) 0ms",
       }),
       addIconSvg: ({ props: e }) => ({
-        ...MP.clickable,
+        ...AP.clickable,
         transition: "all 600ms var(--timing-function) 0ms",
-        color: MP.color.iconPassive,
-        ":hover": { color: MP.color.iconActionable },
+        color: AP.color.iconPassive,
+        ":hover": { color: AP.color.iconActionable },
         "&::before": {
           content: '""',
           position: "absolute",
@@ -31142,11 +31243,11 @@
           width: "40px",
           height: "40px",
           borderRadius: "50%",
-          background: MP.color.appBackground,
+          background: AP.color.appBackground,
         },
       }),
-      tooltipContainer: { ...MP.relative("-12 . . .") },
-      card: { ...MP.absolute("0 -11 . .") },
+      tooltipContainer: { ...AP.relative("-12 . . .") },
+      card: { ...AP.absolute("0 -11 . .") },
     },
     wG = "account-switcher.arrow",
     _G = "account-switcher.add";
@@ -31154,7 +31255,7 @@
     `<symbol id="${wG}" viewBox="0 0 42 62"><rect width="42" height="62" fill="none"/><circle cx="8.25" cy="8.25" r="8.25" transform="translate(8.75 22.75)" fill="currentColor"/><path d="M9.65,6,8.6,7.05l3.45,3.45L8.6,13.95,9.65,15l4.5-4.5Z" transform="translate(5.85 20.5)" fill="#fff"/></symbol>`,
     `<symbol id="${_G}" viewBox="0 0 40 62"><g><rect width="40" height="62" fill="none"/><path d="M-1741.784,8802.43a19.961,19.961,0,0,1-6.359-4.286,19.966,19.966,0,0,1-4.286-6.359A19.869,19.869,0,0,1-1754,8784a19.868,19.868,0,0,1,1.571-7.783,19.95,19.95,0,0,1,4.286-6.359,19.961,19.961,0,0,1,6.359-4.286A19.878,19.878,0,0,1-1734,8764a19.878,19.878,0,0,1,7.784,1.571,19.961,19.961,0,0,1,6.359,4.286,19.948,19.948,0,0,1,4.286,6.359A19.868,19.868,0,0,1-1714,8784a19.869,19.869,0,0,1-1.571,7.784,19.966,19.966,0,0,1-4.286,6.359,19.961,19.961,0,0,1-6.359,4.286A19.878,19.878,0,0,1-1734,8804,19.878,19.878,0,0,1-1741.784,8802.43Zm.6-35.44a18.369,18.369,0,0,0-5.868,3.957,18.376,18.376,0,0,0-3.957,5.866,18.35,18.35,0,0,0-1.452,7.188,18.326,18.326,0,0,0,1.452,7.186,18.378,18.378,0,0,0,3.957,5.869,18.419,18.419,0,0,0,5.868,3.955,18.338,18.338,0,0,0,7.185,1.451,18.338,18.338,0,0,0,7.185-1.451,18.444,18.444,0,0,0,5.868-3.955,18.393,18.393,0,0,0,3.955-5.869,18.326,18.326,0,0,0,1.452-7.186,18.35,18.35,0,0,0-1.452-7.187,18.37,18.37,0,0,0-3.955-5.866,18.393,18.393,0,0,0-5.868-3.957,18.338,18.338,0,0,0-7.185-1.451A18.338,18.338,0,0,0-1741.185,8766.989Zm5.385,24.212v-5.4h-5.4a1.8,1.8,0,0,1-1.8-1.8,1.8,1.8,0,0,1,1.8-1.8h5.4v-5.4a1.8,1.8,0,0,1,1.8-1.8,1.8,1.8,0,0,1,1.8,1.8v5.4h5.4a1.8,1.8,0,0,1,1.8,1.8,1.8,1.8,0,0,1-1.8,1.8h-5.4v5.4a1.8,1.8,0,0,1-1.8,1.8A1.8,1.8,0,0,1-1735.8,8791.2Z" transform="translate(1754 -8753.001)" fill="currentColor"/></g></symbol>`,
   ]);
-  class EG extends MP.Component {
+  class EG extends AP.Component {
     constructor(e) {
       super(e),
         (this._onLeftPaginatorClick = () => {
@@ -31205,13 +31306,13 @@
       ) {
         Object.values(this._itemRefs).forEach((e) => {
           const t = e.current;
-          MP.flip.add(t);
+          AP.flip.add(t);
         });
       }
       return null;
     }
     componentDidUpdate() {
-      MP.flip.run();
+      AP.flip.run();
     }
     render() {
       return (
@@ -31226,13 +31327,13 @@
           bG(
             {
               css: [
-                MP.row,
-                MP.alignItems.center,
+                AP.row,
+                AP.alignItems.center,
                 yG.root(this),
                 this.props.style,
               ],
             },
-            MP.hoverState(this, "rootHovered")
+            AP.hoverState(this, "rootHovered")
           ),
           this._renderSwitcher(),
           this._renderSelectedAccount()
@@ -31247,7 +31348,7 @@
           Glamor.createElement(vG, {
             loggedIn: !0,
             selected: !0,
-            frameColor: MP.gradient.brand,
+            frameColor: AP.gradient.brand,
           }),
           Glamor.createElement(tT, {
             style: yG.newAccountPlusIcon,
@@ -31278,7 +31379,7 @@
         "div",
         bG(
           { css: yG.switchContent({ state: this.state }) },
-          MP.hoverState(this, "switcherHovered")
+          AP.hoverState(this, "switcherHovered")
         ),
         this.state.rootHovered &&
           Glamor.createElement("div", {
@@ -31294,7 +31395,7 @@
             i = n + this.state.paginationShift;
           let a = this._itemRefs[i];
           return (
-            a || ((a = MP.createRef()), (this._itemRefs[i] = a)),
+            a || ((a = AP.createRef()), (this._itemRefs[i] = a)),
             Glamor.createElement(
               "div",
               { css: o, key: i, ref: a },
@@ -31318,7 +31419,7 @@
       const e = this._hasPaginators();
       return Glamor.createElement(
         "div",
-        bG({}, MP.hoverState(this, "addIconHovered"), {
+        bG({}, AP.hoverState(this, "addIconHovered"), {
           css: yG.addIcon({
             props: this.props,
             state: this.state,
@@ -31345,7 +31446,7 @@
     _renderPaginators() {
       return this._hasPaginators()
         ? Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(
               "div",
@@ -31391,13 +31492,13 @@
   const xG = {
     root: { ":hover > img": { opacity: 1 } },
     navigateIcon: {
-      ...MP.clickable,
-      ...MP.transition.superfast,
-      color: MP.color.link,
+      ...AP.clickable,
+      ...AP.transition.superfast,
+      color: AP.color.link,
       opacity: 0,
     },
   };
-  class kG extends MP.Component {
+  class kG extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -31412,7 +31513,7 @@
       const { hashtag: e, onClick: t } = this.props;
       return Glamor.createElement(
         "div",
-        { css: [MP.row, MP.alignItems.center, xG.root] },
+        { css: [AP.row, AP.alignItems.center, xG.root] },
         e.name,
         this.props.onClick &&
           Glamor.createElement(tT, {
@@ -31423,7 +31524,7 @@
       );
     }
   }
-  var CG = MP.theme.ThemeAware(kG);
+  var CG = AP.theme.ThemeAware(kG);
   function SG() {
     return (SG =
       Object.assign ||
@@ -31438,10 +31539,10 @@
   }
   const PG = {
     root: { width: "100%" },
-    title: { ...MP.text.contentTitle, ...MP.padding(". . g3 .") },
-    bodyCellStyle: MP.padding("g1 g5 g1 0"),
+    title: { ...AP.text.contentTitle, ...AP.padding(". . g3 .") },
+    bodyCellStyle: AP.padding("g1 g5 g1 0"),
   };
-  class TG extends MP.Component {
+  class TG extends AP.Component {
     constructor(e) {
       super(e),
         (this.state = {
@@ -31575,7 +31676,7 @@
         };
       return Glamor.createElement(
         "div",
-        { css: [MP.column, PG.root, this.props.style] },
+        { css: [AP.column, PG.root, this.props.style] },
         t,
         Glamor.createElement($T, SG({}, n, { bodyCellStyle: PG.bodyCellStyle }))
       );
@@ -31611,23 +31712,23 @@
     }
   }
   const DG = {
-    root: { ...MP.relative() },
+    root: { ...AP.relative() },
     imageOverlay: {
-      ...MP.absolute("0 . 0 0"),
-      ...MP.clickableInversed,
-      ...MP.transition.fast,
-      color: MP.color.link,
+      ...AP.absolute("0 . 0 0"),
+      ...AP.clickableInversed,
+      ...AP.transition.fast,
+      color: AP.color.link,
       width: 80,
       opacity: 0,
       ":hover": { opacity: 0.95 },
     },
     buttonBackground: {
-      ...MP.absolute("20 . 20 20"),
+      ...AP.absolute("20 . 20 20"),
       width: 40,
       borderRadius: 20,
-      backgroundColor: MP.color.bgLight3,
+      backgroundColor: AP.color.bgLight3,
     },
-    navigateIcon: { ...MP.relative() },
+    navigateIcon: { ...AP.relative() },
     image: {
       marginRight: 8,
       width: 80,
@@ -31637,19 +31738,19 @@
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
-      backgroundColor: MP.color.bgLight1,
+      backgroundColor: AP.color.bgLight1,
     },
-    title: { ...MP.text.group2, marginBottom: 8 },
+    title: { ...AP.text.group2, marginBottom: 8 },
     caption: {
-      ...MP.text.tooltipText,
-      color: MP.color.textNormal,
+      ...AP.text.tooltipText,
+      color: AP.color.textNormal,
       overflow: "hidden",
       display: "-webkit-box",
       WebkitLineClamp: "3",
       WebkitBoxOrient: "vertical",
     },
   };
-  class IG extends MP.Component {
+  class IG extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -31674,7 +31775,7 @@
           Glamor.createElement(
             "div",
             {
-              css: [MP.row, MP.center, DG.imageOverlay],
+              css: [AP.row, AP.center, DG.imageOverlay],
               onClick: this._onImageClick,
             },
             Glamor.createElement("div", { css: DG.buttonBackground }),
@@ -31691,14 +31792,14 @@
           Glamor.createElement("div", { css: DG.caption }, this.props.caption);
       return Glamor.createElement(
         "div",
-        { css: [MP.row, DG.root] },
+        { css: [AP.row, DG.root] },
         e,
         t,
-        Glamor.createElement("div", { css: MP.column }, r, n)
+        Glamor.createElement("div", { css: AP.column }, r, n)
       );
     }
   }
-  var GG = MP.theme.ThemeAware(IG);
+  var GG = AP.theme.ThemeAware(IG);
   function OG() {
     return (OG =
       Object.assign ||
@@ -31711,11 +31812,11 @@
         return e;
       }).apply(this, arguments);
   }
-  const AG = {
+  const MG = {
     root: { width: "100%" },
-    title: { ...MP.text.contentTitle, ...MP.padding(". . g3 .") },
+    title: { ...AP.text.contentTitle, ...AP.padding(". . g3 .") },
   };
-  class MG extends MP.Component {
+  class AG extends AP.Component {
     constructor(e) {
       super(e),
         (this.state = {
@@ -31790,7 +31891,7 @@
     render() {
       const e =
           void 0 === this.props.title ? "Posts Engagement" : this.props.title,
-        t = Glamor.createElement("div", { css: AG.title }, e),
+        t = Glamor.createElement("div", { css: MG.title }, e),
         r = this.state.table.columns[0].sort
           ? "post"
           : this.state.table.columns[1].sort
@@ -31823,7 +31924,7 @@
         };
       return Glamor.createElement(
         "div",
-        { css: [MP.column, AG.root, this.props.style] },
+        { css: [AP.column, MG.root, this.props.style] },
         t,
         Glamor.createElement($T, n)
       );
@@ -31880,13 +31981,13 @@
   const NG = (e) => ({
     width: "100%",
     height: 0 === e.y ? 19 : 24,
-    borderRight: e.left && MP.border.dark,
-    borderBottom: e.top && MP.border.dark,
+    borderRight: e.left && AP.border.dark,
+    borderBottom: e.top && AP.border.dark,
     paddingTop: 1,
     paddingRight: e.value ? 0 : 8,
-    ...MP.noselect,
-    ...MP.text.of({
-      family: MP.font.secondary,
+    ...AP.noselect,
+    ...AP.text.of({
+      family: AP.font.secondary,
       size: 14,
       weight: e.value ? 700 : 0,
     }),
@@ -31894,20 +31995,20 @@
       color: e.value
         ? e.hideText
           ? e.bg
-          : MP.theme.valueOf("day", MP.color.textInversed)
-        : MP.color.textBleak,
-      ...(e.showTransition ? MP.transition.fast : {}),
+          : AP.theme.valueOf("day", AP.color.textInversed)
+        : AP.color.textBleak,
+      ...(e.showTransition ? AP.transition.fast : {}),
     },
     backgroundColor: e.bg,
   });
-  class jG extends MP.Component {
+  class jG extends AP.Component {
     render() {
       const e = this.props.value
-        ? MP.justifyContent.center
-        : MP.justifyContent.end;
+        ? AP.justifyContent.center
+        : AP.justifyContent.end;
       return Glamor.createElement(
         "div",
-        { css: [MP.row, e, MP.alignItems.center, NG(this.props)] },
+        { css: [AP.row, e, AP.alignItems.center, NG(this.props)] },
         Glamor.createElement("span", null, this.props.text)
       );
     }
@@ -31995,18 +32096,18 @@
   };
   const VG = {
       root: { width: "100%" },
-      title: { ...MP.text.contentTitle, ...MP.padding(". . g3 .") },
-      content: { width: "100%", ...MP.relative() },
+      title: { ...AP.text.contentTitle, ...AP.padding(". . g3 .") },
+      content: { width: "100%", ...AP.relative() },
       postingHours: { width: "100%", maxWidth: 500 },
       postingHoursGrid: {
         width: "100%",
         gridTemplateColumns: "repeat(8, 12.5fr)",
         justifyItems: "stretch",
-        paddingBottom: MP.space.g1,
+        paddingBottom: AP.space.g1,
       },
       partTitle: {
-        ...MP.padding(". . g2 ."),
-        ...MP.text.hashtag,
+        ...AP.padding(". . g2 ."),
+        ...AP.text.hashtag,
         fontWeight: 600,
         ...QP.cssShowOnHover,
       },
@@ -32015,10 +32116,10 @@
         ...(!e.allowPointerEventsForPostsByMonth && { pointerEvents: "none" }),
       }),
       noDataOverlay: {
-        ...MP.row,
-        ...MP.center,
-        ...MP.absolute("0 0 0 0 2"),
-        ...MP.noDataGradient,
+        ...AP.row,
+        ...AP.center,
+        ...AP.absolute("0 0 0 0 2"),
+        ...AP.noDataGradient,
         fontSize: 14,
       },
     },
@@ -32063,7 +32164,7 @@
       "10pm",
       "11pm",
     ];
-  class ZG extends MP.Component {
+  class ZG extends AP.Component {
     constructor(e) {
       super(e),
         (this._onPostsByMonthMouseEnter = () => {
@@ -32099,16 +32200,16 @@
         r = WG.groupPosts(this.props.posts);
       return Glamor.createElement(
         "div",
-        { css: [MP.column, VG.root] },
+        { css: [AP.column, VG.root] },
         t,
         Glamor.createElement(
           "div",
-          { css: [MP.row, VG.content] },
+          { css: [AP.row, VG.content] },
           this._renderPostingHours(r),
           Glamor.createElement(qP, { width: "g5" }),
           Glamor.createElement(
             "div",
-            { css: [MP.column, VG.rightColumn] },
+            { css: [AP.column, VG.rightColumn] },
             this._renderPostsByMonth(r),
             Glamor.createElement(qP, { height: "g3" }),
             this._renderPostsByDay(r)
@@ -32133,23 +32234,23 @@
         : e.maxTotalCellValue;
       return Glamor.createElement(
         "div",
-        { css: [MP.column, MP.alignItems.stretch, VG.postingHours] },
+        { css: [AP.column, AP.alignItems.stretch, VG.postingHours] },
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.justifyContent.between, VG.partTitle] },
+          { css: [AP.row, AP.justifyContent.between, VG.partTitle] },
           Glamor.createElement("span", null, t),
           Glamor.createElement(QP, { tooltip: n, mini: !0 })
         ),
         Glamor.createElement(
           "div",
-          { css: [MP.grid, VG.postingHoursGrid] },
+          { css: [AP.grid, VG.postingHoursGrid] },
           Glamor.createElement(jG, { left: !0, top: !0 }),
           $G.map((e) =>
             Glamor.createElement(jG, { key: `header:${e}`, text: e, top: !0 })
           ),
           YG.map((e, t) =>
             Glamor.createElement(
-              MP.Fragment,
+              AP.Fragment,
               { key: `hour:${e}` },
               Glamor.createElement(jG, {
                 key: `hour:${e}:title`,
@@ -32161,7 +32262,7 @@
                   key: `cell:${r}:${e}`,
                   text: o[n][t] > 0 && o[n][t],
                   hideText: !this.state.showPostCount,
-                  bg: MP.palette.getIntensity(o[n][t], i, !0),
+                  bg: AP.palette.getIntensity(o[n][t], i, !0),
                   showTransition: this.switchTransitionTimeout,
                   value: !0,
                 })
@@ -32171,7 +32272,7 @@
         ),
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.justifyContent.end] },
+          { css: [AP.row, AP.justifyContent.end] },
           Glamor.createElement(zT, {
             label: "Show post count",
             value: this.state.showPostCount,
@@ -32196,8 +32297,8 @@
               color:
                 this.state.selectedMonthStart === e.on ||
                 this.state.hoveredMonthStart === e.on
-                  ? MP.color.primary
-                  : MP.color.iconPassive,
+                  ? AP.color.primary
+                  : AP.color.iconPassive,
               labels: [t(e)],
             }))
             .reverse(),
@@ -32227,8 +32328,8 @@
           "div",
           {
             css: [
-              MP.column,
-              MP.alignItems.stretch,
+              AP.column,
+              AP.alignItems.stretch,
               VG.postsByMonthContent(this),
             ],
           },
@@ -32264,8 +32365,8 @@
               value: e.value,
               color:
                 this.state.hoveredDayStart === e.on
-                  ? MP.color.primary
-                  : MP.color.iconPassive,
+                  ? AP.color.primary
+                  : AP.color.iconPassive,
               labels: [i(e)],
             }))
             .reverse(),
@@ -32279,7 +32380,7 @@
         };
       return Glamor.createElement(
         "div",
-        { css: [MP.column, MP.alignItems.stretch] },
+        { css: [AP.column, AP.alignItems.stretch] },
         Glamor.createElement("div", { css: VG.partTitle }, "POSTS BY DAY"),
         Glamor.createElement(XT, a)
       );
@@ -32301,27 +32402,27 @@
     },
     XG = {
       root: ({ state: e }) => ({
-        ...MP.row,
+        ...AP.row,
         width: "100%",
         height: "100%",
         minHeight: 600,
         position: "relative",
         ...(!e.mounted && { opacity: 0 }),
       }),
-      dragArea: { ...MP.fixed("0 0 . 0 -1"), height: 38 },
+      dragArea: { ...AP.fixed("0 0 . 0 -1"), height: 38 },
       sidebar: ({ state: e }) => ({
         flexShrink: 0,
         position: "relative",
         zIndex: 1,
         ...("welcome" === e.screen && { display: "none" }),
       }),
-      body: { ...MP.row, flexGrow: 1, minWidth: 0, zIndex: 0 },
+      body: { ...AP.row, flexGrow: 1, minWidth: 0, zIndex: 0 },
       left: { width: "100%", minWidth: 0 },
-      center: { ...MP.row, ...MP.alignItems.center, maxWidth: "100%" },
-      right: { ...MP.row, ...MP.alignItems.center, width: "100%", minWidth: 0 },
+      center: { ...AP.row, ...AP.alignItems.center, maxWidth: "100%" },
+      right: { ...AP.row, ...AP.alignItems.center, width: "100%", minWidth: 0 },
       main: ({ props: e, state: t }) => ({
-        ...MP.column,
-        ...MP.transition.slow,
+        ...AP.column,
+        ...AP.transition.slow,
         transitionProperty: "transform",
         height: "100%",
         maxWidth: "100%",
@@ -32334,8 +32435,8 @@
             boxShadow: "0 0 36px rgba(0, 0, 0, 0.45)",
           }),
           ...((e.igViewWithBorder || (t.isFrameless && !e.isFullscreen)) && {
-            borderLeft: MP.border.dark,
-            borderRight: MP.border.dark,
+            borderLeft: AP.border.dark,
+            borderRight: AP.border.dark,
           }),
         }),
         ...(t.buttonsAtTop && { width: 400 }),
@@ -32343,15 +32444,15 @@
         ...("welcome" === t.screen && !t.isFrameless && { width: "auto" }),
       }),
       topButtons: ({ state: e, colorScheme: t }) => ({
-        ...MP.row,
-        ...MP.center,
+        ...AP.row,
+        ...AP.center,
         height: 56,
         backgroundColor: t.igBackground,
         ...(!e.buttonsAtTop && { display: "none" }),
       }),
       igView: { flexGrow: 1 },
       welcome: ({ state: e }) => ({
-        ...MP.transition.slow,
+        ...AP.transition.slow,
         paddingLeft: 80,
         ...("welcome" !== e.screen && {
           opacity: 0,
@@ -32360,12 +32461,12 @@
         }),
       }),
       assistPanel: ({ state: e }) => ({
-        ...MP.row,
-        ...MP.shadow.sh6,
-        ...MP.borderRadius.r4,
-        ...MP.transition.slow,
-        ...MP.margin("16 16 16 50"),
-        ...MP.relative(),
+        ...AP.row,
+        ...AP.shadow.sh6,
+        ...AP.borderRadius.r4,
+        ...AP.transition.slow,
+        ...AP.margin("16 16 16 50"),
+        ...AP.relative(),
         zIndex: 1,
         flexShrink: 0,
         transitionProperty: "opacity, transform",
@@ -32373,7 +32474,7 @@
         height: "calc(100% - 60px)",
         maxHeight: 758,
         opacity: 1,
-        background: MP.color.bgLight3,
+        background: AP.color.bgLight3,
         overflow: "auto",
         ...("assist-panel" !== e.screen && {
           transform: "translateX(-200px)",
@@ -32383,7 +32484,7 @@
         }),
       }),
       rightButtons: ({ state: e }) => ({
-        ...MP.transition.slow,
+        ...AP.transition.slow,
         transitionProperty: "opacity, transform",
         width: "100%",
         position: "relative",
@@ -32397,36 +32498,36 @@
       rightTips: ({ state: e }) => ({
         position: "absolute",
         top: "100%",
-        marginTop: MP.space.g5,
-        paddingRight: MP.space.g5,
+        marginTop: AP.space.g5,
+        paddingRight: AP.space.g5,
         ...(e.rightWidth < 340 && { display: "none" }),
       }),
       cornerButtons: ({ state: e }) => ({
-        ...MP.row,
-        ...MP.absolute(". 30 16 ."),
+        ...AP.row,
+        ...AP.absolute(". 30 16 ."),
         ...((("default" === e.screen && e.rightWidth < 280) ||
           "welcome" === e.screen) && { display: "none" }),
       }),
-      cornerButton: { marginLeft: MP.space.g3 },
+      cornerButton: { marginLeft: AP.space.g3 },
       accountSwitcher: ({ state: e }) => ({
-        ...MP.absolute("g2 g2 . ."),
-        ...MP.transition.slow,
+        ...AP.absolute("g2 g2 . ."),
+        ...AP.transition.slow,
         zIndex: 1,
         ...(("welcome" === e.screen || e.bodyWidth < 800) && {
           transform: "translateX(100px)",
         }),
       }),
-      snackbar: { ...MP.fixed(". 30 30 ."), width: 406, zIndex: 100 },
+      snackbar: { ...AP.fixed(". 30 30 ."), width: 406, zIndex: 100 },
       experimentsBar: {
-        ...MP.fixed("0 0 0 ."),
+        ...AP.fixed("0 0 0 ."),
         width: 5,
-        background: MP.color.link,
+        background: AP.color.link,
         pointerEvents: "none",
         opacity: 0.5,
         zIndex: "9999",
       },
     };
-  class QG extends MP.Component {
+  class QG extends AP.Component {
     constructor(e) {
       super(e),
         (this._onBodyWheel = (e) => {
@@ -32442,13 +32543,13 @@
           });
         }),
         (this._bodyResizeObserver = null),
-        (this._rootRef = MP.createRef()),
-        (this._bodyRef = MP.createRef()),
-        (this._mainRef = MP.createRef()),
-        (this._welcomeRef = MP.createRef()),
-        (this._assistPanelRef = MP.createRef()),
-        (this._rightRef = MP.createRef()),
-        (this._rightButtonsRef = MP.createRef()),
+        (this._rootRef = AP.createRef()),
+        (this._bodyRef = AP.createRef()),
+        (this._mainRef = AP.createRef()),
+        (this._welcomeRef = AP.createRef()),
+        (this._assistPanelRef = AP.createRef()),
+        (this._rightRef = AP.createRef()),
+        (this._rightButtonsRef = AP.createRef()),
         (this.state = {
           mounted: !1,
           rootHeight: 0,
@@ -32488,18 +32589,18 @@
         (e.isSidebarOpen !== this.props.isSidebarOpen ||
           ("assist-panel" === r && "assist-panel" !== n) ||
           ("assist-panel" !== r && "assist-panel" === n)) &&
-          (MP.flip.add(this._assistPanelRef.current),
-          MP.flip.add(this._mainRef.current),
-          MP.flip.add(this._rightButtonsRef.current)),
+          (AP.flip.add(this._assistPanelRef.current),
+          AP.flip.add(this._mainRef.current),
+          AP.flip.add(this._rightButtonsRef.current)),
         (("welcome" === r && "welcome" !== n) ||
           ("welcome" !== r && "welcome" === n)) &&
-          (MP.flip.add(this._mainRef.current),
-          MP.flip.add(this._welcomeRef.current)),
+          (AP.flip.add(this._mainRef.current),
+          AP.flip.add(this._welcomeRef.current)),
         null
       );
     }
     componentDidUpdate() {
-      MP.flip.run();
+      AP.flip.run();
     }
     render() {
       return Glamor.createElement(
@@ -32632,44 +32733,44 @@
         return Glamor.createElement("div", { css: XG.experimentsBar });
     }
   }
-  var JG = MP.theme.ThemeAware(QG);
+  var JG = AP.theme.ThemeAware(QG);
   const eO = {
     root: {
-      background: MP.color.bgLight2,
-      ...MP.borderRadius.r4,
-      ...MP.shadow.sh10,
-      ...MP.relative(),
-      "& a": { fontWeight: 700, color: MP.color.textNormal },
+      background: AP.color.bgLight2,
+      ...AP.borderRadius.r4,
+      ...AP.shadow.sh10,
+      ...AP.relative(),
+      "& a": { fontWeight: 700, color: AP.color.textNormal },
     },
     content: {
       position: "relative",
-      ...MP.padding("g2 g2 g2 g1h"),
-      ...MP.text.tooltipText,
-      color: MP.color.textNormal,
+      ...AP.padding("g2 g2 g2 g1h"),
+      ...AP.text.tooltipText,
+      color: AP.color.textNormal,
     },
     marker: ({ props: e }) => ({
-      ...MP.absolute("0 . . 64"),
+      ...AP.absolute("0 . . 64"),
       width: 80,
       height: 4,
-      background: e.markerColor || MP.color.link,
+      background: e.markerColor || AP.color.link,
     }),
-    image: { width: 40, height: 40, flexShrink: 0, ...MP.relative("-3 . . .") },
+    image: { width: 40, height: 40, flexShrink: 0, ...AP.relative("-3 . . .") },
     subcontent: ({ state: e }) => ({
-      ...MP.padding("g1h g2 g1h 62"),
-      ...MP.text.tooltipText,
+      ...AP.padding("g1h g2 g1h 62"),
+      ...AP.text.tooltipText,
       borderTop: "1px solid var(--color-border-dark)",
-      color: MP.color.textBleak,
-      "& a": { ...MP.clickable, fontWeight: 700, color: "inherit" },
-      ...("night" === e.theme && { borderColor: MP.color.borderLight }),
+      color: AP.color.textBleak,
+      "& a": { ...AP.clickable, fontWeight: 700, color: "inherit" },
+      ...("night" === e.theme && { borderColor: AP.color.borderLight }),
     }),
     action: {
-      ...MP.row,
-      ...MP.alignItems.center,
-      "&:not(:last-child)": { marginRight: MP.space.g2 },
+      ...AP.row,
+      ...AP.alignItems.center,
+      "&:not(:last-child)": { marginRight: AP.space.g2 },
     },
-    closeButton: { ...MP.absolute("6 6 . .") },
+    closeButton: { ...AP.absolute("6 6 . .") },
   };
-  class tO extends MP.Component {
+  class tO extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -32688,22 +32789,22 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: [MP.column, eO.root, this.props.style] },
+        { css: [AP.column, eO.root, this.props.style] },
         Glamor.createElement(
           "div",
-          { css: [MP.row, eO.content] },
+          { css: [AP.row, eO.content] },
           Glamor.createElement("div", { css: eO.marker(this) }),
           Glamor.createElement(tT, { style: eO.image, src: this.props.image }),
           Glamor.createElement(qP, { width: "g1h" }),
           Glamor.createElement(
             "div",
-            { css: [MP.column, MP.fullWidth] },
+            { css: [AP.column, AP.fullWidth] },
             this.props.content,
             this.props.actions && Glamor.createElement(qP, { height: "g1h" }),
             this.props.actions &&
               Glamor.createElement(
                 "div",
-                { css: MP.row },
+                { css: AP.row },
                 this.props.actions.map(this._renderAction)
               )
           )
@@ -32716,7 +32817,7 @@
       return this.props.subcontent
         ? Glamor.createElement(
             "div",
-            { css: [MP.column, eO.subcontent(this)] },
+            { css: [AP.column, eO.subcontent(this)] },
             Glamor.createElement(qP, { width: 30 }),
             this.props.subcontent
           )
@@ -32731,19 +32832,19 @@
         });
     }
   }
-  var rO = MP.theme.ThemeAware(tO);
+  var rO = AP.theme.ThemeAware(tO);
   const nO = {
-      root: MP.fullWidth,
+      root: AP.fullWidth,
       ratingTitle: {
-        ...MP.relative(),
-        ...MP.text.of({ size: 12, weight: 600 }),
+        ...AP.relative(),
+        ...AP.text.of({ size: 12, weight: 600 }),
       },
-      savingProgressRing: MP.absolute("0 . . -28"),
+      savingProgressRing: AP.absolute("0 . . -28"),
       star: ({ rate: e, state: t }) => {
-        const r = "day" === t.theme ? "#5F6367" : MP.color.attention,
+        const r = "day" === t.theme ? "#5F6367" : AP.color.attention,
           n = "day" === t.theme ? "#D8DADD" : "#5F6367";
         return {
-          ...MP.padding(
+          ...AP.padding(
             1 === e ? "6 2 16 40" : 5 === e ? "6 40 16 2" : "6 2 16 2"
           ),
           cursor: 0 === t.rate ? "pointer" : "inherit",
@@ -32752,13 +32853,13 @@
         };
       },
       emoji: { fontSize: 36, paddingTop: 4 },
-      response: { textAlign: "center", ...MP.margin(". . g0h .") },
+      response: { textAlign: "center", ...AP.margin(". . g0h .") },
     },
     oO = "igswiss.rate-us-star";
   LP.registerSvgIcons([
     `<symbol id="${oO}" viewBox="0 0 12.529 11.955"><path d="M12.51,15.512a.393.393,0,0,0-.317-.267l-3.853-.56L6.617,11.194a.393.393,0,0,0-.7,0L4.189,14.685l-3.853.56a.393.393,0,0,0-.218.67l2.788,2.718L2.249,22.47a.393.393,0,0,0,.57.414l3.446-1.812,3.446,1.812a.393.393,0,0,0,.57-.414l-.658-3.837,2.788-2.718A.393.393,0,0,0,12.51,15.512Z" transform="translate(0 -10.975)" fill="currentColor"/></symbol>`,
   ]);
-  class iO extends MP.Component {
+  class iO extends AP.Component {
     constructor(e) {
       super(e),
         (this._onStarMouseEnter = (e) => {
@@ -32891,11 +32992,11 @@
       const e = this.texts;
       return Glamor.createElement(
         "div",
-        { css: MP.column },
+        { css: AP.column },
         Glamor.createElement("div", null, e.title),
         Glamor.createElement(
           "div",
-          { css: [MP.column, MP.alignItems.center] },
+          { css: [AP.column, AP.alignItems.center] },
           Glamor.createElement(qP, { height: "g2" }),
           this._renderRating(),
           this._renderResponse()
@@ -32912,7 +33013,7 @@
               : n.rating[t - 1]
             : `${n.ratingPrefix} ${n.rating[e - 1]}`;
       return Glamor.createElement(
-        MP.Fragment,
+        AP.Fragment,
         null,
         Glamor.createElement(
           "div",
@@ -32932,7 +33033,7 @@
         ),
         Glamor.createElement(
           "div",
-          { css: MP.row, onMouseLeave: this._onStarsMouseLeave },
+          { css: AP.row, onMouseLeave: this._onStarsMouseLeave },
           [1, 2, 3, 4, 5].map((e) =>
             Glamor.createElement(
               "div",
@@ -32954,7 +33055,7 @@
       if (0 === e || t) return null;
       const r = this.texts;
       return Glamor.createElement(
-        MP.Fragment,
+        AP.Fragment,
         null,
         Glamor.createElement("div", { css: nO.emoji }, r.emoji[e - 1]),
         Glamor.createElement(qP, { height: "g3" }),
@@ -32963,7 +33064,7 @@
         5 === e
           ? Glamor.createElement(
               "div",
-              { css: MP.row },
+              { css: AP.row },
               Glamor.createElement(xT, {
                 label: r.rateYesButton,
                 onClick: this._onRateYesButtonClick,
@@ -32977,7 +33078,7 @@
             )
           : Glamor.createElement(
               "div",
-              { css: MP.row },
+              { css: AP.row },
               Glamor.createElement(xT, {
                 label: r.okButton,
                 onClick: this._onOkButtonClick,
@@ -32994,27 +33095,27 @@
       return { ...this.defaultTexts, ...this.props.texts };
     }
   }
-  var aO = MP.theme.ThemeAware(iO);
+  var aO = AP.theme.ThemeAware(iO);
   const sO = {
     root: {
       width: "100%",
       maxWidth: 400,
-      backgroundColor: MP.color.bgLight1,
-      border: MP.border.dark,
-      ...MP.borderRadius.r4,
-      ...MP.padding("g2"),
-      "& a": { color: MP.color.textPassive },
+      backgroundColor: AP.color.bgLight1,
+      border: AP.border.dark,
+      ...AP.borderRadius.r4,
+      ...AP.padding("g2"),
+      "& a": { color: AP.color.textPassive },
     },
     content: {
-      ...MP.text.bleak,
-      borderLeft: MP.border.dark,
-      paddingLeft: MP.space.g1h,
+      ...AP.text.bleak,
+      borderLeft: AP.border.dark,
+      paddingLeft: AP.space.g1h,
     },
-    button: { ...MP.clickable, marginBottom: 2 },
-    link: { ...MP.text.group2, color: MP.color.link, fontSize: MP.space.g1h },
-    starsIcon: { color: MP.color.attention },
+    button: { ...AP.clickable, marginBottom: 2 },
+    link: { ...AP.text.group2, color: AP.color.link, fontSize: AP.space.g1h },
+    starsIcon: { color: AP.color.attention },
   };
-  class lO extends MP.Component {
+  class lO extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -33028,15 +33129,15 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: [MP.row, sO.root] },
+        { css: [AP.row, sO.root] },
         Glamor.createElement(
           "div",
-          { css: [MP.row, sO.button], onClick: this._onRateUsClick },
+          { css: [AP.row, sO.button], onClick: this._onRateUsClick },
           Glamor.createElement(tT, { src: this.props.image }),
           Glamor.createElement(qP, { width: "g2" }),
           Glamor.createElement(
             "div",
-            { css: [MP.column, MP.alignItems.start] },
+            { css: [AP.column, AP.alignItems.start] },
             Glamor.createElement("div", { css: sO.link }, "RATE US 🙈"),
             Glamor.createElement(qP, { height: "6" }),
             Glamor.createElement(LP, {
@@ -33050,7 +33151,7 @@
       );
     }
   }
-  class cO extends MP.Component {
+  class cO extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -33104,19 +33205,19 @@
   }
   const uO = {
       root: {
-        ...MP.row,
-        ...MP.alignItems.center,
-        ...MP.justifyContent.between,
+        ...AP.row,
+        ...AP.alignItems.center,
+        ...AP.justifyContent.between,
         height: "100%",
       },
       texts: {},
-      title: { ...MP.text.contentTitle },
-      features: { marginTop: MP.space.g0h },
+      title: { ...AP.text.contentTitle },
+      features: { marginTop: AP.space.g0h },
       feature: {
-        ...MP.text.hashtag,
-        ...MP.row,
-        ...MP.alignItems.center,
-        marginBottom: MP.space.g0h,
+        ...AP.text.hashtag,
+        ...AP.row,
+        ...AP.alignItems.center,
+        marginBottom: AP.space.g0h,
         "&:last-child": { marginBottom: 0 },
         "&::before": {
           content: '""',
@@ -33128,34 +33229,34 @@
           transform: "translateY(10%)",
         },
       },
-      icon: { ...MP.relative() },
-      iconSvg: { color: MP.color.iconActionable },
+      icon: { ...AP.relative() },
+      iconSvg: { color: AP.color.iconActionable },
       iconImage: {},
       iconMarker: ({ props: e }) => ({
-        ...MP.absolute("-3 -5 . ."),
-        ...MP.transition.fast,
+        ...AP.absolute("-3 -5 . ."),
+        ...AP.transition.fast,
         transitionProperty: "opacity",
         width: 20,
         height: 20,
         borderRadius: "50%",
         pointerEvents: "none",
-        backgroundColor: MP.color.link,
+        backgroundColor: AP.color.link,
         boxShadow: "0 3px 6px rgba(27, 162, 249, 0.5)",
         ...(!e.icon.withMarker && { opacity: 0 }),
       }),
-      iconProSticker: { ...MP.absolute(". -9 -6 .") },
+      iconProSticker: { ...AP.absolute(". -9 -6 .") },
       iconBadge: ({ props: e }) => ({
-        ...MP.row,
-        ...MP.center,
-        ...MP.padding("0 5 0 5"),
-        ...MP.transition.fast,
-        ...MP.absolute("-5 -6 . ."),
+        ...AP.row,
+        ...AP.center,
+        ...AP.padding("0 5 0 5"),
+        ...AP.transition.fast,
+        ...AP.absolute("-5 -6 . ."),
         height: 23,
         minWidth: 23,
-        background: MP.color.link,
-        border: `2px solid ${MP.color.bgLight3}`,
+        background: AP.color.link,
+        border: `2px solid ${AP.color.bgLight3}`,
         borderRadius: 12,
-        ...MP.text.of({ size: 12, height: "17px", weight: 700, color: "#FFF" }),
+        ...AP.text.of({ size: 12, height: "17px", weight: 700, color: "#FFF" }),
         ...(!e.icon.badgeText && {
           opacity: 0,
           transform: "scale(0.5)",
@@ -33165,7 +33266,7 @@
     },
     dO = "sidebar-tab.sticker-pro";
   tT.registerImages({ [dO]: "ui-igswiss/sticker-pro.png:36:16" });
-  class hO extends MP.Component {
+  class hO extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -33207,25 +33308,25 @@
     }
   }
   const pO = {
-      root: { ...MP.row, ...MP.relative(), height: "100%" },
+      root: { ...AP.row, ...AP.relative(), height: "100%" },
       bar: ({ props: e }) => ({
-        ...MP.column,
-        ...MP.relative(),
+        ...AP.column,
+        ...AP.relative(),
         zIndex: 3,
         width: 80,
         "&::before": {
           content: '""',
-          ...MP.absolute("0 0 0 0"),
-          background: MP.color.bgLight2,
-          borderRight: `2px solid ${MP.color.borderLight}`,
+          ...AP.absolute("0 0 0 0"),
+          background: AP.color.bgLight2,
+          borderRight: `2px solid ${AP.color.borderLight}`,
           ...(!e.open && { display: "none" }),
         },
       }),
       topDragArea: { height: 22, width: 440 },
       logo: ({ props: e }) => ({
-        ...MP.relative(),
+        ...AP.relative(),
         "&::before, &::after": {
-          ...MP.absolute(),
+          ...AP.absolute(),
           top: -22,
           left: 0,
           zIndex: 1,
@@ -33233,8 +33334,8 @@
           width: 80,
           height: 22,
           pointerEvents: "none",
-          background: MP.color.bgLight2,
-          border: `2px solid ${MP.color.borderLight}`,
+          background: AP.color.bgLight2,
+          border: `2px solid ${AP.color.borderLight}`,
           borderLeft: "none",
           opacity: 0,
           ...(e.open && "logo" === e.selectedTabId && { opacity: 1 }),
@@ -33249,10 +33350,10 @@
       menu: ({ props: e }) => {
         const t = e.menu.tabs.findIndex((t) => t.id === e.selectedTabId);
         return {
-          ...MP.relative(),
+          ...AP.relative(),
           top: -10,
           "&::before, &::after": {
-            ...MP.absolute(),
+            ...AP.absolute(),
             top: 105 * t - 14,
             left: 0,
             zIndex: 1,
@@ -33260,8 +33361,8 @@
             width: 80,
             height: 22,
             pointerEvents: "none",
-            background: MP.color.bgLight2,
-            border: `2px solid ${MP.color.borderLight}`,
+            background: AP.color.bgLight2,
+            border: `2px solid ${AP.color.borderLight}`,
             borderLeft: "none",
             opacity: 0,
             ...(e.open && t >= 0 && { opacity: 1 }),
@@ -33275,19 +33376,19 @@
         };
       },
       menuContent: ({ props: e }) => ({
-        ...MP.padding("g1 g1 g1 0"),
-        ...MP.transition.slow,
-        ...MP.relative(),
+        ...AP.padding("g1 g1 g1 0"),
+        ...AP.transition.slow,
+        ...AP.relative(),
         transitionProperty: "transform",
         width: "min-content",
         transform: "translateX(-220px)",
         ...(e.menu.disabled && { opacity: 0.7 }),
         "&::before": {
-          ...MP.absolute("0 0 0 0"),
-          ...MP.shadow.sh6,
+          ...AP.absolute("0 0 0 0"),
+          ...AP.shadow.sh6,
           content: '""',
           borderRadius: "0 8px 8px 0",
-          background: MP.color.bgLight2,
+          background: AP.color.bgLight2,
           opacity: 0,
         },
         ...(!e.open && {
@@ -33296,8 +33397,8 @@
         }),
       }),
       tab: ({ props: e }, t) => ({
-        ...MP.relative(),
-        ...MP.transition.slow,
+        ...AP.relative(),
+        ...AP.transition.slow,
         translateZ: 0,
         width: 300,
         height: 97,
@@ -33307,13 +33408,13 @@
         borderLeft: "none",
         borderRadius: "0 8px 8px 0",
         cursor: "pointer",
-        marginBottom: MP.space.g1,
+        marginBottom: AP.space.g1,
         userSelect: "none",
         "&:last-child": { marginBottom: 0 },
         "&::before": {
-          ...MP.absolute("-22 -1 -22 0"),
+          ...AP.absolute("-22 -1 -22 0"),
           content: '""',
-          background: MP.color.bgLight3,
+          background: AP.color.bgLight3,
           opacity: 0,
           pointerEvents: "none",
           ...(e.open && e.selectedTabId === t && { opacity: 1 }),
@@ -33322,24 +33423,24 @@
         ...(!e.open &&
           "logo" !== t && {
             "&:hover": {
-              borderColor: MP.color.borderDark,
-              background: MP.color.bgLight1,
+              borderColor: AP.color.borderDark,
+              background: AP.color.bgLight1,
             },
             "&:hover::after": {
               content: '""',
-              ...MP.absolute("-1 . -1 0"),
+              ...AP.absolute("-1 . -1 0"),
               width: 4,
-              background: MP.color.link,
+              background: AP.color.link,
             },
           }),
         ...(e.menu.disabled && "logo" !== t && { pointerEvents: "none" }),
       }),
       content: ({ props: e }) => ({
-        ...MP.relative(),
-        ...MP.transition.slow,
+        ...AP.relative(),
+        ...AP.transition.slow,
         height: "100%",
         ...(!e.open && {
-          ...MP.absolute(),
+          ...AP.absolute(),
           left: 82,
           opacity: 0,
           pointerEvents: "none",
@@ -33347,19 +33448,19 @@
         }),
       }),
       sidePanel: ({ props: e }) => ({
-        ...MP.relative(),
+        ...AP.relative(),
         zIndex: 2,
         width: e.sidePanel.width || 440,
         height: "100%",
         "&::before": {
           content: '""',
-          ...MP.absolute("0 0 0 50% -1"),
-          ...MP.shadow.sh12,
+          ...AP.absolute("0 0 0 50% -1"),
+          ...AP.shadow.sh12,
         },
         "&::after": {
           content: '""',
-          ...MP.absolute("0 0 0 0 -1"),
-          background: MP.color.bgLight3,
+          ...AP.absolute("0 0 0 0 -1"),
+          background: AP.color.bgLight3,
         },
         ...(e.sidePanel.hidden && { display: "none" }),
       }),
@@ -33368,21 +33469,21 @@
         height: "100%",
         overflow: "auto",
         overflowX: "hidden",
-        ...MP.relative(),
+        ...AP.relative(),
       },
-      sidePanelCloseButton: { ...MP.absolute("g1 g1 . .") },
+      sidePanelCloseButton: { ...AP.absolute("g1 g1 . .") },
       expandButton: {
-        ...MP.absolute("50% -33 . ."),
+        ...AP.absolute("50% -33 . ."),
         marginTop: -32,
         zIndex: 1,
         cursor: "pointer",
       },
       bodyPanel: ({ props: e }) => ({
-        ...MP.absolute("0 . 0 100% 1"),
-        ...MP.transition.slow,
+        ...AP.absolute("0 . 0 100% 1"),
+        ...AP.transition.slow,
         width: "calc(100vw - 100% - 80px)",
         height: "100%",
-        background: MP.color.bgLight3,
+        background: AP.color.bgLight3,
         ...(!e.sidePanel.content && { transition: "none" }),
         ".sidePanel_disableBodyTransition &": { transition: "none" },
         ...((!e.open || !e.bodyPanel.open) && {
@@ -33399,7 +33500,7 @@
     [mO]: "ui-igswiss/sidebar-expand.png:50:64",
     [fO]: "ui-igswiss/sidebar-expand-night.png:50:64",
   });
-  class gO extends MP.Component {
+  class gO extends AP.Component {
     constructor(e) {
       super(e),
         (this._renderMenuTab = (e) =>
@@ -33426,8 +33527,8 @@
           const t = e.target.closest("[data-tab-id]").dataset.tabId;
           this.props.onTabClick(t);
         }),
-        (this._rootRef = MP.createRef()),
-        (this._contentRef = MP.createRef()),
+        (this._rootRef = AP.createRef()),
+        (this._contentRef = AP.createRef()),
         (this._sidePanelCloseTimeout = null),
         (this._bodyPanelCloseTimeout = null);
     }
@@ -33435,7 +33536,7 @@
       const t = e,
         r = this.props;
       if (
-        (t.open !== r.open && MP.flip.add(this._contentRef.current),
+        (t.open !== r.open && AP.flip.add(this._contentRef.current),
         t.sidePanel.hidden || r.sidePanel.hidden)
       ) {
         const e = this._rootRef.current;
@@ -33447,7 +33548,7 @@
       return null;
     }
     componentDidUpdate(e) {
-      MP.flip.run();
+      AP.flip.run();
       const t = e,
         r = this.props;
       r.open
@@ -33500,7 +33601,7 @@
             onClick: this._onTabClick,
           },
           Glamor.createElement(hO, {
-            style: MP.clickable,
+            style: AP.clickable,
             icon: {
               svg: this.props.logoTab.svgIcon,
               withMarker: this.props.logoTab.withMarker,
@@ -33570,44 +33671,44 @@
       });
     }
   }
-  var vO = MP.theme.ThemeAware(gO);
+  var vO = AP.theme.ThemeAware(gO);
   const bO = {
     root: { position: "relative", width: 520 },
     title: {
-      fontFamily: MP.font.primary,
+      fontFamily: AP.font.primary,
       fontSize: 42,
       fontWeight: 700,
       lineHeight: "52px",
     },
-    text: { fontFamily: MP.font.secondary, fontSize: 18 },
+    text: { fontFamily: AP.font.secondary, fontSize: 18 },
     listItem: {
       paddingLeft: 38,
       position: "relative",
-      "&:not(:last-child)": { marginBottom: MP.space.g1 },
+      "&:not(:last-child)": { marginBottom: AP.space.g1 },
       "&::before": {
         content: '""',
         position: "absolute",
-        left: MP.space.g2,
+        left: AP.space.g2,
         top: 9,
         width: 6,
         height: 6,
         borderRadius: "50%",
-        background: MP.color.textNormal,
+        background: AP.color.textNormal,
       },
     },
     disclaimer: {
-      fontFamily: MP.font.secondary,
+      fontFamily: AP.font.secondary,
       position: "absolute",
       top: "100%",
-      marginTop: MP.space.g5,
+      marginTop: AP.space.g5,
       fontSize: 11,
-      color: MP.color.textNormal,
+      color: AP.color.textNormal,
       opacity: 0.5,
       "& a": { color: "inherit" },
       "& a:hover": { textDecoration: "underline" },
     },
   };
-  class yO extends MP.Component {
+  class yO extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -33624,7 +33725,7 @@
         r =
           e.listItems &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { height: "g2" }),
             Glamor.createElement(
@@ -33638,13 +33739,13 @@
         n =
           e.comingSoon &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { height: "g2" }),
             Glamor.createElement(
               "div",
               {
-                css: [MP.row, MP.justifyContent.between, MP.alignItems.center],
+                css: [AP.row, AP.justifyContent.between, AP.alignItems.center],
               },
               Glamor.createElement("div", null, e.comingSoon),
               Glamor.createElement(qP, { width: "g2" }),
@@ -33680,53 +33781,53 @@
   }
   const _O = {
     userCell: {
-      ...MP.text.nowrap,
+      ...AP.text.nowrap,
       width: 400,
       height: 40,
       position: "relative",
       "&::before": {
         content: '""',
-        ...MP.absolute("-12 -12 -12 -12"),
+        ...AP.absolute("-12 -12 -12 -12"),
         zIndex: 0,
       },
       "& > *": { position: "relative", zIndex: 1 },
     },
     userAvatarLink: {
       position: "relative",
-      "&::before": { content: '""', ...MP.absolute("-12 -12 -12 -12") },
+      "&::before": { content: '""', ...AP.absolute("-12 -12 -12 -12") },
     },
     userBody: { minWidth: 0 },
     userFirstLine: {
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.text.tooltipTitle,
-      color: MP.color.textNormal,
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.text.tooltipTitle,
+      color: AP.color.textNormal,
       marginBottom: 2,
     },
-    userIconWrap: { height: 14, marginLeft: MP.space.g1h },
-    userIcon: { color: MP.color.primary, height: "100%" },
+    userIconWrap: { height: 14, marginLeft: AP.space.g1h },
+    userIcon: { color: AP.color.primary, height: "100%" },
     userSecondLine: {
-      ...MP.text.elementNormal,
-      ...MP.row,
-      ...MP.alignItems.baseline,
+      ...AP.text.elementNormal,
+      ...AP.row,
+      ...AP.alignItems.baseline,
     },
-    userFullName: { ...MP.text.ellipsis },
-    userId: { ...MP.text.hashtag, lineHeight: "inherit" },
+    userFullName: { ...AP.text.ellipsis },
+    userId: { ...AP.text.hashtag, lineHeight: "inherit" },
     navigate: (e) => ({
-      ...MP.clickable,
-      ...MP.transition.fast,
-      color: MP.color.link,
+      ...AP.clickable,
+      ...AP.transition.fast,
+      color: AP.color.link,
       opacity: 0,
       ...(e.hovered && { opacity: 1 }),
     }),
     startDm: (e) => ({
-      ...MP.clickable,
-      ...MP.transition.fast,
+      ...AP.clickable,
+      ...AP.transition.fast,
       opacity: 0,
       ...(e.hovered && { opacity: 1 }),
     }),
   };
-  class EO extends MP.Component {
+  class EO extends AP.Component {
     constructor(e) {
       super(e),
         (this._onStartDmClick = () => {
@@ -33758,7 +33859,7 @@
                 "div",
                 wO(
                   { css: _O.userIconWrap },
-                  MP.hoverState(this, "privateIconHovered")
+                  AP.hoverState(this, "privateIconHovered")
                 ),
                 Glamor.createElement(LP, {
                   style: _O.userIcon,
@@ -33775,7 +33876,7 @@
                 "div",
                 wO(
                   { css: _O.userIconWrap },
-                  MP.hoverState(this, "verifiedIconHovered")
+                  AP.hoverState(this, "verifiedIconHovered")
                 ),
                 Glamor.createElement(LP, {
                   style: _O.userIcon,
@@ -33815,10 +33916,10 @@
         "div",
         wO(
           {
-            css: [MP.row, MP.alignItems.center, _O.userCell],
+            css: [AP.row, AP.alignItems.center, _O.userCell],
             "data-user-id": e.userId,
           },
-          MP.hoverState(this, "hovered")
+          AP.hoverState(this, "hovered")
         ),
         n,
         Glamor.createElement(qP, { width: "g3" }),
@@ -33829,7 +33930,7 @@
       );
     }
   }
-  var xO = MP.theme.ThemeAware(EO);
+  var xO = AP.theme.ThemeAware(EO);
   function kO() {
     return (kO =
       Object.assign ||
@@ -33864,7 +33965,7 @@
     [CO.none.day]: "ui-igswiss/follow-status-none-day.svg:33:23",
     [CO.none.night]: "ui-igswiss/follow-status-none-night.svg:33:23",
   });
-  class SO extends MP.Component {
+  class SO extends AP.Component {
     constructor(e) {
       super(e),
         (this._renderUserCell = (e) =>
@@ -33919,60 +34020,60 @@
       );
     }
   }
-  var PO = MP.theme.ThemeAware(SO);
-  const TO = MP.keyframes({
+  var PO = AP.theme.ThemeAware(SO);
+  const TO = AP.keyframes({
       "0%": { transform: "scale(1)" },
       "40%": { transform: "scale(0.85)" },
     }),
     DO = {
       root: ({ canBeLiked: e, clickable: t }) => ({
-        ...(t && MP.clickable),
-        ...MP.relative(),
-        ...MP.noselect,
+        ...(t && AP.clickable),
+        ...AP.relative(),
+        ...AP.noselect,
         height: 23,
         ...(!e && { opacity: 0.3 }),
-        ...MP.hitboxBefore(20),
+        ...AP.hitboxBefore(20),
       }),
       likesHeartWrap: {
         width: 20,
         height: 23,
-        ...MP.animation.of({ duration: "250ms" }),
+        ...AP.animation.of({ duration: "250ms" }),
       },
-      likesHeart: { ...MP.absolute("0 . . 0"), ...MP.transition.superfast },
+      likesHeart: { ...AP.absolute("0 . . 0"), ...AP.transition.superfast },
       likesCount: {
-        ...MP.absolute(". . 0 22"),
-        ...MP.text.tooltipText,
+        ...AP.absolute(". . 0 22"),
+        ...AP.text.tooltipText,
         color: "#EE4956",
         fontWeight: 700,
         lineHeight: "12px",
       },
       likesCountNewValue: {
-        ...MP.transition.fast,
+        ...AP.transition.fast,
         height: 12,
         transform: "translateY(100%)",
         opacity: 1,
       },
       likesCountOldValue: {
-        ...MP.transition.fast,
+        ...AP.transition.fast,
         height: 12,
         transform: "translateY(100%)",
         opacity: 0,
       },
     };
-  class IO extends MP.Component {
+  class IO extends AP.Component {
     constructor(e) {
       super(e),
         (this._onClick = () => {
           const e = this._heartRef.current;
           (e.style.animation = "none"),
-            MP.raf(2, () => {
+            AP.raf(2, () => {
               (e.style.animation = null), (e.style.animationName = TO);
             }),
             this.props.onLikeClick(this.props.user);
         }),
-        (this._heartRef = MP.createRef()),
-        (this._newValueRef = MP.createRef()),
-        (this._oldValueRef = MP.createRef());
+        (this._heartRef = AP.createRef()),
+        (this._newValueRef = AP.createRef()),
+        (this._oldValueRef = AP.createRef());
     }
     componentDidUpdate(e) {
       if (e.likes !== this.props.likes) {
@@ -33984,7 +34085,7 @@
             transform: "none",
             opacity: 1,
           }),
-          MP.raf(2, () => {
+          AP.raf(2, () => {
             Object.assign(e, {
               transition: null,
               transform: null,
@@ -34038,15 +34139,15 @@
   const GO = {
     root: {
       maxWidth: 450,
-      ...MP.text.tooltipText,
-      color: MP.color.textPassive,
+      ...AP.text.tooltipText,
+      color: AP.color.textPassive,
     },
     icon: (e) => ({ paddingTop: e.text ? 2 : 0 }),
   };
   LP.registerSvgIcons([
     '<symbol id="secure-badge-panel.lock" viewBox="0 0 23.819 23.819"><circle cx="11.909" cy="11.909" r="11.909" fill="#d8dadd"/><path d="M47.56,30.466h-.93V28.977a2.977,2.977,0,0,0-5.955,0v1.489h-.93A.747.747,0,0,0,39,31.21v7.816a.747.747,0,0,0,.744.744H47.56a.747.747,0,0,0,.744-.744V31.21A.747.747,0,0,0,47.56,30.466Zm-2.791,6.42H42.536l.6-1.526a1.117,1.117,0,1,1,1.042,0Zm1.117-6.42H41.419V28.977a2.233,2.233,0,0,1,4.466,0Z" transform="translate(-31.743 -21.162)" fill="#fff"/></symbol>',
   ]);
-  class OO extends MP.Component {
+  class OO extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -34060,23 +34161,23 @@
     render() {
       const e = Glamor.createElement(
           "div",
-          { css: [MP.column, GO.icon(this.props)] },
+          { css: [AP.column, GO.icon(this.props)] },
           Glamor.createElement(LP, { name: "secure-badge-panel.lock" })
         ),
         t =
           this.props.text &&
-          Glamor.createElement("div", { css: MP.row }, this.props.text);
+          Glamor.createElement("div", { css: AP.row }, this.props.text);
       return Glamor.createElement(
         "div",
-        { css: [MP.row, GO.root] },
+        { css: [AP.row, GO.root] },
         e,
         e && t && Glamor.createElement(qP, { width: "g1" }),
         t
       );
     }
   }
-  var AO = {
-    setDragImage: MO,
+  var MO = {
+    setDragImage: AO,
     dragEvents: function (
       e,
       { canDrag: t, dragImage: r, onDragStart: n, onDragEnter: o, onDragEnd: i }
@@ -34085,7 +34186,7 @@
         draggable: t,
         onDragStart: n
           ? (o) => {
-              t && n && (e.setState({ dragging: !0 }), MO(o, r), n());
+              t && n && (e.setState({ dragging: !0 }), AO(o, r), n());
             }
           : null,
         onDragEnd: i
@@ -34104,7 +34205,7 @@
       };
     },
   };
-  function MO(e, t) {
+  function AO(e, t) {
     const r = document.createElement("img");
     (r.src = t),
       (r.width = 50),
@@ -34593,16 +34694,16 @@
     JO = function (e, t) {
       return qO(e.getUTCMinutes(), t.length);
     },
-    eA = function (e, t) {
+    eM = function (e, t) {
       return qO(e.getUTCSeconds(), t.length);
     },
-    tA = function (e, t) {
+    tM = function (e, t) {
       var r = t.length,
         n = e.getUTCMilliseconds();
       return qO(Math.floor(n * Math.pow(10, r - 3)), t.length);
     },
-    rA = 864e5;
-  function nA(e) {
+    rM = 864e5;
+  function nM(e) {
     h_(1, arguments);
     var t = 1,
       r = p_(e),
@@ -34610,32 +34711,32 @@
       o = (n < t ? 7 : 0) + n - t;
     return r.setUTCDate(r.getUTCDate() - o), r.setUTCHours(0, 0, 0, 0), r;
   }
-  function oA(e) {
+  function oM(e) {
     h_(1, arguments);
     var t = p_(e),
       r = t.getUTCFullYear(),
       n = new Date(0);
     n.setUTCFullYear(r + 1, 0, 4), n.setUTCHours(0, 0, 0, 0);
-    var o = nA(n),
+    var o = nM(n),
       i = new Date(0);
     i.setUTCFullYear(r, 0, 4), i.setUTCHours(0, 0, 0, 0);
-    var a = nA(i);
+    var a = nM(i);
     return t.getTime() >= o.getTime()
       ? r + 1
       : t.getTime() >= a.getTime()
       ? r
       : r - 1;
   }
-  function iA(e) {
+  function iM(e) {
     h_(1, arguments);
-    var t = oA(e),
+    var t = oM(e),
       r = new Date(0);
     r.setUTCFullYear(t, 0, 4), r.setUTCHours(0, 0, 0, 0);
-    var n = nA(r);
+    var n = nM(r);
     return n;
   }
-  var aA = 6048e5;
-  function sA(e, t) {
+  var aM = 6048e5;
+  function sM(e, t) {
     h_(1, arguments);
     var r = t || {},
       n = r.locale,
@@ -34649,7 +34750,7 @@
       c = (l < a ? 7 : 0) + l - a;
     return s.setUTCDate(s.getUTCDate() - c), s.setUTCHours(0, 0, 0, 0), s;
   }
-  function lA(e, t) {
+  function lM(e, t) {
     h_(1, arguments);
     var r = p_(e, t),
       n = r.getUTCFullYear(),
@@ -34664,37 +34765,37 @@
       );
     var c = new Date(0);
     c.setUTCFullYear(n + 1, 0, l), c.setUTCHours(0, 0, 0, 0);
-    var u = sA(c, t),
+    var u = sM(c, t),
       d = new Date(0);
     d.setUTCFullYear(n, 0, l), d.setUTCHours(0, 0, 0, 0);
-    var h = sA(d, t);
+    var h = sM(d, t);
     return r.getTime() >= u.getTime()
       ? n + 1
       : r.getTime() >= h.getTime()
       ? n
       : n - 1;
   }
-  function cA(e, t) {
+  function cM(e, t) {
     h_(1, arguments);
     var r = t || {},
       n = r.locale,
       o = n && n.options && n.options.firstWeekContainsDate,
       i = null == o ? 1 : d_(o),
       a = null == r.firstWeekContainsDate ? i : d_(r.firstWeekContainsDate),
-      s = lA(e, t),
+      s = lM(e, t),
       l = new Date(0);
     l.setUTCFullYear(s, 0, a), l.setUTCHours(0, 0, 0, 0);
-    var c = sA(l, t);
+    var c = sM(l, t);
     return c;
   }
-  var uA = 6048e5;
-  var dA = "midnight",
-    hA = "noon",
-    pA = "morning",
-    mA = "afternoon",
-    fA = "evening",
-    gA = "night",
-    vA = {
+  var uM = 6048e5;
+  var dM = "midnight",
+    hM = "noon",
+    pM = "morning",
+    mM = "afternoon",
+    fM = "evening",
+    gM = "night",
+    vM = {
       G: function (e, t, r) {
         var n = e.getUTCFullYear() > 0 ? 1 : 0;
         switch (t) {
@@ -34718,7 +34819,7 @@
         return YO(e, t);
       },
       Y: function (e, t, r, n) {
-        var o = lA(e, n),
+        var o = lM(e, n),
           i = o > 0 ? o : 1 - o;
         return "YY" === t
           ? qO(i % 100, 2)
@@ -34727,7 +34828,7 @@
           : qO(i, t.length);
       },
       R: function (e, t) {
-        return qO(oA(e), t.length);
+        return qO(oM(e), t.length);
       },
       u: function (e, t) {
         return qO(e.getUTCFullYear(), t.length);
@@ -34813,8 +34914,8 @@
         var o = (function (e, t) {
           h_(1, arguments);
           var r = p_(e),
-            n = sA(r, t).getTime() - cA(r, t).getTime();
-          return Math.round(n / uA) + 1;
+            n = sM(r, t).getTime() - cM(r, t).getTime();
+          return Math.round(n / uM) + 1;
         })(e, n);
         return "wo" === t
           ? r.ordinalNumber(o, { unit: "week" })
@@ -34824,8 +34925,8 @@
         var n = (function (e) {
           h_(1, arguments);
           var t = p_(e),
-            r = nA(t).getTime() - iA(t).getTime();
-          return Math.round(r / aA) + 1;
+            r = nM(t).getTime() - iM(t).getTime();
+          return Math.round(r / aM) + 1;
         })(e);
         return "Io" === t
           ? r.ordinalNumber(n, { unit: "week" })
@@ -34844,7 +34945,7 @@
           t.setUTCMonth(0, 1), t.setUTCHours(0, 0, 0, 0);
           var n = t.getTime(),
             o = r - n;
-          return Math.floor(o / rA) + 1;
+          return Math.floor(o / rM) + 1;
         })(e);
         return "Do" === t
           ? r.ordinalNumber(n, { unit: "dayOfYear" })
@@ -34950,7 +35051,7 @@
         var n,
           o = e.getUTCHours();
         switch (
-          ((n = 12 === o ? hA : 0 === o ? dA : o / 12 >= 1 ? "pm" : "am"), t)
+          ((n = 12 === o ? hM : 0 === o ? dM : o / 12 >= 1 ? "pm" : "am"), t)
         ) {
           case "b":
           case "bb":
@@ -34969,7 +35070,7 @@
       B: function (e, t, r) {
         var n,
           o = e.getUTCHours();
-        switch (((n = o >= 17 ? fA : o >= 12 ? mA : o >= 4 ? pA : gA), t)) {
+        switch (((n = o >= 17 ? fM : o >= 12 ? mM : o >= 4 ? pM : gM), t)) {
           case "B":
           case "BB":
           case "BBB":
@@ -35017,38 +35118,38 @@
       s: function (e, t, r) {
         return "so" === t
           ? r.ordinalNumber(e.getUTCSeconds(), { unit: "second" })
-          : eA(e, t);
+          : eM(e, t);
       },
       S: function (e, t) {
-        return tA(e, t);
+        return tM(e, t);
       },
       X: function (e, t, r, n) {
         var o = (n._originalDate || e).getTimezoneOffset();
         if (0 === o) return "Z";
         switch (t) {
           case "X":
-            return yA(o);
+            return yM(o);
           case "XXXX":
           case "XX":
-            return wA(o);
+            return wM(o);
           case "XXXXX":
           case "XXX":
           default:
-            return wA(o, ":");
+            return wM(o, ":");
         }
       },
       x: function (e, t, r, n) {
         var o = (n._originalDate || e).getTimezoneOffset();
         switch (t) {
           case "x":
-            return yA(o);
+            return yM(o);
           case "xxxx":
           case "xx":
-            return wA(o);
+            return wM(o);
           case "xxxxx":
           case "xxx":
           default:
-            return wA(o, ":");
+            return wM(o, ":");
         }
       },
       O: function (e, t, r, n) {
@@ -35057,10 +35158,10 @@
           case "O":
           case "OO":
           case "OOO":
-            return "GMT" + bA(o, ":");
+            return "GMT" + bM(o, ":");
           case "OOOO":
           default:
-            return "GMT" + wA(o, ":");
+            return "GMT" + wM(o, ":");
         }
       },
       z: function (e, t, r, n) {
@@ -35069,10 +35170,10 @@
           case "z":
           case "zz":
           case "zzz":
-            return "GMT" + bA(o, ":");
+            return "GMT" + bM(o, ":");
           case "zzzz":
           default:
-            return "GMT" + wA(o, ":");
+            return "GMT" + wM(o, ":");
         }
       },
       t: function (e, t, r, n) {
@@ -35083,7 +35184,7 @@
         return qO((n._originalDate || e).getTime(), t.length);
       },
     };
-  function bA(e, t) {
+  function bM(e, t) {
     var r = e > 0 ? "-" : "+",
       n = Math.abs(e),
       o = Math.floor(n / 60),
@@ -35092,18 +35193,18 @@
     var a = t || "";
     return r + String(o) + a + qO(i, 2);
   }
-  function yA(e, t) {
+  function yM(e, t) {
     return e % 60 == 0
       ? (e > 0 ? "-" : "+") + qO(Math.abs(e) / 60, 2)
-      : wA(e, t);
+      : wM(e, t);
   }
-  function wA(e, t) {
+  function wM(e, t) {
     var r = t || "",
       n = e > 0 ? "-" : "+",
       o = Math.abs(e);
     return n + qO(Math.floor(o / 60), 2) + r + qO(o % 60, 2);
   }
-  function _A(e, t) {
+  function _M(e, t) {
     switch (e) {
       case "P":
         return t.date({ width: "short" });
@@ -35116,7 +35217,7 @@
         return t.date({ width: "full" });
     }
   }
-  function EA(e, t) {
+  function EM(e, t) {
     switch (e) {
       case "p":
         return t.time({ width: "short" });
@@ -35129,14 +35230,14 @@
         return t.time({ width: "full" });
     }
   }
-  var xA = {
-      p: EA,
+  var xM = {
+      p: EM,
       P: function (e, t) {
         var r,
           n = e.match(/(P+)(p+)?/),
           o = n[1],
           i = n[2];
-        if (!i) return _A(e, t);
+        if (!i) return _M(e, t);
         switch (o) {
           case "P":
             r = t.dateTime({ width: "short" });
@@ -35151,29 +35252,29 @@
           default:
             r = t.dateTime({ width: "full" });
         }
-        return r.replace("{{date}}", _A(o, t)).replace("{{time}}", EA(i, t));
+        return r.replace("{{date}}", _M(o, t)).replace("{{time}}", EM(i, t));
       },
     },
-    kA = 6e4;
-  function CA(e) {
-    return e.getTime() % kA;
+    kM = 6e4;
+  function CM(e) {
+    return e.getTime() % kM;
   }
-  function SA(e) {
+  function SM(e) {
     var t = new Date(e.getTime()),
       r = Math.ceil(t.getTimezoneOffset());
     t.setSeconds(0, 0);
-    var n = r > 0 ? (kA + CA(t)) % kA : CA(t);
-    return r * kA + n;
+    var n = r > 0 ? (kM + CM(t)) % kM : CM(t);
+    return r * kM + n;
   }
-  var PA = ["D", "DD"],
-    TA = ["YY", "YYYY"];
-  function DA(e) {
-    return -1 !== PA.indexOf(e);
+  var PM = ["D", "DD"],
+    TM = ["YY", "YYYY"];
+  function DM(e) {
+    return -1 !== PM.indexOf(e);
   }
-  function IA(e) {
-    return -1 !== TA.indexOf(e);
+  function IM(e) {
+    return -1 !== TM.indexOf(e);
   }
-  function GA(e, t, r) {
+  function GM(e, t, r) {
     if ("YYYY" === e)
       throw new RangeError(
         "Use `yyyy` instead of `YYYY` (in `"
@@ -35199,12 +35300,12 @@
           .concat(r, "`; see: https://git.io/fxCyr")
       );
   }
-  var OA = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g,
-    AA = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g,
-    MA = /^'([^]*?)'?$/,
-    FA = /''/g,
-    RA = /[a-zA-Z]/;
-  function BA(e, t, r) {
+  var OM = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g,
+    MM = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g,
+    AM = /^'([^]*?)'?$/,
+    FM = /''/g,
+    RM = /[a-zA-Z]/;
+  function BM(e, t, r) {
     h_(2, arguments);
     var n = String(t),
       o = r || {},
@@ -35227,7 +35328,7 @@
       throw new RangeError("locale must contain formatLong property");
     var h = p_(e);
     if (!RO(h)) throw new RangeError("Invalid time value");
-    var p = SA(h),
+    var p = SM(h),
       m = $O(h, p),
       f = {
         firstWeekContainsDate: l,
@@ -35236,25 +35337,25 @@
         _originalDate: h,
       },
       g = n
-        .match(AA)
+        .match(MM)
         .map(function (e) {
           var t = e[0];
-          return "p" === t || "P" === t ? (0, xA[t])(e, i.formatLong, f) : e;
+          return "p" === t || "P" === t ? (0, xM[t])(e, i.formatLong, f) : e;
         })
         .join("")
-        .match(OA)
+        .match(OM)
         .map(function (r) {
           if ("''" === r) return "'";
           var n = r[0];
-          if ("'" === n) return LA(r);
-          var a = vA[n];
+          if ("'" === n) return LM(r);
+          var a = vM[n];
           if (a)
             return (
-              !o.useAdditionalWeekYearTokens && IA(r) && GA(r, t, e),
-              !o.useAdditionalDayOfYearTokens && DA(r) && GA(r, t, e),
+              !o.useAdditionalWeekYearTokens && IM(r) && GM(r, t, e),
+              !o.useAdditionalDayOfYearTokens && DM(r) && GM(r, t, e),
               a(m, r, i.localize, f)
             );
-          if (n.match(RA))
+          if (n.match(RM))
             throw new RangeError(
               "Format string contains an unescaped latin alphabet character `" +
                 n +
@@ -35265,44 +35366,44 @@
         .join("");
     return g;
   }
-  function LA(e) {
-    return e.match(MA)[1].replace(FA, "'");
+  function LM(e) {
+    return e.match(AM)[1].replace(FM, "'");
   }
   r(FO, "default", function () {
-    return BA;
+    return BM;
   });
-  var NA = {};
-  function jA(e, t) {
+  var NM = {};
+  function jM(e, t) {
     h_(2, arguments);
     var r = g_(e),
       n = g_(t);
     return r.getTime() === n.getTime();
   }
-  function zA(e) {
-    return h_(1, arguments), jA(e, Date.now());
+  function zM(e) {
+    return h_(1, arguments), jM(e, Date.now());
   }
-  r(NA, "default", function () {
-    return zA;
+  r(NM, "default", function () {
+    return zM;
   });
-  var HA = {};
-  function UA(e) {
-    return h_(1, arguments), jA(e, m_(Date.now(), 1));
+  var HM = {};
+  function UM(e) {
+    return h_(1, arguments), jM(e, m_(Date.now(), 1));
   }
-  r(HA, "default", function () {
-    return UA;
+  r(HM, "default", function () {
+    return UM;
   });
-  var WA = {};
-  function VA(e, t) {
+  var WM = {};
+  function VM(e, t) {
     h_(2, arguments);
     var r = p_(e),
       n = p_(t);
     return r.getFullYear() === n.getFullYear();
   }
-  function $A(e) {
-    return h_(1, arguments), VA(e, Date.now());
+  function $M(e) {
+    return h_(1, arguments), VM(e, Date.now());
   }
-  function qA() {
-    return (qA =
+  function qM() {
+    return (qM =
       Object.assign ||
       function (e) {
         for (var t = 1; t < arguments.length; t++) {
@@ -35313,19 +35414,19 @@
         return e;
       }).apply(this, arguments);
   }
-  r(WA, "default", function () {
-    return $A;
+  r(WM, "default", function () {
+    return $M;
   });
-  const YA = {
+  const YM = {
       root: {
         width: "100%",
         height: "100%",
         overflow: "hidden",
         userSelect: "none",
-        ...MP.relative(),
+        ...AP.relative(),
       },
       image: ({ props: e, state: t }) => ({
-        ...MP.absolute("0 0 0 0"),
+        ...AP.absolute("0 0 0 0"),
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundColor: e.backgroundColor || "#EFEFEF",
@@ -35334,16 +35435,16 @@
           e.grayscale ? "grayscale(1)" : "",
         ].join(" "),
         ...(!((!e.canClick && !e.canDrag) || t.dragging) && {
-          ...MP.clickable,
+          ...AP.clickable,
         }),
       }),
-      typeIcon: { ...MP.absolute("0 0 . .") },
+      typeIcon: { ...AP.absolute("0 0 . .") },
       localLabel: {
-        ...MP.row,
-        ...MP.alignItems.center,
-        ...MP.absolute("6 . . 0"),
-        ...MP.padding("3 7 3 8"),
-        background: MP.color.attention,
+        ...AP.row,
+        ...AP.alignItems.center,
+        ...AP.absolute("6 . . 0"),
+        ...AP.padding("3 7 3 8"),
+        background: AP.color.attention,
         borderRadius: "0 4px 4px 0",
         pointerEvents: "none",
       },
@@ -35354,7 +35455,7 @@
         color: "var(--day-color-text-normal)",
       },
       localLabelText: {
-        ...MP.text.of({
+        ...AP.text.of({
           size: 11,
           height: "14px",
           weight: 700,
@@ -35362,14 +35463,14 @@
         }),
       },
       footer: {
-        ...MP.absolute("0 0 0 0"),
-        ...MP.row,
-        ...MP.alignItems.end,
-        ...MP.justifyContent.end,
+        ...AP.absolute("0 0 0 0"),
+        ...AP.row,
+        ...AP.alignItems.end,
+        ...AP.justifyContent.end,
         userSelect: "none",
         pointerEvents: "none",
         "&::before": {
-          ...MP.absolute("50% 0 0 0"),
+          ...AP.absolute("50% 0 0 0"),
           content: '""',
           opacity: 0.8,
           background:
@@ -35377,30 +35478,30 @@
         },
       },
       info: {
-        ...MP.row,
-        ...MP.alignItems.center,
-        ...MP.padding(". 7 6 7"),
-        ...MP.relative(),
+        ...AP.row,
+        ...AP.alignItems.center,
+        ...AP.padding(". 7 6 7"),
+        ...AP.relative(),
       },
       infoText: {
-        ...MP.text.of({ size: 11, height: "14px", weight: 600, color: "#FFF" }),
+        ...AP.text.of({ size: 11, height: "14px", weight: 600, color: "#FFF" }),
       },
       infoDot: {
         flexShrink: 0,
         width: 8,
         height: 8,
-        marginLeft: MP.space.g1,
+        marginLeft: AP.space.g1,
         borderRadius: "50%",
       },
       stats: {
-        ...MP.row,
-        ...MP.alignItems.center,
-        ...MP.padding(". 6 4 ."),
-        ...MP.relative(),
-        ...MP.text.of({ size: 12, height: "15px", weight: 600, color: "#FFF" }),
+        ...AP.row,
+        ...AP.alignItems.center,
+        ...AP.padding(". 6 4 ."),
+        ...AP.relative(),
+        ...AP.text.of({ size: 12, height: "15px", weight: 600, color: "#FFF" }),
       },
     },
-    ZA = {
+    ZM = {
       video: "schedule-post.video",
       carousel: "schedule-post.carousel",
       like: "schedule-post.like",
@@ -35408,29 +35509,29 @@
       cloudOff: "schedule-post.cloud-off",
     };
   tT.registerImages({
-    [ZA.video]: "ui-igswiss/post-type-video.svg:38:32",
-    [ZA.carousel]: "ui-igswiss/post-type-carousel.svg:34:34",
-    [ZA.like]: "ui-igswiss/like.svg:11:12",
-    [ZA.comment]: "ui-igswiss/comment.svg:11:12",
+    [ZM.video]: "ui-igswiss/post-type-video.svg:38:32",
+    [ZM.carousel]: "ui-igswiss/post-type-carousel.svg:34:34",
+    [ZM.like]: "ui-igswiss/like.svg:11:12",
+    [ZM.comment]: "ui-igswiss/comment.svg:11:12",
   }),
     LP.registerSvgIcons([
-      `<symbol id="${ZA.cloudOff}" viewBox="0 0 16.996 12.747"><path d="M13.7 4.277A5.3 5.3 0 005.658.829l1.034 1.033a3.892 3.892 0 015.7 3.449v.354h1.062a2.119 2.119 0 011.02 3.98l1.026 1.027a3.522 3.522 0 00-1.8-6.395zM2.125.9l1.947 1.94a4.247 4.247 0 00.177 8.491h8.307l1.416 1.416.9-.9L3.024 0zm3.35 3.35l5.665 5.665H4.249a2.833 2.833 0 010-5.665z" fill="currentColor"/></symbol>`,
+      `<symbol id="${ZM.cloudOff}" viewBox="0 0 16.996 12.747"><path d="M13.7 4.277A5.3 5.3 0 005.658.829l1.034 1.033a3.892 3.892 0 015.7 3.449v.354h1.062a2.119 2.119 0 011.02 3.98l1.026 1.027a3.522 3.522 0 00-1.8-6.395zM2.125.9l1.947 1.94a4.247 4.247 0 00.177 8.491h8.307l1.416 1.416.9-.9L3.024 0zm3.35 3.35l5.665 5.665H4.249a2.833 2.833 0 010-5.665z" fill="currentColor"/></symbol>`,
     ]);
-  class KA extends MP.Component {
+  class KM extends AP.Component {
     constructor(e) {
       super(e),
         (this._onClick = () => {
           this.props.canClick && this.props.onClick && this.props.onClick();
         }),
-        (this.rootRef = MP.createRef()),
+        (this.rootRef = AP.createRef()),
         (this.state = { dragging: !1 });
     }
     render() {
       return Glamor.createElement(
         "div",
-        qA(
-          { css: YA.root, ref: this.rootRef, onClick: this._onClick },
-          AO.dragEvents(this, {
+        qM(
+          { css: YM.root, ref: this.rootRef, onClick: this._onClick },
+          MO.dragEvents(this, {
             canDrag: this.props.canDrag,
             dragImage: this.props.image,
             onDragStart: this.props.onDragStart,
@@ -35447,26 +35548,26 @@
     }
     _renderImage() {
       return Glamor.createElement("div", {
-        css: YA.image(this),
+        css: YM.image(this),
         "cdn-proxy-image": this.props.image,
       });
     }
     _renderTypeIcon() {
-      const e = ZA[this.props.type];
+      const e = ZM[this.props.type];
       return e
-        ? Glamor.createElement(tT, { style: YA.typeIcon, src: e })
+        ? Glamor.createElement(tT, { style: YM.typeIcon, src: e })
         : null;
     }
     _renderLocalLabel() {
       return this.props.local
         ? Glamor.createElement(
             "div",
-            { css: YA.localLabel },
+            { css: YM.localLabel },
             Glamor.createElement(LP, {
-              style: YA.localLabelIcon,
-              name: ZA.cloudOff,
+              style: YM.localLabelIcon,
+              name: ZM.cloudOff,
             }),
-            Glamor.createElement("span", { css: YA.localLabelText }, "LOCAL")
+            Glamor.createElement("span", { css: YM.localLabelText }, "LOCAL")
           )
         : null;
     }
@@ -35474,17 +35575,17 @@
       return this.props.info && this.props.showFooter
         ? Glamor.createElement(
             "div",
-            { css: YA.footer },
+            { css: YM.footer },
             Glamor.createElement(
               "div",
-              { css: YA.info },
+              { css: YM.info },
               Glamor.createElement(
                 "div",
-                { css: YA.infoText },
+                { css: YM.infoText },
                 this.props.info.text
               ),
               Glamor.createElement("div", {
-                css: YA.infoDot,
+                css: YM.infoDot,
                 style: { background: this.props.info.color },
               })
             )
@@ -35497,18 +35598,18 @@
         : this.props.stats && this.props.showFooter
         ? Glamor.createElement(
             "div",
-            { css: YA.footer },
+            { css: YM.footer },
             Glamor.createElement(
               "div",
-              { css: YA.stats },
-              Glamor.createElement(tT, { src: ZA.like }),
+              { css: YM.stats },
+              Glamor.createElement(tT, { src: ZM.like }),
               Glamor.createElement(qP, { width: 4 }),
               Glamor.createElement(GT, {
                 short: !0,
                 value: this.props.stats.likes,
               }),
               Glamor.createElement(qP, { width: 8 }),
-              Glamor.createElement(tT, { src: ZA.comment }),
+              Glamor.createElement(tT, { src: ZM.comment }),
               Glamor.createElement(qP, { width: 4 }),
               Glamor.createElement(GT, {
                 short: !0,
@@ -35519,7 +35620,7 @@
         : null;
     }
   }
-  class XA extends MP.Component {
+  class XM extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -35536,7 +35637,7 @@
         !this.props.onPostClick ||
         this.props.disableHover
       );
-      return Glamor.createElement(KA, {
+      return Glamor.createElement(KM, {
         image: this.props.image,
         type: this.props.type,
         blur: this.props.saving,
@@ -35551,101 +35652,101 @@
     _getInfo() {
       if (this.props.stats) return null;
       let e, t;
-      if (this.props.saving) (e = "SAVING..."), (t = MP.color.bgLight1);
+      if (this.props.saving) (e = "SAVING..."), (t = AP.color.bgLight1);
       else if (this.props.errorMessage)
-        (e = this.props.errorMessage), (t = MP.color.error);
+        (e = this.props.errorMessage), (t = AP.color.error);
       else if (this.props.on) {
         if (!this.props.on) return null;
         {
           const r = new Date(this.props.on),
-            n = BA(r, "HH:mm");
+            n = BM(r, "HH:mm");
           let o;
-          (o = zA(r)
+          (o = zM(r)
             ? "Today"
-            : UA(r)
+            : UM(r)
             ? "Tomorrow"
-            : $A(r)
-            ? BA(r, "d MMM")
-            : BA(r, "d MMM yyyy")),
+            : $M(r)
+            ? BM(r, "d MMM")
+            : BM(r, "d MMM yyyy")),
             (e = `${o}, ${n}`),
-            (t = MP.color.positive);
+            (t = AP.color.positive);
         }
-      } else (e = "DRAFT"), (t = MP.color.attention);
+      } else (e = "DRAFT"), (t = AP.color.attention);
       return { text: e, color: t };
     }
   }
-  const QA = {
-      root: { ...MP.relative(), width: "calc(100% + 2px)", margin: -1 },
+  const QM = {
+      root: { ...AP.relative(), width: "calc(100% + 2px)", margin: -1 },
       overlay: {
-        ...MP.column,
-        ...MP.alignItems.center,
-        ...MP.absolute("0 0 0 0"),
-        ...MP.padding("200 25 0 25"),
+        ...AP.column,
+        ...AP.alignItems.center,
+        ...AP.absolute("0 0 0 0"),
+        ...AP.padding("200 25 0 25"),
         zIndex: 1,
-        background: MP.color.bgLight3,
+        background: AP.color.bgLight3,
         opacity: 0.98,
       },
       overlayIcon: {},
       overlaySpinner: {},
-      overlaySuccessIcon: { color: MP.color.positive },
+      overlaySuccessIcon: { color: AP.color.positive },
       overlayBody: {
-        ...MP.column,
-        ...MP.alignItems.center,
-        ...MP.fixed(),
+        ...AP.column,
+        ...AP.alignItems.center,
+        ...AP.fixed(),
         left: 0,
         right: 0,
-        bottom: MP.space.g1,
+        bottom: AP.space.g1,
       },
       overlayText: {
-        ...MP.text.bleak,
-        color: MP.color.textPassive,
+        ...AP.text.bleak,
+        color: AP.color.textPassive,
         textAlign: "center",
       },
       overlayButtons: {
-        ...MP.row,
-        ...MP.justifyContent.center,
+        ...AP.row,
+        ...AP.justifyContent.center,
         flexWrap: "wrap",
         whiteSpace: "nowrap",
       },
       overlayButton: {
-        marginRight: MP.space.g3,
-        marginBottom: MP.space.g2,
+        marginRight: AP.space.g3,
+        marginBottom: AP.space.g2,
         "&:last-child": { marginRight: 0 },
       },
       spinner: {
-        ...MP.row,
-        ...MP.center,
+        ...AP.row,
+        ...AP.center,
         paddingTop: 80,
         paddingBottom: 50,
         position: "sticky",
         top: 0,
       },
-      posts: { ...MP.row, ...MP.flex.wrap },
+      posts: { ...AP.row, ...AP.flex.wrap },
       post: {
         width: 132,
         height: 132,
         margin: 1,
-        ...MP.transition.slow,
+        ...AP.transition.slow,
         transitionProperty: "transform",
       },
       message: {
-        ...MP.text.bleak,
-        marginTop: MP.space.g2,
-        color: MP.color.textPassive,
+        ...AP.text.bleak,
+        marginTop: AP.space.g2,
+        color: AP.color.textPassive,
       },
     },
-    JA = "schedule-grid.success";
+    JM = "schedule-grid.success";
   LP.registerSvgIcons([
-    `<symbol id="${JA}" viewBox="0 0 30 30"><path d="M15 29.999a15 15 0 1110.607-4.394A14.906 14.906 0 0115 29.999zm-7.5-16.25l-1.246 1.25L12.5 21.25 23.75 9.999 22.5 8.748l-10 8.749z" fill="currentColor"/></symbol>`,
+    `<symbol id="${JM}" viewBox="0 0 30 30"><path d="M15 29.999a15 15 0 1110.607-4.394A14.906 14.906 0 0115 29.999zm-7.5-16.25l-1.246 1.25L12.5 21.25 23.75 9.999 22.5 8.748l-10 8.749z" fill="currentColor"/></symbol>`,
   ]);
-  class eM extends MP.Component {
+  class eA extends AP.Component {
     constructor(e) {
-      super(e), (this.rootRef = MP.createRef());
+      super(e), (this.rootRef = AP.createRef());
     }
     render() {
       return Glamor.createElement(
         "div",
-        { css: QA.root, ref: this.rootRef },
+        { css: QM.root, ref: this.rootRef },
         this._renderOverlay(),
         this._renderPosts(),
         this._renderMessage()
@@ -35658,27 +35759,27 @@
         if (t.map((e) => e.id).join("-") !== r.map((e) => e.id).join("-")) {
           this.rootRef.current
             .querySelectorAll(".schedule-grid__post")
-            .forEach(MP.flip.add);
+            .forEach(AP.flip.add);
         }
       }
       return null;
     }
     componentDidUpdate() {
-      MP.flip.run();
+      AP.flip.run();
     }
     _renderOverlay() {
       const e = this.props.overlay;
       return e && e.shown
         ? Glamor.createElement(
             "div",
-            { css: QA.overlay },
+            { css: QM.overlay },
             Glamor.createElement(
               "div",
-              { css: QA.overlayIcon },
+              { css: QM.overlayIcon },
               "spinner" === e.icon &&
                 Glamor.createElement(
                   "div",
-                  { css: QA.overlaySpinner },
+                  { css: QM.overlaySpinner },
                   Glamor.createElement(jP, {
                     size: 30,
                     value: 30,
@@ -35687,22 +35788,22 @@
                 ),
               "success" === e.icon &&
                 Glamor.createElement(LP, {
-                  style: QA.overlaySuccessIcon,
-                  name: JA,
+                  style: QM.overlaySuccessIcon,
+                  name: JM,
                 })
             ),
             Glamor.createElement(
               "div",
-              { css: QA.overlayBody },
-              Glamor.createElement("div", { css: QA.overlayText }, e.text),
+              { css: QM.overlayBody },
+              Glamor.createElement("div", { css: QM.overlayText }, e.text),
               Glamor.createElement(qP, { height: "g2" }),
               Glamor.createElement(
                 "div",
-                { css: QA.overlayButtons },
+                { css: QM.overlayButtons },
                 (e.buttons || []).map((e, t) =>
                   Glamor.createElement(
                     "div",
-                    { css: QA.overlayButton, key: e.id },
+                    { css: QM.overlayButton, key: e.id },
                     e.element
                   )
                 )
@@ -35717,11 +35818,11 @@
         ? null
         : Glamor.createElement(
             "div",
-            { css: QA.posts },
+            { css: QM.posts },
             e.map((e) =>
               Glamor.createElement(
                 "div",
-                { className: "schedule-grid__post", css: QA.post, key: e.id },
+                { className: "schedule-grid__post", css: QM.post, key: e.id },
                 e.element
               )
             )
@@ -35729,61 +35830,61 @@
     }
     _renderMessage() {
       return this.props.message
-        ? Glamor.createElement("div", { css: QA.message }, this.props.message)
+        ? Glamor.createElement("div", { css: QM.message }, this.props.message)
         : null;
     }
   }
-  const tM = {
+  const tA = {
     root: {
-      ...MP.borderRadius.r4,
-      ...MP.relative(),
-      ...MP.transition.slow,
+      ...AP.borderRadius.r4,
+      ...AP.relative(),
+      ...AP.transition.slow,
       transitionProperty: "border-color, box-shadow",
       width: "100%",
       overflow: "hidden",
-      background: MP.color.bgLight2,
-      border: `2px dashed ${MP.color.iconPassive}`,
+      background: AP.color.bgLight2,
+      border: `2px dashed ${AP.color.iconPassive}`,
       "&.scheduleAddCard_default": { height: 85 },
-      "&.scheduleAddCard_changes": { height: 85, border: MP.border.dark },
+      "&.scheduleAddCard_changes": { height: 85, border: AP.border.dark },
       "&.scheduleAddCard_dropZone": { border: "0 solid transparent" },
-      "&.scheduleAddCard_dropForm": { border: MP.border.dark },
+      "&.scheduleAddCard_dropForm": { border: AP.border.dark },
       "&.scheduleAddCard_highlight": {
-        borderColor: MP.color.link,
-        boxShadow: `0 3px 6px ${MP.color.linkShadow}`,
+        borderColor: AP.color.link,
+        boxShadow: `0 3px 6px ${AP.color.linkShadow}`,
       },
     },
     contentDefault: {
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.absolute("0 0 0 0"),
-      ...MP.padding("g1h g3"),
-      ...MP.transition.slow,
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.absolute("0 0 0 0"),
+      ...AP.padding("g1h g3"),
+      ...AP.transition.slow,
       transitionProperty: "transform",
       margin: -1,
       transitionDuration: "600ms",
       ".scheduleAddCard_changes &": { transform: "translateY(-100%)" },
     },
     contentChanges: {
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.transition.slow,
-      ...MP.absolute("0 0 0 0"),
-      ...MP.padding("g1h g1h g1h g2"),
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.transition.slow,
+      ...AP.absolute("0 0 0 0"),
+      ...AP.padding("g1h g1h g1h g2"),
       transitionProperty: "transform",
       transitionDuration: "600ms",
       ".scheduleAddCard_default &": { transform: "translateY(100%)" },
     },
     contentDropZone: {},
-    contentDropForm: { ...MP.padding("g1h g3") },
+    contentDropForm: { ...AP.padding("g1h g3") },
   };
-  class rM extends MP.Component {
+  class rA extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
         {
-          css: tM.root,
+          css: tA.root,
           tabIndex: "-1",
-          className: MP.class("scheduleAddCard", {
+          className: AP.class("scheduleAddCard", {
             highlight: this.props.highlight,
             [this.props.contentToShow]: !0,
           }),
@@ -35799,7 +35900,7 @@
         "changes" === this.props.contentToShow
         ? Glamor.createElement(
             "div",
-            { css: tM.contentDefault },
+            { css: tA.contentDefault },
             this.props.contentDefault
           )
         : null;
@@ -35809,7 +35910,7 @@
         "changes" === this.props.contentToShow
         ? Glamor.createElement(
             "div",
-            { css: tM.contentChanges },
+            { css: tA.contentChanges },
             this.props.contentChanges
           )
         : null;
@@ -35819,7 +35920,7 @@
         ? null
         : Glamor.createElement(
             "div",
-            { css: tM.contentDropZone },
+            { css: tA.contentDropZone },
             this.props.contentDropZone
           );
     }
@@ -35828,13 +35929,13 @@
         ? null
         : Glamor.createElement(
             "div",
-            { css: tM.contentDropForm },
+            { css: tA.contentDropForm },
             this.props.contentDropForm
           );
     }
   }
-  function nM() {
-    return (nM =
+  function nA() {
+    return (nA =
       Object.assign ||
       function (e) {
         for (var t = 1; t < arguments.length; t++) {
@@ -35845,21 +35946,21 @@
         return e;
       }).apply(this, arguments);
   }
-  const oM = {
-      root: { ...MP.row, ...MP.noselect, ...MP.clickableInversed },
+  const oA = {
+      root: { ...AP.row, ...AP.noselect, ...AP.clickableInversed },
       icon: {
         width: 35,
         flexShrink: 0,
-        marginRight: MP.space.g3,
-        color: MP.color.iconPassive,
+        marginRight: AP.space.g3,
+        color: AP.color.iconPassive,
         marginTop: 8,
       },
       body: {},
-      title: { ...MP.text.group1, color: MP.color.link, marginBottom: 4 },
-      text: { ...MP.text.bleak },
+      title: { ...AP.text.group1, color: AP.color.link, marginBottom: 4 },
+      text: { ...AP.text.bleak },
     },
-    iM = "igswiss.upload";
-  class aM extends MP.Component {
+    iA = "igswiss.upload";
+  class aA extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -35873,18 +35974,18 @@
     render() {
       return Glamor.createElement(
         "div",
-        nM(
-          { css: oM.root, onClick: this._onClick },
-          MP.onLongPress(this.props.onLongPress)
+        nA(
+          { css: oA.root, onClick: this._onClick },
+          AP.onLongPress(this.props.onLongPress)
         ),
-        Glamor.createElement(LP, { style: oM.icon, name: iM }),
+        Glamor.createElement(LP, { style: oA.icon, name: iA }),
         Glamor.createElement(
           "div",
-          { css: oM.body },
-          Glamor.createElement("div", { css: oM.title }, "ADD FILES"),
+          { css: oA.body },
+          Glamor.createElement("div", { css: oA.title }, "ADD FILES"),
           Glamor.createElement(
             "div",
-            { css: oM.text },
+            { css: oA.text },
             "Click or drop photos, videos or ",
             Glamor.createElement(
               "a",
@@ -35900,43 +36001,43 @@
       );
     }
   }
-  const sM = {
+  const sA = {
       root: { width: "100%" },
       content: {
-        ...MP.row,
-        ...MP.alignItems.center,
-        ...MP.noselect,
+        ...AP.row,
+        ...AP.alignItems.center,
+        ...AP.noselect,
         width: "100%",
       },
       iconWrap: {
         flexShrink: 0,
         marginRight: 22,
-        color: MP.color.primary,
-        ...MP.relative(),
+        color: AP.color.primary,
+        ...AP.relative(),
       },
       spinnerWrap: {
-        ...MP.row,
-        ...MP.center,
-        ...MP.absolute("15 . . 12"),
+        ...AP.row,
+        ...AP.center,
+        ...AP.absolute("15 . . 12"),
         width: 21,
         height: 21,
         zIndex: 1,
-        background: MP.color.bgLight2,
+        background: AP.color.bgLight2,
         borderRadius: "50%",
         "&::before": {
-          ...MP.absolute("9 . . 9"),
+          ...AP.absolute("9 . . 9"),
           content: '""',
           width: 3,
           height: 3,
           borderRadius: "50%",
-          background: MP.color.primary,
+          background: AP.color.primary,
         },
       },
       body: {},
-      title: { ...MP.text.group1, color: MP.color.primary, marginBottom: 4 },
-      titleSuccess: { color: MP.color.positive },
-      text: { ...MP.text.bleak },
-      buttons: { ...MP.row, marginTop: 6 },
+      title: { ...AP.text.group1, color: AP.color.primary, marginBottom: 4 },
+      titleSuccess: { color: AP.color.positive },
+      text: { ...AP.text.bleak },
+      buttons: { ...AP.row, marginTop: 6 },
       preview: {
         flexShrink: 0,
         width: 60,
@@ -35944,18 +36045,18 @@
         backgroundSize: "cover",
         backgroundPosition: "center",
         marginLeft: "auto",
-        ...MP.borderRadius.r4,
+        ...AP.borderRadius.r4,
       },
     },
-    lM = "schedule-add-card-content-save.save";
+    lA = "schedule-add-card-content-save.save";
   LP.registerSvgIcons([
-    `<symbol id="${lM}" viewBox="0 0 45 50.143"><path d="M20.872 48.42v-9.387q-.58-.069-1.15-.185a13.7 13.7 0 0 1-2.588-.808 22.377 22.377 0 0 1-.321-.141l-.736 1.275q.26.123.524.236a14.963 14.963 0 0 0 2.847.891c.248.051.5.1.756.136V43.6c-.427-.058-.854-.13-1.272-.216a18.247 18.247 0 0 1-3.461-1.084q-.48-.2-.949-.438l-1.413 2.447a1.371 1.371 0 1 1-2.374-1.371l1.429-2.475a18.631 18.631 0 0 1-4.2-4.052l2.692-1.554a15.382 15.382 0 0 0 3.059 2.919l.729-1.264a13.908 13.908 0 0 1-2.96-2.912l-8.019 4.634A1.76 1.76 0 0 1 1.7 35.185l8.016-4.628.026-.014a13.816 13.816 0 0 1-.754-2.483 13.958 13.958 0 0 1-.22-1.49H7.391a15.335 15.335 0 0 0 .884 4.044l-2.708 1.562a18.636 18.636 0 0 1-1.3-5.606H1.4a1.4 1.4 0 1 1 0-2.8h2.865a18.623 18.623 0 0 1 1.385-5.809l2.794 1.613a15.334 15.334 0 0 0-1.026 4.2h1.375c.046-.437.113-.869.2-1.3a13.839 13.839 0 0 1 .8-2.6c.034-.081.069-.162.1-.242a1.612 1.612 0 0 1-.123-.065L1.7 14.9a1.71 1.71 0 1 1 1.71-2.962l8.078 4.662a1.9 1.9 0 0 1 .164.107 13.935 13.935 0 0 1 2.837-2.726l-.691-1.2a15.266 15.266 0 0 0-2.016 1.71c-.309.311-.609.642-.892.98l-2.855-1.644a18.59 18.59 0 0 1 4.093-3.935l-1.415-2.453a1.412 1.412 0 0 1 2.445-1.412l1.4 2.424q.451-.223.912-.42a18.119 18.119 0 0 1 3.46-1.083 18.47 18.47 0 0 1 1.273-.216v3.455c-.248.038-.5.084-.756.136a15 15 0 0 0-2.847.891q-.179.077-.356.158l.694 1.2.2-.085a13.722 13.722 0 0 1 2.588-.808q.57-.116 1.15-.185v-9.77a1.724 1.724 0 0 1 3.447 0v9.8q.483.065.959.162a13.722 13.722 0 0 1 2.588.808l.232.1.695-1.2q-.194-.09-.391-.174a15.007 15.007 0 0 0-2.846-.891 13.223 13.223 0 0 0-.568-.105v-3.5c.464.059.924.137 1.369.229a18.15 18.15 0 0 1 3.46 1.084q.365.156.724.328l1.35-2.338a1.371 1.371 0 0 1 2.375 1.372l-1.35 2.328.028.019a18.531 18.531 0 0 1 2.728 2.271 18.783 18.783 0 0 1 1.516 1.732l-3.048 1.76a15.56 15.56 0 0 0-.92-1.015 15.3 15.3 0 0 0-2.052-1.736l-.692 1.2a13.924 13.924 0 0 1 2.92 2.811 1.769 1.769 0 0 1 .314-.231l8.016-4.628a1.76 1.76 0 0 1 1.76 3.049l-8.016 4.628a1.743 1.743 0 0 1-.325.147l.058.135a13.885 13.885 0 0 1 .8 2.6c.086.427.154.86.2 1.3h1.38a15.274 15.274 0 0 0-.974-4.061l3.026-1.747a18.628 18.628 0 0 1 1.384 5.808H43.6a1.4 1.4 0 1 1 0 2.8h-2.578a18.619 18.619 0 0 1-1.339 5.7l-2.939-1.7a15.287 15.287 0 0 0 .869-4h-1.386a13.807 13.807 0 0 1-.959 3.938 1.615 1.615 0 0 1 .147.076l8.079 4.665a1.71 1.71 0 0 1-1.71 2.962L33.7 33.544a3.328 3.328 0 0 1-.1-.061 13.9 13.9 0 0 1-3.016 3.011l.731 1.265a15.313 15.313 0 0 0 3.118-3.012l2.887 1.667a18.585 18.585 0 0 1-4.372 4.173l1.334 2.31a1.412 1.412 0 0 1-2.445 1.412L30.5 41.995q-.341.163-.688.311a18.279 18.279 0 0 1-3.46 1.084c-.45.093-.91.169-1.368.228v-3.212c.184-.031.374-.067.568-.106a14.975 14.975 0 0 0 2.846-.891q.243-.1.484-.217l-.738-1.277c-.094.042-.188.084-.283.124a13.722 13.722 0 0 1-2.588.808q-.475.1-.959.162v9.41a1.724 1.724 0 0 1-3.447 0zm-.732-34.691a11.645 11.645 0 0 0-4.187 1.771 11.8 11.8 0 0 0-4.242 5.18 11.721 11.721 0 0 0-.683 2.21 11.972 11.972 0 0 0 0 4.747 11.772 11.772 0 0 0 1.762 4.21 11.8 11.8 0 0 0 3.163 3.181 11.647 11.647 0 0 0 13.094 0 11.807 11.807 0 0 0 0-19.528 11.7 11.7 0 0 0-8.906-1.772zm3.126 17.188a3.16 3.16 0 1 1 3.16 3.189 3.174 3.174 0 0 1-3.16-3.189zm-7.564 0a3.16 3.16 0 1 1 3.159 3.189 3.173 3.173 0 0 1-3.161-3.189zm10.532-7.343a3.16 3.16 0 1 1 3.159 3.189 3.174 3.174 0 0 1-3.159-3.189zm-5.17 1.642a1.532 1.532 0 1 1 1.536 1.546 1.539 1.539 0 0 1-1.536-1.546zm-8.042-1.642a3.16 3.16 0 1 1 3.16 3.189 3.174 3.174 0 0 1-3.161-3.189zm6.319-4.927a3.16 3.16 0 1 1 3.16 3.188 3.174 3.174 0 0 1-3.161-3.188z" fill="currentColor"/></symbol>`,
+    `<symbol id="${lA}" viewBox="0 0 45 50.143"><path d="M20.872 48.42v-9.387q-.58-.069-1.15-.185a13.7 13.7 0 0 1-2.588-.808 22.377 22.377 0 0 1-.321-.141l-.736 1.275q.26.123.524.236a14.963 14.963 0 0 0 2.847.891c.248.051.5.1.756.136V43.6c-.427-.058-.854-.13-1.272-.216a18.247 18.247 0 0 1-3.461-1.084q-.48-.2-.949-.438l-1.413 2.447a1.371 1.371 0 1 1-2.374-1.371l1.429-2.475a18.631 18.631 0 0 1-4.2-4.052l2.692-1.554a15.382 15.382 0 0 0 3.059 2.919l.729-1.264a13.908 13.908 0 0 1-2.96-2.912l-8.019 4.634A1.76 1.76 0 0 1 1.7 35.185l8.016-4.628.026-.014a13.816 13.816 0 0 1-.754-2.483 13.958 13.958 0 0 1-.22-1.49H7.391a15.335 15.335 0 0 0 .884 4.044l-2.708 1.562a18.636 18.636 0 0 1-1.3-5.606H1.4a1.4 1.4 0 1 1 0-2.8h2.865a18.623 18.623 0 0 1 1.385-5.809l2.794 1.613a15.334 15.334 0 0 0-1.026 4.2h1.375c.046-.437.113-.869.2-1.3a13.839 13.839 0 0 1 .8-2.6c.034-.081.069-.162.1-.242a1.612 1.612 0 0 1-.123-.065L1.7 14.9a1.71 1.71 0 1 1 1.71-2.962l8.078 4.662a1.9 1.9 0 0 1 .164.107 13.935 13.935 0 0 1 2.837-2.726l-.691-1.2a15.266 15.266 0 0 0-2.016 1.71c-.309.311-.609.642-.892.98l-2.855-1.644a18.59 18.59 0 0 1 4.093-3.935l-1.415-2.453a1.412 1.412 0 0 1 2.445-1.412l1.4 2.424q.451-.223.912-.42a18.119 18.119 0 0 1 3.46-1.083 18.47 18.47 0 0 1 1.273-.216v3.455c-.248.038-.5.084-.756.136a15 15 0 0 0-2.847.891q-.179.077-.356.158l.694 1.2.2-.085a13.722 13.722 0 0 1 2.588-.808q.57-.116 1.15-.185v-9.77a1.724 1.724 0 0 1 3.447 0v9.8q.483.065.959.162a13.722 13.722 0 0 1 2.588.808l.232.1.695-1.2q-.194-.09-.391-.174a15.007 15.007 0 0 0-2.846-.891 13.223 13.223 0 0 0-.568-.105v-3.5c.464.059.924.137 1.369.229a18.15 18.15 0 0 1 3.46 1.084q.365.156.724.328l1.35-2.338a1.371 1.371 0 0 1 2.375 1.372l-1.35 2.328.028.019a18.531 18.531 0 0 1 2.728 2.271 18.783 18.783 0 0 1 1.516 1.732l-3.048 1.76a15.56 15.56 0 0 0-.92-1.015 15.3 15.3 0 0 0-2.052-1.736l-.692 1.2a13.924 13.924 0 0 1 2.92 2.811 1.769 1.769 0 0 1 .314-.231l8.016-4.628a1.76 1.76 0 0 1 1.76 3.049l-8.016 4.628a1.743 1.743 0 0 1-.325.147l.058.135a13.885 13.885 0 0 1 .8 2.6c.086.427.154.86.2 1.3h1.38a15.274 15.274 0 0 0-.974-4.061l3.026-1.747a18.628 18.628 0 0 1 1.384 5.808H43.6a1.4 1.4 0 1 1 0 2.8h-2.578a18.619 18.619 0 0 1-1.339 5.7l-2.939-1.7a15.287 15.287 0 0 0 .869-4h-1.386a13.807 13.807 0 0 1-.959 3.938 1.615 1.615 0 0 1 .147.076l8.079 4.665a1.71 1.71 0 0 1-1.71 2.962L33.7 33.544a3.328 3.328 0 0 1-.1-.061 13.9 13.9 0 0 1-3.016 3.011l.731 1.265a15.313 15.313 0 0 0 3.118-3.012l2.887 1.667a18.585 18.585 0 0 1-4.372 4.173l1.334 2.31a1.412 1.412 0 0 1-2.445 1.412L30.5 41.995q-.341.163-.688.311a18.279 18.279 0 0 1-3.46 1.084c-.45.093-.91.169-1.368.228v-3.212c.184-.031.374-.067.568-.106a14.975 14.975 0 0 0 2.846-.891q.243-.1.484-.217l-.738-1.277c-.094.042-.188.084-.283.124a13.722 13.722 0 0 1-2.588.808q-.475.1-.959.162v9.41a1.724 1.724 0 0 1-3.447 0zm-.732-34.691a11.645 11.645 0 0 0-4.187 1.771 11.8 11.8 0 0 0-4.242 5.18 11.721 11.721 0 0 0-.683 2.21 11.972 11.972 0 0 0 0 4.747 11.772 11.772 0 0 0 1.762 4.21 11.8 11.8 0 0 0 3.163 3.181 11.647 11.647 0 0 0 13.094 0 11.807 11.807 0 0 0 0-19.528 11.7 11.7 0 0 0-8.906-1.772zm3.126 17.188a3.16 3.16 0 1 1 3.16 3.189 3.174 3.174 0 0 1-3.16-3.189zm-7.564 0a3.16 3.16 0 1 1 3.159 3.189 3.173 3.173 0 0 1-3.161-3.189zm10.532-7.343a3.16 3.16 0 1 1 3.159 3.189 3.174 3.174 0 0 1-3.159-3.189zm-5.17 1.642a1.532 1.532 0 1 1 1.536 1.546 1.539 1.539 0 0 1-1.536-1.546zm-8.042-1.642a3.16 3.16 0 1 1 3.16 3.189 3.174 3.174 0 0 1-3.161-3.189zm6.319-4.927a3.16 3.16 0 1 1 3.16 3.188 3.174 3.174 0 0 1-3.161-3.188z" fill="currentColor"/></symbol>`,
   ]);
-  class cM extends MP.Component {
+  class cA extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
-        { css: sM.root },
+        { css: sA.root },
         this._renderContentDefault(),
         this._renderContentSaving(),
         this._renderContentSaved()
@@ -35966,35 +36067,35 @@
         ? null
         : Glamor.createElement(
             "div",
-            { css: sM.content },
+            { css: sA.content },
             Glamor.createElement(
               "div",
-              { css: sM.iconWrap },
-              Glamor.createElement(LP, { name: lM })
+              { css: sA.iconWrap },
+              Glamor.createElement(LP, { name: lA })
             ),
             Glamor.createElement(
               "div",
-              { css: sM.body },
+              { css: sA.body },
               Glamor.createElement(
                 "div",
-                { css: sM.text },
+                { css: sA.text },
                 "Save the changes when you’re ready:"
               ),
               Glamor.createElement(
                 "div",
-                { css: sM.buttons },
+                { css: sA.buttons },
                 Glamor.createElement(WP, {
                   label: "SAVE CHANGES",
-                  shadow: MP.color.linkShadow,
+                  shadow: AP.color.linkShadow,
                   tabIndex: "-1",
                   onClick: this.props.onSaveClick,
                 }),
                 Glamor.createElement(qP, { width: "g1" }),
                 Glamor.createElement(WP, {
                   label: "CANCEL",
-                  color: MP.color.link,
-                  background: MP.color.borderLight,
-                  borderColor: MP.color.borderDark,
+                  color: AP.color.link,
+                  background: AP.color.borderLight,
+                  borderColor: AP.color.borderDark,
                   tabIndex: "-1",
                   isLightBackground: !0,
                   onClick: this.props.onCancelClick,
@@ -36008,40 +36109,40 @@
         ? null
         : Glamor.createElement(
             "div",
-            { css: sM.content },
+            { css: sA.content },
             Glamor.createElement(
               "div",
-              { css: sM.iconWrap },
+              { css: sA.iconWrap },
               Glamor.createElement(
                 "div",
-                { css: sM.spinnerWrap },
+                { css: sA.spinnerWrap },
                 Glamor.createElement(jP, {
                   size: 17,
                   thickness: 1.5,
                   value: 30,
-                  color: MP.color.primary,
+                  color: AP.color.primary,
                   spinning: !0,
                 })
               ),
-              Glamor.createElement(LP, { name: lM })
+              Glamor.createElement(LP, { name: lA })
             ),
             Glamor.createElement(
               "div",
-              { css: sM.body },
+              { css: sA.body },
               Glamor.createElement(
                 "div",
-                { css: sM.title },
+                { css: sA.title },
                 this.props.savingTitle || "SAVING CHANGES..."
               ),
               Glamor.createElement(
                 "div",
-                { css: sM.text },
+                { css: sA.text },
                 this.props.savingText || "Keep Inssist open while processing"
               )
             ),
             !!this.props.savingPreview &&
               Glamor.createElement("div", {
-                css: sM.preview,
+                css: sA.preview,
                 style: {
                   backgroundImage: `url("${this.props.savingPreview}")`,
                 },
@@ -36053,48 +36154,48 @@
         ? null
         : Glamor.createElement(
             "div",
-            { css: sM.content },
+            { css: sA.content },
             Glamor.createElement(
               "div",
-              { css: sM.iconWrap },
-              Glamor.createElement(LP, { name: lM })
+              { css: sA.iconWrap },
+              Glamor.createElement(LP, { name: lA })
             ),
             Glamor.createElement(
               "div",
-              { css: sM.body },
+              { css: sA.body },
               Glamor.createElement(
                 "div",
-                { css: [sM.title, sM.titleSuccess] },
+                { css: [sA.title, sA.titleSuccess] },
                 "DONE"
               ),
               Glamor.createElement(
                 "div",
-                { css: sM.text },
+                { css: sA.text },
                 "Keep Inssist open while processing"
               )
             )
           );
     }
   }
-  const uM = {
+  const uA = {
       root: {
-        ...MP.transition.slow,
-        ...MP.borderRadius.r4,
-        ...MP.padding("100 g5"),
+        ...AP.transition.slow,
+        ...AP.borderRadius.r4,
+        ...AP.padding("100 g5"),
         transitionProperty: "border-color",
-        border: `2px dashed ${MP.color.iconPassive}`,
+        border: `2px dashed ${AP.color.iconPassive}`,
         textAlign: "center",
       },
-      rootDragOver: { borderColor: MP.color.primary },
-      icon: { color: MP.color.iconPassive, marginBottom: MP.space.g5 },
-      title: { ...MP.text.mainTitle },
-      subtitle: { ...MP.text.mainText, marginTop: MP.space.g2 },
+      rootDragOver: { borderColor: AP.color.primary },
+      icon: { color: AP.color.iconPassive, marginBottom: AP.space.g5 },
+      title: { ...AP.text.mainTitle },
+      subtitle: { ...AP.text.mainText, marginTop: AP.space.g2 },
     },
-    dM = "schedule-add-card.drop";
+    dA = "schedule-add-card.drop";
   LP.registerSvgIcons([
-    `<symbol id="${dM}" viewBox="0 0 56.596 71.436"><path d="M38.5.552A1.728 1.728 0 0037.254 0H9.387A9.426 9.426 0 000 9.369v52.7a9.426 9.426 0 009.387 9.37h37.822a9.426 9.426 0 009.387-9.37V20.223a1.857 1.857 0 00-.5-1.208zm.5 5.539l11.781 12.372H43.12A4.109 4.109 0 0139 14.356zm8.213 61.894H9.387a5.977 5.977 0 01-5.936-5.919V9.369a5.977 5.977 0 015.936-5.918h26.158v10.905a7.549 7.549 0 007.575 7.558h10.025v40.152a5.965 5.965 0 01-5.936 5.919zm0 0" fill="currentColor"/><path d="M42.5 56.079H14.1a1.726 1.726 0 100 3.451h28.419a1.726 1.726 0 10-.017-3.451zm-5.403-19.395l-7.109 7.644V25.485a1.726 1.726 0 00-3.451 0v18.843l-7.109-7.644a1.722 1.722 0 00-2.52 2.347L27.02 49.884a1.713 1.713 0 002.519 0L39.65 39.031a1.72 1.72 0 00-.086-2.433 1.761 1.761 0 00-2.467.086zm0 0" fill="currentColor"/></symbol>`,
+    `<symbol id="${dA}" viewBox="0 0 56.596 71.436"><path d="M38.5.552A1.728 1.728 0 0037.254 0H9.387A9.426 9.426 0 000 9.369v52.7a9.426 9.426 0 009.387 9.37h37.822a9.426 9.426 0 009.387-9.37V20.223a1.857 1.857 0 00-.5-1.208zm.5 5.539l11.781 12.372H43.12A4.109 4.109 0 0139 14.356zm8.213 61.894H9.387a5.977 5.977 0 01-5.936-5.919V9.369a5.977 5.977 0 015.936-5.918h26.158v10.905a7.549 7.549 0 007.575 7.558h10.025v40.152a5.965 5.965 0 01-5.936 5.919zm0 0" fill="currentColor"/><path d="M42.5 56.079H14.1a1.726 1.726 0 100 3.451h28.419a1.726 1.726 0 10-.017-3.451zm-5.403-19.395l-7.109 7.644V25.485a1.726 1.726 0 00-3.451 0v18.843l-7.109-7.644a1.722 1.722 0 00-2.52 2.347L27.02 49.884a1.713 1.713 0 002.519 0L39.65 39.031a1.72 1.72 0 00-.086-2.433 1.761 1.761 0 00-2.467.086zm0 0" fill="currentColor"/></symbol>`,
   ]);
-  class hM extends MP.Component {
+  class hA extends AP.Component {
     constructor(e) {
       super(e),
         (this._onDragEnter = (e) => {
@@ -36129,7 +36230,7 @@
       return Glamor.createElement(
         "div",
         {
-          css: MP.pickStyles(uM, {
+          css: AP.pickStyles(uA, {
             root: !0,
             rootDragOver: this.state.draggingOver,
           }),
@@ -36138,32 +36239,32 @@
           onDragLeave: this._onDragLeave,
           onDrop: this._onDrop,
         },
-        Glamor.createElement(LP, { style: uM.icon, name: dM }),
-        Glamor.createElement("div", { css: uM.title }, "DRAG & DROP"),
+        Glamor.createElement(LP, { style: uA.icon, name: dA }),
+        Glamor.createElement("div", { css: uA.title }, "DRAG & DROP"),
         Glamor.createElement(
           "div",
-          { css: uM.subtitle },
+          { css: uA.subtitle },
           "your photos and videos to schedule them to Instagram."
         )
       );
     }
   }
-  const pM = {
-      root: { ...MP.row, ...MP.noselect },
+  const pA = {
+      root: { ...AP.row, ...AP.noselect },
       icon: {
         width: 35,
         flexShrink: 0,
-        marginRight: MP.space.g3,
-        color: MP.color.iconPassive,
+        marginRight: AP.space.g3,
+        color: AP.color.iconPassive,
         marginTop: 8,
       },
       content: {},
-      text: { ...MP.text.bleak },
-      controls: { marginTop: MP.space.g2 },
-      buttons: { ...MP.row, marginTop: MP.space.g2 },
+      text: { ...AP.text.bleak },
+      controls: { marginTop: AP.space.g2 },
+      buttons: { ...AP.row, marginTop: AP.space.g2 },
     },
-    mM = "igswiss.upload";
-  class fM extends MP.Component {
+    mA = "igswiss.upload";
+  class fA extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -36180,21 +36281,21 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: pM.root },
-        Glamor.createElement(LP, { style: pM.icon, name: mM }),
+        { css: pA.root },
+        Glamor.createElement(LP, { style: pA.icon, name: mA }),
         Glamor.createElement(
           "div",
-          { css: pM.content },
+          { css: pA.content },
           Glamor.createElement(
             "div",
-            { css: pM.text },
+            { css: pA.text },
             "Select what has to be done with the ",
             this.props.fileCount,
             " files you uploaded:"
           ),
           Glamor.createElement(
             "div",
-            { css: pM.controls },
+            { css: pA.controls },
             Glamor.createElement(cT, {
               label: `Create ${this.props.fileCount} new posts`,
               value: "multiple" === this.props.selectedOption,
@@ -36209,7 +36310,7 @@
           ),
           Glamor.createElement(
             "div",
-            { css: pM.buttons },
+            { css: pA.buttons },
             Glamor.createElement(WP, {
               label: "CONFIRM",
               onClick: this.props.onConfirmClick,
@@ -36217,9 +36318,9 @@
             Glamor.createElement(qP, { width: "g2" }),
             Glamor.createElement(WP, {
               label: "CANCEL",
-              color: MP.color.link,
-              background: MP.color.borderLight,
-              borderColor: MP.color.borderDark,
+              color: AP.color.link,
+              background: AP.color.borderLight,
+              borderColor: AP.color.borderDark,
               isLightBackground: !0,
               onClick: this.props.onCancelClick,
             })
@@ -36228,8 +36329,8 @@
       );
     }
   }
-  function gM() {
-    return (gM =
+  function gA() {
+    return (gA =
       Object.assign ||
       function (e) {
         for (var t = 1; t < arguments.length; t++) {
@@ -36240,23 +36341,23 @@
         return e;
       }).apply(this, arguments);
   }
-  const vM = {
+  const vA = {
       root: {
-        ...MP.row,
-        ...MP.justifyContent.between,
-        ...MP.alignItems.center,
+        ...AP.row,
+        ...AP.justifyContent.between,
+        ...AP.alignItems.center,
         width: "100%",
       },
-      pills: { ...MP.row, marginRight: MP.space.g1 },
-      pill: { marginRight: MP.space.g1, "&:last-child": { marginRight: 0 } },
-      buttons: { ...MP.row, ...MP.alignItems.center },
+      pills: { ...AP.row, marginRight: AP.space.g1 },
+      pill: { marginRight: AP.space.g1, "&:last-child": { marginRight: 0 } },
+      buttons: { ...AP.row, ...AP.alignItems.center },
       buttonContainer: {
-        ...MP.row,
-        ...MP.center,
-        marginRight: MP.space.g2,
+        ...AP.row,
+        ...AP.center,
+        marginRight: AP.space.g2,
         "&:last-child": { marginRight: 0 },
       },
-      buttonIcon: { color: MP.color.link },
+      buttonIcon: { color: AP.color.link },
       filters: {
         width: 262,
         marginLeft: -210,
@@ -36264,28 +36365,28 @@
         "& > *": { paddingTop: "0 !important", paddingBottom: "0 !important" },
       },
     },
-    bM = "schedule-controls.bulk",
-    yM = "schedule-controls.calendar",
-    wM = "schedule-controls.time-slots",
-    _M = "schedule-controls.filter-empty",
-    EM = "schedule-controls.filter-filled",
-    xM = "schedule-controls.refresh";
+    bA = "schedule-controls.bulk",
+    yA = "schedule-controls.calendar",
+    wA = "schedule-controls.time-slots",
+    _A = "schedule-controls.filter-empty",
+    EA = "schedule-controls.filter-filled",
+    xA = "schedule-controls.refresh";
   LP.registerSvgIcons([
-    `<symbol id="${bM}" viewBox="0 0 16.053 16.053"><path d="M0 0v4.013h4.013V0zm6.02 0v4.013h4.013V0zm6.02 0v4.013h4.013V0zM0 6.02v4.013h4.013V6.02zm6.02 0v4.013h4.013V6.02zm6.02 0v4.013h4.013V6.02zM0 12.04v4.013h4.013V12.04zm6.02 0v4.013h4.013V12.04zm6.02 0v4.013h4.013V12.04z" fill="currentColor"/></symbol>`,
-    `<symbol id="${yM}" viewBox="0 0 15 15"><path d="M4860.91,175.455a3.545,3.545,0,1,1,3.545,3.544A3.55,3.55,0,0,1,4860.91,175.455Zm1.172,0a2.373,2.373,0,1,0,2.374-2.374A2.375,2.375,0,0,0,4862.082,175.455ZM4855.344,179a2.347,2.347,0,0,1-2.345-2.343v-9.141a2.347,2.347,0,0,1,2.345-2.343h.732v-.586a.586.586,0,1,1,1.171,0v.586h2.638v-.586a.586.586,0,1,1,1.171,0v.586h2.666v-.586a.586.586,0,1,1,1.171,0v.586h.763a2.345,2.345,0,0,1,2.343,2.343v3.34a.586.586,0,0,1-1.172,0v-3.34a1.173,1.173,0,0,0-1.171-1.172h-.763v.585a.586.586,0,1,1-1.171,0v-.585h-2.666v.585a.586.586,0,1,1-1.171,0v-.585h-2.638v.585a.586.586,0,1,1-1.171,0v-.585h-.732a1.174,1.174,0,0,0-1.173,1.172v9.141a1.174,1.174,0,0,0,1.173,1.172h4.482a.586.586,0,0,1,0,1.172Zm9.111-2.959a.586.586,0,0,1-.586-.585v-1.2a.586.586,0,0,1,1.172,0v.616h.264a.586.586,0,1,1,0,1.172Zm-5.831-.79a.586.586,0,1,1,.586.585A.587.587,0,0,1,4858.625,175.25Zm-2.548,0a.586.586,0,1,1,.586.585A.587.587,0,0,1,4856.076,175.25Zm2.548-2.548a.586.586,0,1,1,.586.585A.587.587,0,0,1,4858.625,172.7Zm-2.548,0a.586.586,0,1,1,.586.585A.587.587,0,0,1,4856.076,172.7Zm7.646-2.55a.586.586,0,1,1,.586.586A.586.586,0,0,1,4863.723,170.152Zm-2.548,0a.586.586,0,1,1,.585.586A.584.584,0,0,1,4861.174,170.152Zm-2.55,0a.586.586,0,1,1,.586.586A.586.586,0,0,1,4858.625,170.152Zm-2.548,0a.586.586,0,1,1,.586.586A.586.586,0,0,1,4856.076,170.152Z" transform="translate(-4853 -164)" fill="#fff"/></symbol>`,
-    `<symbol id="${wM}" viewBox="0 0 15 15"><path d="M4858.988,178.847a7.463,7.463,0,0,1-1.407-.437,7.543,7.543,0,0,1-3.991-4,7.534,7.534,0,0,1,2.717-9.163c.1-.065.194-.128.293-.188l.767,1.242c-.082.05-.165.1-.246.158a6.072,6.072,0,0,0-2.189,7.382,6.068,6.068,0,0,0,2.189,2.666,6.042,6.042,0,0,0,4.6.911,5.954,5.954,0,0,0,1.134-.353,6.061,6.061,0,0,0,1.027-.558,6.135,6.135,0,0,0,.893-.739,6.064,6.064,0,0,0,1.295-1.927,5.855,5.855,0,0,0,.352-1.137,6.091,6.091,0,0,0,0-2.441,5.855,5.855,0,0,0-.352-1.137,6.1,6.1,0,0,0-2.188-2.666c-.042-.029-.086-.057-.131-.086l.768-1.242.178.116a7.557,7.557,0,0,1,2.717,3.308,7.527,7.527,0,0,1-1.608,8.244,7.5,7.5,0,0,1-2.384,1.613,7.531,7.531,0,0,1-4.431.437Zm.958-6.357h-.5v-5.5h2v3.5h2.5v2Zm1.771-6.945c-.153-.032-.309-.057-.465-.077l.155-1.453c.2.024.405.057.6.1a7.511,7.511,0,0,1,.971.269l-.463,1.387A6.027,6.027,0,0,0,4861.718,165.545Zm-3.628-1.187a7.45,7.45,0,0,1,1.637-.358l.173,1.451a6.137,6.137,0,0,0-.618.094,5.863,5.863,0,0,0-.712.193Z" transform="translate(-4853 -164)" fill="#fff"/></symbol>`,
-    `<symbol id="${_M}" viewBox="0 0 18.117 18.117"><path d="M1.214 1l6.287 6.288.293.293v7.626l2.529 1.77V7.581l.293-.293L16.903 1H1.214M.85 0h16.417c.755 0 1.134.916.6 1.45l-6.544 6.545v9.272a.85.85 0 01-1.336.695l-2.831-1.98a.85.85 0 01-.362-.696V7.995L.25 1.45C-.285.915.096 0 .85 0z" fill="currentColor"/></symbol>`,
-    `<symbol id="${EM}" viewBox="0 0 18.117 18.117"><path d="M17.267 0H.85a.85.85 0 00-.6 1.45l6.544 6.545v7.291a.849.849 0 00.362.7l2.831 1.981a.85.85 0 001.336-.7V7.995l6.544-6.545a.85.85 0 00-.6-1.45z" fill="currentColor"/></symbol>`,
-    `<symbol id="${xM}" viewBox="0 0 17 17"><path d="M16.639 7.052a.651.651 0 10-1.286.205v.012a7.166 7.166 0 11-1.78-3.639l-2.883.961.411 1.235 3.906-1.3a.651.651 0 00.445-.618V0h-1.3v2.381a8.376 8.376 0 102.487 4.671z" fill="currentColor"/></symbol>`,
+    `<symbol id="${bA}" viewBox="0 0 16.053 16.053"><path d="M0 0v4.013h4.013V0zm6.02 0v4.013h4.013V0zm6.02 0v4.013h4.013V0zM0 6.02v4.013h4.013V6.02zm6.02 0v4.013h4.013V6.02zm6.02 0v4.013h4.013V6.02zM0 12.04v4.013h4.013V12.04zm6.02 0v4.013h4.013V12.04zm6.02 0v4.013h4.013V12.04z" fill="currentColor"/></symbol>`,
+    `<symbol id="${yA}" viewBox="0 0 15 15"><path d="M4860.91,175.455a3.545,3.545,0,1,1,3.545,3.544A3.55,3.55,0,0,1,4860.91,175.455Zm1.172,0a2.373,2.373,0,1,0,2.374-2.374A2.375,2.375,0,0,0,4862.082,175.455ZM4855.344,179a2.347,2.347,0,0,1-2.345-2.343v-9.141a2.347,2.347,0,0,1,2.345-2.343h.732v-.586a.586.586,0,1,1,1.171,0v.586h2.638v-.586a.586.586,0,1,1,1.171,0v.586h2.666v-.586a.586.586,0,1,1,1.171,0v.586h.763a2.345,2.345,0,0,1,2.343,2.343v3.34a.586.586,0,0,1-1.172,0v-3.34a1.173,1.173,0,0,0-1.171-1.172h-.763v.585a.586.586,0,1,1-1.171,0v-.585h-2.666v.585a.586.586,0,1,1-1.171,0v-.585h-2.638v.585a.586.586,0,1,1-1.171,0v-.585h-.732a1.174,1.174,0,0,0-1.173,1.172v9.141a1.174,1.174,0,0,0,1.173,1.172h4.482a.586.586,0,0,1,0,1.172Zm9.111-2.959a.586.586,0,0,1-.586-.585v-1.2a.586.586,0,0,1,1.172,0v.616h.264a.586.586,0,1,1,0,1.172Zm-5.831-.79a.586.586,0,1,1,.586.585A.587.587,0,0,1,4858.625,175.25Zm-2.548,0a.586.586,0,1,1,.586.585A.587.587,0,0,1,4856.076,175.25Zm2.548-2.548a.586.586,0,1,1,.586.585A.587.587,0,0,1,4858.625,172.7Zm-2.548,0a.586.586,0,1,1,.586.585A.587.587,0,0,1,4856.076,172.7Zm7.646-2.55a.586.586,0,1,1,.586.586A.586.586,0,0,1,4863.723,170.152Zm-2.548,0a.586.586,0,1,1,.585.586A.584.584,0,0,1,4861.174,170.152Zm-2.55,0a.586.586,0,1,1,.586.586A.586.586,0,0,1,4858.625,170.152Zm-2.548,0a.586.586,0,1,1,.586.586A.586.586,0,0,1,4856.076,170.152Z" transform="translate(-4853 -164)" fill="#fff"/></symbol>`,
+    `<symbol id="${wA}" viewBox="0 0 15 15"><path d="M4858.988,178.847a7.463,7.463,0,0,1-1.407-.437,7.543,7.543,0,0,1-3.991-4,7.534,7.534,0,0,1,2.717-9.163c.1-.065.194-.128.293-.188l.767,1.242c-.082.05-.165.1-.246.158a6.072,6.072,0,0,0-2.189,7.382,6.068,6.068,0,0,0,2.189,2.666,6.042,6.042,0,0,0,4.6.911,5.954,5.954,0,0,0,1.134-.353,6.061,6.061,0,0,0,1.027-.558,6.135,6.135,0,0,0,.893-.739,6.064,6.064,0,0,0,1.295-1.927,5.855,5.855,0,0,0,.352-1.137,6.091,6.091,0,0,0,0-2.441,5.855,5.855,0,0,0-.352-1.137,6.1,6.1,0,0,0-2.188-2.666c-.042-.029-.086-.057-.131-.086l.768-1.242.178.116a7.557,7.557,0,0,1,2.717,3.308,7.527,7.527,0,0,1-1.608,8.244,7.5,7.5,0,0,1-2.384,1.613,7.531,7.531,0,0,1-4.431.437Zm.958-6.357h-.5v-5.5h2v3.5h2.5v2Zm1.771-6.945c-.153-.032-.309-.057-.465-.077l.155-1.453c.2.024.405.057.6.1a7.511,7.511,0,0,1,.971.269l-.463,1.387A6.027,6.027,0,0,0,4861.718,165.545Zm-3.628-1.187a7.45,7.45,0,0,1,1.637-.358l.173,1.451a6.137,6.137,0,0,0-.618.094,5.863,5.863,0,0,0-.712.193Z" transform="translate(-4853 -164)" fill="#fff"/></symbol>`,
+    `<symbol id="${_A}" viewBox="0 0 18.117 18.117"><path d="M1.214 1l6.287 6.288.293.293v7.626l2.529 1.77V7.581l.293-.293L16.903 1H1.214M.85 0h16.417c.755 0 1.134.916.6 1.45l-6.544 6.545v9.272a.85.85 0 01-1.336.695l-2.831-1.98a.85.85 0 01-.362-.696V7.995L.25 1.45C-.285.915.096 0 .85 0z" fill="currentColor"/></symbol>`,
+    `<symbol id="${EA}" viewBox="0 0 18.117 18.117"><path d="M17.267 0H.85a.85.85 0 00-.6 1.45l6.544 6.545v7.291a.849.849 0 00.362.7l2.831 1.981a.85.85 0 001.336-.7V7.995l6.544-6.545a.85.85 0 00-.6-1.45z" fill="currentColor"/></symbol>`,
+    `<symbol id="${xA}" viewBox="0 0 17 17"><path d="M16.639 7.052a.651.651 0 10-1.286.205v.012a7.166 7.166 0 11-1.78-3.639l-2.883.961.411 1.235 3.906-1.3a.651.651 0 00.445-.618V0h-1.3v2.381a8.376 8.376 0 102.487 4.671z" fill="currentColor"/></symbol>`,
   ]);
-  class kM extends MP.Component {
+  class kA extends AP.Component {
     constructor(e) {
-      super(e), CM.call(this), (this.state = { refreshHovered: !1 });
+      super(e), CA.call(this), (this.state = { refreshHovered: !1 });
     }
     render() {
       return Glamor.createElement(
         "div",
-        { css: vM.root },
+        { css: vA.root },
         this._renderPills(),
         this._renderButtons()
       );
@@ -36293,19 +36394,19 @@
     _renderPills() {
       return Glamor.createElement(
         "div",
-        { css: vM.pills },
-        this._renderPill("BULK", "bulk", bM),
-        this._renderPill("CALENDAR", "calendar", yM),
-        this._renderPill("TIME SLOTS", "time-slots", wM)
+        { css: vA.pills },
+        this._renderPill("BULK", "bulk", bA),
+        this._renderPill("CALENDAR", "calendar", yA),
+        this._renderPill("TIME SLOTS", "time-slots", wA)
       );
     }
     _renderPill(e, t, r) {
-      return Glamor.createElement(MT, {
-        style: vM.pill,
+      return Glamor.createElement(AT, {
+        style: vA.pill,
         key: t,
         label: e,
         icon: r,
-        selectColor: MP.color.link,
+        selectColor: AP.color.link,
         value: this.props.selectedPillId === t,
         data: { id: t },
         onChange: this._onPillClick,
@@ -36314,22 +36415,22 @@
     _renderButtons() {
       return Glamor.createElement(
         "div",
-        { css: vM.buttons },
+        { css: vA.buttons },
         this._renderFilterButton(),
         this._renderRefreshButton()
       );
     }
     _renderFilterButton() {
-      const e = this.props.hasFilters ? EM : _M;
+      const e = this.props.hasFilters ? EA : _A;
       return Glamor.createElement(
         "div",
-        { css: vM.buttonContainer },
+        { css: vA.buttonContainer },
         Glamor.createElement(wT, {
           inline: !0,
-          value: Glamor.createElement(LP, { style: vM.buttonIcon, name: e }),
+          value: Glamor.createElement(LP, { style: vA.buttonIcon, name: e }),
           items: [null],
           renderer: this._renderFilters,
-          menuStyle: vM.filters,
+          menuStyle: vA.filters,
           triangleStyle: { display: "none" },
         })
       );
@@ -36337,14 +36438,14 @@
     _renderRefreshButton() {
       return Glamor.createElement(
         "div",
-        gM({ css: vM.buttonContainer }, MP.hoverState(this, "refreshHovered")),
+        gA({ css: vA.buttonContainer }, AP.hoverState(this, "refreshHovered")),
         !this.props.loading &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(LP, {
-              style: vM.buttonIcon,
-              name: xM,
+              style: vA.buttonIcon,
+              name: xA,
               onClick: this.props.onRefreshClick,
             }),
             Glamor.createElement(RP, {
@@ -36354,7 +36455,7 @@
           ),
         this.props.loading &&
           Glamor.createElement(jP, {
-            style: vM.refreshSpinner,
+            style: vA.refreshSpinner,
             size: 17,
             value: 20,
             thickness: 1,
@@ -36363,7 +36464,7 @@
       );
     }
   }
-  var CM = function () {
+  var CA = function () {
     (this._renderFilters = () =>
       Glamor.createElement("div", { key: "filters" }, this.props.filters)),
       (this._onPillClick = (e) => {
@@ -36372,23 +36473,23 @@
         this.props.onPillClick(t);
       });
   };
-  const SM = {
+  const SA = {
     root: { width: "100%" },
-    section: { ...MP.margin("g1h") },
+    section: { ...AP.margin("g1h") },
     sectionTitle: {
-      marginBottom: MP.space.g1,
-      ...MP.text.of({
+      marginBottom: AP.space.g1,
+      ...AP.text.of({
         size: 9,
         height: "11px",
         weight: 600,
-        color: MP.color.textPassive,
+        color: AP.color.textPassive,
       }),
     },
     sectionContent: {},
-    checkboxContainer: { ...MP.relative() },
-    checkbox: { ...MP.padding("2 .") },
+    checkboxContainer: { ...AP.relative() },
+    checkbox: { ...AP.padding("2 .") },
     dot: {
-      ...MP.absolute("50% 0 . ."),
+      ...AP.absolute("50% 0 . ."),
       width: 8,
       height: 8,
       marginTop: -4,
@@ -36396,7 +36497,7 @@
       pointerEvents: "none",
     },
   };
-  class PM extends MP.Component {
+  class PA extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -36412,7 +36513,7 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: SM.root },
+        { css: SA.root },
         this._renderInterfaceSettingsSection(),
         this._renderMediaTypeSection(),
         this._renderPostStatusSection()
@@ -36421,15 +36522,15 @@
     _renderInterfaceSettingsSection() {
       return Glamor.createElement(
         "div",
-        { css: SM.section },
+        { css: SA.section },
         Glamor.createElement(
           "div",
-          { css: SM.sectionTitle },
+          { css: SA.sectionTitle },
           "interface preferences"
         ),
         Glamor.createElement(
           "div",
-          { css: SM.sectionContent },
+          { css: SA.sectionContent },
           this._renderCheckbox("Show info", "showInfo"),
           this.props.hasLocalPosts &&
             this._renderCheckbox("Show LOCAL labels", "showLocalLabel")
@@ -36439,15 +36540,15 @@
     _renderMediaTypeSection() {
       return Glamor.createElement(
         "div",
-        { css: SM.section },
+        { css: SA.section },
         Glamor.createElement(
           "div",
-          { css: SM.sectionTitle },
+          { css: SA.sectionTitle },
           "media type filters"
         ),
         Glamor.createElement(
           "div",
-          { css: SM.sectionContent },
+          { css: SA.sectionContent },
           this._renderCheckbox("Photos", "photo"),
           this._renderCheckbox("Videos", "video"),
           this._renderCheckbox("Carousels", "carousel")
@@ -36457,63 +36558,63 @@
     _renderPostStatusSection() {
       return Glamor.createElement(
         "div",
-        { css: SM.section },
+        { css: SA.section },
         Glamor.createElement(
           "div",
-          { css: SM.sectionTitle },
+          { css: SA.sectionTitle },
           "post status filters"
         ),
         Glamor.createElement(
           "div",
-          { css: SM.sectionContent },
+          { css: SA.sectionContent },
           this._renderCheckbox("Posted", "posted"),
-          this._renderCheckbox("Local", "local", MP.color.attention),
-          this._renderCheckbox("Draft", "draft", MP.color.positive),
-          this._renderCheckbox("Scheduled", "scheduled", MP.color.positive)
+          this._renderCheckbox("Local", "local", AP.color.attention),
+          this._renderCheckbox("Draft", "draft", AP.color.positive),
+          this._renderCheckbox("Scheduled", "scheduled", AP.color.positive)
         )
       );
     }
     _renderCheckbox(e, t, r = null) {
       return Glamor.createElement(
         "div",
-        { css: SM.checkboxContainer },
+        { css: SA.checkboxContainer },
         Glamor.createElement(sT, {
-          style: SM.checkbox,
+          style: SA.checkbox,
           label: e,
           value: this.props.filters[t],
           data: { filterId: t },
           onChange: this._onCheckboxClick,
         }),
         r &&
-          Glamor.createElement("div", { css: SM.dot, style: { background: r } })
+          Glamor.createElement("div", { css: SA.dot, style: { background: r } })
       );
     }
   }
-  const TM = {
+  const TA = {
     root: {
-      ...MP.relative(),
+      ...AP.relative(),
       width: "100%",
       height: "100%",
       maxWidth: 439,
       overflow: "hidden",
     },
     content: {
-      ...MP.padding("g2 g2 100 23"),
-      ...MP.relative(),
+      ...AP.padding("g2 g2 100 23"),
+      ...AP.relative(),
       height: "100%",
       overflow: "hidden auto",
     },
-    closeButton: { ...MP.absolute("g1 7 . .") },
+    closeButton: { ...AP.absolute("g1 7 . .") },
     controls: {
-      paddingBottom: MP.space.g2,
-      marginBottom: MP.space.g2,
-      borderBottom: MP.border.dark,
+      paddingBottom: AP.space.g2,
+      marginBottom: AP.space.g2,
+      borderBottom: AP.border.dark,
     },
-    gridTip: { marginTop: MP.space.g1h, marginBottom: -4 },
-    grid: { marginTop: MP.space.g2 },
+    gridTip: { marginTop: AP.space.g1h, marginBottom: -4 },
+    grid: { marginTop: AP.space.g2 },
     blurOverlay: ({ props: e }) => ({
-      ...MP.absolute("0 0 0 0"),
-      ...MP.transition.slow,
+      ...AP.absolute("0 0 0 0"),
+      ...AP.transition.slow,
       transitionProperty: "opacity",
       pointerEvents: "none",
       backdropFilter: "blur(6px)",
@@ -36523,29 +36624,29 @@
         e.setupPanel.shown && { opacity: 1, pointerEvents: "all" }),
       "&::before": {
         content: '""',
-        ...MP.absolute("0 0 0 0 -1"),
-        background: MP.color.bgLight3,
+        ...AP.absolute("0 0 0 0 -1"),
+        background: AP.color.bgLight3,
         opacity: 0.75,
       },
     }),
     setupPanel: ({ props: e }) => ({
-      ...MP.absolute("50% 0 . 44"),
-      ...MP.shadow.sh12,
-      ...MP.transition.slow,
+      ...AP.absolute("50% 0 . 44"),
+      ...AP.shadow.sh12,
+      ...AP.transition.slow,
       transitionProperty: "transform",
       transform: "translate(0, -50%)",
       borderRadius: "12px 0 0 12px",
-      background: MP.color.bgLight3,
+      background: AP.color.bgLight3,
       zIndex: 11,
       ...(!e.setupPanel.shown && {
         transform: "translate(calc(100% + 30px), -50%)",
       }),
     }),
   };
-  class DM extends MP.Component {
+  class DA extends AP.Component {
     constructor(e) {
       super(e),
-        (this._rootRef = MP.createRef()),
+        (this._rootRef = AP.createRef()),
         (this.state = { refreshHovered: !1 });
     }
     render() {
@@ -36554,7 +36655,7 @@
           null,
           Glamor.createElement(
             "div",
-            { css: MP.text.mainTitle },
+            { css: AP.text.mainTitle },
             "Post Assistant"
           ),
           Glamor.createElement(qP, { height: "g1" })
@@ -36566,15 +36667,15 @@
           this.props.gridTip &&
           Glamor.createElement(
             "div",
-            { css: TM.gridTip },
+            { css: TA.gridTip },
             Glamor.createElement(nI, this.props.gridTip)
           );
       return Glamor.createElement(
         "div",
-        { css: [MP.column, TM.root], ref: this._rootRef },
+        { css: [AP.column, TA.root], ref: this._rootRef },
         Glamor.createElement(
           "div",
-          { css: TM.content },
+          { css: TA.content },
           e,
           this._renderCloseButton(),
           this._renderControls(),
@@ -36588,23 +36689,23 @@
     }
     _renderCloseButton() {
       return Glamor.createElement(fT, {
-        style: TM.closeButton,
+        style: TA.closeButton,
         onClick: this.props.onCloseClick,
       });
     }
     _renderControls() {
       return this.props.controls
-        ? Glamor.createElement("div", { css: TM.controls }, this.props.controls)
+        ? Glamor.createElement("div", { css: TA.controls }, this.props.controls)
         : null;
     }
     _renderGrid() {
       return this.props.grid
-        ? Glamor.createElement("div", { css: TM.grid }, this.props.grid)
+        ? Glamor.createElement("div", { css: TA.grid }, this.props.grid)
         : null;
     }
     _renderBlurOverlay() {
       return Glamor.createElement("div", {
-        css: TM.blurOverlay(this),
+        css: TA.blurOverlay(this),
         onClick: this.props.onBlurOverlayClick,
       });
     }
@@ -36612,45 +36713,45 @@
       return this.props.setupPanel
         ? Glamor.createElement(
             "div",
-            { css: TM.setupPanel(this) },
+            { css: TA.setupPanel(this) },
             this.props.setupPanel.content
           )
         : null;
     }
   }
-  const IM = {
-    root: { ...MP.row, width: "100%", height: "100%" },
-    main: { width: "100%", height: "100%", ...MP.relative() },
+  const IA = {
+    root: { ...AP.row, width: "100%", height: "100%" },
+    main: { width: "100%", height: "100%", ...AP.relative() },
     loading: {
-      ...MP.row,
-      ...MP.center,
-      ...MP.text.hashtag,
-      ...MP.absolute("0 0 0 0"),
+      ...AP.row,
+      ...AP.center,
+      ...AP.text.hashtag,
+      ...AP.absolute("0 0 0 0"),
       lineHeight: "1.5em",
     },
-    loadingCloseButton: { ...MP.absolute("g1 g1 . .") },
+    loadingCloseButton: { ...AP.absolute("g1 g1 . .") },
     body: ({ props: e }) => ({
-      ...MP.relative(),
-      ...MP.column,
+      ...AP.relative(),
+      ...AP.column,
       height: "100%",
       ...(e.loading && {
-        ...MP.fixed(),
+        ...AP.fixed(),
         left: -1e5,
         visibility: "hidden",
         pointerEvents: "none",
       }),
     }),
-    tagAssistPanel: { flexShrink: 0, width: 440, zIndex: 1, ...MP.shadow.sh12 },
-    children: { ...MP.relative(), flexGrow: 1, overflow: "auto" },
+    tagAssistPanel: { flexShrink: 0, width: 440, zIndex: 1, ...AP.shadow.sh12 },
+    children: { ...AP.relative(), flexGrow: 1, overflow: "auto" },
   };
-  class GM extends MP.Component {
+  class GA extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
-        { css: IM.root },
+        { css: IA.root },
         Glamor.createElement(
           "div",
-          { css: IM.main },
+          { css: IA.main },
           this._renderLoading(),
           this._renderBody()
         ),
@@ -36661,9 +36762,9 @@
       return this.props.loading
         ? Glamor.createElement(
             "div",
-            { css: IM.loading },
+            { css: IA.loading },
             Glamor.createElement(fT, {
-              style: IM.loadingCloseButton,
+              style: IA.loadingCloseButton,
               onClick: this.props.onLoadingCloseClick,
             }),
             Glamor.createElement(jP, { size: 20, value: 20, spinning: !0 }),
@@ -36675,47 +36776,47 @@
     _renderBody() {
       return Glamor.createElement(
         "div",
-        { css: IM.body(this) },
+        { css: IA.body(this) },
         this.props.upsellOverlay,
-        Glamor.createElement("div", { css: IM.children }, this.props.children)
+        Glamor.createElement("div", { css: IA.children }, this.props.children)
       );
     }
     _renderTagAssistPanel() {
       return this.props.tagAssistPanel
         ? Glamor.createElement(
             "div",
-            { css: IM.tagAssistPanel },
+            { css: IA.tagAssistPanel },
             this.props.tagAssistPanel
           )
         : null;
     }
   }
-  const OM = {
+  const OA = {
     root: {
       minHeight: 40,
-      ...MP.margin("-8 -8 -8 0"),
-      ...MP.row,
-      ...MP.justifyContent.between,
-      ...MP.alignItems.center,
-      ...MP.relative(),
+      ...AP.margin("-8 -8 -8 0"),
+      ...AP.row,
+      ...AP.justifyContent.between,
+      ...AP.alignItems.center,
+      ...AP.relative(),
     },
-    title: { ...MP.text.contentTitle, paddingRight: MP.space.g2 },
-    right: { ...MP.row, ...MP.alignItems.center },
-    action: { marginLeft: MP.space.g1, marginRight: MP.space.g1 },
+    title: { ...AP.text.contentTitle, paddingRight: AP.space.g2 },
+    right: { ...AP.row, ...AP.alignItems.center },
+    action: { marginLeft: AP.space.g1, marginRight: AP.space.g1 },
   };
   LP.registerSvgIcons([
     '<symbol id="screen-header.back" viewBox="0 0 40 40"><path d="M10.965 21.014l-.026.022-.374-.374H10.5v-.065l-.874-.871.026-.026-.026-.026 1.313-1.312.026.026 5.025-5.026 1.31 1.313-4.129 4.132H29.5v1.858H13.242l4.058 4.061-1.31 1.31z" fill="currentColor"/></symbol>',
   ]);
-  class AM extends MP.Component {
+  class MA extends AP.Component {
     render() {
       return this.props.title
         ? Glamor.createElement(
             "div",
-            { css: OM.root },
-            Glamor.createElement("div", { css: OM.title }, this.props.title),
+            { css: OA.root },
+            Glamor.createElement("div", { css: OA.title }, this.props.title),
             Glamor.createElement(
               "div",
-              { css: OM.right },
+              { css: OA.right },
               this._renderAction(),
               this._renderCloseButton()
             )
@@ -36725,8 +36826,8 @@
     _renderAction() {
       const e = this.props.action;
       return e
-        ? Glamor.createElement(MT, {
-            style: OM.action,
+        ? Glamor.createElement(AT, {
+            style: OA.action,
             label: e.label,
             value: e.selected,
             onChange: e.onClick,
@@ -36739,7 +36840,7 @@
         : null;
     }
   }
-  function MM(e, t) {
+  function AA(e, t) {
     h_(1, arguments);
     var r = t || {},
       n = r.locale,
@@ -36753,12 +36854,12 @@
       c = (l < a ? 7 : 0) + l - a;
     return s.setDate(s.getDate() - c), s.setHours(0, 0, 0, 0), s;
   }
-  function FM(e) {
+  function FA(e) {
     h_(1, arguments);
     var t = p_(e);
     return t.setHours(23, 59, 59, 999), t;
   }
-  function RM(e, t) {
+  function RA(e, t) {
     h_(1, arguments);
     var r = t || {},
       n = r.locale,
@@ -36772,7 +36873,7 @@
       c = 6 + (l < a ? -7 : 0) - (l - a);
     return s.setDate(s.getDate() + c), s.setHours(23, 59, 59, 999), s;
   }
-  function BM(e, t) {
+  function BA(e, t) {
     h_(1, arguments);
     var r = p_(e),
       n = r.getFullYear(),
@@ -36787,46 +36888,46 @@
       );
     var c = new Date(0);
     c.setFullYear(n + 1, 0, l), c.setHours(0, 0, 0, 0);
-    var u = MM(c, t),
+    var u = AA(c, t),
       d = new Date(0);
     d.setFullYear(n, 0, l), d.setHours(0, 0, 0, 0);
-    var h = MM(d, t);
+    var h = AA(d, t);
     return r.getTime() >= u.getTime()
       ? n + 1
       : r.getTime() >= h.getTime()
       ? n
       : n - 1;
   }
-  function LM(e, t) {
+  function LA(e, t) {
     h_(1, arguments);
     var r = t || {},
       n = r.locale,
       o = n && n.options && n.options.firstWeekContainsDate,
       i = null == o ? 1 : d_(o),
       a = null == r.firstWeekContainsDate ? i : d_(r.firstWeekContainsDate),
-      s = BM(e, t),
+      s = BA(e, t),
       l = new Date(0);
     l.setFullYear(s, 0, a), l.setHours(0, 0, 0, 0);
-    var c = MM(l, t);
+    var c = AA(l, t);
     return c;
   }
-  var NM = 6048e5;
-  function jM(e, t) {
+  var NA = 6048e5;
+  function jA(e, t) {
     h_(2, arguments);
     var r = d_(t),
       n = 7 * r;
     return m_(e, n);
   }
-  var zM = 864e5;
-  function HM(e, t) {
+  var zA = 864e5;
+  function HA(e, t) {
     h_(2, arguments);
     var r = g_(e),
       n = g_(t),
-      o = r.getTime() - SA(r),
-      i = n.getTime() - SA(n);
-    return Math.round((o - i) / zM);
+      o = r.getTime() - SM(r),
+      i = n.getTime() - SM(n);
+    return Math.round((o - i) / zA);
   }
-  function UM(e, t) {
+  function UA(e, t) {
     var r =
       e.getFullYear() - t.getFullYear() ||
       e.getMonth() - t.getMonth() ||
@@ -36837,26 +36938,26 @@
       e.getMilliseconds() - t.getMilliseconds();
     return r < 0 ? -1 : r > 0 ? 1 : r;
   }
-  const WM = {
+  const WA = {
     root: {
-      ...MP.noselect,
-      ...MP.text.of({ weight: 600, color: MP.color.textBleak }),
-      ...MP.padding(". g1 g1 ."),
+      ...AP.noselect,
+      ...AP.text.of({ weight: 600, color: AP.color.textBleak }),
+      ...AP.padding(". g1 g1 ."),
       minWidth: 122,
       fontVariantNumeric: "tabular-nums",
     },
   };
-  class VM extends MP.Component {
+  class VA extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
-        { css: [MP.row, MP.justifyContent.end, WM.root] },
+        { css: [AP.row, AP.justifyContent.end, WA.root] },
         this.props.label
       );
     }
   }
-  function $M() {
-    return ($M =
+  function $A() {
+    return ($A =
       Object.assign ||
       function (e) {
         for (var t = 1; t < arguments.length; t++) {
@@ -36867,81 +36968,81 @@
         return e;
       }).apply(this, arguments);
   }
-  VM.defaultProps = { label: "" };
-  const qM = {
+  VA.defaultProps = { label: "" };
+  const qA = {
     root: (e) => ({
-      ...MP.relative(),
-      ...MP.noselect,
+      ...AP.relative(),
+      ...AP.noselect,
       minWidth: 122,
       minHeight: 148,
-      borderTop: e.isTop ? MP.border.light : null,
-      borderRight: MP.border.light,
-      borderBottom: MP.border.light,
-      borderLeft: e.isLeft ? MP.border.light : null,
+      borderTop: e.isTop ? AP.border.light : null,
+      borderRight: AP.border.light,
+      borderBottom: AP.border.light,
+      borderLeft: e.isLeft ? AP.border.light : null,
     }),
     header: { width: "100%" },
     title: (e) => ({
-      ...MP.absolute("6 7"),
-      ...MP.text.of({
+      ...AP.absolute("6 7"),
+      ...AP.text.of({
         size: 16,
         weight: 500,
-        color: e.isTitleBleak ? MP.color.textPassive : MP.color.primary,
+        color: e.isTitleBleak ? AP.color.textPassive : AP.color.primary,
       }),
     }),
     today: { fontSize: 13 },
     paginator: {
-      ...MP.absolute("0 0 . 0"),
-      ...MP.padding("13 6 12 6"),
-      ...MP.clickableInversed,
+      ...AP.absolute("0 0 . 0"),
+      ...AP.padding("13 6 12 6"),
+      ...AP.clickableInversed,
     },
     paginatorItem: (e) => ({
-      ...MP.margin("0 3"),
+      ...AP.margin("0 3"),
       width: 5,
       height: 5,
       borderRadius: 2.5,
-      backgroundColor: e ? MP.color.link : MP.color.iconPassive,
+      backgroundColor: e ? AP.color.link : AP.color.iconPassive,
     }),
     titleAddButton: (e) => ({
-      ...MP.clickable,
-      ...MP.absolute("0 . . 0"),
-      ...MP.padding("6 8 8 6"),
-      ...MP.transition.fast,
+      ...AP.clickable,
+      ...AP.absolute("0 . . 0"),
+      ...AP.padding("6 8 8 6"),
+      ...AP.transition.fast,
       ...(!e.headerHovered && { opacity: 0, transform: "translateX(-3px)" }),
     }),
-    titleAddButtonIcon: { width: 19, height: 19, color: MP.color.link },
+    titleAddButtonIcon: { width: 19, height: 19, color: AP.color.link },
     contentAddButton: {
-      ...MP.absolute("0 0 0 0"),
-      ...MP.borderRadius.r4,
-      ...MP.margin("31 7 . 7"),
+      ...AP.absolute("0 0 0 0"),
+      ...AP.borderRadius.r4,
+      ...AP.margin("31 7 . 7"),
       cursor: "pointer",
       width: 109,
       height: 109,
-      border: MP.border.dark,
-      backgroundColor: MP.color.bgLight1,
+      border: AP.border.dark,
+      backgroundColor: AP.color.bgLight1,
     },
     contentAddButtonIcon: ({ state: e }) => ({
-      ...MP.row,
-      ...MP.center,
-      ...MP.transition.fast,
+      ...AP.row,
+      ...AP.center,
+      ...AP.transition.fast,
       width: "100%",
       height: "100%",
-      color: MP.color.iconPassive,
+      color: AP.color.iconPassive,
       transitionProperty: "transform",
       ...(!e.isDragStart && {
-        "&:hover": { color: MP.color.link, transform: "scale(1.05)" },
+        "&:hover": { color: AP.color.link, transform: "scale(1.05)" },
       }),
     }),
     postContainer: {
-      ...MP.absolute("31 6 6 6"),
-      ...MP.borderRadius.r4,
+      ...AP.absolute("31 6 6 6"),
+      ...AP.borderRadius.r4,
       overflow: "hidden",
     },
     post: { width: "100%", height: "100%" },
   };
-  let YM = null,
-    ZM = null,
-    KM = null;
-  class XM extends MP.Component {
+  let YA = null,
+    ZA = null,
+    KA = null;
+  class XA extends AP.Component {
     constructor(e) {
       super(e),
         (this._onPostMouseEnter = () => {
@@ -36957,36 +37058,36 @@
                 e.preventDefault(),
                 void (this.props.onDragFail && this.props.onDragFail())
               );
-            (YM = this._selectedPost),
-              (ZM = this),
-              (KM = this),
+            (YA = this._selectedPost),
+              (ZA = this),
+              (KA = this),
               this.setState({ isDragStart: !0 }),
               this.setState({ isDragOver: !0 }),
-              AO.setDragImage(e, YM.image);
+              MO.setDragImage(e, YA.image);
           } else e.preventDefault();
         }),
         (this._onDragEnter = (e) => {
           this._canDrop() &&
-            KM !== this &&
-            (KM.setState({ isDragOver: !1 }),
+            KA !== this &&
+            (KA.setState({ isDragOver: !1 }),
             this.setState({ isDragOver: !0 }),
-            (KM = this));
+            (KA = this));
         }),
         (this._onDragOver = (e) => {
           e.preventDefault();
         }),
         (this._onDragEnd = () => {
           if (this._canDrop()) {
-            const e = KM.props.getDropTime(YM);
-            YM.on !== e &&
-              (KM.setState({ selectedPostKey: KM._selectedPostKey }),
-              this.props.onPostDrop(YM, e));
+            const e = KA.props.getDropTime(YA);
+            YA.on !== e &&
+              (KA.setState({ selectedPostKey: KA._selectedPostKey }),
+              this.props.onPostDrop(YA, e));
           }
-          ZM.setState({ isDragStart: !1 }),
-            KM.setState({ isDragOver: !1 }),
-            (YM = null),
-            (ZM = null),
-            (KM = null);
+          ZA.setState({ isDragStart: !1 }),
+            KA.setState({ isDragOver: !1 }),
+            (YA = null),
+            (ZA = null),
+            (KA = null);
         }),
         (this._onDayCellPaginatorClick = () => {
           let e =
@@ -37011,10 +37112,10 @@
         t = this.state.isDragOver;
       let r,
         n = this.props.posts ? [...this.props.posts] : [];
-      if (e && !t) n = n.filter((e) => e.key !== YM.key);
+      if (e && !t) n = n.filter((e) => e.key !== YA.key);
       else if (!e && t) {
-        const e = this.props.getDropTime(YM);
-        e && n.push({ ...YM, on: e });
+        const e = this.props.getDropTime(YA);
+        e && n.push({ ...YA, on: e });
       }
       n.sort((e, t) => e.on - t.on);
       const o = n[0] ? n[0].key : null;
@@ -37022,7 +37123,7 @@
         e && !t
           ? (r = o)
           : !e && t
-          ? (r = YM.key)
+          ? (r = YA.key)
           : ((r = this.state.selectedPostKey || o),
             n.find((e) => e.key === r) || (r = o)),
         (this._posts = n),
@@ -37030,9 +37131,9 @@
         (this._selectedPost = n.find((e) => e.key === r)),
         Glamor.createElement(
           "div",
-          $M(
-            { css: [MP.row, MP.justifyContent.end, qM.root(this.props)] },
-            MP.hoverState(this, "hovered"),
+          $A(
+            { css: [AP.row, AP.justifyContent.end, qA.root(this.props)] },
+            AP.hoverState(this, "hovered"),
             {
               draggable: this._canDragPost(this._selectedPost),
               onDragStart: this._onDragStart,
@@ -37043,7 +37144,7 @@
           ),
           Glamor.createElement(
             "div",
-            $M({ css: qM.header }, MP.hoverState(this, "headerHovered")),
+            $A({ css: qA.header }, AP.hoverState(this, "headerHovered")),
             this._renderTitle(),
             this._renderPaginator(),
             this._renderTitleAddButton()
@@ -37056,10 +37157,10 @@
     _renderTitle() {
       return Glamor.createElement(
         "div",
-        { css: qM.title(this.props) },
+        { css: qA.title(this.props) },
         this.props.isToday &&
           this._posts.length < 2 &&
-          Glamor.createElement("span", { css: qM.today }, "today, "),
+          Glamor.createElement("span", { css: qA.today }, "today, "),
         this.props.title
       );
     }
@@ -37070,12 +37171,12 @@
           : Glamor.createElement(
               "div",
               {
-                css: qM.titleAddButton(this.state),
+                css: qA.titleAddButton(this.state),
                 onClick: this.props.onAddPostClick,
               },
               Glamor.createElement(LP, {
                 name: "igswiss.plus",
-                style: qM.titleAddButtonIcon,
+                style: qA.titleAddButtonIcon,
               })
             )
         : null;
@@ -37085,12 +37186,12 @@
         ? Glamor.createElement(
             "div",
             {
-              css: [MP.row, MP.center, qM.contentAddButton],
+              css: [AP.row, AP.center, qA.contentAddButton],
               onClick: this.props.onAddPostClick,
             },
             Glamor.createElement(
               "div",
-              { css: qM.contentAddButtonIcon(this) },
+              { css: qA.contentAddButtonIcon(this) },
               Glamor.createElement(LP, { name: "igswiss.plus" })
             )
           )
@@ -37102,7 +37203,7 @@
         : Glamor.createElement(
             "div",
             {
-              css: [MP.row, MP.center, qM.paginator],
+              css: [AP.row, AP.center, qA.paginator],
               onClick: this._onDayCellPaginatorClick,
             },
             this._posts
@@ -37110,7 +37211,7 @@
               .map((e) =>
                 Glamor.createElement("div", {
                   key: e.key,
-                  css: qM.paginatorItem(this._selectedPostKey === e.key),
+                  css: qA.paginatorItem(this._selectedPostKey === e.key),
                 })
               )
           );
@@ -37120,15 +37221,15 @@
         ? Glamor.createElement(
             "div",
             {
-              css: qM.postContainer,
+              css: qA.postContainer,
               onMouseEnter: this._onPostMouseEnter,
               onMouseLeave: this._onPostMouseLeave,
             },
             Glamor.createElement(
-              XA,
-              $M(
+              XM,
+              $A(
                 {
-                  style: qM.post,
+                  style: qA.post,
                   rounded: !0,
                   disableHover: this.state.isDragStart,
                 },
@@ -37142,15 +37243,15 @@
       return !(!e || e.stats || !this.props.onPostDrop);
     }
     _canDrop() {
-      return !(!YM || !this.props.getDropTime(YM));
+      return !(!YA || !this.props.getDropTime(YA));
     }
   }
-  XM.defaultProps = { title: "", isTitleBleak: !1, isToday: !1 };
-  var QM = {
+  XA.defaultProps = { title: "", isTitleBleak: !1, isToday: !1 };
+  var QA = {
     timeToIcon: function (e) {
       const t = Math.floor(e / 36e5);
       if (t < 5) return rF;
-      if (t < 11) return JM;
+      if (t < 11) return JA;
       if (t < 17) return eF;
       if (t < 21) return tF;
       return rF;
@@ -37171,57 +37272,57 @@
       return `${n}:${o}`;
     },
   };
-  const JM = "schedule-slot.morning",
+  const JA = "schedule-slot.morning",
     eF = "schedule-slot.midday",
     tF = "schedule-slot.evening",
     rF = "schedule-slot.night";
   LP.registerSvgIcons([
-    `<symbol id="${JM}" viewBox="0 0 22.588 22.588"><rect width="22.588" height="22.588" transform="translate(0 0)" fill="none"/><path d="M13.459,14.28a4.089,4.089,0,0,0-2.2-.691,4.159,4.159,0,0,0-2.149.691L1.08,19.662l-.746-1.19,5.035-3.355a7.056,7.056,0,0,1-.6-6.489l1.269.518a5.654,5.654,0,0,0-.305,1,5.735,5.735,0,0,0,0,2.289,5.648,5.648,0,0,0,.78,1.918l2.049-1.365a5.478,5.478,0,0,1,2.7-.8,5.382,5.382,0,0,1,2.783.8l2.045,1.356a5.677,5.677,0,0,0-4.791-8.733c-.133,0-.267,0-.4.014l-.1-1.367c.166-.012.335-.018.5-.018a7.1,7.1,0,0,1,1.421.143,7.01,7.01,0,0,1,2.521,1.061,7.072,7.072,0,0,1,2.555,3.1A7.015,7.015,0,0,1,18.2,9.873a7.121,7.121,0,0,1,0,2.842,7.009,7.009,0,0,1-.974,2.389l5.081,3.368-.813,1.19Zm6.345-2.3v-1.37h2.785v1.37Zm-19.8,0v-1.37H2.785v1.37ZM6.627,8.056,5.5,7.275a7.106,7.106,0,0,1,.808-.966c.074-.074.15-.147.227-.217l.932,1c-.064.059-.128.12-.19.181a5.731,5.731,0,0,0-.651.778h0ZM8.5,6.349h0L7.814,5.161a6.994,6.994,0,0,1,1.4-.6l.412,1.307A5.635,5.635,0,0,0,8.5,6.349ZM17.517,4.1l1.969-1.969.969.969L18.485,5.072ZM2.134,3.1,3.1,2.134,5.072,4.1,4.1,5.072Zm8.475-.318V0h1.37V2.785Z" transform="translate(0 1.481)" fill="currentColor"/></symbol>`,
+    `<symbol id="${JA}" viewBox="0 0 22.588 22.588"><rect width="22.588" height="22.588" transform="translate(0 0)" fill="none"/><path d="M13.459,14.28a4.089,4.089,0,0,0-2.2-.691,4.159,4.159,0,0,0-2.149.691L1.08,19.662l-.746-1.19,5.035-3.355a7.056,7.056,0,0,1-.6-6.489l1.269.518a5.654,5.654,0,0,0-.305,1,5.735,5.735,0,0,0,0,2.289,5.648,5.648,0,0,0,.78,1.918l2.049-1.365a5.478,5.478,0,0,1,2.7-.8,5.382,5.382,0,0,1,2.783.8l2.045,1.356a5.677,5.677,0,0,0-4.791-8.733c-.133,0-.267,0-.4.014l-.1-1.367c.166-.012.335-.018.5-.018a7.1,7.1,0,0,1,1.421.143,7.01,7.01,0,0,1,2.521,1.061,7.072,7.072,0,0,1,2.555,3.1A7.015,7.015,0,0,1,18.2,9.873a7.121,7.121,0,0,1,0,2.842,7.009,7.009,0,0,1-.974,2.389l5.081,3.368-.813,1.19Zm6.345-2.3v-1.37h2.785v1.37Zm-19.8,0v-1.37H2.785v1.37ZM6.627,8.056,5.5,7.275a7.106,7.106,0,0,1,.808-.966c.074-.074.15-.147.227-.217l.932,1c-.064.059-.128.12-.19.181a5.731,5.731,0,0,0-.651.778h0ZM8.5,6.349h0L7.814,5.161a6.994,6.994,0,0,1,1.4-.6l.412,1.307A5.635,5.635,0,0,0,8.5,6.349ZM17.517,4.1l1.969-1.969.969.969L18.485,5.072ZM2.134,3.1,3.1,2.134,5.072,4.1,4.1,5.072Zm8.475-.318V0h1.37V2.785Z" transform="translate(0 1.481)" fill="currentColor"/></symbol>`,
     `<symbol id="${eF}" viewBox="0 0 22.588 22.588"><rect width="22.588" height="22.588" fill="none"/><path d="M10.609,22.588V19.8h1.37v2.785Zm-8.475-3.07L4.1,17.549l.969.969L3.1,20.487Zm15.383-1,.969-.969,1.969,1.969-.969.969ZM9.873,18.2a7.01,7.01,0,0,1-2.521-1.061,7.073,7.073,0,0,1-2.555-3.1,7.022,7.022,0,0,1-.411-1.323,7.119,7.119,0,0,1,0-2.842A7.01,7.01,0,0,1,5.448,7.352a7.089,7.089,0,0,1,1.9-1.9c.09-.061.183-.12.276-.177l.722,1.165c-.078.047-.156.1-.231.148a5.7,5.7,0,0,0-2.058,2.5,5.656,5.656,0,0,0-.331,1.066,5.735,5.735,0,0,0,0,2.289,5.649,5.649,0,0,0,.855,2.031,5.7,5.7,0,0,0,2.5,2.058,5.651,5.651,0,0,0,1.066.331,5.733,5.733,0,0,0,2.289,0A5.647,5.647,0,0,0,14.47,16a5.7,5.7,0,0,0,2.058-2.5,5.648,5.648,0,0,0,.331-1.066,5.735,5.735,0,0,0,0-2.289A5.648,5.648,0,0,0,16,8.118,5.711,5.711,0,0,0,14.47,6.584l-.122-.08.721-1.166c.057.036.113.073.167.109a7.072,7.072,0,0,1,2.555,3.1A7.018,7.018,0,0,1,18.2,9.873a7.121,7.121,0,0,1,0,2.842,7.01,7.01,0,0,1-1.061,2.521,7.072,7.072,0,0,1-3.1,2.555,7.02,7.02,0,0,1-1.323.411,7.119,7.119,0,0,1-2.842,0Zm9.93-6.222v-1.37h2.785v1.37Zm-19.8,0v-1.37H2.785v1.37Zm13.193-6.04a5.672,5.672,0,0,0-.754-.21C12.3,5.7,12.148,5.676,12,5.658l.146-1.363c.191.023.382.054.568.092a7.039,7.039,0,0,1,.913.252l-.435,1.3h0ZM9.479,5.91h0L9.027,4.616a7.029,7.029,0,0,1,.846-.229c.227-.047.461-.082.694-.106l.163,1.361a5.636,5.636,0,0,0-1.251.268ZM17.517,4.1l1.969-1.969.969.969L18.486,5.072ZM2.134,3.1,3.1,2.134,5.072,4.1,4.1,5.072Zm8.475-.318V0h1.37V2.785Z" transform="translate(0 0)" fill="currentColor"/></symbol>`,
     `<symbol id="${tF}" viewBox="0 0 22.588 22.588"><rect width="22.588" height="22.588" fill="none"/><path d="M10.923,18.38a5.479,5.479,0,0,1-2.7-.8L5.515,15.77h0l0,0L0,12.095.746,10.9,4.17,13.2q-.067-.24-.117-.485a7.121,7.121,0,0,1,0-2.842A7.011,7.011,0,0,1,5.114,7.352,7.072,7.072,0,0,1,8.216,4.8a7.021,7.021,0,0,1,1.323-.411A7.125,7.125,0,0,1,11.824,4.3l-.172,1.36a5.738,5.738,0,0,0-1.836.074,5.649,5.649,0,0,0-2.031.855,5.7,5.7,0,0,0-2.058,2.5A5.651,5.651,0,0,0,5.4,10.149a5.735,5.735,0,0,0,0,2.289A5.65,5.65,0,0,0,6.25,14.47q.081.121.17.238l2.355,1.579a4.16,4.16,0,0,0,2.149.691,4.089,4.089,0,0,0,2.2-.691l2.394-1.6q.078-.105.151-.213a5.7,5.7,0,0,0,.855-4.317l1.3-.455c.014.059.027.118.038.176a7.121,7.121,0,0,1,0,2.842q-.049.237-.114.472L21.163,10.9l.813,1.19-8.269,5.481A5.4,5.4,0,0,1,11,18.381Zm5.154-9.555a5.7,5.7,0,0,0-.407-.707c-.1-.15-.212-.3-.328-.438l.974-.971a7.054,7.054,0,0,1,.922,1.375l-1.162.74h0ZM14.3,6.7c-.053-.039-.108-.077-.162-.114a5.677,5.677,0,0,0-.965-.524L13.029,6l.463-1.29c.071.027.143.056.212.086a7.057,7.057,0,0,1,1.2.65l.127.088L14.3,6.7h0Zm2.884-2.6,1.969-1.969.969.969L18.152,5.072ZM1.8,3.1l.969-.969L4.738,4.1l-.969.969Zm8.475-.318V0h1.37V2.785Z" transform="translate(0.312 2.144)" fill="currentColor"/></symbol>`,
     `<symbol id="${rF}" viewBox="0 0 24 24"><path d="M8.433,16.693H8.346A8.346,8.346,0,0,1,8.346,0h.167a12.622,12.622,0,0,1,1.581.1A6.806,6.806,0,0,0,6.557,5.963a6.575,6.575,0,0,0,6.558,6.557h.137A6.333,6.333,0,0,0,15.8,11.99,8.152,8.152,0,0,1,8.433,16.693ZM7.021,1.468A7.01,7.01,0,0,0,8.153,15.374h.193a6.867,6.867,0,0,0,4.833-2.006,7.274,7.274,0,0,1-.793.044h-.133A7.173,7.173,0,0,1,7.021,1.468Z" transform="translate(4.049 3.776) rotate(-1)" fill="currentColor"/><rect width="24" height="24" fill="none"/></symbol>`,
   ]);
   const nF = {
     root: (e) => ({
-      ...MP.noselect,
-      ...MP.relative(),
+      ...AP.noselect,
+      ...AP.relative(),
       minHeight: 28,
       maxHeight: 109,
-      border: e ? MP.border.dark : null,
+      border: e ? AP.border.dark : null,
       margin: e ? null : 1,
       borderRadius: 4,
-      ...MP.text.of({
+      ...AP.text.of({
         size: 11,
         height: "14px",
         weight: 600,
-        color: MP.color.primary,
+        color: AP.color.primary,
         opacity: 0.9,
       }),
-      backgroundColor: e ? MP.color.bgLight1 : null,
+      backgroundColor: e ? AP.color.bgLight1 : null,
       flexGrow: 1,
     }),
-    labelContainer: { ...MP.margin("6 4 4 6") },
+    labelContainer: { ...AP.margin("6 4 4 6") },
     timeOfDayIcon: { width: 16, height: 16 },
     addIcon: (e) => ({ width: e.mini ? 18 : 50, height: e.mini ? 18 : 50 }),
     addButtonContainer: (e) => ({
-      ...(e.mini ? MP.absolute("0 0 0 0") : MP.absolute("16 0 0 0")),
-      ...(e.mini ? MP.justifyContent.end : MP.justifyContent.center),
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.clickable,
-      ...MP.padding(". 4 . 4"),
-      ...MP.transition.fast,
+      ...(e.mini ? AP.absolute("0 0 0 0") : AP.absolute("16 0 0 0")),
+      ...(e.mini ? AP.justifyContent.end : AP.justifyContent.center),
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.clickable,
+      ...AP.padding(". 4 . 4"),
+      ...AP.transition.fast,
       transitionProperty: "transform",
-      color: MP.color.iconPassive,
+      color: AP.color.iconPassive,
       ...(!e.disableHover && {
         ":hover": {
-          color: MP.color.link,
+          color: AP.color.link,
           ...(!e.mini && { transform: "scale(1.05)" }),
         },
       }),
     }),
   };
-  class oF extends MP.Component {
+  class oF extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -37239,19 +37340,19 @@
         { css: nF.root(e) },
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.justifyContent.between] },
+          { css: [AP.row, AP.justifyContent.between] },
           this._renderLabel(),
           this._renderAddButton()
         )
       );
     }
     _renderLabel() {
-      const e = BA(this.props.dayStart + this.props.time, "HH:mm");
+      const e = BM(this.props.dayStart + this.props.time, "HH:mm");
       return Glamor.createElement(
         "div",
-        { css: [MP.row, MP.alignItems.center, nF.labelContainer] },
+        { css: [AP.row, AP.alignItems.center, nF.labelContainer] },
         Glamor.createElement(LP, {
-          name: QM.timeToIcon(this.props.time),
+          name: QA.timeToIcon(this.props.time),
           style: nF.timeOfDayIcon,
         }),
         Glamor.createElement(qP, { width: "g1" }),
@@ -37288,13 +37389,13 @@
   }
   const aF = {
     root: (e) => ({
-      ...MP.noselect,
+      ...AP.noselect,
       minWidth: 122,
       minHeight: e.isTop ? 123 : 151,
-      borderTop: e.isTop ? MP.border.light : null,
-      borderRight: MP.border.light,
-      borderBottom: e.isBottom ? MP.border.light : null,
-      borderLeft: e.isLeft ? MP.border.light : null,
+      borderTop: e.isTop ? AP.border.light : null,
+      borderRight: AP.border.light,
+      borderBottom: e.isBottom ? AP.border.light : null,
+      borderLeft: e.isLeft ? AP.border.light : null,
       paddingLeft: 3,
       paddingRight: 3,
       paddingTop: e.isTop ? 3 : 0,
@@ -37307,7 +37408,7 @@
       ...(!e && { flexGrow: 1 }),
     }),
     postContainer: {
-      ...MP.borderRadius.r4,
+      ...AP.borderRadius.r4,
       overflow: "hidden",
       width: 109,
       height: 109,
@@ -37317,7 +37418,7 @@
   let sF = null,
     lF = null,
     cF = null;
-  class uF extends MP.Component {
+  class uF extends AP.Component {
     constructor(e) {
       super(e),
         (this._onPostMouseEnter = (e) => {
@@ -37340,7 +37441,7 @@
               (cF = this),
               this.setState({ isDragStart: !0 }),
               this.setState({ isDragOver: !0 }),
-              AO.setDragImage(e, sF.image);
+              MO.setDragImage(e, sF.image);
           } else e.preventDefault();
         }),
         (this._onDragOver = (e) => {
@@ -37383,7 +37484,7 @@
         Glamor.createElement(
           "div",
           {
-            css: [MP.column, MP.alignItems.stretch, aF.root(this.props)],
+            css: [AP.column, AP.alignItems.stretch, aF.root(this.props)],
             draggable: this._canDragPost(this.state.hoveredPost),
             onDragStart: this._onDragStart,
             onDragOver: this._onDragOver,
@@ -37400,7 +37501,7 @@
       const r = !!this._posts[t + 1];
       return Glamor.createElement(
         "div",
-        { key: t, css: [MP.column, aF.slotContainer(r)] },
+        { key: t, css: [AP.column, aF.slotContainer(r)] },
         Glamor.createElement(
           oF,
           iF({}, e, { mini: r, disableHover: this.state.isDragStart })
@@ -37415,9 +37516,9 @@
           "data-post-key": e.key,
           onMouseEnter: this._onPostMouseEnter,
           onMouseLeave: this._onPostMouseLeave,
-          css: [MP.column, aF.postContainer],
+          css: [AP.column, aF.postContainer],
         },
-        Glamor.createElement(XA, iF({ style: aF.post, rounded: !0 }, e))
+        Glamor.createElement(XM, iF({ style: aF.post, rounded: !0 }, e))
       );
     }
     _canDragPost(e) {
@@ -37438,8 +37539,8 @@
         const e = (function (e, t) {
           h_(1, arguments);
           var r = p_(e),
-            n = MM(r, t).getTime() - LM(r, t).getTime();
-          return Math.round(n / NM) + 1;
+            n = AA(r, t).getTime() - LA(r, t).getTime();
+          return Math.round(n / NA) + 1;
         })(t);
         return `${pF[r]} ${n}, Week ${e}`;
       }
@@ -37451,7 +37552,7 @@
       direction: r,
     }) {
       t || (t = Date.now());
-      "week" === e && (t = jM(t, r));
+      "week" === e && (t = jA(t, r));
       if ("month" === e) {
         const e = RG(t);
         for (
@@ -37472,22 +37573,22 @@
           RG(t) === e;
 
         )
-          t = jM(t, r);
+          t = jA(t, r);
       }
       return t.getTime();
     },
     generateHeader: function ({ periodType: e, periodStart: t }) {
       if ("month" === e)
-        return hF.map((e, t) => ({ render: VM, key: t, label: e }));
+        return hF.map((e, t) => ({ render: VA, key: t, label: e }));
       if ("week" === e)
         return (
-          (t = RM(t)),
+          (t = RA(t)),
           [-6, -5, -4, -3, -2, -1, 0]
             .map((e, r) => {
               const n = m_(t, e);
               return `${hF[r]} ${FG(n)}`;
             })
-            .map((e, t) => ({ render: VM, key: t, label: e }))
+            .map((e, t) => ({ render: VA, key: t, label: e }))
         );
       return [];
     },
@@ -37505,7 +37606,7 @@
       onPostClick: u,
       onAddPostClick: d,
     }) {
-      const h = { start: MM(n), end: RM(n) },
+      const h = { start: AA(n), end: RA(n) },
         p = { start: zG(n), end: LG(n) };
       if ("month" === r)
         return (function ({
@@ -37520,20 +37621,20 @@
           onAddPostClick: l,
         }) {
           const c = [],
-            u = MM(e.start);
-          let d = RM(e.end);
+            u = AA(e.start);
+          let d = RA(e.end);
           34 ===
             (function (e, t) {
               h_(2, arguments);
               var r = p_(e),
                 n = p_(t),
-                o = UM(r, n),
-                i = Math.abs(HM(r, n));
+                o = UA(r, n),
+                i = Math.abs(HA(r, n));
               r.setDate(r.getDate() - o * i);
-              var a = UM(r, n) === -o,
+              var a = UA(r, n) === -o,
                 s = o * (i - a);
               return 0 === s ? 0 : s;
-            })(d, u) && (d = jM(d, 1));
+            })(d, u) && (d = jA(d, 1));
           for (let e = 0; ; e += 1) {
             const t = m_(u, e);
             if (t > d) break;
@@ -37544,7 +37645,7 @@
             const d = c.getTime(),
               p = g_(c).getTime(),
               m = t
-                .filter((e) => jA(c, e.on))
+                .filter((e) => jM(c, e.on))
                 .map((e) => ({
                   ...e,
                   onPostClick:
@@ -37555,7 +37656,7 @@
                 })),
               f = p >= h && (!n || p < h + 24 * n * 60 * 60 * 1e3);
             return {
-              render: XM,
+              render: XA,
               day: c,
               key: u,
               title: FG(c),
@@ -37569,7 +37670,7 @@
               getDropTime: function (e) {
                 const t = Date.now(),
                   o = t + 1e3 * r * 60,
-                  i = Math.min(FM(p).getTime(), t + 24 * n * 60 * 60 * 1e3);
+                  i = Math.min(FA(p).getTime(), t + 24 * n * 60 * 60 * 1e3);
                 if (o > i) return null;
                 const a = p + (e.on - g_(e.on));
                 return a > i ? null : a < o ? o : a;
@@ -37623,7 +37724,7 @@
             h = Date.now(),
             p = d.map((e, o) => {
               const a = g_(e).getTime();
-              return [...t.filter((t) => jA(t.on, e)), ...(n ? r : [])]
+              return [...t.filter((t) => jM(t.on, e)), ...(n ? r : [])]
                 .sort(
                   (e, t) =>
                     (e.on ? e.on + 1 : a + e.time) -
@@ -37683,7 +37784,7 @@
                 getDropTime: function (e) {
                   const t = Date.now(),
                     a = t + 1e3 * o * 60,
-                    s = Math.min(FM(p).getTime(), t + 24 * i * 60 * 60 * 1e3);
+                    s = Math.min(FA(p).getTime(), t + 24 * i * 60 * 60 * 1e3);
                   if (a > s) return null;
                   if (!n) {
                     const t = p + (e.on - g_(e.on));
@@ -37695,8 +37796,8 @@
                   if (h) {
                     const e = r.findIndex((e) => e.time === h.time),
                       t = r[e + 1] || null;
-                    c = t ? p + t.time : FM(p).getTime();
-                  } else c = r.length ? p + r[0].time : FM(p).getTime();
+                    c = t ? p + t.time : FA(p).getTime();
+                  } else c = r.length ? p + r[0].time : FA(p).getTime();
                   return l < c ? a : null;
                 },
                 onPostDrop: l,
@@ -37736,24 +37837,24 @@
       "December",
     ];
   const mF = ({ props: e }) => ({
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.justifyContent.between,
-      ...MP.noselect,
-      ...MP.text.elementNormal,
-      ...MP.borderRadius.r4,
-      border: MP.border.dark,
-      backgroundColor: MP.color.bgLight1,
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.justifyContent.between,
+      ...AP.noselect,
+      ...AP.text.elementNormal,
+      ...AP.borderRadius.r4,
+      border: AP.border.dark,
+      backgroundColor: AP.color.bgLight1,
       minWidth: e.minWidth || null,
     }),
-    fF = ({ props: e }) => ({ color: e.buttonsColor || MP.color.link }),
+    fF = ({ props: e }) => ({ color: e.buttonsColor || AP.color.link }),
     gF = "schedule-calendar-period-paginator.left",
     vF = "schedule-calendar-period-paginator.right";
   LP.registerSvgIcons([
     `<symbol id="${gF}" viewBox="0 0 34 34"><rect width="34" height="34" fill="none"/><path d="M9.789,2.613A5.224,5.224,0,0,0,7.88.7,5.132,5.132,0,0,0,5.246,0,5.132,5.132,0,0,0,2.613.7,5.223,5.223,0,0,0,.7,2.613,5.132,5.132,0,0,0,0,5.246,5.133,5.133,0,0,0,.7,7.88,5.224,5.224,0,0,0,2.613,9.789a5.132,5.132,0,0,0,2.633.7,5.132,5.132,0,0,0,2.633-.7A5.223,5.223,0,0,0,9.789,7.88a5.133,5.133,0,0,0,.7-2.633A5.133,5.133,0,0,0,9.789,2.613ZM6.906,7.343a.428.428,0,0,1,0,.615l-.7.7a.429.429,0,0,1-.615,0l-3.1-3.1a.429.429,0,0,1,0-.615l3.1-3.1a.429.429,0,0,1,.615,0l.7.7a.428.428,0,0,1,0,.615l-2.1,2.1Z" transform="translate(11.754 11.754)" fill="currentColor"/></symbol>`,
     `<symbol id="${vF}" viewBox="0 0 34 34"><rect width="34" height="34" fill="none"/><path d="M9.789,2.613A5.224,5.224,0,0,0,7.88.7,5.132,5.132,0,0,0,5.246,0,5.132,5.132,0,0,0,2.613.7,5.223,5.223,0,0,0,.7,2.613,5.132,5.132,0,0,0,0,5.246,5.133,5.133,0,0,0,.7,7.88,5.224,5.224,0,0,0,2.613,9.789a5.132,5.132,0,0,0,2.633.7,5.132,5.132,0,0,0,2.633-.7A5.223,5.223,0,0,0,9.789,7.88a5.133,5.133,0,0,0,.7-2.633A5.133,5.133,0,0,0,9.789,2.613ZM6.906,7.343a.428.428,0,0,1,0,.615l-.7.7a.429.429,0,0,1-.615,0l-3.1-3.1a.429.429,0,0,1,0-.615l3.1-3.1a.429.429,0,0,1,.615,0l.7.7a.428.428,0,0,1,0,.615l-2.1,2.1Z" transform="translate(22.247 22.246) rotate(180)" fill="currentColor"/></symbol>`,
   ]);
-  class bF extends MP.Component {
+  class bF extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -37806,22 +37907,22 @@
   }
   const yF = {
     root: {
-      ...MP.row,
-      ...MP.noselect,
-      ...MP.text.elementNormal,
-      ...MP.borderRadius.r4,
-      border: MP.border.dark,
+      ...AP.row,
+      ...AP.noselect,
+      ...AP.text.elementNormal,
+      ...AP.borderRadius.r4,
+      border: AP.border.dark,
       overflow: "hidden",
     },
     button: (e) => ({
-      ...MP.clickable,
-      ...MP.padding("g1 g2"),
-      background: MP.color.bgLight1,
-      ...(e && { background: MP.color.bgLight3 }),
+      ...AP.clickable,
+      ...AP.padding("g1 g2"),
+      background: AP.color.bgLight1,
+      ...(e && { background: AP.color.bgLight3 }),
     }),
-    divider: { width: 1, background: MP.color.borderDark },
+    divider: { width: 1, background: AP.color.borderDark },
   };
-  class wF extends MP.Component {
+  class wF extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -37855,15 +37956,15 @@
     }
   }
   const _F = {
-    root: { ...MP.padding("g2 g2 g2 g3") },
-    header: { marginBottom: MP.space.g2 },
+    root: { ...AP.padding("g2 g2 g2 g3") },
+    header: { marginBottom: AP.space.g2 },
     controls: { maxWidth: 860 },
     calendar: {
       gridTemplateColumns: "repeat(7, 123px)",
       justifyItems: "stretch",
     },
   };
-  class EF extends MP.Component {
+  class EF extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -37893,7 +37994,7 @@
       return Glamor.createElement(
         "div",
         { css: _F.header },
-        Glamor.createElement(AM, {
+        Glamor.createElement(MA, {
           title: this.props.title,
           onCloseClick: this.props.onCloseClick,
         })
@@ -37902,10 +38003,10 @@
     _renderBody() {
       return Glamor.createElement(
         "div",
-        { css: MP.column },
+        { css: AP.column },
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.alignItems.center, _F.controls] },
+          { css: [AP.row, AP.alignItems.center, _F.controls] },
           this._renderPeriodTypeSwitch(),
           Glamor.createElement(qP, { width: "g3" }),
           this._renderPeriodPaginator(),
@@ -37964,7 +38065,7 @@
         });
       return Glamor.createElement(
         "div",
-        { css: [MP.grid, _F.calendar] },
+        { css: [AP.grid, _F.calendar] },
         t.map((e) => React.createElement(e.render, e)),
         r.map((e) => React.createElement(e.render, e))
       );
@@ -37978,25 +38079,25 @@
   };
   const xF = {
     root: {
-      border: MP.border.dark,
-      backgroundColor: MP.color.bgLight1,
+      border: AP.border.dark,
+      backgroundColor: AP.color.bgLight1,
       margin: 8,
-      ...MP.borderRadius.r4,
-      ...MP.noselect,
-      ...MP.margin(". 8 8 ."),
-      ...MP.padding("8"),
-      ...MP.text.of({
+      ...AP.borderRadius.r4,
+      ...AP.noselect,
+      ...AP.margin(". 8 8 ."),
+      ...AP.padding("8"),
+      ...AP.text.of({
         size: 18,
         height: "24px",
         weight: 600,
-        color: MP.color.primary,
+        color: AP.color.primary,
         opacity: 0.9,
       }),
     },
     labelContainer: { marginBottom: 8 },
-    timeOfDayIcon: { width: 24, height: 24, color: MP.color.primary },
+    timeOfDayIcon: { width: 24, height: 24, color: AP.color.primary },
   };
-  class kF extends MP.Component {
+  class kF extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -38010,7 +38111,7 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: [MP.column, MP.alignItems.stretch, xF.root] },
+        { css: [AP.column, AP.alignItems.stretch, xF.root] },
         this._renderLabel(),
         this._renderActionButtons()
       );
@@ -38019,19 +38120,19 @@
       const e = g_(new Date()).getTime() + this.props.time;
       return Glamor.createElement(
         "div",
-        { css: [MP.row, MP.alignItems.center, xF.labelContainer] },
+        { css: [AP.row, AP.alignItems.center, xF.labelContainer] },
         Glamor.createElement(LP, {
-          name: QM.timeToIcon(this.props.time),
+          name: QA.timeToIcon(this.props.time),
           style: xF.timeOfDayIcon,
         }),
         Glamor.createElement(qP, { width: "g1h" }),
-        BA(e, "HH:mm")
+        BM(e, "HH:mm")
       );
     }
     _renderActionButtons() {
       return Glamor.createElement(
         "div",
-        { css: MP.row },
+        { css: AP.row },
         Glamor.createElement(xT, {
           label: "DELETE SLOT",
           small: !0,
@@ -38043,22 +38144,22 @@
   const CF = {
     root: {
       margin: 8,
-      ...MP.borderRadius.r4,
-      ...MP.noselect,
-      ...MP.margin(". 8 8 ."),
-      ...MP.padding("8 . 8 8"),
-      ...MP.text.of({
+      ...AP.borderRadius.r4,
+      ...AP.noselect,
+      ...AP.margin(". 8 8 ."),
+      ...AP.padding("8 . 8 8"),
+      ...AP.text.of({
         size: 11,
         height: "14px",
         weight: 600,
-        color: MP.color.primary,
+        color: AP.color.primary,
         opacity: 0.9,
       }),
     },
     addIcon: { width: 24, height: 24, marginTop: 4, marginLeft: 4 },
     controls: { minWidth: 190 },
   };
-  class SF extends MP.Component {
+  class SF extends AP.Component {
     constructor(e) {
       super(e),
         (this._onTimeInput = () => {
@@ -38080,18 +38181,18 @@
             (this.props.onAddClick(this.state.time),
             this.setState({ time: null }));
         }),
-        (this._timeInputRef = MP.createRef()),
+        (this._timeInputRef = AP.createRef()),
         (this.state = { time: null, timeError: null });
     }
     render() {
       return Glamor.createElement(
         "div",
-        { css: [MP.row, CF.root] },
+        { css: [AP.row, CF.root] },
         Glamor.createElement(LP, { name: "igswiss.plus", style: CF.addIcon }),
         Glamor.createElement(qP, { width: "g2" }),
         Glamor.createElement(
           "div",
-          { css: [MP.column, CF.controls] },
+          { css: [AP.column, CF.controls] },
           Glamor.createElement(uD, {
             ref: this._timeInputRef,
             time: this.state.time,
@@ -38108,7 +38209,7 @@
     _renderActionButtons() {
       return Glamor.createElement(
         "div",
-        { css: MP.row },
+        { css: AP.row },
         Glamor.createElement(xT, {
           label: "ADD NEW SLOT",
           small: !0,
@@ -38118,12 +38219,12 @@
     }
   }
   const PF = {
-    root: { width: "100%", ...MP.padding("g2 g2 g2 g3") },
+    root: { width: "100%", ...AP.padding("g2 g2 g2 g3") },
     description: {
-      ...MP.text.contentText,
-      color: MP.color.textBleak,
-      marginTop: MP.space.g2,
-      marginBottom: MP.space.g2,
+      ...AP.text.contentText,
+      color: AP.color.textBleak,
+      marginTop: AP.space.g2,
+      marginBottom: AP.space.g2,
     },
     slotsContainer: {
       maxWidth: 500,
@@ -38131,7 +38232,7 @@
       justifyItems: "stretch",
     },
   };
-  class TF extends MP.Component {
+  class TF extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -38148,14 +38249,14 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: [MP.column, PF.root] },
+        { css: [AP.column, PF.root] },
         this._renderHeader(),
         this._renderDescription(),
         this._renderSlotsSelector()
       );
     }
     _renderHeader() {
-      return Glamor.createElement(AM, {
+      return Glamor.createElement(MA, {
         title: this.props.title,
         onCloseClick: this.props.onCloseClick,
       });
@@ -38171,10 +38272,10 @@
       return this.props.slots
         ? Glamor.createElement(
             "div",
-            { css: MP.column },
+            { css: AP.column },
             Glamor.createElement(
               "div",
-              { css: [MP.grid, PF.slotsContainer] },
+              { css: [AP.grid, PF.slotsContainer] },
               this.props.slots.map((e, t) =>
                 Glamor.createElement(kF, {
                   key: t,
@@ -38202,25 +38303,25 @@
       }).apply(this, arguments);
   }
   const IF = {
-    root: { ...MP.column, width: "100%", height: "100%" },
-    header: { ...MP.padding("g2 g2 g2 g3") },
+    root: { ...AP.column, width: "100%", height: "100%" },
+    header: { ...AP.padding("g2 g2 g2 g3") },
     body: { flexGrow: 1, position: "relative" },
     loading: {
-      ...MP.absolute("0 0 0 0"),
-      ...MP.row,
-      ...MP.center,
-      ...MP.text.hashtag,
+      ...AP.absolute("0 0 0 0"),
+      ...AP.row,
+      ...AP.center,
+      ...AP.text.hashtag,
       lineHeight: "1.5em",
     },
     iframe: ({ props: e }) => ({
       width: "100%",
       height: "100%",
       border: "none",
-      background: MP.color.bgLight3,
+      background: AP.color.bgLight3,
       ...(e.loading && { opacity: 0, pointerEvents: "none" }),
     }),
   };
-  class GF extends MP.Component {
+  class GF extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -38233,7 +38334,7 @@
       return Glamor.createElement(
         "div",
         { css: IF.header },
-        Glamor.createElement(AM, {
+        Glamor.createElement(MA, {
           title: this.props.title,
           action: this.props.action,
           onCloseClick: this.props.onCloseClick,
@@ -38268,19 +38369,19 @@
   }
   const OF = {
     root: {
-      ...MP.row,
-      ...MP.center,
-      ...MP.text.hashtag,
-      ...MP.noselect,
+      ...AP.row,
+      ...AP.center,
+      ...AP.text.hashtag,
+      ...AP.noselect,
       pointerEvents: "all",
       width: "100%",
       height: "100%",
       opacity: 0.98,
-      background: MP.color.bgLight3,
+      background: AP.color.bgLight3,
       lineHeight: 1.5,
     },
   };
-  class AF extends MP.Component {
+  class MF extends AP.Component {
     render() {
       return this.props.show
         ? Glamor.createElement(
@@ -38293,20 +38394,20 @@
         : null;
     }
   }
-  const MF = {
+  const AF = {
     root: {
-      ...MP.column,
-      ...MP.padding("g2 g2 0 23"),
-      ...MP.relative(),
+      ...AP.column,
+      ...AP.padding("g2 g2 0 23"),
+      ...AP.relative(),
       width: "100%",
       height: "100vh",
       overflow: "hidden",
     },
-    closeButton: { ...MP.absolute("g1 g1 . .") },
-    header: { ...MP.row, ...MP.justifyContent.between, flexShrink: 0 },
-    headerLeft: { width: 400, marginRight: MP.space.g2 },
-    headerRight: { ...MP.row, ...MP.relative() },
-    title: { ...MP.text.mainTitle, marginBottom: MP.space.g1 },
+    closeButton: { ...AP.absolute("g1 g1 . .") },
+    header: { ...AP.row, ...AP.justifyContent.between, flexShrink: 0 },
+    headerLeft: { width: 400, marginRight: AP.space.g2 },
+    headerRight: { ...AP.row, ...AP.relative() },
+    title: { ...AP.text.mainTitle, marginBottom: AP.space.g1 },
     controls: {},
     addCard: {
       width: 400,
@@ -38316,37 +38417,37 @@
     },
     gridWrap: {
       flexGrow: 1,
-      marginTop: MP.space.g2,
-      borderTop: MP.border.dark,
+      marginTop: AP.space.g2,
+      borderTop: AP.border.dark,
       overflow: "hidden",
-      ...MP.relative(),
+      ...AP.relative(),
     },
     grid: {
       height: "100%",
       overflow: "auto",
-      paddingTop: MP.space.g2,
+      paddingTop: AP.space.g2,
       paddingBottom: 94,
       contentVisibility: "auto",
     },
-    gridLoadingOverlay: { ...MP.absolute("0 0 0 0 1") },
+    gridLoadingOverlay: { ...AP.absolute("0 0 0 0 1") },
     actionBar: {
-      ...MP.row,
-      ...MP.justifyContent.center,
-      ...MP.absolute(". 0 0 0"),
-      ...MP.transition.fast,
+      ...AP.row,
+      ...AP.justifyContent.center,
+      ...AP.absolute(". 0 0 0"),
+      ...AP.transition.fast,
       transitionTimingFunction: "ease",
       ".bulkScreen:not(.bulkScreen_showActionBar) &": {
         transform: "translateY(calc(100% + 15px))",
       },
     },
   };
-  class FF extends MP.Component {
+  class FF extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
         {
-          css: MF.root,
-          className: MP.class("bulkScreen", {
+          css: AF.root,
+          className: AP.class("bulkScreen", {
             hasSelectedPosts: this.props.selectedPostCount > 0,
             showActionBar: this.props.showActionBar,
           }),
@@ -38361,38 +38462,38 @@
     _renderHeader() {
       return Glamor.createElement(
         "div",
-        { css: MF.header },
+        { css: AF.header },
         Glamor.createElement(
           "div",
-          { css: MF.headerLeft },
+          { css: AF.headerLeft },
           this._renderTitle(),
           this._renderControls()
         ),
         Glamor.createElement(
           "div",
-          { css: MF.headerRight },
+          { css: AF.headerRight },
           this._renderAddCard()
         )
       );
     }
     _renderTitle() {
-      return Glamor.createElement("div", { css: MF.title }, "Post Assistant");
+      return Glamor.createElement("div", { css: AF.title }, "Post Assistant");
     }
     _renderControls() {
       return this.props.controls
-        ? Glamor.createElement("div", { css: MF.controls }, this.props.controls)
+        ? Glamor.createElement("div", { css: AF.controls }, this.props.controls)
         : null;
     }
     _renderAddCard() {
       return this.props.addCard
-        ? Glamor.createElement("div", { css: MF.addCard }, this.props.addCard)
+        ? Glamor.createElement("div", { css: AF.addCard }, this.props.addCard)
         : null;
     }
     _renderGrid() {
       return Glamor.createElement(
         "div",
-        { css: MF.gridWrap },
-        Glamor.createElement("div", { css: MF.grid }, this.props.grid),
+        { css: AF.gridWrap },
+        Glamor.createElement("div", { css: AF.grid }, this.props.grid),
         this._renderGridLoadingOverlay()
       );
     }
@@ -38400,21 +38501,21 @@
       return this.props.loading
         ? Glamor.createElement(
             "div",
-            { css: MF.gridLoadingOverlay },
-            Glamor.createElement(AF, { show: !0 })
+            { css: AF.gridLoadingOverlay },
+            Glamor.createElement(MF, { show: !0 })
           )
         : null;
     }
     _renderActionBar() {
       return Glamor.createElement(
         "div",
-        { css: MF.actionBar },
+        { css: AF.actionBar },
         this.props.actionBar
       );
     }
     _renderCloseButton() {
       return Glamor.createElement(fT, {
-        style: MF.closeButton,
+        style: AF.closeButton,
         onClick: this.props.onCloseClick,
       });
     }
@@ -38424,14 +38525,14 @@
       width: "100%",
       display: "grid",
       gridTemplateColumns: "repeat(3, 1fr)",
-      gap: `5px ${MP.space.g3}`,
+      gap: `5px ${AP.space.g3}`,
     },
     post: { transition: "transform 900ms" },
-    noPostsMessage: { ...MP.text.bleak, color: MP.color.textPassive },
+    noPostsMessage: { ...AP.text.bleak, color: AP.color.textPassive },
   };
-  class BF extends MP.Component {
+  class BF extends AP.Component {
     constructor(e) {
-      super(e), (this.rootRef = MP.createRef());
+      super(e), (this.rootRef = AP.createRef());
     }
     getSnapshotBeforeUpdate(e) {
       if (this.props.animatePostsOrder) {
@@ -38440,13 +38541,13 @@
         if (t.map((e) => e.id).join("-") !== r.map((e) => e.id).join("-")) {
           this.rootRef.current
             .querySelectorAll(".bulkGrid__post")
-            .forEach(MP.flip.add);
+            .forEach(AP.flip.add);
         }
       }
       return null;
     }
     componentDidUpdate() {
-      MP.flip.run();
+      AP.flip.run();
     }
     render() {
       return Glamor.createElement(
@@ -38460,7 +38561,7 @@
       return 0 === this.props.posts.length
         ? null
         : Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             this.props.posts.map((e) =>
               Glamor.createElement(
@@ -38494,17 +38595,17 @@
       }).apply(this, arguments);
   }
   const NF = {
-      root: { width: "100%", ...MP.noselect },
+      root: { width: "100%", ...AP.noselect },
       header: {
-        ...MP.row,
-        ...MP.alignItems.center,
-        ...MP.justifyContent.between,
+        ...AP.row,
+        ...AP.alignItems.center,
+        ...AP.justifyContent.between,
         height: 23,
-        marginBottom: MP.space.g1,
+        marginBottom: AP.space.g1,
       },
-      changedPill: { marginRight: MP.space.g1h },
+      changedPill: { marginRight: AP.space.g1h },
       dragHandler: {
-        ...MP.clickableInversed,
+        ...AP.clickableInversed,
         width: 68,
         height: 12,
         display: "grid",
@@ -38516,30 +38617,30 @@
         width: 4,
         height: 4,
         borderRadius: "50%",
-        background: MP.color.iconPassive,
+        background: AP.color.iconPassive,
       },
       editButton: {
         marginLeft: "auto",
-        ...MP.transition.fast,
+        ...AP.transition.fast,
         ".bulkPost:not(:hover) &": { opacity: 0 },
       },
       editButtonHitbox: { right: 0 },
-      content: { ...MP.row },
+      content: { ...AP.row },
       postPreview: {
         width: 132,
         height: 132,
-        marginRight: MP.space.g1h,
-        background: MP.color.bgLight1,
+        marginRight: AP.space.g1h,
+        background: AP.color.bgLight1,
         overflow: "hidden",
-        ...MP.noselect,
-        ...MP.borderRadius.r4,
-        ...MP.relative(),
+        ...AP.noselect,
+        ...AP.borderRadius.r4,
+        ...AP.relative(),
       },
       postPreviewOverlay: {
-        ...MP.row,
-        ...MP.center,
-        ...MP.absolute("0 0 0 0 1"),
-        ...MP.transition.slow,
+        ...AP.row,
+        ...AP.center,
+        ...AP.absolute("0 0 0 0 1"),
+        ...AP.transition.slow,
         transitionProperty: "opacity",
         cursor: "pointer",
         borderRadius: "inherit",
@@ -38548,20 +38649,20 @@
         ".bulkPost_selected &": { opacity: 1 },
         "&::before": {
           content: '""',
-          ...MP.absolute("0 0 0 0"),
-          ...MP.transition.fast,
+          ...AP.absolute("0 0 0 0"),
+          ...AP.transition.fast,
           transitionProperty: "opacity",
-          background: MP.color.bgLight3,
+          background: AP.color.bgLight3,
           opacity: 0.3,
         },
         ".bulkPost_selected &::before": { opacity: 0.75 },
       },
       checkmarkCircle: {
-        ...MP.absolute("50% . . 50%"),
-        ...MP.transition.fast,
+        ...AP.absolute("50% . . 50%"),
+        ...AP.transition.fast,
         marginTop: -14,
         marginLeft: -14,
-        color: MP.color.link,
+        color: AP.color.link,
         filter: "drop-shadow(var(--sh4))",
         ".bulkPost:not(.bulkPost_selected) &": {
           transform: "scale(1.3)",
@@ -38570,33 +38671,33 @@
       },
       checkmark: {
         filter: "drop-shadow(var(--sh4))",
-        ...MP.transition.fast,
-        ...MP.relative(),
+        ...AP.transition.fast,
+        ...AP.relative(),
         ".bulkPost_selected &": { transform: "scale(0.5)", opacity: 0 },
       },
       caption: {
         flexGrow: 1,
-        background: MP.color.bgLight1,
-        border: MP.border.dark,
+        background: AP.color.bgLight1,
+        border: AP.border.dark,
         fontSize: 12,
         fontWeight: 500,
         lineHeight: "18px",
-        color: MP.color.textNormal,
-        ...MP.padding("g1 g1h"),
-        ...MP.borderRadius.r4,
-        "&::placeholder": { color: MP.color.textNormal, opacity: 0.5 },
+        color: AP.color.textNormal,
+        ...AP.padding("g1 g1h"),
+        ...AP.borderRadius.r4,
+        "&::placeholder": { color: AP.color.textNormal, opacity: 0.5 },
       },
       captionLimits: {
-        ...MP.row,
-        ...MP.justifyContent.end,
-        ...MP.text.hashtag,
-        ...MP.transition.fast,
-        marginTop: MP.space.g0h,
+        ...AP.row,
+        ...AP.justifyContent.end,
+        ...AP.text.hashtag,
+        ...AP.transition.fast,
+        marginTop: AP.space.g0h,
         ".bulkPost:not(:hover) &": { opacity: 0 },
       },
       captionLimitsVisible: { opacity: "1 !important" },
       captionLimit: {},
-      captionLimitExceeded: { color: MP.color.error },
+      captionLimitExceeded: { color: AP.color.error },
     },
     jF = "bulk-post.checkmark",
     zF = "bulk-post.checkmark-circle";
@@ -38604,7 +38705,7 @@
     `<symbol id="${jF}" viewBox="0 0 22.79 17.452"><path d="M22.669 2.043L20.806.127a.4.4 0 00-.3-.127.384.384 0 00-.3.127L7.302 13.134l-4.7-4.7a.409.409 0 00-.593 0L.125 10.318a.422.422 0 000 .6l5.927 5.927a1.874 1.874 0 001.238.6 1.964 1.964 0 001.228-.582h.011l14.15-14.224a.452.452 0 00-.01-.596z" fill="#fff"/></symbol>`,
     `<symbol id="${zF}" viewBox="0 0 28 28"><g transform="translate(16175 -4757)"><circle cx="14" cy="14" r="14" transform="translate(-16175 4757)" fill="currentColor"/><path d="M-16152.436 4765.46l-1.449-1.49a.312.312 0 00-.231-.1.3.3 0 00-.231.1l-10.043 10.113-3.655-3.655a.318.318 0 00-.461 0l-1.469 1.465a.328.328 0 000 .469l4.61 4.61a1.458 1.458 0 00.963.469 1.528 1.528 0 00.955-.453h.008l11.012-11.064a.352.352 0 00-.009-.464z" fill="#fff"/></g></symbol>`,
   ]);
-  class HF extends MP.Component {
+  class HF extends AP.Component {
     constructor(e) {
       super(e),
         (this._onClick = (e) => {
@@ -38623,9 +38724,9 @@
         LF(
           {
             css: NF.root,
-            className: MP.class("bulkPost", { selected: this.props.selected }),
+            className: AP.class("bulkPost", { selected: this.props.selected }),
           },
-          AO.dragEvents(this, {
+          MO.dragEvents(this, {
             onDragEnter: this.props.onDragEnter,
             onDragEnd: this.props.onDragEnd,
           })
@@ -38651,7 +38752,7 @@
     }
     _renderChangedPill() {
       return this.props.changed
-        ? Glamor.createElement(MT, {
+        ? Glamor.createElement(AT, {
             style: NF.changedPill,
             label: "CHANGED",
             tabIndex: "-1",
@@ -38665,7 +38766,7 @@
             "div",
             LF(
               { css: NF.dragHandler },
-              AO.dragEvents(this, {
+              MO.dragEvents(this, {
                 canDrag: !0,
                 dragImage: this.props.postImage,
                 onDragStart: this.props.onDragStart,
@@ -38721,7 +38822,7 @@
       return Glamor.createElement(
         "div",
         {
-          css: MP.pickStyles(NF, {
+          css: AP.pickStyles(NF, {
             captionLimits: !0,
             captionLimitsVisible: e,
           }),
@@ -38742,7 +38843,7 @@
       return Glamor.createElement(
         "div",
         {
-          css: MP.pickStyles(NF, {
+          css: AP.pickStyles(NF, {
             captionLimit: !0,
             captionLimitExceeded: e < 0,
           }),
@@ -38755,20 +38856,20 @@
   }
   const UF = {
       root: {
-        ...MP.row,
-        ...MP.alignItems.center,
-        ...MP.padding("18 24"),
-        ...MP.shadow.sh12,
-        ...MP.relative(),
-        ...MP.noselect,
-        background: MP.color.bgLight3,
+        ...AP.row,
+        ...AP.alignItems.center,
+        ...AP.padding("18 24"),
+        ...AP.shadow.sh12,
+        ...AP.relative(),
+        ...AP.noselect,
+        background: AP.color.bgLight3,
         borderRadius: "4px 4px 0 0",
       },
       counter: {
-        ...MP.padding("g0h g1h"),
-        background: MP.color.iconActionable,
+        ...AP.padding("g0h g1h"),
+        background: AP.color.iconActionable,
         borderRadius: 6,
-        fontFamily: MP.font.monospace,
+        fontFamily: AP.font.monospace,
         fontSize: 24,
         lineHeight: "29px",
         fontWeight: 600,
@@ -38776,24 +38877,24 @@
       },
       actionButton: {
         height: 35,
-        marginRight: MP.space.g2,
-        paddingLeft: MP.space.g2,
-        paddingRight: MP.space.g2,
+        marginRight: AP.space.g2,
+        paddingLeft: AP.space.g2,
+        paddingRight: AP.space.g2,
         "&:last-child": { marginRight: 0 },
       },
       deleteButton: {
-        border: MP.border.dark,
-        background: MP.color.bgLight1,
-        color: MP.color.error,
-        ...MP.clickableInversed,
+        border: AP.border.dark,
+        background: AP.color.bgLight1,
+        color: AP.color.error,
+        ...AP.clickableInversed,
       },
       dateDialog: {
-        ...MP.absolute(". . 100% . 1"),
-        ...MP.transition.fast,
-        ...MP.borderRadius.r4,
-        ...MP.shadow.sh10,
+        ...AP.absolute(". . 100% . 1"),
+        ...AP.transition.fast,
+        ...AP.borderRadius.r4,
+        ...AP.shadow.sh10,
         marginBottom: -9,
-        background: MP.color.bgLight3,
+        background: AP.color.bgLight3,
         ".bulkActionBar:not(.bulkActionBar_showDateDialog) &": {
           opacity: 0,
           transform: "translateY(16px)",
@@ -38805,7 +38906,7 @@
   LP.registerSvgIcons([
     `<symbol id="${WF}" viewBox="0 0 12 6"><path d="M12 0L6 6 0 0z" fill="currentColor"/></symbol>`,
   ]);
-  class VF extends MP.Component {
+  class VF extends AP.Component {
     constructor(e) {
       super(e),
         (this._onScheduleClick = (e) => {
@@ -38842,7 +38943,7 @@
         "div",
         {
           css: UF.root,
-          className: MP.class("bulkActionBar", {
+          className: AP.class("bulkActionBar", {
             showDateDialog: this.props.showDateDialog,
           }),
         },
@@ -38854,23 +38955,23 @@
         Glamor.createElement(qP, { width: "g3" }),
         Glamor.createElement(
           "div",
-          { css: MP.row },
+          { css: AP.row },
           Glamor.createElement(xT, {
             label: "SELECT ALL",
-            style: MP.text.nowrap,
+            style: AP.text.nowrap,
             onClick: this.props.onSelectAllClick,
           }),
           Glamor.createElement(qP, { width: "g3" }),
           Glamor.createElement(xT, {
             label: "UNSELECT ALL",
-            style: MP.text.nowrap,
+            style: AP.text.nowrap,
             onClick: this.props.onUnselectAllClick,
           })
         ),
         Glamor.createElement(qP, { width: "g3" }),
         Glamor.createElement(
           "div",
-          { css: MP.row },
+          { css: AP.row },
           this._renderDateDialog(),
           Glamor.createElement(WP, {
             style: UF.actionButton,
@@ -38912,22 +39013,22 @@
   }
   const $F = {
     root: {
-      ...MP.column,
-      ...MP.padding("g1h g2 g2"),
-      ...MP.transition.fast,
+      ...AP.column,
+      ...AP.padding("g1h g2 g2"),
+      ...AP.transition.fast,
       transitionProperty: "height",
       width: 294,
       "&.bulkDateDialog_overflowHidden": { overflow: "hidden" },
     },
-    applyButton: { marginTop: MP.space.g3 },
+    applyButton: { marginTop: AP.space.g3 },
   };
-  class qF extends MP.Component {
+  class qF extends AP.Component {
     constructor(e) {
       super(e),
         (this._onTypeChange = (e) => {
           this.props.onTypeChange && this.props.onTypeChange(e.id);
         }),
-        (this.rootRef = MP.createRef());
+        (this.rootRef = AP.createRef());
     }
     getSnapshotBeforeUpdate(e) {
       const t = e,
@@ -38937,7 +39038,7 @@
         t.intervalTimePickerList.length !== r.intervalTimePickerList.length
       ) {
         const e = this.rootRef.current;
-        MP.flip.add(e, { flipHeight: !0 }),
+        AP.flip.add(e, { flipHeight: !0 }),
           e.classList.add("bulkDateDialog_overflowHidden"),
           this.setTimeout(() => {
             e.classList.remove("bulkDateDialog_overflowHidden");
@@ -38946,7 +39047,7 @@
       return null;
     }
     componentDidUpdate() {
-      MP.flip.run();
+      AP.flip.run();
     }
     render() {
       return Glamor.createElement(
@@ -38984,7 +39085,7 @@
       return Glamor.createElement(wT, {
         label: "how to schedule",
         items: e,
-        menuStyle: MP.fullWidth,
+        menuStyle: AP.fullWidth,
         error: {
           hasError: !!this.props.typeErrorMessage,
           message: this.props.typeErrorMessage,
@@ -38996,13 +39097,13 @@
       return "interval" !== this.props.view
         ? null
         : Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { height: "g1h" }),
             this.props.intervalFrequency,
             this.props.intervalTimePickerList.map((e) =>
               Glamor.createElement(
-                MP.Fragment,
+                AP.Fragment,
                 { key: e.id },
                 Glamor.createElement(qP, { height: "g2" }),
                 e.element
@@ -39014,7 +39115,7 @@
       return "week" !== this.props.view
         ? null
         : Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { height: "g1h" }),
             this.props.weekWeekdayPicker,
@@ -39025,17 +39126,17 @@
     _renderTimeSlotsContent() {
       return "timeSlots" !== this.props.view
         ? null
-        : Glamor.createElement(MP.Fragment, null);
+        : Glamor.createElement(AP.Fragment, null);
     }
     _renderCalendarContent() {
       return "calendar" !== this.props.view
         ? null
         : Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(
               "div",
-              { css: MP.text.label },
+              { css: AP.text.label },
               "Post will be published even if you’re offline."
             ),
             Glamor.createElement(qP, { height: "g2" }),
@@ -39048,7 +39149,7 @@
       return "calendar" === this.props.view
         ? null
         : Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { height: "g2" }),
             this.props.startingDayPicker
@@ -39066,39 +39167,39 @@
     root: {
       width: "100%",
       height: 38,
-      backgroundColor: MP.color.bgLight1,
-      ...MP.padding("8"),
+      backgroundColor: AP.color.bgLight1,
+      ...AP.padding("8"),
     },
     icon: {
-      ...MP.row,
-      ...MP.center,
+      ...AP.row,
+      ...AP.center,
       width: 22,
       height: 22,
-      marginRight: MP.space.g1,
+      marginRight: AP.space.g1,
       flexShrink: 0,
     },
     text: {
-      ...MP.text.group2,
-      ...MP.text.ellipsis,
-      color: MP.color.textActionable,
+      ...AP.text.group2,
+      ...AP.text.ellipsis,
+      color: AP.color.textActionable,
       fontWeight: 500,
-      paddingRight: MP.space.g2,
+      paddingRight: AP.space.g2,
       lineHeight: "22px",
     },
     spacer: { flexGrow: 1 },
     button: ({ props: e }) => ({
-      ...MP.relative(),
-      ...MP.padding("0 32 0 32"),
-      ...MP.text.group1,
-      ...MP.ellipsis,
-      ...MP.noselect,
+      ...AP.relative(),
+      ...AP.padding("0 32 0 32"),
+      ...AP.text.group1,
+      ...AP.ellipsis,
+      ...AP.noselect,
       flexShrink: 0,
       margin: -8,
-      color: MP.theme.valueOf("day", MP.color.textInversed),
-      background: MP.color.attention,
+      color: AP.theme.valueOf("day", AP.color.textInversed),
+      background: AP.color.attention,
       ...(e.button.color && { background: e.button.color }),
       ...(e.button.onClick && {
-        ...MP.clickableInversed,
+        ...AP.clickableInversed,
         ":hover": { filter: "brightness(106%)" },
         ":active": { filter: "brightness(95%)" },
       }),
@@ -39108,17 +39209,17 @@
       ...(e.button.isLoading && { visibility: "hidden" }),
     }),
     buttonLoadingText: ({ props: e }) => ({
-      ...MP.absolute("0 0 0 0"),
-      ...MP.row,
-      ...MP.center,
+      ...AP.absolute("0 0 0 0"),
+      ...AP.row,
+      ...AP.center,
       ...(!e.button.isLoading && { visibility: "hidden" }),
     }),
   };
-  class ZF extends MP.Component {
+  class ZF extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
-        { css: [MP.row, YF.root] },
+        { css: [AP.row, YF.root] },
         this._renderIcon(),
         this._renderText(),
         Glamor.createElement("div", { css: YF.spacer }),
@@ -39146,7 +39247,7 @@
         ? Glamor.createElement(
             "div",
             {
-              css: [MP.row, MP.alignItems.center, YF.button(this)],
+              css: [AP.row, AP.alignItems.center, YF.button(this)],
               onClick: e.onClick,
             },
             Glamor.createElement(
@@ -39176,15 +39277,15 @@
       }).apply(this, arguments);
   }
   const XF = {
-    root: { ...MP.column, width: "100%", height: "100%" },
+    root: { ...AP.column, width: "100%", height: "100%" },
     iframe: {
       flexGrow: 1,
       width: "100%",
       border: "none",
-      background: MP.theme.valueOf("day", MP.color.textInversed),
+      background: AP.theme.valueOf("day", AP.color.textInversed),
     },
   };
-  class QF extends MP.Component {
+  class QF extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -39200,14 +39301,14 @@
   const JF = {
     root: {},
     warningIcon: {
-      ...MP.relative(),
+      ...AP.relative(),
       top: 1,
       width: 14,
       height: 16,
-      color: MP.color.error,
+      color: AP.color.error,
     },
   };
-  class eR extends MP.Component {
+  class eR extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -39215,7 +39316,7 @@
         Glamor.createElement(ST, {
           icon: "warning-triangle",
           iconStyle: JF.warningIcon,
-          markerColor: MP.color.error,
+          markerColor: AP.color.error,
           title: this.props.title,
           content: this.props.content,
           actions: this.props.actions,
@@ -39226,53 +39327,53 @@
   }
   const tR = {
     root: {
-      ...MP.shadow.sh10,
-      ...MP.borderRadius.r4,
-      ...MP.relative(),
-      background: MP.color.bgLight3,
+      ...AP.shadow.sh10,
+      ...AP.borderRadius.r4,
+      ...AP.relative(),
+      background: AP.color.bgLight3,
       width: 330,
     },
     body: {
-      ...MP.transition.fast,
-      ...MP.relative(),
+      ...AP.transition.fast,
+      ...AP.relative(),
       overflow: "hidden",
       transitionProperty: "height",
     },
     tail: {
-      ...MP.absolute(". 13 -3 ."),
+      ...AP.absolute(". 13 -3 ."),
       width: 8,
       height: 8,
       background: "inherit",
       transform: "rotate(45deg)",
     },
     option: {
-      borderBottom: MP.border.dark,
+      borderBottom: AP.border.dark,
       "&:last-child": { borderBottom: "none" },
     },
     optionHeader: {
-      ...MP.row,
-      ...MP.justifyContent.between,
-      ...MP.alignItems.center,
-      ...MP.padding("g1h g1h g1h g2"),
+      ...AP.row,
+      ...AP.justifyContent.between,
+      ...AP.alignItems.center,
+      ...AP.padding("g1h g1h g1h g2"),
       cursor: "pointer",
       width: "100%",
     },
-    optionLabel: { ...MP.text.contentTitle, color: MP.color.textNormal },
+    optionLabel: { ...AP.text.contentTitle, color: AP.color.textNormal },
     scheduleContent: ({ props: e }) => ({
-      ...MP.padding("0 g1h g2 g2"),
-      ...MP.transition.slow,
+      ...AP.padding("0 g1h g2 g2"),
+      ...AP.transition.slow,
       marginTop: -4,
       width: 262,
       boxSizing: "content-box",
       ...("schedule" !== e.selectedOption && {
-        ...MP.absolute(),
+        ...AP.absolute(),
         opacity: 0,
         pointerEvents: "none",
       }),
     }),
-    scheduleContentHeader: { ...MP.text.hashtag, color: MP.color.textNormal },
+    scheduleContentHeader: { ...AP.text.hashtag, color: AP.color.textNormal },
   };
-  class rR extends MP.Component {
+  class rR extends AP.Component {
     constructor(e) {
       super(e),
         (this._onOptionClick = (e) => {
@@ -39280,7 +39381,7 @@
           const t = e.currentTarget.dataset.optionName;
           this.props.onOptionClick(t);
         }),
-        (this._bodyRef = MP.createRef());
+        (this._bodyRef = AP.createRef());
     }
     getSnapshotBeforeUpdate(e) {
       const t = e.selectedOption,
@@ -39288,12 +39389,12 @@
       return (
         t === r ||
           ("schedule" !== t && "schedule" !== r) ||
-          MP.flip.add(this._bodyRef.current, { flipHeight: !0 }),
+          AP.flip.add(this._bodyRef.current, { flipHeight: !0 }),
         null
       );
     }
     componentDidUpdate() {
-      MP.flip.run();
+      AP.flip.run();
     }
     render() {
       return Glamor.createElement(
@@ -39362,48 +39463,48 @@
   const nR = {
     root: { width: 262 },
     calendar: {
-      ...MP.grid,
-      marginTop: MP.space.g1,
+      ...AP.grid,
+      marginTop: AP.space.g1,
       gridTemplateColumns: "repeat(7, 34px)",
       justifyItems: "stretch",
       gridGap: 4,
     },
     weekLabel: {
-      ...MP.row,
-      ...MP.center,
-      ...MP.noselect,
+      ...AP.row,
+      ...AP.center,
+      ...AP.noselect,
       width: 34,
       height: 34,
       fontSize: "12px",
       fontWeight: "600",
-      fontFamily: MP.font.secondary,
-      color: MP.color.textBleak,
+      fontFamily: AP.font.secondary,
+      color: AP.color.textBleak,
     },
     cell: ({ isBleak: e, selectable: t, selected: r }) => ({
-      ...MP.row,
-      ...MP.center,
-      ...MP.borderRadius.r4,
-      ...MP.noselect,
+      ...AP.row,
+      ...AP.center,
+      ...AP.borderRadius.r4,
+      ...AP.noselect,
       width: 34,
       height: 34,
       fontSize: "16px",
       fontWeight: "600",
-      fontFamily: MP.font.secondary,
-      color: MP.color.primary,
-      ...(e && { color: MP.color.textPassive }),
+      fontFamily: AP.font.secondary,
+      color: AP.color.primary,
+      ...(e && { color: AP.color.textPassive }),
       ...(t && {
-        ...MP.clickableInversed,
-        border: MP.border.dark,
-        background: MP.color.bgLight1,
+        ...AP.clickableInversed,
+        border: AP.border.dark,
+        background: AP.color.bgLight1,
       }),
       ...(r && {
         border: "none",
-        background: MP.color.link,
-        color: MP.theme.valueOf("day", MP.color.textInversed),
+        background: AP.color.link,
+        color: AP.theme.valueOf("day", AP.color.textInversed),
       }),
     }),
   };
-  class oR extends MP.Component {
+  class oR extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -39412,13 +39513,13 @@
           const o = new Date(),
             i = new Date(this.props.selectedDay),
             a = this.props.maxDay ? new Date(this.props.maxDay) : null,
-            s = (!a || t < a || jA(t, a)) && (t > o || jA(t, o));
+            s = (!a || t < a || jM(t, a)) && (t > o || jM(t, o));
           return Glamor.createElement(
             "div",
             {
               css: nR.cell({
                 isBleak: n,
-                selected: s && jA(t, i),
+                selected: s && jM(t, i),
                 selectable: s,
               }),
               key: e,
@@ -39470,7 +39571,7 @@
       return Glamor.createElement(bF, {
         periodType: "month",
         periodStart: this.props.periodStart,
-        buttonsColor: MP.color.link,
+        buttonsColor: AP.color.link,
         onPeriodStartChange: this.props.onPeriodStartChange,
       });
     }
@@ -39497,18 +39598,18 @@
     }
   }
   const iR = {
-    root: { width: "100%", ...MP.relative() },
+    root: { width: "100%", ...AP.relative() },
     timezone: {
-      ...MP.absolute("0 0 . ."),
-      fontFamily: MP.font.primary,
+      ...AP.absolute("0 0 . ."),
+      fontFamily: AP.font.primary,
       fontSize: "9px",
       fontWeight: "600",
-      color: MP.color.iconActionable,
+      color: AP.color.iconActionable,
     },
     slotsDropdown: { width: "100%" },
-    customTime: { marginTop: MP.space.g1 },
+    customTime: { marginTop: AP.space.g1 },
   };
-  class aR extends MP.Component {
+  class aR extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -39550,7 +39651,7 @@
             r && (e = !0),
             {
               value: t.time,
-              label: `${QM.timeToString(t.time)}, ${QM.timeToHhmm(t.time)}`,
+              label: `${QA.timeToString(t.time)}, ${QA.timeToHhmm(t.time)}`,
               selected: r,
             }
           );
@@ -39594,38 +39695,38 @@
       width: "100%",
       display: "grid",
       gridTemplateColumns: "repeat(7, 1fr)",
-      gap: MP.space.g0h,
+      gap: AP.space.g0h,
     },
     day: {
-      ...MP.row,
-      ...MP.center,
-      ...MP.noselect,
-      ...MP.clickableInversed,
-      ...MP.borderRadius.r4,
+      ...AP.row,
+      ...AP.center,
+      ...AP.noselect,
+      ...AP.clickableInversed,
+      ...AP.borderRadius.r4,
       height: 34,
-      border: MP.border.dark,
-      background: MP.color.bgLight1,
-      color: MP.color.textActionable,
+      border: AP.border.dark,
+      background: AP.color.bgLight1,
+      color: AP.color.textActionable,
       fontSize: 16,
       lineHeight: "24px",
       fontWeight: 500,
     },
     daySelected: {
-      ...MP.clickable,
-      background: MP.color.link,
-      borderColor: MP.color.link,
+      ...AP.clickable,
+      background: AP.color.link,
+      borderColor: AP.color.link,
       color: "#fff",
     },
     error: {
       fontSize: 9,
       fontWeight: 500,
       lineHeight: "11px",
-      color: MP.color.error,
+      color: AP.color.error,
       marginTop: 2,
       textAlign: "right",
     },
   };
-  class lR extends MP.Component {
+  class lR extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -39660,7 +39761,7 @@
       return Glamor.createElement(
         "div",
         {
-          css: MP.pickStyles(sR, {
+          css: AP.pickStyles(sR, {
             day: !0,
             daySelected: this.props.selectedDays.includes(e),
           }),
@@ -39682,39 +39783,39 @@
   }
   const cR = {
       root: {
-        ...MP.row,
-        ...MP.center,
-        ...MP.relative(),
+        ...AP.row,
+        ...AP.center,
+        ...AP.relative(),
         width: "100%",
         height: "100%",
         "&::before": {
           content: '""',
-          ...MP.absolute("0 0 0 0"),
-          background: MP.color.bgLight3,
+          ...AP.absolute("0 0 0 0"),
+          background: AP.color.bgLight3,
           opacity: 0.98,
         },
       },
       dropzone: ({ state: e }) => ({
-        ...MP.column,
-        ...MP.alignItems.center,
-        ...MP.padding("100 g5"),
-        ...MP.borderRadius.r4,
-        ...MP.relative(),
-        ...MP.transition.superslow,
-        background: MP.color.bgLight2,
-        border: `2px dashed ${MP.color.iconPassive}`,
+        ...AP.column,
+        ...AP.alignItems.center,
+        ...AP.padding("100 g5"),
+        ...AP.borderRadius.r4,
+        ...AP.relative(),
+        ...AP.transition.superslow,
+        background: AP.color.bgLight2,
+        border: `2px dashed ${AP.color.iconPassive}`,
         textAlign: "center",
-        ...(e.draggingOverDropzone && { borderColor: MP.color.primary }),
+        ...(e.draggingOverDropzone && { borderColor: AP.color.primary }),
       }),
       icon: {
-        color: MP.color.iconPassive,
-        marginBottom: MP.space.g5,
+        color: AP.color.iconPassive,
+        marginBottom: AP.space.g5,
         flexShrink: 0,
       },
-      title: { ...MP.text.mainTitle },
-      subtitle: { ...MP.text.mainText, marginTop: MP.space.g2 },
+      title: { ...AP.text.mainTitle },
+      subtitle: { ...AP.text.mainText, marginTop: AP.space.g2 },
       form: ({ state: e }) => ({
-        ...MP.transition.superslow,
+        ...AP.transition.superslow,
         height: 115,
         marginTop: 40,
         marginBottom: -40,
@@ -39727,15 +39828,15 @@
         }),
       }),
       controls: {},
-      radio: { marginBottom: MP.space.g1, "&:last-child": { marginBottom: 0 } },
+      radio: { marginBottom: AP.space.g1, "&:last-child": { marginBottom: 0 } },
       confirmButton: {
-        marginTop: MP.space.g3,
+        marginTop: AP.space.g3,
         marginLeft: "auto",
         marginRight: "auto",
       },
     },
     uR = "igswiss.drop";
-  class dR extends MP.Component {
+  class dR extends AP.Component {
     constructor(e) {
       super(e),
         (this._selectMultiple = () => {
@@ -39790,7 +39891,7 @@
             this._cancel();
         }),
         (this._files = []),
-        (this._dropzoneRef = MP.createRef()),
+        (this._dropzoneRef = AP.createRef()),
         (this._dropzoneDragLeaveTimer = null),
         (this.state = {
           showForm: !1,
@@ -39801,12 +39902,12 @@
     getSnapshotBeforeUpdate(e, t) {
       return (
         t.showForm !== this.state.showForm &&
-          MP.flip.add(this._dropzoneRef.current, { flipHeight: !0 }),
+          AP.flip.add(this._dropzoneRef.current, { flipHeight: !0 }),
         null
       );
     }
     componentDidUpdate() {
-      MP.flip.run();
+      AP.flip.run();
     }
     render() {
       const e = this.props.texts;
@@ -39860,61 +39961,61 @@
     }
   }
   const hR = {
-      root: { ...MP.row, width: "100%", minHeight: "100vh" },
+      root: { ...AP.row, width: "100%", minHeight: "100vh" },
       main: {
-        ...MP.column,
-        ...MP.padding("g2 g3 0 g3"),
-        ...MP.relative(),
+        ...AP.column,
+        ...AP.padding("g2 g3 0 g3"),
+        ...AP.relative(),
         flexGrow: 1,
-        background: MP.color.bgLight3,
+        background: AP.color.bgLight3,
         boxShadow: "0 0 12px rgba(0, 0, 0, 0.04)",
         zIndex: 1,
       },
-      title: { ...MP.text.mainTitle },
-      form: { marginTop: MP.space.g0h },
-      storefront: { ...MP.row, ...MP.justifyContent.center, width: "100%" },
+      title: { ...AP.text.mainTitle },
+      form: { marginTop: AP.space.g0h },
+      storefront: { ...AP.row, ...AP.justifyContent.center, width: "100%" },
       checkout: {},
       clients: {
-        ...MP.row,
-        ...MP.justifyContent.center,
+        ...AP.row,
+        ...AP.justifyContent.center,
         marginTop: "auto",
-        paddingBottom: MP.space.g1h,
+        paddingBottom: AP.space.g1h,
       },
-      stats: { paddingBottom: MP.space.g1h },
-      loadingPanel: { ...MP.absolute("g1 g1 . ."), ...MP.text.hashtag },
-      progressRing: (e) => ({ ...MP.transition.fast, opacity: e ? 1 : 0 }),
+      stats: { paddingBottom: AP.space.g1h },
+      loadingPanel: { ...AP.absolute("g1 g1 . ."), ...AP.text.hashtag },
+      progressRing: (e) => ({ ...AP.transition.fast, opacity: e ? 1 : 0 }),
       sidePanel: {
-        ...MP.relative(),
-        ...MP.column,
-        ...MP.padding("g2"),
+        ...AP.relative(),
+        ...AP.column,
+        ...AP.padding("g2"),
         flexShrink: 0,
         width: 510,
-        background: MP.color.bgLight1,
+        background: AP.color.bgLight1,
         overflowY: "scroll",
       },
-      sidePanelTitle: { ...MP.text.mainTitle, paddingLeft: MP.space.g1h },
+      sidePanelTitle: { ...AP.text.mainTitle, paddingLeft: AP.space.g1h },
       sidePanelFeatures: {
         width: 430,
-        marginLeft: MP.space.g2,
+        marginLeft: AP.space.g2,
         marginTop: -30,
       },
       sidePanelFooter: {
-        ...MP.row,
-        ...MP.justifyContent.between,
+        ...AP.row,
+        ...AP.justifyContent.between,
         paddingTop: 22,
-        margin: MP.space.g1,
+        margin: AP.space.g1,
         marginTop: "auto",
-        borderTop: MP.border.dark,
+        borderTop: AP.border.dark,
       },
-      billingDisclaimer: { ...MP.row, ...MP.alignItems.cener },
-      billingDisclaimerIcon: { color: MP.color.positive },
+      billingDisclaimer: { ...AP.row, ...AP.alignItems.cener },
+      billingDisclaimerIcon: { color: AP.color.positive },
       billingDisclaimerText: {
-        marginLeft: MP.space.g1,
-        ...MP.text.of({
-          family: MP.font.secondary,
+        marginLeft: AP.space.g1,
+        ...AP.text.of({
+          family: AP.font.secondary,
           size: 9,
           height: "12px",
-          color: MP.color.textBleak,
+          color: AP.color.textBleak,
         }),
       },
     },
@@ -39922,7 +40023,7 @@
   LP.registerSvgIcons([
     `<symbol id="${pR}" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path d="M6553.6-5145h0a25.837,25.837,0,0,1-4.8-3.3,16.947,16.947,0,0,1-3.3-3.788A9.337,9.337,0,0,1,6544-5157v-8.4l9.6-3.6,9.6,3.6v8.4a9.337,9.337,0,0,1-1.5,4.912,16.922,16.922,0,0,1-3.3,3.788,25.837,25.837,0,0,1-4.8,3.3Zm0-21.553h0l-7.643,2.865V-5157a7.431,7.431,0,0,0,1.194,3.91,13.471,13.471,0,0,0,2.627,3.015,20.623,20.623,0,0,0,3.819,2.627l0-19.1Z" transform="translate(-6541.6 5169)" fill="currentColor"/></symbol>`,
   ]);
-  class mR extends MP.Component {
+  class mR extends AP.Component {
     render() {
       const {
         title: e,
@@ -39958,10 +40059,10 @@
       const { loading: e, onCloseClick: t } = this.props;
       return Glamor.createElement(
         "div",
-        { css: [MP.row, MP.alignItems.center, hR.loadingPanel] },
+        { css: [AP.row, AP.alignItems.center, hR.loadingPanel] },
         Glamor.createElement(
           "div",
-          { css: [MP.row, hR.progressRing(e)] },
+          { css: [AP.row, hR.progressRing(e)] },
           Glamor.createElement(jP, {
             size: 16,
             value: 20,
@@ -39995,36 +40096,36 @@
             "and do not have access to or process your card details."
           )
         ),
-        e && Glamor.createElement(xT, { label: "CRACKED BY YEZER", onClick: e })
+        e && Glamor.createElement(xT, { label: "BILLING F.A.Q", onClick: e })
       );
     }
   }
-  mR.defaultProps = { title: "を⽋ ୨PRO୧ :: " };
+  mR.defaultProps = { title: "Activate PRO" };
   const fR = {
     root: { width: "100%" },
     feature: {
-      ...MP.row,
+      ...AP.row,
       marginBottom: 40,
       "&:last-child": { marginBottom: 0 },
     },
     featureCheckmark: {
       width: 30,
       height: 30,
-      color: MP.color.positive,
-      marginRight: MP.space.g2,
+      color: AP.color.positive,
+      marginRight: AP.space.g2,
     },
     featureTexts: { width: 310 },
-    featureTitle: { ...MP.text.contentTitle, color: MP.color.textNormal },
-    featureDescription: { ...MP.text.bleak, marginTop: MP.space.g0h },
+    featureTitle: { ...AP.text.contentTitle, color: AP.color.textNormal },
+    featureDescription: { ...AP.text.bleak, marginTop: AP.space.g0h },
     featureIcon: {
       flexShrink: 0,
       marginLeft: "auto",
-      color: MP.color.primary,
+      color: AP.color.primary,
       position: "relative",
       top: 4,
     },
   };
-  class gR extends MP.Component {
+  class gR extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -40055,26 +40156,26 @@
     }
   }
   const vR = {
-    root: MP.fullWidth,
-    header: { ...MP.fullWidth, ...MP.text.group1, paddingBottom: MP.space.g3 },
+    root: AP.fullWidth,
+    header: { ...AP.fullWidth, ...AP.text.group1, paddingBottom: AP.space.g3 },
     feature: (e) => ({
-      ...MP.row,
-      ...(e.icons && MP.relative()),
+      ...AP.row,
+      ...(e.icons && AP.relative()),
       paddingBottom: e.isPaddedBottom ? 24 : 12,
     }),
-    icons: { ...MP.absolute("0 . . 0"), color: MP.color.iconPassive },
-    icon: { marginBottom: MP.space.g3 },
+    icons: { ...AP.absolute("0 . . 0"), color: AP.color.iconPassive },
+    icon: { marginBottom: AP.space.g3 },
     featureTitle: (e) => ({
-      ...MP.row,
-      ...MP.alignItems.center,
-      ...MP.text.group2,
-      color: MP.color.textNormal,
+      ...AP.row,
+      ...AP.alignItems.center,
+      ...AP.text.group2,
+      color: AP.color.textNormal,
       paddingLeft: e.isFree ? 0 : 66,
     }),
-    checkYesIcon: { color: MP.color.positive },
-    checkNoIcon: { color: MP.color.iconPassive },
+    checkYesIcon: { color: AP.color.positive },
+    checkNoIcon: { color: AP.color.iconPassive },
   };
-  class bR extends MP.Component {
+  class bR extends AP.Component {
     render() {
       const { features: e } = this.props;
       return e && 0 !== e.length
@@ -40089,7 +40190,7 @@
     _renderHeader() {
       return Glamor.createElement(
         "div",
-        { css: [MP.row, MP.justifyContent.end, vR.header] },
+        { css: [AP.row, AP.justifyContent.end, vR.header] },
         Glamor.createElement("span", null, "FREE"),
         Glamor.createElement(qP, { width: 40 }),
         Glamor.createElement("span", null, "PRO")
@@ -40099,11 +40200,11 @@
       const { title: t, tooltip: r, isFree: n, isPro: o, icons: i } = e;
       return Glamor.createElement(
         "div",
-        { key: t, css: [MP.row, MP.justifyContent.between, vR.feature(e)] },
+        { key: t, css: [AP.row, AP.justifyContent.between, vR.feature(e)] },
         i &&
           Glamor.createElement(
             "div",
-            { css: [MP.column, MP.alignItems.center, vR.icons] },
+            { css: [AP.column, AP.alignItems.center, vR.icons] },
             i.map((e) =>
               Glamor.createElement(LP, { key: e, name: e, style: vR.icon })
             )
@@ -40114,7 +40215,7 @@
           t,
           !!r &&
             Glamor.createElement(
-              MP.Fragment,
+              AP.Fragment,
               null,
               Glamor.createElement(qP, { width: "g1" }),
               Glamor.createElement(QP, { mini: !0, tooltip: r })
@@ -40122,7 +40223,7 @@
         ),
         Glamor.createElement(
           "div",
-          { css: MP.row },
+          { css: AP.row },
           Glamor.createElement(qP, { width: 13 }),
           n
             ? Glamor.createElement(LP, {
@@ -40151,15 +40252,15 @@
   const yR = {
       root: {},
       title: {
-        ...MP.text.bleakSemiBold,
+        ...AP.text.bleakSemiBold,
         textAlign: "center",
-        color: MP.color.iconPassive,
-        marginBottom: MP.space.g1,
+        color: AP.color.iconPassive,
+        marginBottom: AP.space.g1,
       },
-      clientList: { ...MP.row, ...MP.alignItems.center },
+      clientList: { ...AP.row, ...AP.alignItems.center },
       client: {
-        color: MP.color.iconPassive,
-        marginRight: MP.space.g5,
+        color: AP.color.iconPassive,
+        marginRight: AP.space.g5,
         "&:last-child": { marginRight: 0 },
       },
     },
@@ -40175,7 +40276,7 @@
     `<symbol id="${xR}" viewBox="0 0 114.851 35.302"><path d="M0 .785h4.551l8.629 19.3 8.316-19.3h3.922l-11.14 24.163h-2.824zm29.5 24.163h3.923V.785h-3.926zm57.111.156h-3.925V14.121H68.879v10.983H64.8V.942h4.079v10.2h13.807V.942h3.922v24.162zM89.906.628h4.86l8.158 11.454 7.689-11.3h4.236l-9.883 14.438v9.728h-4.237V15.22zm-29.34 3.3V.942A29.2 29.2 0 0053.506 0C47.073 0 40.797 2.667 38.13 8.629c-1.569 3.138-.942 7.845 1.1 10.827 5.178 6.589 14.592 6.747 22.123 4.706v-2.824c-.314 0-.314 0-.471.157-5.496 1.88-11.772 2.824-17.107-2.82a10.277 10.277 0 01-1.726-9.257c1.726-4.707 5.962-7.217 11.14-6.747a20.9 20.9 0 017.377 1.252zm-48.8 30.904h1.255v.47H11.14v-4.863h.626zm9.257-1.413h-1.567l.785-2.039zm.314.471l.471 1.411h.627l-2.2-5.178-2.2 5.178h.627l.471-1.411zm7.06-.942h.469c.627 0 1.255.157 1.255.942s-.627.941-1.1.941h-.627v-1.883zm-.47 2.354h1.1c.941 0 1.726-.47 1.726-1.411a1.193 1.193 0 00-.942-1.255.95.95 0 00.471-.942c0-.941-.785-1.254-1.569-1.254h-.785v4.863zm.47-4.393h.157c.785 0 1.255 0 1.255.784s-.627.785-1.255.785h-.157zm10.355-.157a2.047 2.047 0 010 4.08 2.076 2.076 0 01-2.039-2.039 1.978 1.978 0 012.041-2.041zm0-.47a2.515 2.515 0 100 5.02 2.51 2.51 0 100-5.02zm8 .627h.157c.627 0 1.255 0 1.255.941 0 .628-.627.785-1.255.785h-.157zm0 2.2h.157l1.412 2.2h.627l-1.569-2.2a1.374 1.374 0 001.255-1.413c0-1.1-.785-1.254-1.726-1.254h-.785v4.863h.627v-2.2zm9.884.314h-1.721l.942-2.039zm.157.471l.627 1.411h.628l-2.2-5.178-2.353 5.178h.627l.627-1.411zm7.061 1.411h-.628v-4.396h-1.1v-.47h2.824v.47h-1.1zm8-4.55a2.04 2.04 0 010 4.08 2.046 2.046 0 010-4.08zm0-.47a2.51 2.51 0 100 5.02 2.515 2.515 0 100-5.02zm8 .157h.628v4.863h-.616zm7.061.47h.157c.784 0 1.255 0 1.255.941 0 .628-.628.785-1.1.785h-.314zm0 2.2h.157l1.568 2.2h.628l-1.57-2.2a1.373 1.373 0 001.268-1.419c0-1.1-.941-1.254-1.882-1.254h-.628v4.863h.471v-2.2zm7.688-2.667h2.668v.47h-2.033v1.412h1.883v.471h-1.883v2.039h2.041v.47h-2.668zm9.885.941c-.314-.314-.47-.628-.941-.628a.741.741 0 00-.784.785c0 .47.47.627.784.784l.314.157c.627.314 1.1.627 1.1 1.413a1.406 1.406 0 01-1.413 1.411 1.528 1.528 0 01-1.57-1.255l.471-.156a1.038 1.038 0 001.1.941.9.9 0 00.941-.941c0-.628-.47-.785-.941-.942l-.314-.156c-.47-.314-.941-.471-.941-1.255a1.311 1.311 0 012.511-.471z" fill="currentColor" fill-rule="evenodd"/></symbol>`,
     `<symbol id="${kR}" viewBox="0 0 107.843 35.807"><path d="M28.012 35.807a98.706 98.706 0 01-10.929-.559 50.947 50.947 0 01-8.638-1.643c-.609-.18-1.2-.373-1.742-.574s-1.074-.416-1.559-.637-.948-.458-1.369-.7a12.09 12.09 0 01-1.17-.762 8.837 8.837 0 01-.964-.823 6.399 6.399 0 01-.747-.883A5.462 5.462 0 01.6 28.76a4.971 4.971 0 01-.235-.479 4.649 4.649 0 01-.178-.494A4.494 4.494 0 010 26.415a4.96 4.96 0 01.1-.88 5.891 5.891 0 01.258-.894 7.376 7.376 0 01.413-.906 9.5 9.5 0 01.565-.916c.211-.3.451-.615.712-.924s.547-.62.855-.93.641-.623.995-.934.732-.625 1.13-.936.82-.625 1.261-.937.906-.625 1.387-.935.989-.623 1.51-.931 1.069-.619 1.629-.925 1.147-.615 1.743-.918a75.734 75.734 0 013.814-1.8 2.624 2.624 0 00-.375.327 2.46 2.46 0 00-.3.4 2.583 2.583 0 00-.226.47 3.04 3.04 0 00-.141.547 4.362 4.362 0 00-.061.732 3.917 3.917 0 00.086.775 2.223 2.223 0 00.155.464 2.558 2.558 0 00.246.42 3.3 3.3 0 00.323.381 4.558 4.558 0 00.384.347 7.927 7.927 0 00.892.614c.314.19.64.368.956.541a13.382 13.382 0 011.3.77 3.151 3.151 0 01.475.4 1.718 1.718 0 01.172.214 1.212 1.212 0 01.121.226 1.141 1.141 0 01.072.436 1.747 1.747 0 01-.048.391 1.149 1.149 0 01-.105.273.848.848 0 01-.2.24.923.923 0 01-.317.171 1.546 1.546 0 01-.469.065 1.2 1.2 0 01-.824-.277.963.963 0 01-.3-.735v-1.083H15.2v.863a3.932 3.932 0 00.088.853 2.919 2.919 0 00.25.7 2.58 2.58 0 00.391.562 2.766 2.766 0 00.511.434 3.423 3.423 0 00.609.318 4.533 4.533 0 00.686.213 6.862 6.862 0 001.518.156 6.966 6.966 0 001.43-.137 4.686 4.686 0 00.634-.179 3.581 3.581 0 00.564-.261 2.587 2.587 0 001.313-1.971 6.421 6.421 0 00.062-1.188 4.553 4.553 0 00-.073-.644 2.172 2.172 0 00-.162-.477 2.542 2.542 0 00-.256-.433 3.345 3.345 0 00-.339-.392 4.681 4.681 0 00-.4-.357 8.172 8.172 0 00-.936-.626 25.107 25.107 0 00-.992-.543 12.485 12.485 0 01-1.276-.735 2.463 2.463 0 01-.434-.373 1.178 1.178 0 01-.141-.195.783.783 0 01-.082-.2 1.407 1.407 0 01-.036-.33 1.362 1.362 0 01.025-.258.933.933 0 01.277-.506.865.865 0 01.3-.174 1.355 1.355 0 01.443-.067 1.255 1.255 0 01.437.073.9.9 0 01.326.205 1.007 1.007 0 01.274.734v.689h2.78v-.782a3.643 3.643 0 00-.025-.432 2.967 2.967 0 00-.072-.386 2.527 2.527 0 00-.115-.343 2.287 2.287 0 00-.154-.3 2.219 2.219 0 00-.408-.493 2.59 2.59 0 00-.514-.359 3.453 3.453 0 00-.588-.245 4.78 4.78 0 00-.63-.151c-.2-.035-.415-.06-.638-.076a8.579 8.579 0 00-.615-.021 6.79 6.79 0 00-1.55.163c1.113-.472 2.281-.943 3.473-1.4s2.447-.913 3.715-1.352 2.6-.878 3.939-1.3 2.738-.841 4.141-1.235 2.874-.791 4.337-1.162 3-.739 4.51-1.083a190.035 190.035 0 019.471-1.895 196.092 196.092 0 017.635-1.175 182.72 182.72 0 017.359-.829C71 .22 75.567 0 79.842 0a98.673 98.673 0 0110.926.559A50.918 50.918 0 0199.4 2.2c.609.18 1.195.373 1.741.574s1.074.416 1.559.637.948.458 1.368.7a12.076 12.076 0 011.17.762 8.83 8.83 0 01.963.823 6.399 6.399 0 01.747.883 5.456 5.456 0 01.292.464 4.96 4.96 0 01.235.479 4.647 4.647 0 01.178.494 4.507 4.507 0 01.186 1.354 4.941 4.941 0 01-.091.862 5.827 5.827 0 01-.244.875 7.25 7.25 0 01-.394.887 9.272 9.272 0 01-.54.9c-.2.3-.432.6-.682.9s-.524.607-.82.911-.615.61-.954.915-.7.612-1.084.917-.788.613-1.211.918-.87.612-1.333.917-.95.611-1.452.914-1.028.608-1.567.908-1.1.6-1.678.9c-1.15.6-2.386 1.193-3.674 1.775a2.663 2.663 0 001.069-1.989c.034-.381.038-.532.04-.736v-2.987h-3.949v1.627h1.144V20.4a2.579 2.579 0 01-.025.424.878.878 0 01-.086.251.958.958 0 01-.2.263 1.031 1.031 0 01-.342.208 1.592 1.592 0 01-1.023 0 1.021 1.021 0 01-.341-.207.936.936 0 01-.2-.262.831.831 0 01-.082-.249 2.368 2.368 0 01-.029-.424v-5.1a2.623 2.623 0 01.047-.526 1.1 1.1 0 01.084-.245.983.983 0 01.188-.267.963.963 0 01.329-.214 1.378 1.378 0 01.508-.088 1.4 1.4 0 01.526.092.951.951 0 01.331.222 1 1 0 01.254.5 2.817 2.817 0 01.036.424v.624h2.811v-.372a6.658 6.658 0 00-.025-.736 3.4 3.4 0 00-.144-.718 2.7 2.7 0 00-.274-.594 2.511 2.511 0 00-.387-.478 2.759 2.759 0 00-.485-.371 3.422 3.422 0 00-.568-.273 4.5 4.5 0 00-.636-.184 6.8 6.8 0 00-1.417-.137 4.989 4.989 0 00-2.608.6 2.778 2.778 0 00-.483.371 2.57 2.57 0 00-.388.478 2.8 2.8 0 00-.28.593 3.543 3.543 0 00-.158.717 7.894 7.894 0 00-.047.736v4.694c0 .214.01.37.04.736a3.216 3.216 0 00.142.7 2.641 2.641 0 00.273.585 2.543 2.543 0 00.388.477 2.846 2.846 0 00.488.375 3.979 3.979 0 001.212.471 6.555 6.555 0 001.422.145 6.465 6.465 0 001.484-.16c-1.121.485-2.3.968-3.506 1.437s-2.476.938-3.761 1.389-2.638.9-4 1.333-2.789.86-4.217 1.268-2.927.813-4.418 1.194c-1.506.385-3.054.759-4.6 1.111a190.654 190.654 0 01-9.672 1.94 194.775 194.775 0 01-7.633 1.174 182.63 182.63 0 01-7.357.829c-4.736.431-9.304.651-13.578.651zM51.5 19.743v.852a3.89 3.89 0 00.087.844 2.889 2.889 0 00.248.695 2.553 2.553 0 00.388.556 2.739 2.739 0 00.506.429 3.389 3.389 0 00.6.314 4.49 4.49 0 00.679.21 6.8 6.8 0 001.5.154 6.9 6.9 0 001.415-.135 4.641 4.641 0 00.628-.177 3.546 3.546 0 00.559-.258 2.56 2.56 0 001.3-1.951 6.44 6.44 0 00.065-1.177 3.964 3.964 0 00-.074-.635 2.156 2.156 0 00-.156-.474 2.524 2.524 0 00-.254-.429 3.315 3.315 0 00-.336-.389 4.636 4.636 0 00-.4-.353 8.1 8.1 0 00-.926-.62c-.326-.191-.659-.367-.981-.538a12.366 12.366 0 01-1.264-.729 2.442 2.442 0 01-.43-.37 1.167 1.167 0 01-.14-.193.779.779 0 01-.081-.2 1.393 1.393 0 01-.036-.327 1.251 1.251 0 01.025-.25 1.113 1.113 0 01.094-.267.826.826 0 01.181-.238.851.851 0 01.3-.17 1.357 1.357 0 01.438-.065 1.256 1.256 0 01.433.071.881.881 0 01.321.2 1 1 0 01.269.727v.682h2.76v-.776a3.589 3.589 0 00-.025-.427 2.923 2.923 0 00-.071-.382 2.5 2.5 0 00-.114-.339 2.255 2.255 0 00-.152-.3 2.2 2.2 0 00-.4-.487 2.571 2.571 0 00-.51-.355 3.431 3.431 0 00-.583-.243 4.749 4.749 0 00-.624-.15c-.2-.034-.411-.06-.633-.076a8.51 8.51 0 00-.609-.021 6.937 6.937 0 00-1.39.129 4.613 4.613 0 00-.617.17 3.512 3.512 0 00-.55.249 2.8 2.8 0 00-.471.334 2.459 2.459 0 00-.382.424 2.5 2.5 0 00-.281.521 2.967 2.967 0 00-.169.623 4.181 4.181 0 00-.06.721 3.915 3.915 0 00.087.768 2.2 2.2 0 00.153.46 2.526 2.526 0 00.244.416 3.263 3.263 0 00.319.377 4.5 4.5 0 00.38.344 7.843 7.843 0 00.883.608c.312.188.635.365.947.537a13.246 13.246 0 011.281.762 3.117 3.117 0 01.47.4 1.7 1.7 0 01.17.212 1.2 1.2 0 01.119.223 1.109 1.109 0 01.072.43 1.824 1.824 0 01-.047.386 1.126 1.126 0 01-.1.272.83.83 0 01-.193.238.913.913 0 01-.314.168 1.549 1.549 0 01-.466.064 1.18 1.18 0 01-.813-.275.878.878 0 01-.22-.315 1.064 1.064 0 01-.077-.408v-1.07zm10.568-7.479v8c0 .2.015.621.025.731a3.527 3.527 0 00.14.716 2.723 2.723 0 00.263.593 2.465 2.465 0 00.375.478 2.66 2.66 0 00.474.372 3.289 3.289 0 00.561.274 4.385 4.385 0 00.636.185 5.986 5.986 0 00.7.1c.235.022.487.033.748.033s.512-.011.747-.033a5.972 5.972 0 00.7-.1 4.378 4.378 0 00.635-.185 3.288 3.288 0 00.56-.274 2.66 2.66 0 00.474-.372 2.469 2.469 0 00.375-.478 2.729 2.729 0 00.264-.593 3.537 3.537 0 00.14-.716c.012-.112.031-.529.025-.731v-8h-2.82v8.252a2.393 2.393 0 01-.027.426 1.031 1.031 0 01-.081.242.985.985 0 01-.183.265.941.941 0 01-.318.214 1.392 1.392 0 01-.974 0 .942.942 0 01-.319-.215 1.01 1.01 0 01-.188-.266 1.157 1.157 0 01-.085-.242 2.576 2.576 0 01-.027-.426v-8.25zm-16.159 1.13l.074 10.024h2.786l-.241-11.15h-4.544l-1.378 8.524h-.06l-1.375-8.524h-4.55l-.247 11.15h2.793l.069-10.024h.06l1.866 10.024h2.829l1.864-10.024h.058zM29.667 13.3l1.485 10.116h3l-2.06-11.15h-4.96l-2.066 11.15h3.012L29.6 13.3h.062zm45.939.945h.06l2.755 9.055h3.968V12.269h-2.76l.152 8.754h-.06l-2.563-8.754h-4.142V23.3h2.744l-.154-9.055z" fill="currentColor"/></symbol>`,
   ]);
-  class CR extends MP.Component {
+  class CR extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -40202,26 +40303,26 @@
   }
   const SR = {
       root: {
-        ...MP.padding("g2 g3 g2 g2"),
-        ...MP.row,
+        ...AP.padding("g2 g3 g2 g2"),
+        ...AP.row,
         width: "100%",
-        background: MP.color.bgLight1,
-        border: `1px solid ${MP.color.borderDark}`,
+        background: AP.color.bgLight1,
+        border: `1px solid ${AP.color.borderDark}`,
         borderRadius: 8,
       },
       icon: {
         flexShrink: 0,
-        marginRight: MP.space.g2,
+        marginRight: AP.space.g2,
         width: 20,
         height: 20,
-        color: MP.color.primary,
+        color: AP.color.primary,
       },
       body: {},
-      title: { ...MP.text.group1, color: MP.color.primary },
+      title: { ...AP.text.group1, color: AP.color.primary },
       text: {
-        ...MP.text.tooltipText,
-        color: MP.color.textNormal,
-        marginTop: MP.space.g0h,
+        ...AP.text.tooltipText,
+        color: AP.color.textNormal,
+        marginTop: AP.space.g0h,
       },
     },
     PR = "billing-status.tick",
@@ -40229,7 +40330,7 @@
   LP.registerSvgIcons([
     `<symbol id="${PR}" viewBox="0 0 19 19"><path d="M10,19.5A9.5,9.5,0,1,1,19.5,10,9.511,9.511,0,0,1,10,19.5ZM4.822,9.015l-.938.931L8.328,14.4l7.765-8.148-.856-.943L8.328,11.987,4.822,9.015Z" transform="translate(-0.5 -0.5)" fill="currentColor"/></symbol>`,
   ]);
-  class DR extends MP.Component {
+  class DR extends AP.Component {
     render() {
       return Glamor.createElement(
         "div",
@@ -40249,29 +40350,29 @@
   }
   const IR = {
     root: (e) => ({
-      ...MP.relative(),
+      ...AP.relative(),
       height: "min-content",
       marginRight: 28,
       "&:last-child": { marginRight: 0 },
       ...(e.padding || {
-        ...MP.padding("0 50"),
-        "@media (max-width: 1420px)": { ...MP.padding("0 40") },
-        "@media (max-width: 1380px)": { ...MP.padding("0 30") },
+        ...AP.padding("0 50"),
+        "@media (max-width: 1420px)": { ...AP.padding("0 40") },
+        "@media (max-width: 1380px)": { ...AP.padding("0 30") },
       }),
       "&:not(:last-child)::before": {
         content: '""',
         width: 1,
         height: 132,
-        ...MP.absolute("50 0 . ."),
-        background: MP.color.borderDark,
+        ...AP.absolute("50 0 . ."),
+        background: AP.color.borderDark,
       },
       ...(e.disabled && { "& > *": { opacity: 0.3, pointerEvents: "none" } }),
     }),
     priceSection: {
-      ...MP.relative(),
+      ...AP.relative(),
       paddingLeft: 1,
-      color: MP.color.primary,
-      fontFamily: MP.font.secondary,
+      color: AP.color.primary,
+      fontFamily: AP.font.secondary,
       minHeight: 66,
     },
     priceValue: { fontWeight: 700 },
@@ -40284,88 +40385,88 @@
       marginTop: -1,
       marginLeft: 1,
     },
-    pricePeriod: (e) => ({ ...(e && { color: MP.color.iconPassive }) }),
+    pricePeriod: (e) => ({ ...(e && { color: AP.color.iconPassive }) }),
     priceCustomCurrency: { fontWeight: 700 },
     priceBadge: {
-      ...MP.absolute("-4 . . 83"),
-      ...MP.borderRadius.r4,
-      ...MP.padding("g0h g1"),
-      background: MP.color.attention,
-      ...MP.text.of({
+      ...AP.absolute("-4 . . 83"),
+      ...AP.borderRadius.r4,
+      ...AP.padding("g0h g1"),
+      background: AP.color.attention,
+      ...AP.text.of({
         size: 10,
         height: "13px",
         weight: 600,
-        color: MP.color.bgLight3,
+        color: AP.color.bgLight3,
       }),
     },
-    labelSection: { ...MP.relative(), marginTop: 18 },
+    labelSection: { ...AP.relative(), marginTop: 18 },
     planCheckmark: {
-      ...MP.absolute("-2 100% . ."),
-      marginRight: MP.space.g1,
+      ...AP.absolute("-2 100% . ."),
+      marginRight: AP.space.g1,
       width: 24,
       height: 24,
-      color: MP.color.positive,
+      color: AP.color.positive,
     },
     planIcon: (e) => ({
-      ...MP.absolute("-2 100% . ."),
-      marginRight: MP.space.g1h,
+      ...AP.absolute("-2 100% . ."),
+      marginRight: AP.space.g1h,
       width: 20,
       height: 20,
-      fill: e ? MP.color.textPassive : "url(#inssist.gradient)",
+      fill: e ? AP.color.textPassive : "url(#inssist.gradient)",
     }),
-    planLabel: MP.text.group1,
-    benefitSection: { marginTop: MP.space.g1, maxWidth: 180 },
+    planLabel: AP.text.group1,
+    benefitSection: { marginTop: AP.space.g1, maxWidth: 180 },
     benefitLine: {
-      ...MP.text.hashtag,
-      marginBottom: MP.space.g1,
+      ...AP.text.hashtag,
+      marginBottom: AP.space.g1,
       lineHeight: "18px",
       "&:last-child": { marginBottom: 0 },
     },
     footerButton: ({ disabled: e }) => ({
-      backgroundColor: MP.color.borderLight,
+      backgroundColor: AP.color.borderLight,
       ...(e && { filter: "none !important", cursor: "default" }),
     }),
     footer: {
-      ...MP.relative(),
+      ...AP.relative(),
       marginTop: 40,
       width: "100%",
       minWidth: 155,
       marginLeft: -14,
     },
-    footerButtonContainer: { ...MP.absolute("0 0 0 0"), margin: "auto" },
+    footerButtonContainer: { ...AP.absolute("0 0 0 0"), margin: "auto" },
     footerText: {
-      ...MP.absolute("60 . . -50"),
-      ...MP.text.bleak,
+      ...AP.absolute("60 . . -50"),
+      ...AP.text.bleak,
       width: 232,
       textAlign: "center",
     },
-    usernamesSection: { marginTop: MP.space.g2 },
+    usernamesSection: { marginTop: AP.space.g2 },
     usernamesTextarea: { width: 210, fontSize: 12 },
-    usernamesConfirmationError: { ...MP.relative(), marginTop: MP.space.g3 },
+    usernamesConfirmationError: { ...AP.relative(), marginTop: AP.space.g3 },
     usernamesConfirmationErrorIcon: {
-      ...MP.absolute("0 . . -37"),
-      color: MP.color.primary,
+      ...AP.absolute("0 . . -37"),
+      color: AP.color.primary,
       width: 24,
       height: 24,
     },
-    usernamesConfirmationErrorText: MP.text.bleak,
-    accountCounter: { marginTop: MP.space.g2, paddingBottom: 4 },
+    usernamesConfirmationErrorText: AP.text.bleak,
+    accountCounter: { marginTop: AP.space.g2, paddingBottom: 4 },
     accountCounterButton: {
-      ...MP.row,
-      ...MP.center,
-      ...MP.borderRadius.r4,
-      ...MP.text.group1,
+      ...AP.row,
+      ...AP.center,
+      ...AP.borderRadius.r4,
+      ...AP.text.group1,
       width: 31,
       height: 23,
-      color: MP.theme.valueOf("day", MP.color.bgLight3),
-      background: MP.color.link,
+      color: AP.theme.valueOf("day", AP.color.bgLight3),
+      background: AP.color.link,
       marginRight: 6,
-      "&:not(:disabled)": { ...MP.clickable },
-      "&:disabled": { background: MP.color.textPassive },
+      "&:not(:disabled)": { ...AP.clickable },
+      "&:disabled": { background: AP.color.textPassive },
     },
-    accountCounterLabel: { ...MP.text.hashtag, fontWeight: 600, marginLeft: 6 },
+    accountCounterLabel: { ...AP.text.hashtag, fontWeight: 600, marginLeft: 6 },
   };
-  class GR extends MP.Component {
+  class GR extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -40406,7 +40507,7 @@
         { css: IR.priceSection },
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.alignItems.baseline, IR.priceValue] },
+          { css: [AP.row, AP.alignItems.baseline, IR.priceValue] },
           l && Glamor.createElement("div", { css: IR.priceDollar }, l),
           Glamor.createElement("div", { css: IR.priceIntegral }, a || 0),
           s && Glamor.createElement("div", { css: IR.priceFractal }, ".", s)
@@ -40434,17 +40535,17 @@
       const { label: t, isSelected: r, isDisabled: n } = e,
         o = r
           ? Glamor.createElement(LP, {
-              style: [MP.row, IR.planCheckmark],
+              style: [AP.row, IR.planCheckmark],
               name: "igswiss.checkmark",
             })
           : Glamor.createElement(
               "div",
-              { css: [MP.row, MP.center, IR.planIcon(n)] },
+              { css: [AP.row, AP.center, IR.planIcon(n)] },
               Glamor.createElement(LP, { name: e.icon.name })
             );
       return Glamor.createElement(
         "div",
-        { css: [MP.row, MP.alignItems.center, IR.labelSection] },
+        { css: [AP.row, AP.alignItems.center, IR.labelSection] },
         o,
         t && Glamor.createElement("div", { css: IR.planLabel }, t)
       );
@@ -40466,10 +40567,10 @@
       return t
         ? Glamor.createElement(
             "div",
-            { css: [MP.column, { maxWidth: 210 }] },
+            { css: [AP.column, { maxWidth: 210 }] },
             Glamor.createElement(
               "div",
-              { css: [MP.row, MP.alignItems.center, IR.accountCounter] },
+              { css: [AP.row, AP.alignItems.center, IR.accountCounter] },
               Glamor.createElement(
                 "button",
                 {
@@ -40502,7 +40603,7 @@
             null !== t.value &&
               Glamor.createElement(
                 "div",
-                { css: [MP.column, IR.usernamesSection] },
+                { css: [AP.column, IR.usernamesSection] },
                 Glamor.createElement(DT, {
                   inputStyle: IR.usernamesTextarea,
                   label: "usernames",
@@ -40514,7 +40615,7 @@
                 Glamor.createElement(qP, { height: "g2" }),
                 Glamor.createElement(
                   "div",
-                  { css: MP.row },
+                  { css: AP.row },
                   Glamor.createElement(xT, {
                     label: "APPLY",
                     disabled: !t.onApplyClick,
@@ -40532,7 +40633,7 @@
             t.errorMessage &&
               Glamor.createElement(
                 "div",
-                { css: [MP.row, IR.usernamesConfirmationError] },
+                { css: [AP.row, IR.usernamesConfirmationError] },
                 Glamor.createElement(LP, {
                   style: IR.usernamesConfirmationErrorIcon,
                   name: "warning-triangle-large",
@@ -40556,14 +40657,14 @@
             label: t.label,
             disabled: t.disabled,
             color: t.disabled
-              ? MP.color.textPassive
+              ? AP.color.textPassive
               : t.tinted
-              ? MP.color.primary
-              : MP.color.link,
-            borderColor: MP.color.borderDark,
+              ? AP.color.primary
+              : AP.color.link,
+            borderColor: AP.color.borderDark,
             tooltip: t.tooltip && {
               style: IR.buttonTooltip,
-              text: Glamor.createElement(MP.Fragment, null, t.tooltip),
+              text: Glamor.createElement(AP.Fragment, null, t.tooltip),
               arrowAtCenter: !0,
             },
             progress: t.progress && {
@@ -40580,7 +40681,7 @@
         i = r && Glamor.createElement("div", { css: IR.footerText }, r);
       return Glamor.createElement(
         "div",
-        { css: [MP.column, MP.alignItems.center, IR.footer] },
+        { css: [AP.column, AP.alignItems.center, IR.footer] },
         o &&
           Glamor.createElement(
             "div",
@@ -40594,7 +40695,7 @@
     _renderChangePlanSection() {
       return this.props.onChangePlanClick
         ? Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { height: "g2" }),
             Glamor.createElement(xT, {
@@ -40618,26 +40719,26 @@
         return e;
       }).apply(this, arguments);
   }
-  const AR = {
+  const MR = {
     title: {
-      ...MP.text.bleakSemiBold,
-      ...MP.padding("g0h 0 g5 0"),
-      ...MP.fullWidth,
+      ...AP.text.bleakSemiBold,
+      ...AP.padding("g0h 0 g5 0"),
+      ...AP.fullWidth,
     },
-    status: { marginRight: MP.space.g5 },
+    status: { marginRight: AP.space.g5 },
     currencies: {},
     currenciesContent: {
-      ...MP.padding("g1h . g1h ."),
+      ...AP.padding("g1h . g1h ."),
       width: 340,
-      borderTop: MP.border.dark,
+      borderTop: AP.border.dark,
     },
     actions: {},
     actionsContent: {
-      ...MP.padding("g0h . . ."),
-      ...MP.text.bleak,
+      ...AP.padding("g0h . . ."),
+      ...AP.text.bleak,
       width: 340,
     },
-    actionButton: { marginLeft: MP.space.g3 },
+    actionButton: { marginLeft: AP.space.g3 },
   };
   LP.registerSvgIcons([
     '<symbol id="billing-storefront.sub" viewBox="0 0 20 20"><path d="M10 17.5a7.5 7.5 0 010-15 7.266 7.266 0 015.25 2.25l-4 4H20V0l-2.937 2.938a9.987 9.987 0 102.562 9.79H16.98A7.447 7.447 0 0110 17.5z"/></symbol>',
@@ -40646,7 +40747,7 @@
     '<symbol id="billing-storefront.currency" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M19.95,2.25H1.05A1.05,1.05,0,0,0,0,3.3V15.9a1.05,1.05,0,0,0,1.05,1.05h18.9A1.05,1.05,0,0,0,21,15.9V3.3A1.05,1.05,0,0,0,19.95,2.25ZM5.775,11.959v.529a.262.262,0,0,1-.262.262H4.988a.262.262,0,0,1-.262-.262v-.535A1.879,1.879,0,0,1,3.7,11.581a.263.263,0,0,1-.019-.4l.386-.368a.269.269,0,0,1,.332-.024.79.79,0,0,0,.421.122h.922a.413.413,0,0,0,.387-.433.428.428,0,0,0-.288-.418L4.361,9.619A1.485,1.485,0,0,1,3.325,8.2a1.461,1.461,0,0,1,1.4-1.479V6.188a.262.262,0,0,1,.262-.262h.525a.262.262,0,0,1,.262.262v.535A1.876,1.876,0,0,1,6.8,7.094a.263.263,0,0,1,.019.4l-.386.368a.269.269,0,0,1-.332.024.787.787,0,0,0-.421-.122H4.762a.413.413,0,0,0-.387.433.428.428,0,0,0,.288.418l1.477.443A1.485,1.485,0,0,1,7.175,10.48,1.461,1.461,0,0,1,5.775,11.959Zm7.875-.521a.262.262,0,0,1-.263.262H9.713a.262.262,0,0,1-.262-.262v-.525a.262.262,0,0,1,.262-.262h3.675a.262.262,0,0,1,.263.262Zm5.25,0a.262.262,0,0,1-.263.262H16.013a.262.262,0,0,1-.263-.262v-.525a.262.262,0,0,1,.263-.262h2.625a.262.262,0,0,1,.263.262Zm0-3.15a.262.262,0,0,1-.263.262H9.713a.262.262,0,0,1-.262-.262V7.762A.262.262,0,0,1,9.713,7.5h8.925a.262.262,0,0,1,.263.262Z" transform="translate(1.594 3.065)" fill="#1BA2F9"/></symbol>',
     '<symbol id="billing-storefront.account" viewBox="0 0 16 16"><path d="M12.5,12.5a4,4,0,1,0-4-4A4.012,4.012,0,0,0,12.5,12.5Zm0,2c-2.65,0-8,1.35-8,4v2h16v-2C20.5,15.85,15.15,14.5,12.5,14.5Z" transform="translate(-4.5 -4.5)" fill="currentColor"/></symbol>',
   ]);
-  class MR extends MP.Component {
+  class AR extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -40660,18 +40761,18 @@
       const { currencies: e, status: t } = this.props;
       return Glamor.createElement(
         "div",
-        { css: [MP.column, MP.alignItems.center, MP.fullWidth] },
+        { css: [AP.column, AP.alignItems.center, AP.fullWidth] },
         this._renderTitle(),
         Glamor.createElement(qP, { height: 24 }),
         this._renderPlans(),
         (e || t) && Glamor.createElement(qP, { height: 80 }),
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.fullWidth, MP.justifyContent.between] },
+          { css: [AP.row, AP.fullWidth, AP.justifyContent.between] },
           this._renderStatus(),
           Glamor.createElement(
             "div",
-            { css: [MP.column, MP.alignItems.center] },
+            { css: [AP.column, AP.alignItems.center] },
             this._renderCurrencies()
           )
         )
@@ -40682,8 +40783,8 @@
       return e
         ? Glamor.createElement(
             "div",
-            { css: [MP.row, MP.justifyContent.between, MP.fullWidth] },
-            Glamor.createElement("div", { css: AR.title }, e),
+            { css: [AP.row, AP.justifyContent.between, AP.fullWidth] },
+            Glamor.createElement("div", { css: MR.title }, e),
             this._renderActions()
           )
         : null;
@@ -40691,7 +40792,7 @@
     _renderPlans() {
       return Glamor.createElement(
         "div",
-        { css: MP.row },
+        { css: AP.row },
         (this.props.plans || []).map(this._renderPlan)
       );
     }
@@ -40699,7 +40800,7 @@
       const { status: e } = this.props;
       return Glamor.createElement(
         "div",
-        { css: AR.status },
+        { css: MR.status },
         e && Glamor.createElement(DR, e)
       );
     }
@@ -40708,10 +40809,10 @@
       return e
         ? Glamor.createElement(
             "div",
-            { css: [MP.rowReverse, AR.currencies] },
+            { css: [AP.rowReverse, MR.currencies] },
             Glamor.createElement(
               "div",
-              { css: [MP.rowReverse, AR.currenciesContent] },
+              { css: [AP.rowReverse, MR.currenciesContent] },
               Glamor.createElement(
                 "div",
                 null,
@@ -40732,7 +40833,7 @@
       const { content: t, buttons: r, color: n } = e;
       return Glamor.createElement(
         "div",
-        { css: [MP.rowReverse, AR.actions] },
+        { css: [AP.rowReverse, MR.actions] },
         Glamor.createElement(LP, {
           style: { marginTop: 4, color: n },
           name: "billing-storefront.account",
@@ -40740,16 +40841,16 @@
         Glamor.createElement(qP, { width: "g1" }),
         Glamor.createElement(
           "div",
-          { css: [MP.column, MP.alignItems.end, AR.actionsContent] },
+          { css: [AP.column, AP.alignItems.end, MR.actionsContent] },
           t,
           Glamor.createElement(qP, { height: "g0h" }),
           Glamor.createElement(
             "div",
-            { css: MP.row },
+            { css: AP.row },
             r.map((e, t) =>
               Glamor.createElement(
                 xT,
-                OR({ key: t }, e, { buttonStyle: AR.actionButton, small: !0 })
+                OR({ key: t }, e, { buttonStyle: MR.actionButton, small: !0 })
               )
             )
           )
@@ -40758,26 +40859,26 @@
     }
   }
   const FR = {
-    root: { ...MP.fullWidth, ...MP.relative() },
-    title: { ...MP.text.contentTitle, paddingBottom: MP.space.g2 },
+    root: { ...AP.fullWidth, ...AP.relative() },
+    title: { ...AP.text.contentTitle, paddingBottom: AP.space.g2 },
     content: (e) => ({
       width: 320,
       ...(e.disabled && {
-        ...MP.disabledWithoutTransparency,
+        ...AP.disabledWithoutTransparency,
         pointerEvents: "none",
       }),
     }),
   };
-  class RR extends MP.Component {
+  class RR extends AP.Component {
     render() {
       const { title: e, children: t } = this.props,
-        r = e && Glamor.createElement("div", { css: [MP.column, FR.title] }, e);
+        r = e && Glamor.createElement("div", { css: [AP.column, FR.title] }, e);
       return Glamor.createElement(
         "div",
-        { css: [MP.column, MP.alignItems.start, FR.root] },
+        { css: [AP.column, AP.alignItems.start, FR.root] },
         Glamor.createElement(
           "div",
-          { css: [MP.column, FR.content(this.props)] },
+          { css: [AP.column, FR.content(this.props)] },
           r,
           t
         )
@@ -40799,16 +40900,16 @@
   const LR = {
       root: {},
       priceRow: {
-        ...MP.row,
-        ...MP.justifyContent.center,
-        marginBottom: MP.space.g1h,
+        ...AP.row,
+        ...AP.justifyContent.center,
+        marginBottom: AP.space.g1h,
       },
       price: {
-        ...MP.relative(),
-        ...MP.text.of({
-          family: MP.font.secondary,
+        ...AP.relative(),
+        ...AP.text.of({
+          family: AP.font.secondary,
           weight: 700,
-          color: MP.color.primary,
+          color: AP.color.primary,
         }),
       },
       priceValue: {},
@@ -40822,11 +40923,11 @@
       priceFractal: { fontSize: 16 },
       pricePeriod: { fontSize: 12, fontWeight: 600 },
       oldPrice: {
-        ...MP.absolute("-4 -34 . ."),
+        ...AP.absolute("-4 -34 . ."),
         transform: "skewX(-8deg)",
         textDecoration: "line-through",
-        ...MP.text.of({
-          family: MP.font.secondary,
+        ...AP.text.of({
+          family: AP.font.secondary,
           size: 16,
           color: "#FF4D28",
           height: "22px",
@@ -40834,18 +40935,18 @@
         }),
       },
       body: ({ props: e }) => ({
-        ...MP.padding("g2"),
-        ...MP.relative(),
-        background: MP.color.bgLight2,
-        border: `1px solid ${MP.color.borderDark}`,
+        ...AP.padding("g2"),
+        ...AP.relative(),
+        background: AP.color.bgLight2,
+        border: `1px solid ${AP.color.borderDark}`,
         borderRadius: 12,
-        ...(e.withShadow && { ...MP.shadow.sh12 }),
+        ...(e.withShadow && { ...AP.shadow.sh12 }),
         ...(e.expanded && {
           borderTopRightRadius: 0,
           borderBottomRightRadius: 0,
           "&::before": {
             content: '""',
-            ...MP.absolute("-1 . -1 100%"),
+            ...AP.absolute("-1 . -1 100%"),
             width: 18,
             borderTop: "inherit",
             borderBottom: "inherit",
@@ -40854,45 +40955,45 @@
         }),
       }),
       marker: {
-        ...MP.absolute("-2 . . 50%"),
+        ...AP.absolute("-2 . . 50%"),
         width: 100,
         height: 3,
-        background: MP.color.primary,
+        background: AP.color.primary,
         marginLeft: -50,
       },
       header: ({ props: e }) => ({
-        ...MP.margin("-16 -16 0 -16"),
-        ...MP.padding("g2"),
-        ...MP.relative(),
+        ...AP.margin("-16 -16 0 -16"),
+        ...AP.padding("g2"),
+        ...AP.relative(),
         borderRadius: "12px 12px 0 0",
-        background: MP.color.bgLight1,
-        marginBottom: MP.space.g2,
+        background: AP.color.bgLight1,
+        marginBottom: AP.space.g2,
         overflow: "hidden",
         zIndex: 1,
         ...(e.expanded && { borderRadius: "12px 0 0 0", marginRight: -34 }),
       }),
       headerTitle: {
-        ...MP.row,
-        ...MP.alignItems.center,
-        ...MP.text.contentTitle,
+        ...AP.row,
+        ...AP.alignItems.center,
+        ...AP.text.contentTitle,
         fontWeight: 700,
-        color: MP.color.textNormal,
+        color: AP.color.textNormal,
       },
       headerIcon: {
-        color: MP.color.positive,
-        marginRight: MP.space.g1h,
-        ...MP.relative("-2 . . ."),
+        color: AP.color.positive,
+        marginRight: AP.space.g1h,
+        ...AP.relative("-2 . . ."),
       },
-      headerDescription: { ...MP.text.bleak, marginTop: MP.space.g1 },
+      headerDescription: { ...AP.text.bleak, marginTop: AP.space.g1 },
       discountRibbon: {
-        ...MP.absolute("24 -94 . ."),
-        ...MP.padding("3 0"),
+        ...AP.absolute("24 -94 . ."),
+        ...AP.padding("3 0"),
         textAlign: "center",
         background: "#FF4D28",
         width: 250,
         transform: "rotate(45deg)",
-        ...MP.text.of({
-          family: MP.font.primary,
+        ...AP.text.of({
+          family: AP.font.primary,
           size: 12,
           height: "15px",
           weight: "600",
@@ -40901,27 +41002,27 @@
       },
       discountPercentSymbol: { fontSize: 10 },
       purchasedLabel: {
-        ...MP.absolute("-11 . . g2 1"),
-        ...MP.padding("g0h g1"),
-        ...MP.borderRadius.r4,
-        background: MP.color.attention,
-        ...MP.text.of({ color: "#FFF", size: 10, weight: 600, height: "13px" }),
+        ...AP.absolute("-11 . . g2 1"),
+        ...AP.padding("g0h g1"),
+        ...AP.borderRadius.r4,
+        background: AP.color.attention,
+        ...AP.text.of({ color: "#FFF", size: 10, weight: 600, height: "13px" }),
       },
       features: {},
       feature: {
-        ...MP.row,
-        ...MP.justifyContent.between,
-        "&:not(:last-child)": { marginBottom: MP.space.g2 },
+        ...AP.row,
+        ...AP.justifyContent.between,
+        "&:not(:last-child)": { marginBottom: AP.space.g2 },
       },
       featureTexts: {},
       featureHeader: {},
-      featureTitle: { ...MP.text.contentTitle, color: MP.color.textNormal },
+      featureTitle: { ...AP.text.contentTitle, color: AP.color.textNormal },
       featureInfo: { width: 30, height: 30, background: "black" },
-      featureDescription: { ...MP.text.bleak, marginTop: MP.space.g0h },
+      featureDescription: { ...AP.text.bleak, marginTop: AP.space.g0h },
       featureIcon: (e) => ({
         flexShrink: 0,
-        marginLeft: MP.space.g1h,
-        color: MP.color.iconActionable,
+        marginLeft: AP.space.g1h,
+        color: AP.color.iconActionable,
         position: "relative",
         top: 4,
         ...(!!e.iconSize && {
@@ -40929,11 +41030,11 @@
           height: e.iconSize.height,
         }),
       }),
-      footer: { marginTop: MP.space.g3, ...MP.column, ...MP.alignItems.center },
-      ghostButton: { ...MP.absolute(), pointerEvents: "none", opacity: 0 },
+      footer: { marginTop: AP.space.g3, ...AP.column, ...AP.alignItems.center },
+      ghostButton: { ...AP.absolute(), pointerEvents: "none", opacity: 0 },
       button: ({ props: e, state: t }) => ({
-        color: MP.color.textInversed,
-        background: MP.color.positive,
+        color: AP.color.textInversed,
+        background: AP.color.positive,
         ...(e.expanded && {
           marginRight: -34,
           alignSelf: "flex-end",
@@ -40942,32 +41043,32 @@
           width: t.expandedButtonWidth,
         }),
       }),
-      buttonIcon: { color: MP.color.textInversed },
+      buttonIcon: { color: AP.color.textInversed },
       disclaimer: {
-        ...MP.row,
-        ...MP.relative(),
-        marginTop: MP.space.g2,
+        ...AP.row,
+        ...AP.relative(),
+        marginTop: AP.space.g2,
         left: -8,
       },
       disclaimerIcon: ({ state: e }) => ({
         width: 24,
         height: 24,
-        marginRight: MP.space.g1,
-        color: MP.color.textPassive,
-        ...("night" === e.theme && { color: MP.color.iconPassive }),
+        marginRight: AP.space.g1,
+        color: AP.color.textPassive,
+        ...("night" === e.theme && { color: AP.color.iconPassive }),
       }),
       disclaimerText: {
-        ...MP.text.of({
-          family: MP.font.secondary,
+        ...AP.text.of({
+          family: AP.font.secondary,
           size: 9,
           height: "12px",
-          color: MP.color.textBleak,
+          color: AP.color.textBleak,
         }),
       },
       faqButtonRow: {
-        ...MP.row,
-        ...MP.justifyContent.center,
-        marginTop: MP.space.g2,
+        ...AP.row,
+        ...AP.justifyContent.center,
+        marginTop: AP.space.g2,
       },
     },
     NR = "billing-purchase.lock",
@@ -40976,11 +41077,11 @@
     `<symbol id="${NR}" viewBox="0 0 23.819 23.819"><circle cx="11.909" cy="11.909" r="11.909" fill="currentColor"/><path d="M47.56,30.466h-.93V28.977a2.977,2.977,0,0,0-5.955,0v1.489h-.93A.747.747,0,0,0,39,31.21v7.816a.747.747,0,0,0,.744.744H47.56a.747.747,0,0,0,.744-.744V31.21A.747.747,0,0,0,47.56,30.466Zm-2.791,6.42H42.536l.6-1.526a1.117,1.117,0,1,1,1.042,0Zm1.117-6.42H41.419V28.977a2.233,2.233,0,0,1,4.466,0Z" transform="translate(-31.743 -21.162)" fill="#fff"/></symbol>`,
     `<symbol id="${jR}" viewBox="0 0 17.252 23"><path d="M10.244 0a23.131 23.131 0 01.8 5.175A3.742 3.742 0 017.365 9.2a3.923 3.923 0 01-3.913-4.025l.032-.388A14.848 14.848 0 000 14.374a8.626 8.626 0 0017.252 0A18.45 18.45 0 0010.244 0zm-1.93 19.766a3.426 3.426 0 01-3.473-3.387 3.38 3.38 0 013.029-3.365 8.319 8.319 0 004.982-2.78 15.007 15.007 0 01.637 4.357 5.179 5.179 0 01-5.175 5.175z" fill="currentColor"/></symbol>`,
   ]);
-  class zR extends MP.Component {
+  class zR extends AP.Component {
     constructor(e) {
       super(e),
-        (this._bodyRef = MP.createRef()),
-        (this._ghostButtonRef = MP.createRef()),
+        (this._bodyRef = AP.createRef()),
+        (this._ghostButtonRef = AP.createRef()),
         (this.state = { expandedButtonWidth: null });
     }
     componentDidMount() {
@@ -41163,7 +41264,7 @@
             "div",
             { css: LR.faqButtonRow },
             Glamor.createElement(xT, {
-              label: "CRACKED BY YEZER.",
+              label: "BILLING F.A.Q.",
               onClick: this.props.onFaqClick,
             })
           );
@@ -41174,14 +41275,14 @@
       this.setState({ expandedButtonWidth: t + (e - t) / 2 + 17 });
     }
   }
-  var HR = MP.theme.ThemeAware(zR);
+  var HR = AP.theme.ThemeAware(zR);
   const UR = {
     root: {
       marginLeft: -12,
-      ...MP.text.of({
+      ...AP.text.of({
         height: "16px",
         size: 11,
-        color: MP.color.textPassive,
+        color: AP.color.textPassive,
         weight: 500,
       }),
     },
@@ -41191,7 +41292,7 @@
     "billing-charity.shepherds":
       "ui-igswiss/billing-charity-shepherd.png:110:78.5",
   });
-  class WR extends MP.Component {
+  class WR extends AP.Component {
     render() {
       const e =
           this.props.imageSrc &&
@@ -41215,7 +41316,7 @@
           );
       return Glamor.createElement(
         "div",
-        { css: [MP.row, UR.root] },
+        { css: [AP.row, UR.root] },
         e,
         e && r && Glamor.createElement(qP, { width: "g1h" }),
         r
@@ -41225,10 +41326,10 @@
   WR.defaultProps = { imageSrc: "billing-charity.shepherds" };
   const VR = {
     root: { width: "100%", maxWidth: 320 },
-    text: { ...MP.text.bleak, paddingBottom: MP.space.g2 },
-    inputContainer: { ...MP.relative() },
+    text: { ...AP.text.bleak, paddingBottom: AP.space.g2 },
+    inputContainer: { ...AP.relative() },
     input: {
-      ...MP.absolute("0 . 0 0 1"),
+      ...AP.absolute("0 . 0 0 1"),
       width: 292,
       height: 52,
       lineHeight: "50px",
@@ -41239,8 +41340,8 @@
       cursor: "pointer",
     },
     letterRenderer: (e) => ({
-      ...MP.relative(),
-      ...MP.noselect,
+      ...AP.relative(),
+      ...AP.noselect,
       width: 54,
       height: 52,
       lineHeight: "50px",
@@ -41248,25 +41349,25 @@
       textAlign: "center",
       fontSize: 42,
       fontWeight: 700,
-      backgroundColor: MP.color.bgLight1,
-      border: MP.border.dark,
-      ...MP.borderRadius.r4,
+      backgroundColor: AP.color.bgLight1,
+      border: AP.border.dark,
+      ...AP.borderRadius.r4,
       color: e.hasError
-        ? MP.color.error
+        ? AP.color.error
         : void 0 === e.value
-        ? MP.color.iconPassive
-        : MP.color.textNormal,
-      ...MP.clickable,
+        ? AP.color.iconPassive
+        : AP.color.textNormal,
+      ...AP.clickable,
     }),
     letterMarker: (e) => ({
-      ...MP.absolute(". -1 0 -1 10"),
-      ...MP.transition.superfast,
-      backgroundColor: MP.color.link,
+      ...AP.absolute(". -1 0 -1 10"),
+      ...AP.transition.superfast,
+      backgroundColor: AP.color.link,
       height: 0,
       ...(e.selected && { height: 4, bottom: -2 }),
     }),
   };
-  class $R extends MP.Component {
+  class $R extends AP.Component {
     constructor(e) {
       super(e),
         (this._onFocus = () => {
@@ -41298,7 +41399,7 @@
         n = t && Glamor.createElement("div", { css: VR.text }, t),
         o = Glamor.createElement(
           "div",
-          { css: [MP.row, VR.inputContainer] },
+          { css: [AP.row, VR.inputContainer] },
           [0, 1, 2, 3, 4].map((t) =>
             Glamor.createElement(qR, {
               key: t,
@@ -41316,13 +41417,13 @@
             onInput: this._onInput,
           })
         );
-      return Glamor.createElement("div", { css: [MP.column, VR.root] }, n, o);
+      return Glamor.createElement("div", { css: [AP.column, VR.root] }, n, o);
     }
   }
   $R.defaultProps = {
     text: "We’ve sent a confirmation code to your email address. Please enter it below:",
   };
-  class qR extends MP.Component {
+  class qR extends AP.Component {
     render() {
       const { value: e } = this.props;
       return Glamor.createElement(
@@ -41335,9 +41436,9 @@
   }
   const YR = {
     root: { width: "100%", maxWidth: 320 },
-    text: { ...MP.text.bleak, paddingBottom: MP.space.g2 },
+    text: { ...AP.text.bleak, paddingBottom: AP.space.g2 },
   };
-  class ZR extends MP.Component {
+  class ZR extends AP.Component {
     constructor(e) {
       super(e),
         (this._onUsernameEnter = () => {
@@ -41360,9 +41461,9 @@
             n = { ...this.props, [r]: e };
           this.props.onChange && this.props.onChange(n);
         }),
-        (this.passwordInput = MP.createRef()),
-        (this.givenNameInput = MP.createRef()),
-        (this.lastNameInput = MP.createRef());
+        (this.passwordInput = AP.createRef()),
+        (this.givenNameInput = AP.createRef()),
+        (this.lastNameInput = AP.createRef());
     }
     render() {
       const {
@@ -41388,7 +41489,7 @@
         };
       return Glamor.createElement(
         "div",
-        { css: [MP.column, YR.root] },
+        { css: [AP.column, YR.root] },
         d,
         Glamor.createElement(
           "form",
@@ -41454,10 +41555,10 @@
         !s &&
           Glamor.createElement(
             "div",
-            { css: MP.row },
+            { css: AP.row },
             Glamor.createElement(WP, {
               label: "CREATE ACCOUNT",
-              shadow: MP.color.linkShadow,
+              shadow: AP.color.linkShadow,
               onClick: c,
             }),
             Glamor.createElement(qP, { width: "g3" }),
@@ -41484,9 +41585,9 @@
   };
   const KR = {
     root: { width: "100%", maxWidth: 320 },
-    text: { ...MP.text.bleak, paddingBottom: MP.space.g2 },
+    text: { ...AP.text.bleak, paddingBottom: AP.space.g2 },
   };
-  class XR extends MP.Component {
+  class XR extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -41515,7 +41616,7 @@
         s = e && Glamor.createElement("div", { css: KR.text }, e);
       return Glamor.createElement(
         "div",
-        { css: [MP.column, KR.root] },
+        { css: [AP.column, KR.root] },
         s,
         Glamor.createElement(
           "form",
@@ -41535,10 +41636,10 @@
         !n &&
           Glamor.createElement(
             "div",
-            { css: MP.row },
+            { css: AP.row },
             Glamor.createElement(WP, {
               label: "NEXT",
-              shadow: MP.color.linkShadow,
+              shadow: AP.color.linkShadow,
               onClick: i,
             }),
             Glamor.createElement(qP, { width: "g3" }),
@@ -41559,10 +41660,10 @@
     disableInputs: !1,
   };
   const QR = {
-    root: { ...MP.fullWidth, maxWidth: 320 },
-    text: { ...MP.text.bleak, paddingBottom: MP.space.g2 },
+    root: { ...AP.fullWidth, maxWidth: 320 },
+    text: { ...AP.text.bleak, paddingBottom: AP.space.g2 },
   };
-  class JR extends MP.Component {
+  class JR extends AP.Component {
     constructor(e) {
       super(e),
         (this._onUsernameEnter = () => {
@@ -41577,7 +41678,7 @@
             n = { ...this.props, [r]: e };
           this.props.onChange && this.props.onChange(n);
         }),
-        (this.passwordInput = MP.createRef());
+        (this.passwordInput = AP.createRef());
     }
     render() {
       const {
@@ -41594,7 +41695,7 @@
         c = e && Glamor.createElement("div", { css: QR.text }, e);
       return Glamor.createElement(
         "div",
-        { css: [MP.column, QR.root] },
+        { css: [AP.column, QR.root] },
         c,
         Glamor.createElement(
           "form",
@@ -41628,10 +41729,10 @@
         !o &&
           Glamor.createElement(
             "div",
-            { css: MP.row },
+            { css: AP.row },
             Glamor.createElement(WP, {
               label: "LOGIN",
-              shadow: MP.color.linkShadow,
+              shadow: AP.color.linkShadow,
               onClick: s,
             }),
             Glamor.createElement(qP, { width: "g3" }),
@@ -41652,8 +41753,8 @@
     hideActions: !1,
     disableInputs: !1,
   };
-  const eB = { root: { width: "100%", maxWidth: 320 }, text: MP.text.bleak };
-  class tB extends MP.Component {
+  const eB = { root: { width: "100%", maxWidth: 320 }, text: AP.text.bleak };
+  class tB extends AP.Component {
     render() {
       const { text: e, okButtonText: t, onOkClick: r } = this.props,
         n = e && Glamor.createElement("div", { css: eB.text }, e),
@@ -41661,20 +41762,20 @@
           t &&
           r &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { height: "g3" }),
             Glamor.createElement(xT, { label: t, onClick: r })
           );
-      return Glamor.createElement("div", { css: [MP.column, eB.root] }, n, o);
+      return Glamor.createElement("div", { css: [AP.column, eB.root] }, n, o);
     }
   }
   tB.defaultProps = {
     text: "Success! Account has been removed, subscription cancelled and all your data erased from our servers.",
     okButtonText: "OK, CLOSE",
   };
-  const rB = { root: { width: "100%", maxWidth: 320 }, text: MP.text.bleak };
-  class nB extends MP.Component {
+  const rB = { root: { width: "100%", maxWidth: 320 }, text: AP.text.bleak };
+  class nB extends AP.Component {
     render() {
       const { text: e, okButtonText: t, onOkClick: r } = this.props,
         n = e && Glamor.createElement("div", { css: rB.text }, e),
@@ -41682,12 +41783,12 @@
           t &&
           r &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { height: "g3" }),
             Glamor.createElement(xT, { label: t, onClick: r })
           );
-      return Glamor.createElement("div", { css: [MP.column, rB.root] }, n, o);
+      return Glamor.createElement("div", { css: [AP.column, rB.root] }, n, o);
     }
   }
   nB.defaultProps = {
@@ -41696,10 +41797,10 @@
   };
   const oB = {
     root: { width: "100%", maxWidth: 320 },
-    text: { ...MP.text.bleak, paddingBottom: MP.space.g2 },
+    text: { ...AP.text.bleak, paddingBottom: AP.space.g2 },
     username: { display: "none" },
   };
-  class iB extends MP.Component {
+  class iB extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -41746,7 +41847,7 @@
         c =
           e &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(
               "form",
@@ -41771,11 +41872,11 @@
           n &&
           Glamor.createElement(
             "div",
-            { css: MP.row },
+            { css: AP.row },
             Glamor.createElement(WP, {
               label: "RESET PASSWORD",
               disabled: t.length < 4,
-              shadow: t.length < 4 ? null : MP.color.linkShadow,
+              shadow: t.length < 4 ? null : AP.color.linkShadow,
               onClick: this._onResetPasswordOkClick,
             }),
             Glamor.createElement(qP, { width: "32" }),
@@ -41788,7 +41889,7 @@
         d =
           void 0 !== o &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement($R, { value: o, hasError: i, onChange: a }),
             Glamor.createElement(qP, { height: "g3" })
@@ -41797,11 +41898,11 @@
           s &&
           Glamor.createElement(
             "div",
-            { css: MP.row },
+            { css: AP.row },
             Glamor.createElement(WP, {
               label: "CONFIRM RESET",
               disabled: i,
-              shadow: i ? null : MP.color.linkShadow,
+              shadow: i ? null : AP.color.linkShadow,
               onClick: this._onConfirmResetOkClick,
             }),
             Glamor.createElement(qP, { width: "32" }),
@@ -41812,7 +41913,7 @@
           );
       return Glamor.createElement(
         "div",
-        { css: [MP.column, oB.root] },
+        { css: [AP.column, oB.root] },
         l,
         c,
         u,
@@ -41824,19 +41925,19 @@
   const aB = {
     root: { width: 320, maxWidth: 320 },
     input: { opacity: "1.0 !important" },
-    text: MP.text.bleak,
-    link: MP.clickable,
+    text: AP.text.bleak,
+    link: AP.clickable,
     subscription: {
-      ...MP.text.contentTitle,
-      ...MP.fullWidth,
-      backgroundColor: MP.color.bgLight1,
-      marginBottom: MP.space.g1,
-      marginLeft: MP.space.g1h,
+      ...AP.text.contentTitle,
+      ...AP.fullWidth,
+      backgroundColor: AP.color.bgLight1,
+      marginBottom: AP.space.g1,
+      marginLeft: AP.space.g1h,
       minHeight: 40,
       borderRadius: 20,
     },
   };
-  class sB extends MP.Component {
+  class sB extends AP.Component {
     constructor(e) {
       super(e),
         (this._onConfirmValueInput = (e) => {
@@ -41873,7 +41974,7 @@
           style: aB.input,
         }),
         s = Glamor.createElement(
-          MP.Fragment,
+          AP.Fragment,
           null,
           Glamor.createElement(qP, { height: "g2" }),
           Glamor.createElement(
@@ -41892,7 +41993,7 @@
           r &&
           t &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { height: "g0h" }),
             Glamor.createElement(
@@ -41909,7 +42010,7 @@
         c =
           r &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { height: "g2" }),
             r.map((e) =>
@@ -41917,7 +42018,7 @@
                 "div",
                 {
                   key: e.label,
-                  css: [MP.row, MP.alignItems.center, aB.subscription],
+                  css: [AP.row, AP.alignItems.center, aB.subscription],
                 },
                 Glamor.createElement(qP, { width: "g1h" }),
                 e.icon && Glamor.createElement(tT, { src: e.icon }),
@@ -41931,16 +42032,16 @@
           n &&
           i &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             l,
             Glamor.createElement(qP, { height: "g2" }),
             Glamor.createElement(
               "div",
-              { css: MP.row },
+              { css: AP.row },
               Glamor.createElement(xT, {
                 label: "DELETE MY ACCOUNT",
-                color: MP.color.error,
+                color: AP.color.error,
                 onClick: n,
               }),
               Glamor.createElement(qP, { width: "g5" }),
@@ -41951,7 +42052,7 @@
           o &&
           i &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { height: "g0h" }),
             Glamor.createElement(
@@ -41965,7 +42066,7 @@
               value: this.state.confirmValue,
               progress: {
                 value: this._getConfirmPercentage(),
-                color: MP.color.error,
+                color: AP.color.error,
               },
               error: { hasError: !0 },
               onInput: this._onConfirmValueInput,
@@ -41973,10 +42074,10 @@
             Glamor.createElement(qP, { height: "g2" }),
             Glamor.createElement(
               "div",
-              { css: MP.row },
+              { css: AP.row },
               Glamor.createElement(xT, {
                 label: "CONFIRM DELETION",
-                color: MP.color.error,
+                color: AP.color.error,
                 disabled: 100 !== this._getConfirmPercentage(),
                 onClick: o,
               }),
@@ -41986,7 +42087,7 @@
           );
       return Glamor.createElement(
         "div",
-        { css: [MP.column, MP.alignItems.start, aB.root] },
+        { css: [AP.column, AP.alignItems.start, aB.root] },
         a,
         s,
         c,
@@ -41995,8 +42096,8 @@
       );
     }
   }
-  const lB = { root: { width: "100%", maxWidth: 320 }, text: MP.text.bleak };
-  class cB extends MP.Component {
+  const lB = { root: { width: "100%", maxWidth: 320 }, text: AP.text.bleak };
+  class cB extends AP.Component {
     render() {
       const { text: e, okButtonText: t, onOkClick: r } = this.props,
         n = e && Glamor.createElement("div", { css: lB.text }, e),
@@ -42004,12 +42105,12 @@
           t &&
           r &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(qP, { height: "g3" }),
             Glamor.createElement(xT, { label: t, onClick: r })
           );
-      return Glamor.createElement("div", { css: [MP.column, lB.root] }, n, o);
+      return Glamor.createElement("div", { css: [AP.column, lB.root] }, n, o);
     }
   }
   cB.defaultProps = {
@@ -42019,16 +42120,16 @@
   const uB = {
     root: { width: "100%", maxWidth: 320 },
     icon: (e) => ({ flexShrink: 0, width: 21.07, color: e.icon }),
-    content: { width: "100%", ...MP.text.bleak },
+    content: { width: "100%", ...AP.text.bleak },
     button: { "&:not(:last-child)": { marginRight: 40 } },
   };
-  class dB extends MP.Component {
+  class dB extends AP.Component {
     render() {
       const { icon: e, text: t, buttons: r } = this.props,
         n =
           e &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             Glamor.createElement(LP, {
               style: uB.icon(this.props),
@@ -42039,7 +42140,7 @@
         o =
           t &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
             t,
             Glamor.createElement(qP, { height: "g2" })
@@ -42049,7 +42150,7 @@
           r.length > 0 &&
           Glamor.createElement(
             "div",
-            { css: MP.row },
+            { css: AP.row },
             r.map((e, t) =>
               Glamor.createElement(
                 "div",
@@ -42060,24 +42161,24 @@
           );
       return Glamor.createElement(
         "div",
-        { css: [MP.row, uB.root] },
+        { css: [AP.row, uB.root] },
         n,
-        Glamor.createElement("div", { css: [MP.column, uB.content] }, o, i)
+        Glamor.createElement("div", { css: [AP.column, uB.content] }, o, i)
       );
     }
   }
-  dB.defaultProps = { icon: MP.color.error };
+  dB.defaultProps = { icon: AP.color.error };
   const hB = {
     root: { maxWidth: 320 },
     labelControl: {
-      color: MP.color.textActionable,
-      paddingBottom: MP.space.g1,
-      ...MP.text.group1,
+      color: AP.color.textActionable,
+      paddingBottom: AP.space.g1,
+      ...AP.text.group1,
     },
-    textControl: { ...MP.text.bleak },
-    textLine: { "&:not(:last-child)": { marginBottom: MP.space.g0h } },
+    textControl: { ...AP.text.bleak },
+    textLine: { "&:not(:last-child)": { marginBottom: AP.space.g0h } },
   };
-  class pB extends MP.Component {
+  class pB extends AP.Component {
     render() {
       const { label: e, text: t, style: r } = this.props,
         n = e && Glamor.createElement("div", { css: hB.labelControl }, e),
@@ -42087,14 +42188,14 @@
             ? Glamor.createElement("div", { css: hB.textControl }, t)
             : Glamor.createElement(
                 "div",
-                { css: [MP.column, hB.textControl] },
+                { css: [AP.column, hB.textControl] },
                 t.map((e, t) =>
                   Glamor.createElement("div", { key: t, css: hB.textLine }, e)
                 )
               ));
       return Glamor.createElement(
         "div",
-        { css: [MP.column, hB.root, r] },
+        { css: [AP.column, hB.root, r] },
         n,
         o
       );
@@ -42113,59 +42214,59 @@
       }).apply(this, arguments);
   }
   const fB = {
-      root: { ...MP.column, width: "100%", height: "100%" },
+      root: { ...AP.column, width: "100%", height: "100%" },
       title: {
-        ...MP.row,
-        ...MP.fullWidth,
-        ...MP.alignItems.center,
-        ...MP.justifyContent.between,
-        ...MP.padding("g2 36 g1h 23"),
+        ...AP.row,
+        ...AP.fullWidth,
+        ...AP.alignItems.center,
+        ...AP.justifyContent.between,
+        ...AP.padding("g2 36 g1h 23"),
       },
-      titleText: { ...MP.text.mainTitle },
+      titleText: { ...AP.text.mainTitle },
       filterStringInput: { minWidth: 300 },
-      filterStringInputStyle: { ...MP.padding("6 80 6 6") },
+      filterStringInputStyle: { ...AP.padding("6 80 6 6") },
       button: (e) => ({
-        color: e ? MP.color.link : MP.color.iconPassive,
-        ...MP.clickableInversed,
+        color: e ? AP.color.link : AP.color.iconPassive,
+        ...AP.clickableInversed,
       }),
       buttonStyle: {
-        ...MP.padding("6 0 6 24"),
+        ...AP.padding("6 0 6 24"),
         opacity: 1,
         pointerEvents: "inherit",
       },
       buttonTooltip: { marginTop: 5, marginLeft: -8 },
-      ghostSwitch: { ...MP.row, ...MP.alignItems.center },
+      ghostSwitch: { ...AP.row, ...AP.alignItems.center },
       ghostSwitchInfo: ({ state: e }) => ({
-        ...MP.transition.fast,
-        marginLeft: MP.space.g1,
+        ...AP.transition.fast,
+        marginLeft: AP.space.g1,
         ...(!e.ghostSwitchHovered && { opacity: 0 }),
       }),
-      iframeWrapper: { ...MP.relative(), flexGrow: 1, ...MP.margin(". 4 . 4") },
+      iframeWrapper: { ...AP.relative(), flexGrow: 1, ...AP.margin(". 4 . 4") },
       overlay: ({ props: e }) => ({
-        ...MP.absolute("1 1 0 1"),
+        ...AP.absolute("1 1 0 1"),
         overflow: "hidden",
         ...(!e.showOverlay && { pointerEvents: "none" }),
       }),
       overlayHeader: ({ props: e }) => ({
-        ...MP.padding("g1 g3 g1 g1"),
-        ...MP.text.elementNormal,
-        ...MP.transition.slow,
-        color: MP.color.iconActionable,
-        backgroundColor: MP.color.bgLight1,
+        ...AP.padding("g1 g3 g1 g1"),
+        ...AP.text.elementNormal,
+        ...AP.transition.slow,
+        color: AP.color.iconActionable,
+        backgroundColor: AP.color.bgLight1,
         borderTopLeftRadius: 4,
         borderTopRightRadius: 4,
-        borderBottom: MP.border.dark,
+        borderBottom: AP.border.dark,
         ...(!e.showOverlay && { transform: "translateY(-100%)" }),
       }),
-      overlayContent: { ...MP.relative(), flexGrow: 1 },
+      overlayContent: { ...AP.relative(), flexGrow: 1 },
       iframe: ({ state: e }) => ({
         border: "none",
         background: "inherit",
         flexGrow: 1,
         ...("day" === e.theme && {
-          borderTop: MP.border.dark,
-          borderRight: MP.border.dark,
-          borderLeft: MP.border.dark,
+          borderTop: AP.border.dark,
+          borderRight: AP.border.dark,
+          borderLeft: AP.border.dark,
         }),
         borderTopLeftRadius: 4,
         borderTopRightRadius: 4,
@@ -42183,7 +42284,7 @@
     `<symbol id="${wB}" viewBox="0 0 34 34"><g transform="translate(19338 3072)"><rect width="34" height="34" transform="translate(-19338 -3072)" fill="none"/><path d="M19.773,5.333a17.088,17.088,0,0,1-2.153.182,17.341,17.341,0,0,1-3.538-.53A18.057,18.057,0,0,0,10.431,4.5c-2.544,0-3.408.525-3.5.582l-.182.126V21.169H8.834V15.434a13.168,13.168,0,0,1,1.6-.087,17.569,17.569,0,0,1,3.464.673,18.619,18.619,0,0,0,3.772.5,17.228,17.228,0,0,0,2.1-.174c.326-.039.608-.074.868-.117V5.2C20.424,5.247,20.1,5.294,19.773,5.333Z" transform="translate(-19334.602 -3067.147)" fill="currentColor"/></g></symbol>`,
     `<symbol id="${_B}" viewBox="0 0 22.059 22.048"><rect width="22.024" height="22.024" transform="translate(0)" fill="none"/><g transform="translate(0.009)"><rect width="22.048" height="22.048" transform="translate(0)" fill="none"/><path d="M8.728,0a18.441,18.441,0,0,1,.681,4.258A3.125,3.125,0,0,1,6.275,7.567,3.283,3.283,0,0,1,2.941,4.258l.027-.319A11.971,11.971,0,0,0,0,11.828a7.225,7.225,0,0,0,7.35,7.1,7.225,7.225,0,0,0,7.35-7.1A15,15,0,0,0,8.728,0ZM7.084,16.265a2.873,2.873,0,0,1-2.959-2.787,2.817,2.817,0,0,1,2.581-2.769,7.154,7.154,0,0,0,4.245-2.288,11.958,11.958,0,0,1,.543,3.585A4.339,4.339,0,0,1,7.084,16.265Z" transform="translate(4.15 0.952)" fill="#738398"/></g></symbol>`,
   ]);
-  class EB extends MP.Component {
+  class EB extends AP.Component {
     constructor(e) {
       super(e),
         (this._onCloseClick = () => {
@@ -42213,7 +42314,7 @@
         this._renderTitle(),
         Glamor.createElement(
           "div",
-          { css: [MP.row, fB.iframeWrapper] },
+          { css: [AP.row, fB.iframeWrapper] },
           this._renderOverlay(),
           this._renderIframe()
         )
@@ -42230,7 +42331,7 @@
     _renderFilterControls() {
       return Glamor.createElement(
         "div",
-        { css: [MP.column, MP.alignItems.end] },
+        { css: [AP.column, AP.alignItems.end] },
         this._renderFilter(),
         Glamor.createElement(qP, { height: "g0h" }),
         this._renderGhostSwitch()
@@ -42242,7 +42343,7 @@
         o = null != t && {
           icon: yB,
           buttonStyle: fB.button(t),
-          hitboxStyle: MP.absolute("0 0 0 0"),
+          hitboxStyle: AP.absolute("0 0 0 0"),
           onClick: this._onUnreadClick,
           tooltip: {
             style: fB.buttonTooltip,
@@ -42253,7 +42354,7 @@
         i = null != r && {
           icon: wB,
           buttonStyle: fB.button(r),
-          hitboxStyle: MP.absolute("0 0 0 0"),
+          hitboxStyle: AP.absolute("0 0 0 0"),
           onClick: this._onFlaggedClick,
           tooltip: {
             style: fB.buttonTooltip,
@@ -42263,7 +42364,7 @@
         };
       return Glamor.createElement(
         "div",
-        { style: MP.row },
+        { style: AP.row },
         Glamor.createElement(DT, {
           style: fB.filterStringInput,
           inputStyle: fB.filterStringInputStyle,
@@ -42286,7 +42387,7 @@
       });
       return Glamor.createElement(
         "div",
-        mB({ css: fB.ghostSwitch }, MP.hoverState(this, "ghostSwitchHovered")),
+        mB({ css: fB.ghostSwitch }, AP.hoverState(this, "ghostSwitchHovered")),
         Glamor.createElement(zT, {
           label: "Ghost-read mode",
           value: e,
@@ -42309,7 +42410,7 @@
     _renderOverlay() {
       return Glamor.createElement(
         "div",
-        { css: [MP.column, fB.overlay(this)] },
+        { css: [AP.column, fB.overlay(this)] },
         this._renderOverlayHeader(),
         this._renderOverlayContent()
       );
@@ -42318,17 +42419,17 @@
       const { onUpgradeClick: e, onCancelClick: t } = this.props;
       return Glamor.createElement(
         "div",
-        { css: [MP.row, MP.justifyContent.between, fB.overlayHeader(this)] },
+        { css: [AP.row, AP.justifyContent.between, fB.overlayHeader(this)] },
         Glamor.createElement(
           "div",
-          { css: MP.row },
+          { css: AP.row },
           Glamor.createElement(LP, { name: _B }),
           Glamor.createElement(qP, { width: "g1" }),
           Glamor.createElement("div", null, this.props.upsellOverlayHeaderText)
         ),
         Glamor.createElement(
           "div",
-          { css: [MP.row, MP.alignItems.center] },
+          { css: [AP.row, AP.alignItems.center] },
           Glamor.createElement(xT, { label: "UPGRADE", onClick: e }),
           Glamor.createElement(qP, { width: "g3" }),
           Glamor.createElement(xT, { label: "CANCEL", cancel: !0, onClick: t })
@@ -42338,7 +42439,7 @@
     _renderOverlayContent() {
       return Glamor.createElement(
         "div",
-        { css: [MP.column, fB.overlayContent] },
+        { css: [AP.column, fB.overlayContent] },
         this.props.upsellOverlay
       );
     }
@@ -42359,15 +42460,15 @@
       });
     }
   }
-  var xB = MP.theme.ThemeAware(EB);
-  class kB extends MP.Component {
+  var xB = AP.theme.ThemeAware(EB);
+  class kB extends AP.Component {
     render() {
       return Glamor.createElement("div", null, this.props.children);
     }
   }
   const CB = ({ props: e }) => ({
-      ...MP.transition.slow,
-      marginTop: MP.space.g3,
+      ...AP.transition.slow,
+      marginTop: AP.space.g3,
       ...(!e.show && {
         transform: "translateY(50px)",
         opacity: 0,
@@ -42375,9 +42476,9 @@
       }),
     }),
     SB = [];
-  class PB extends MP.Component {
+  class PB extends AP.Component {
     constructor(e) {
-      super(e), (this._rootRef = MP.createRef());
+      super(e), (this._rootRef = AP.createRef());
     }
     componentDidMount() {
       SB.push(this._rootRef);
@@ -42390,12 +42491,12 @@
       if (this.props.show !== e.show)
         for (const e of SB.reverse()) {
           const t = e.current;
-          MP.flip.add(t);
+          AP.flip.add(t);
         }
       return null;
     }
     componentDidUpdate() {
-      MP.flip.run();
+      AP.flip.run();
     }
     render() {
       return Glamor.createElement(
@@ -42406,74 +42507,74 @@
     }
   }
   const TB = {
-      root: { width: "100%", height: "100%", ...MP.relative() },
+      root: { width: "100%", height: "100%", ...AP.relative() },
       loadingOverlay: ({ props: e }) => ({
-        ...MP.absolute("0 0 0 0 1"),
-        ...MP.row,
-        ...MP.center,
-        background: MP.color.bgLight3,
+        ...AP.absolute("0 0 0 0 1"),
+        ...AP.row,
+        ...AP.center,
+        background: AP.color.bgLight3,
         ...(!e.loading && { display: "none" }),
       }),
       body: {
-        ...MP.column,
-        ...MP.relative(),
-        ...MP.padding("0 g2 g1h g2"),
+        ...AP.column,
+        ...AP.relative(),
+        ...AP.padding("0 g2 g1h g2"),
         minHeight: "100%",
       },
-      closeButton: { ...MP.absolute("4 4 . .") },
+      closeButton: { ...AP.absolute("4 4 . .") },
       mainScreen: ({ props: e }) => ({
-        paddingTop: MP.space.g2,
+        paddingTop: AP.space.g2,
         ...(e.showGrid && { display: "none" }),
       }),
-      content: { marginTop: MP.space.g1h },
+      content: { marginTop: AP.space.g1h },
       tabContent: ({ props: e }, t) => ({
         ...(e.selectedTabId !== t && { display: "none" }),
       }),
-      tabDescription: { ...MP.text.bleak, marginBottom: MP.space.g1h },
+      tabDescription: { ...AP.text.bleak, marginBottom: AP.space.g1h },
       gridScreen: ({ props: e }) => ({
         marginTop: 20,
-        marginLeft: `calc(-1 * ${MP.space.g2})`,
-        marginRight: `calc(-1 * ${MP.space.g2})`,
+        marginLeft: `calc(-1 * ${AP.space.g2})`,
+        marginRight: `calc(-1 * ${AP.space.g2})`,
         ...(!e.showGrid && { display: "none" }),
       }),
       gridScreenTitle: {
-        ...MP.text.group2,
-        ...MP.padding("0 g2"),
+        ...AP.text.group2,
+        ...AP.padding("0 g2"),
         marginBottom: 20,
       },
       gridContainer: {
         height: 576,
         overflow: "hidden",
-        ...MP.padding("0 g2"),
-        ...MP.relative(),
+        ...AP.padding("0 g2"),
+        ...AP.relative(),
         "&::before": {
           content: '""',
-          ...MP.absolute(". -16 0 -16"),
+          ...AP.absolute(". -16 0 -16"),
           height: 1,
-          background: MP.color.borderDark,
+          background: AP.color.borderDark,
         },
       },
       defaultFooter: {
         marginTop: "auto",
-        paddingTop: MP.space.g1h,
-        ...MP.row,
-        ...MP.justifyContent.between,
-        ...MP.alignItems.center,
+        paddingTop: AP.space.g1h,
+        ...AP.row,
+        ...AP.justifyContent.between,
+        ...AP.alignItems.center,
       },
       upgradeFooter: { marginTop: "auto" },
       upgradeFooterButtons: {
-        ...MP.row,
-        ...MP.justifyContent.between,
-        ...MP.alignItems.center,
+        ...AP.row,
+        ...AP.justifyContent.between,
+        ...AP.alignItems.center,
       },
       upgradeButton: ({ props: e }) => ({
-        ...MP.clickableInversed,
-        color: MP.color.textInversed,
-        ...(e.hasPro && { display: "none" }),
+        ...AP.clickableInversed,
+        color: AP.color.textInversed,
+        ...(true && { display: "none" }),
         ...(e.showGrid && { display: "none" }),
       }),
       applyButton: ({ props: e }) => ({
-        ...(!e.hasPro && { display: "none" }),
+        ...(!true && { display: "none" }),
         ...(e.showGrid && { display: "none" }),
       }),
       resetButton: ({ props: e }) => ({
@@ -42482,25 +42583,25 @@
       }),
       gridButton: {
         marginLeft: "auto",
-        paddingLeft: MP.space.g1,
-        paddingRight: MP.space.g1,
+        paddingLeft: AP.space.g1,
+        paddingRight: AP.space.g1,
       },
       gridButtonTooltip: { marginLeft: -9 },
       warning: ({ props: e }) => ({
-        ...MP.row,
-        marginBottom: MP.space.g1,
-        paddingTop: MP.space.g1h,
-        borderTop: `1px solid ${MP.color.borderDark}`,
+        ...AP.row,
+        marginBottom: AP.space.g1,
+        paddingTop: AP.space.g1h,
+        borderTop: `1px solid ${AP.color.borderDark}`,
         ...(e.showGrid && { opacity: 0 }),
       }),
-      warningIcon: { flexShrink: 0, color: MP.color.attention, width: 18 },
-      warningText: { ...MP.text.bleak, marginLeft: MP.space.g1h },
+      warningIcon: { flexShrink: 0, color: AP.color.attention, width: 18 },
+      warningText: { ...AP.text.bleak, marginLeft: AP.space.g1h },
     },
     DB = "cover-assist-panel.grid";
   LP.registerSvgIcons([
     `<symbol id="${DB}" viewBox="0 0 19 19"><path d="M0 0h4.886v4.886H0zm7.057 0h4.886v4.886H7.057zm7.057 0H19v4.886h-4.886zM0 7.059h4.886v4.886H0zm7.057 0h4.886v4.886H7.057zm7.057 0H19v4.886h-4.886zM0 14.115h4.886v4.886H0zm7.057 0h4.886v4.886H7.057zm7.057 0H19v4.886h-4.886z" fill="currentColor"/></symbol>`,
   ]);
-  class IB extends MP.Component {
+  class IB extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -42653,7 +42754,7 @@
               Glamor.createElement(WP, {
                 label: "UPGRADE TO PRO",
                 style: TB.upgradeButton(this),
-                background: MP.color.attention,
+                background: AP.color.attention,
                 onClick: this._onUpgradeToProClick,
               }),
               this._renderGridButton()
@@ -42670,16 +42771,16 @@
           title: "Preview Instagram Grid",
           showDelay: 500,
         },
-        color: this.props.showGrid ? "#FFF" : MP.color.link,
-        borderColor: this.props.showGrid ? "transparent" : MP.color.borderDark,
-        background: this.props.showGrid ? MP.color.link : MP.color.borderLight,
+        color: this.props.showGrid ? "#FFF" : AP.color.link,
+        borderColor: this.props.showGrid ? "transparent" : AP.color.borderDark,
+        background: this.props.showGrid ? AP.color.link : AP.color.borderLight,
         onClick: this._onGridButtonClick,
       });
     }
   }
   const GB = {
       root: ({ props: e }) => ({
-        ...MP.row,
+        ...AP.row,
         flexWrap: "wrap",
         margin: -5,
         ...(e.isReelsView && { width: 368 }),
@@ -42692,14 +42793,14 @@
         backgroundColor: "#000",
         borderRadius: 3,
         margin: 5,
-        ...MP.relative(),
+        ...AP.relative(),
         "&::before": {
           content: '""',
-          ...MP.absolute("-2 -2 -2 -2"),
-          ...MP.clickable,
-          ...MP.transition.fast,
+          ...AP.absolute("-2 -2 -2 -2"),
+          ...AP.clickable,
+          ...AP.transition.fast,
           borderRadius: 5,
-          border: `2px solid ${MP.color.link}`,
+          border: `2px solid ${AP.color.link}`,
           opacity: 0,
           ...(e.selectedImage === t && { opacity: 1 }),
         },
@@ -42707,14 +42808,14 @@
         ...(e.isReelsView && { width: 82, height: 145 }),
       }),
       checkmark: {
-        ...MP.absolute("g1 g1 . ."),
-        ...MP.row,
-        ...MP.center,
-        ...MP.shadow.sh10,
+        ...AP.absolute("g1 g1 . ."),
+        ...AP.row,
+        ...AP.center,
+        ...AP.shadow.sh10,
         width: 20,
         height: 20,
         borderRadius: "50%",
-        background: MP.color.link,
+        background: AP.color.link,
         pointerEvents: "none",
       },
       checkmarkIcon: { color: "#FFF", width: 12 },
@@ -42723,7 +42824,7 @@
   LP.registerSvgIcons([
     `<symbol id="${OB}" viewBox="0 0 14.001 10"><path d="M5 9.999l-5-5 1-1 4 3 8-7 1 1-9 9z" fill="currentColor"/></symbol>`,
   ]);
-  class AB extends MP.Component {
+  class MB extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -42761,7 +42862,7 @@
       );
     }
   }
-  const MB = {
+  const AB = {
     root: ({ props: e }) => ({
       width: 395,
       ...(e.isReelsView && { width: 300 }),
@@ -42775,18 +42876,18 @@
       ...(e.isReelsView && { width: 300, height: Math.round((16 / 9) * 300) }),
     }),
     time: {
-      ...MP.text.bleak,
+      ...AP.text.bleak,
       textAlign: "center",
-      marginTop: MP.space.g1h,
+      marginTop: AP.space.g1h,
       fontVariantNumeric: "tabular-nums",
     },
-    range: { ...MP.relative(), height: 14, marginTop: MP.space.g1h },
+    range: { ...AP.relative(), height: 14, marginTop: AP.space.g1h },
     rangeTrack: ({ props: e }) => ({
-      ...MP.absolute("5 0 . 0"),
+      ...AP.absolute("5 0 . 0"),
       height: 4,
-      background: `linear-gradient(\n      to right,\n      ${MP.color.link} ${
+      background: `linear-gradient(\n      to right,\n      ${AP.color.link} ${
         100 * e.value
-      }%,\n      ${MP.color.iconPassive} ${100 * e.value}%\n    )`,
+      }%,\n      ${AP.color.iconPassive} ${100 * e.value}%\n    )`,
     }),
     rangeInput: {
       width: "100%",
@@ -42794,18 +42895,18 @@
       appearance: "none",
       background: "transparent",
       cursor: "pointer",
-      ...MP.absolute("5 0 . 0"),
+      ...AP.absolute("5 0 . 0"),
       "&::-webkit-slider-thumb": {
         appearance: "none",
         width: 14,
         height: 14,
-        background: MP.color.bgLight3,
+        background: AP.color.bgLight3,
         borderRadius: "50%",
-        border: `2px solid ${MP.color.link}`,
+        border: `2px solid ${AP.color.link}`,
       },
     },
   };
-  class FB extends MP.Component {
+  class FB extends AP.Component {
     constructor(e) {
       super(e),
         (this._onLoadedMetadata = () => {
@@ -42819,7 +42920,7 @@
         (this._canvas = null),
         (this._loadFramePromise = null),
         (this._imageSelectTimeout = null),
-        (this._videoRef = MP.createRef()),
+        (this._videoRef = AP.createRef()),
         (this.state = { duration: null });
     }
     componentDidMount() {
@@ -42856,23 +42957,23 @@
     render() {
       return Glamor.createElement(
         "div",
-        { css: MB.root(this) },
+        { css: AB.root(this) },
         Glamor.createElement("video", {
-          css: MB.video(this),
+          css: AB.video(this),
           ref: this._videoRef,
           src: this.props.videoUrl,
         }),
         !!this.state.duration &&
           Glamor.createElement(
-            MP.Fragment,
+            AP.Fragment,
             null,
-            Glamor.createElement("div", { css: MB.time }, this._getTimeSting()),
+            Glamor.createElement("div", { css: AB.time }, this._getTimeSting()),
             Glamor.createElement(
               "div",
-              { css: MB.range },
-              Glamor.createElement("div", { css: MB.rangeTrack(this) }),
+              { css: AB.range },
+              Glamor.createElement("div", { css: AB.rangeTrack(this) }),
               Glamor.createElement("input", {
-                css: MB.rangeInput,
+                css: AB.rangeInput,
                 type: "range",
                 value: this.props.value,
                 step: 0.001,
@@ -42917,16 +43018,16 @@
   const RB = {
       root: {},
       dropzone: ({ props: e, state: t }) => ({
-        ...MP.column,
-        ...MP.center,
-        ...MP.borderRadius.r4,
-        ...MP.transition.superslow,
-        ...MP.padding("0 g2"),
+        ...AP.column,
+        ...AP.center,
+        ...AP.borderRadius.r4,
+        ...AP.transition.superslow,
+        ...AP.padding("0 g2"),
         transitionProperty: "border-color",
         width: 395,
         height: 395,
-        backgroundColor: MP.color.bgLight2,
-        border: `2px dashed ${MP.color.iconPassive}`,
+        backgroundColor: AP.color.bgLight2,
+        border: `2px dashed ${AP.color.iconPassive}`,
         cursor: "pointer",
         ...(e.image && {
           border: "none",
@@ -42939,29 +43040,29 @@
           width: 300,
           height: Math.round((16 / 9) * 300),
         }),
-        ...(t.draggingOverDropzone && { borderColor: MP.color.primary }),
+        ...(t.draggingOverDropzone && { borderColor: AP.color.primary }),
       }),
       icon: ({ props: e }) => ({
         width: 133,
         height: 168,
-        color: MP.color.iconPassive,
+        color: AP.color.iconPassive,
         ...(e.isReelsView && { transform: "scale(0.8)" }),
       }),
       title: { marginTop: 36, pointerEvents: "none" },
       subtitle: {
-        ...MP.text.bleak,
+        ...AP.text.bleak,
         width: 285,
         maxWidth: "100%",
         marginTop: 8,
         textAlign: "center",
       },
       selectAnotherButton: ({ props: e }) => ({
-        marginTop: MP.space.g2,
+        marginTop: AP.space.g2,
         ...(!e.image && { display: "none" }),
       }),
     },
     BB = "igswiss.drop";
-  class LB extends MP.Component {
+  class LB extends AP.Component {
     constructor(e) {
       super(e),
         (this._onDropzoneDragOver = (e) => {
@@ -43027,17 +43128,17 @@
     }
   }
   const NB = {
-    root: { ...MP.row, flexWrap: "wrap", width: 402, margin: -1 },
+    root: { ...AP.row, flexWrap: "wrap", width: 402, margin: -1 },
     image: {
       width: 132,
       height: 132,
       margin: 1,
       backgroundSize: "cover",
       backgroundPosition: "center",
-      backgroundColor: MP.color.bgLight1,
+      backgroundColor: AP.color.bgLight1,
     },
   };
-  class jB extends MP.Component {
+  class jB extends AP.Component {
     constructor(...e) {
       var t;
       return (
@@ -43060,50 +43161,50 @@
     }
   }
   const zB = {
-    root: { ...MP.row, ...MP.alignItems.center, ...MP.relative() },
+    root: { ...AP.row, ...AP.alignItems.center, ...AP.relative() },
     input: { paddingRight: 32 },
-    dropdown: { pointerEvents: "none", ...MP.absolute("0 0 0 0 2") },
+    dropdown: { pointerEvents: "none", ...AP.absolute("0 0 0 0 2") },
     dropdownToggler: {
-      ...MP.row,
-      ...MP.center,
-      ...MP.absolute("0 0 . ."),
+      ...AP.row,
+      ...AP.center,
+      ...AP.absolute("0 0 . ."),
       width: 32,
       height: 32,
       paddingLeft: 10,
       pointerEvents: "all",
       boxSizing: "content-box",
     },
-    dropdownMenu: { marginTop: MP.space.g1 },
+    dropdownMenu: { marginTop: AP.space.g1 },
     section: {
-      marginTop: MP.space.g1h,
-      marginLeft: MP.space.g1h,
-      marginRight: MP.space.g1h,
-      "&:last-child": { marginBottom: MP.space.g1h },
+      marginTop: AP.space.g1h,
+      marginLeft: AP.space.g1h,
+      marginRight: AP.space.g1h,
+      "&:last-child": { marginBottom: AP.space.g1h },
     },
     sectionHeader: {
-      ...MP.row,
-      ...MP.justifyContent.between,
-      ...MP.text.of({
+      ...AP.row,
+      ...AP.justifyContent.between,
+      ...AP.text.of({
         size: 9,
         height: "11px",
         weight: 600,
-        color: MP.color.textPassive,
+        color: AP.color.textPassive,
       }),
     },
-    sectionTitle: { marginBottom: MP.space.g1 },
+    sectionTitle: { marginBottom: AP.space.g1 },
     sectionDetails: {},
     sectionContent: {},
     radio: {
-      ...MP.text.nowrap,
-      color: MP.color.textNormal,
+      ...AP.text.nowrap,
+      color: AP.color.textNormal,
       paddingRight: 90,
-      "&:not(:last-child)": { marginBottom: MP.space.g1 },
+      "&:not(:last-child)": { marginBottom: AP.space.g1 },
     },
   };
   LP.registerSvgIcons([
     '<symbol id="filter.filter" viewBox="0 0 16 16"><path d="M15.249 0H.751a.751.751 0 00-.53 1.28L6 7.061V13.5a.75.75 0 00.32.614l2.5 1.749a.75.75 0 001.18-.614V7.061l5.78-5.78A.751.751 0 0015.249 0z" fill="currentColor"/></symbol>',
   ]);
-  class HB extends MP.Component {
+  class HB extends AP.Component {
     constructor(e) {
       super(e),
         (this._renderSection = (e) =>
@@ -43141,7 +43242,7 @@
             r = e.data.value;
           this.props.onItemClick(t, r);
         }),
-        (this._dropdownRef = MP.createRef());
+        (this._dropdownRef = AP.createRef());
     }
     render() {
       return Glamor.createElement(
@@ -43183,7 +43284,7 @@
       );
     }
   }
-  class UB extends MP.Component {
+  class UB extends AP.Component {
     constructor(e) {
       super(e), (this.state = { checked: !0, emailSent: !1, email: "" });
     }
@@ -43218,7 +43319,7 @@
     ]);
   const WB = {
     IgButtons: xD,
-    IgView: AD,
+    IgView: MD,
     IgCreationCard: FD,
     tagUtils: RD,
     TagAssistSidePanel: $D,
@@ -43241,7 +43342,7 @@
     UpsellOverlay: iG,
     AccountSwitcher: EG,
     HashtagTableSection: TG,
-    PostTableSection: MG,
+    PostTableSection: AG,
     PostingTimesSection: ZG,
     Layout: JG,
     Tip: nI,
@@ -43255,18 +43356,18 @@
     UserTable: PO,
     LikesColumnRenderer: IO,
     SecureBadgePanel: OO,
-    SchedulePost: XA,
-    SchedulePostNew: KA,
-    ScheduleGrid: eM,
-    ScheduleAddCard: rM,
-    ScheduleAddCardContentDefault: aM,
-    ScheduleAddCardContentChanges: cM,
-    ScheduleAddCardContentDropZone: hM,
-    ScheduleAddCardContentDropForm: fM,
-    ScheduleControls: kM,
-    ScheduleFilters: PM,
-    ScheduleSidePanel: DM,
-    ScheduleBodyPanel: GM,
+    SchedulePost: XM,
+    SchedulePostNew: KM,
+    ScheduleGrid: eA,
+    ScheduleAddCard: rA,
+    ScheduleAddCardContentDefault: aA,
+    ScheduleAddCardContentChanges: cA,
+    ScheduleAddCardContentDropZone: hA,
+    ScheduleAddCardContentDropForm: fA,
+    ScheduleControls: kA,
+    ScheduleFilters: PA,
+    ScheduleSidePanel: DA,
+    ScheduleBodyPanel: GA,
     ScheduleCalendarScreen: EF,
     ScheduleSlotsScreen: TF,
     ScheduleFcsScreen: GF,
@@ -43288,7 +43389,7 @@
     BillingFeaturesList: gR,
     BillingFeaturesTable: bR,
     BillingClients: CR,
-    BillingStorefront: MR,
+    BillingStorefront: AR,
     BillingPlanRenderer: GR,
     BillingForm: RR,
     BillingStatus: DR,
@@ -43306,18 +43407,18 @@
     BillingStatusSection: dB,
     BillingTextSection: pB,
     DmSidePanel: xB,
-    ScreenHeader: AM,
+    ScreenHeader: MA,
     TopPanel: ZF,
     Snackbar: kB,
     SnackbarItem: PB,
     ActionCard: rO,
     CoverAssistPanel: IB,
-    CoverAssistFrameGallery: AB,
+    CoverAssistFrameGallery: MB,
     CoverAssistFrameSelect: FB,
     CoverAssistFrameUpload: LB,
     CoverAssistGrid: jB,
     Filter: HB,
-    LoadingOverlay: AF,
+    LoadingOverlay: MF,
     TheEndOverlay: UB,
   };
   r(wD, "default", function () {
@@ -43401,7 +43502,7 @@
       return O;
     }),
     n.register("hQmIV", function () {
-      return M;
+      return A;
     }),
     n.register("uqDnl", function () {
       return Hr;
@@ -43441,7 +43542,7 @@
       return Ob;
     }),
     n.register("qnXVN", function () {
-      return Mb;
+      return Ab;
     }),
     n.register("23BIq", function () {
       return Nb;
@@ -43459,10 +43560,10 @@
       return yy;
     }),
     n.register("3HMDR", function () {
-      return Ay;
+      return My;
     }),
     n.register("1rJgl", function () {
-      return My;
+      return Ay;
     }),
     n.register("2Usdv", function () {
       return Ry;
@@ -43492,7 +43593,7 @@
       return Gw;
     }),
     n.register("6FJnj", function () {
-      return Mw;
+      return Aw;
     }),
     n.register("4EOpL", function () {
       return Rw;
@@ -43573,13 +43674,13 @@
       return FO;
     }),
     n.register("1GjA3", function () {
-      return NA;
+      return NM;
     }),
     n.register("6o3Qu", function () {
-      return HA;
+      return HM;
     }),
     n.register("5HXaP", function () {
-      return WA;
+      return WM;
     }),
     n.register("1xehS", function () {
       return VB;
