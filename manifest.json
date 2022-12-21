@@ -1,0 +1,78 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "manifest_version": 2,
+
+  "name": "__MSG_ext_name_production__",
+  "description": "__MSG_ext_description__",
+  "version": "23.6.10",
+  "default_locale": "en",
+  "icons": {
+    "16": "img/icon-16.png",
+    "128": "img/icon-128.png",
+    "500": "img/icon-500.png"
+  },
+
+  "background": {
+    "scripts": ["/app/bg.js"],
+    "persistent": true
+  },
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval' blob: https://unpkg.com/ https://ssl.google-analytics.com/ https://www.google-analytics.com; object-src 'self' blob:",
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.instagram.com/*"],
+      "js": [
+        "/js/emoji-regex.min.js",
+        "/app/ig-cs.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": ["https://*.facebook.com/*"],
+      "js": [
+        "/js/emoji-regex.min.js",
+        "/app/fb-cs.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+
+  "permissions": [
+    "alarms",
+    "background",
+    "cookies",
+    "webRequest",
+    "webRequestBlocking",
+    "*://*.instagram.com/*",
+    "*://*.facebook.com/*",
+    "*://*.inssist.com/*"
+  ],
+  "optional_permissions": [
+    "*://*.onfastspring.com/*",
+    "downloads"
+  ],
+
+  "browser_action": {
+    "default_icon": {
+      "48": "img/icon-badge-48-normal.png"
+    },
+    "default_title": "INSSIST | Instagram Assistant",
+    "default_popup": "/inssist.html?popup"
+  },
+
+  "web_accessible_resources": [
+    "/app/ig-nj.js",
+    "/app/fb-nj.js",
+    "/manifest.json",
+    "/img/icon-128.png",
+    "/img/new-post-extra-tag-assist.png",
+    "/img/new-post-extra-cover-assist.png",
+    "/img/new-post-extra-music-assist.png",
+    "/img/rocket.png"
+  ]
+
+}
