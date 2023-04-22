@@ -60,18 +60,6 @@ I am Christian Yezer and I have made this repository to publish future versions 
 	<img src="https://64.media.tumblr.com/f29e750fc61706fbe8eb96a8ad2d1031/tumblr_mfbfgkrRAz1rfjowdo1_500.gif" alt="InstaPy reach" width="220px"/>
 </p>
 
-### Contact us
-
-  <p align="center">
-    <a href="https://www.instagram.com/yezer._/">
-      <img src="https://i.imgur.com/BThmrhA.png" alt="Insta reach" width="35px" />
-    </a>
-    <a href="https://www.youtube.com/c/Yezer/videos">
-      <img src="https://i.imgur.com/utgFsnv.png" alt="Insta reach" width="35px" />
-    </a>
-  </p>
-</p>
-
 ---
 
 > **Disclaimer**<a name="disclaimer" />: Please note that this is a research project. I am in no way responsible for the use of this tool. 
