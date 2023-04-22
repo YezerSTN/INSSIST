@@ -12,7 +12,7 @@
 		
 **Version:** This version of INSSIST has all the options offered by the <b>PRO</b> version. 
 	
-**Rationale:** This is all done for profit and so that you can use the full potential of this tool.
+**Rationale:** All this without any profit motive and so that you can take advantage of all the potential of this tool.
 <br />
 
 # INSSIST Features
@@ -57,17 +57,17 @@
 I am Christian Yezer and I have made this repository to publish future versions of INSSIST with PRO functions. I hope you like my contribution, regards. ♡
 
 <p align="center">
-	<img src="https://64.media.tumblr.com/f29e750fc61706fbe8eb96a8ad2d1031/tumblr_mfbfgkrRAz1rfjowdo1_500.gif" alt="InstaPy reach" width="600px"/>
+	<img src="https://64.media.tumblr.com/f29e750fc61706fbe8eb96a8ad2d1031/tumblr_mfbfgkrRAz1rfjowdo1_500.gif" alt="InstaPy reach" width="220px"/>
 </p>
 
 ### Contact us
 
   <p align="center">
     <a href="https://www.instagram.com/yezer._/">
-      <img src="https://i.imgur.com/BThmrhA.png" alt="Insta reach" width="75px" />
+      <img src="https://i.imgur.com/BThmrhA.png" alt="Insta reach" width="35px" />
     </a>
     <a href="https://www.youtube.com/c/Yezer/videos">
-      <img src="https://i.imgur.com/utgFsnv.png" alt="Insta reach" width="75px" />
+      <img src="https://i.imgur.com/utgFsnv.png" alt="Insta reach" width="35px" />
     </a>
   </p>
 </p>
