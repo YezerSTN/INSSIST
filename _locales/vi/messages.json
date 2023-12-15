@@ -1,0 +1,14 @@
+{
+   "ext_description": {
+      "message": "Post photos, videos, stories, reels to Instagram from Web. Schedule posts, send DMs, manage hashtags."
+   },
+   "ext_name_beta": {
+      "message": "INSSIST BETA | Trợ lý web cho Instagram"
+   },
+   "ext_name_dev": {
+      "message": "INSSIST DEV"
+   },
+   "ext_name_production": {
+      "message": "INSSIST | Trợ lý web cho Instagram"
+   }
+}
