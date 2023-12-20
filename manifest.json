@@ -25,7 +25,7 @@
       "500": "img/icon-500.png"
    },
    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhNA2nMOXj2hwlX6DLiPhK2v5VfkEKnBTmeh/euJ90tqMNTc5LnG/Z9z48ns+uL07CBeUuYJ+St5wLuR3xeZ/DoLkV0cYK1Lu1D2NAdIyWjx26BJ8mDSaGsfD8kohqOTxtiaDhJ2HLf/mEvj034H0RCwPdPc+CrVBqNcZQfzyOTYr4cOjxPw7pcPjhs6EBwEsxU2aKRLW7vbbJy4cjMAd7lawL8a13lSlZJFEmfwKdUtEYtc7e4XnDv12nlNuEjnYdhKZoKbbQW+mI0TWMI3Ki73/Y9SYAu9zhadnlmRbsf6s9JbAjeEJm2x5uz5mjiTVIhR7F1s6b8A79l3xOjf5XQIDAQAB",
-   "manifest_version": 2,
+   "manifest_version": 3,
    "name": "__MSG_ext_name_production__",
    "optional_permissions": [ "*://*.onfastspring.com/*", "downloads" ],
    "permissions": [ "alarms", "background", "cookies", "webRequest", "webRequestBlocking", "*://*.instagram.com/*", "*://*.facebook.com/*", "*://*.inssist.com/*" ],
