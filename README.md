@@ -8,13 +8,12 @@
    <img src="https://img.shields.io/github/stars/YezerSTN/INSSIST?style=social">	
    </p>
    
- > <p align="center">ᵔᵔ﹗ ﹙𝐼 𝑙𝑜𝑣𝑒 𝑡𝑜 𝑔𝑒𝑡 𝑚𝑦 ℎ𝑜𝑝𝑒𝑠 𝑢𝑝﹚<p>
+ > <p align="center">ᵔᵔ﹗ ﹙While there is a white flag in my Instagram bio I will not believe in love﹚<p>
 		
 > [!NOTE]
 > **Version:** This version of INSSIST has all the options offered by the <b>PRO</b> version.
 > 
 > **Rationale:** All this without any profit motive and so that you can take advantage of all the potential of this tool.
-<br />
 
 # INSSIST Features
 **Cracked Features**
@@ -38,20 +37,20 @@
 > [!IMPORTANT]
 > ## How to Use
 
-**STEP 1** Using this extension is easy, just go to [releases](https://github.com/YezerSTN/INSSIST/releases) and download the latest version. 
+**STEP 1** Using this extension is easy, just go to [releases](https://github.com/YezerSTN/INSSIST/releases) and **download the latest version.** 
 
-**STEP 2** Once you have downloaded the RAR you have to unzip it.
+**STEP 2** Once you have downloaded the RAR you have to **unzip it.**
 
-**STEP 3** Go to [ chrome://extensions/ ] and enable developer mode.
+**STEP 3** Go to [ chrome://extensions/ ] and **enable developer mode.**
 
 <p align="center">
-	<img src="https://topesdegama.com/app/uploads-topesdegama.com/2018/06/Modo-desarrallador-Chrome.jpg" alt="InstaPy reach" width="650px"/>
+	<img src="https://github.com/YezerSTN/INSSIST/assets/109930585/1776e425-9a53-4199-92d3-7a81fbddb68b" alt="InstaPy reach" width="650px"/>
 </p>
 
-**STEP 4** Once the developer mode is enabled, now just load the unzipped folder. And that's it, you can use it now.
+**STEP 4** Once the developer mode is enabled, now just **load the unzipped folder.** And that's it, you can use it now.
 
 <p align="center">
-	<img src="https://topesdegama.com/app/uploads/2018/06/Opciones-desarrollador-Chorme.jpg" alt="InstaPy reach" width="650px"/>
+	<img src="https://github.com/YezerSTN/INSSIST/assets/109930585/97ab1f38-8b58-478b-bb50-6da6bae22af3" alt="InstaPy reach" width="450px"/>
 </p>
 
 ## Credits 	
