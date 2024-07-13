@@ -20573,8 +20573,8 @@
           ".ReQLScrollAnchored > .IGDListCellPlaceholder",
         ],
         chatItemTitle: [
-          '.ReQLScrollAnchored > .Pressable div[style*="width: 244px"]',
-          '.ReQLScrollAnchored > .WebPressable div[style*="width: 244px"]',
+          '.ReQLScrollAnchored > .Pressable div[style*="width: 100%"]',
+          '.ReQLScrollAnchored > .WebPressable div[style*="width: 100%"]',
         ],
         chatHeader: [".IGDThreadDetail:has(.IGDSectionHeaderLayout) > div"],
         chatHeaderAvatar: [
