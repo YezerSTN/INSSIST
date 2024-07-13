@@ -5,7 +5,7 @@
 
   "name": "__MSG_ext_name_production__",
   "description": "__MSG_ext_description__",
-  "version": "23.4.1",
+  "version": "26.4.5",
   "default_locale": "en",
   "icons": {
     "16": "img/icon-16.png",
@@ -14,7 +14,7 @@
   },
 
   "background": {
-    "page": "/background.html",
+    "scripts": ["/app/bg.js"],
     "persistent": true
   },
 
@@ -25,17 +25,14 @@
       "matches": ["https://*.instagram.com/*"],
       "js": [
         "/js/emoji-regex.min.js",
-        "/ig-content-script/index.js"
+        "/app/cs.js"
       ],
       "run_at": "document_start",
       "all_frames": true
     },
     {
-      "matches": ["https://*.facebook.com/*"],
-      "js": [
-        "/js/emoji-regex.min.js",
-        "/fb-content-script/index.js"
-      ],
+      "matches": ["https://*.inssist.com/backup"],
+      "js": ["/app/cs.js"],
       "run_at": "document_start",
       "all_frames": true
     }
@@ -60,20 +57,19 @@
     "default_icon": {
       "48": "img/icon-badge-48-normal.png"
     },
-    "default_title": "INSSIST | Instagram Assistant",
-    "default_popup": "/inssist.html?popup"
+    "default_title": "INSSIST | Instagram Assistant"
   },
 
   "web_accessible_resources": [
-    "/ig-injection/index.js",
-    "/fb-injection/index.js",
-    "/background/index.js",
+    "/app/nj.js",
+    "/app/bg.js",
     "/manifest.json",
     "/img/icon-128.png",
     "/img/new-post-extra-tag-assist.png",
     "/img/new-post-extra-cover-assist.png",
     "/img/new-post-extra-music-assist.png",
-    "/img/rocket.png"
+    "/img/rocket.png",
+    "/img/harpa-avatar.png"
   ]
 
 }
