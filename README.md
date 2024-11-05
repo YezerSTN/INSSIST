@@ -8,7 +8,6 @@
    <img src="https://img.shields.io/github/stars/YezerSTN/INSSIST?style=social">	
    </p>
    
- > <p align="center">ᵔᵔ﹗ ﹙While there is a white flag in my Instagram bio I will not believe in love﹚<p>
 		
 > [!NOTE]
 > **Version:** This version of INSSIST has all the options offered by the <b>PRO</b> version.
